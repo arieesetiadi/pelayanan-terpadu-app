@@ -9,12 +9,18 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
 
+    {{-- Fontawesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Bootstrap Css -->
-    <link href="{{ asset('/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
     <!-- Icons Css -->
-    <link href="{{ asset('/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="{{ asset('/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -31,8 +37,8 @@
                                         <div class="text-center">
                                             <div>
                                                 <a href="/" class="logo"><img
-                                                        src="{{ asset('img/logo-polres.png') }}" height="65"
-                                                        alt="logo" class="rounded"></a>
+                                                        src="{{ asset('assets-admin/img/logo-polres.png') }}"
+                                                        height="100" alt="logo" class="rounded"></a>
                                             </div>
 
                                             <h4 class="font-size-18 mt-4">Login</h4>
@@ -53,14 +59,14 @@
                                                 @csrf
                                                 {{-- Username --}}
                                                 <div class="mb-3 auth-form-group-custom mb-4">
-                                                    <i class="ri-user-2-line auti-custom-input-icon"></i>
+                                                    <i class="fa-solid fa-address-card auti-custom-input-icon"></i>
                                                     <label for="username">Username</label>
                                                     <input name="username" type="text" class="form-control"
                                                         id="username" placeholder="Username" required>
                                                 </div>
                                                 {{-- Password --}}
                                                 <div class="mb-3 auth-form-group-custom mb-4">
-                                                    <i class="ri-lock-2-line auti-custom-input-icon"></i>
+                                                    <i class="fa-solid fa-key auti-custom-input-icon"></i>
                                                     <label for="password">Password</label>
                                                     <input name="password" type="password" class="form-control"
                                                         id="password" placeholder="Password" required>
@@ -88,16 +94,6 @@
             </div>
         </div>
     </div>
-
-    <!-- JAVASCRIPT -->
-    <script src="{{ asset('/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('/libs/metismenu/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('/libs/node-waves/waves.min.js') }}"></script>
-
-    <script src="{{ asset('/js/app.js') }}"></script>
-
 </body>
 
 </html>
