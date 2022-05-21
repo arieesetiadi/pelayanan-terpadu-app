@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sentra Pelayanan Kepolisian Terpadu</title>
+    <title>Visi & Misi | Sentra Pelayanan Kepolisian Terpadu</title>
 
     {{-- Animation os Scroll --}}
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -41,53 +41,28 @@
     <section id="main">
         <div class="container py-5">
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
-                data-aos-duration="500">Pilihan Layanan</h1>
+                data-aos-duration="500">Visi & Misi</h1>
             <div class="row py-5" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
-                {{-- Pengaduan Masyarakat --}}
-                <div class="col-6">
-                    <div class="card shadow-lg">
-                        <img class="card-img-top" width="100%"
-                            src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt="Pengaduan Masyarakat">
-                        <div class="card-body">
-                            <h5 class="d-inline-block h6" style="color: black">Pengaduan Masyarakat</h5>
+                <div class="col-12">
+                    <p>Terwujudnya pelayanan keamanan dan ketertiban masyarakat yang prima, tegaknya hukum dan keamanan dalam negeri yang
+                    mantap serta terjalinnya sinergi polisional yang proaktif.</p>
+                    <br>
 
-                            <div class="d-inline-block dropdown">
-                                <button class="btn btn-light" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/pengaduan-masyarakat/sktlk">SKTLK (Surat Keterangan Tanda Lapor
-                                        Kehilangan)</a>
-                                    <a class="dropdown-item" href="/pengaduan-masyarakat/sik">Surat Izin Keramaian</a>
-                                    <a class="dropdown-item" href="/pengaduan-masyarakat/sttlp">STTLP</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Penindaklanjutan Tindak Kriminal --}}
-                <div class="col-6">
-                    <div class="card shadow-lg">
-                        <img class="card-img-top" width="100%"
-                            src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt="Pengaduan Masyarakat">
-                        <div class="card-body">
-                            <h5 class="d-inline-block h6" style="color: black">Penindaklanjutan Tindak Kriminal</h5>
-
-                            <div class="d-inline-block dropdown">
-                                <button class="btn btn-light" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/tindak-kriminal">Tindak Kriminal</a>
-                                    <a class="dropdown-item" href="/tindak-kriminal/sp2hp">SP2HP</a>
-                                    <a class="dropdown-item" href="/tindak-kriminal/sttlp">STTLP</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ol style="list-style-type: decimal">
+                        <li>
+                        Melaksanakan deteksi dini dan peringatan dini melalui kegiatan/operasi penyelidikan, pengamanan dan penggalangan</li>
+                        <li>Memberikan perlindungan, pengayoman dan pelayanan secara mudah, responsif dan tidak diskriminatif</li>
+                        <li>Menjaga keamanan, ketertiban dan kelancaran lalu lintas untuk menjamin keselamatan dan kelancaran arus orang dan barang</li>
+                        <li>Menjamin keberhasilan penanggulangan gangguan keamanan dalam negeri</li>
+                        <li>Mengembangkan perpolisian masyarakat yang berbasis pada masyarakat patuh hukum</li>
+                        <li>Menegakkan hukum secara profesional, objektif, proporsional, transparan dan akuntabel untuk menjamin kepastian hukum dan
+                        rasa keadilan</li>
+                        <li>Menegakkan hukum secara profesional, objektif, proporsional, transparan dan akuntabel untuk menjamin kepastian hukum dan
+                        rasa keadilan</li>
+                        <li>Membangun sistem sinergi polisional interdepartemen dan lembaga internasional maupun komponen masyarakat dalam rangka
+                        membangun kemitraan dan jejaring kerja (partnership building/networking)</li>
+                        
+                    </ol>
                 </div>
             </div>
         </div>

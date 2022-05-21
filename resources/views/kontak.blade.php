@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Sentra Pelayanan Kepolisian Terpadu</title>
+    <title>Kontak | Sentra Pelayanan Kepolisian Terpadu</title>
 
     {{-- Animation os Scroll --}}
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -26,6 +26,12 @@
     <link rel="stylesheet" href="{{ asset('assets-user/css/shortcodes.css') }}">
     <link rel="stylesheet" href="{{ asset('assets-user/css/responsive.css') }}">
 
+    <style>
+        p, li {
+            text-align: justify;
+        }
+    </style>
+
     <link href="favicon.ico" rel="shortcut icon">
 </head>
 
@@ -41,53 +47,46 @@
     <section id="main">
         <div class="container py-5">
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
-                data-aos-duration="500">Pilihan Layanan</h1>
+                data-aos-duration="500">Kontak</h1>
             <div class="row py-5" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
-                {{-- Pengaduan Masyarakat --}}
-                <div class="col-6">
-                    <div class="card shadow-lg">
-                        <img class="card-img-top" width="100%"
-                            src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt="Pengaduan Masyarakat">
-                        <div class="card-body">
-                            <h5 class="d-inline-block h6" style="color: black">Pengaduan Masyarakat</h5>
+                <div class="col-12">
+                  {{-- Google Maps --}}
+                  <div style="width: 100%"><iframe width="100%" height="450" frameborder="0" scrolling="no" marginheight="0"
+                        marginwidth="0"
+                        src="https://maps.google.com/maps?width=100%25&amp;height=450&amp;hl=en&amp;q=Polres%20Badung,%20Jalan%20Kebo%20Iwa,%20Mengwitani,%20Kabupaten%20Badung,%20Bali+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
+                            href="https://www.gps.ie/wearable-gps/">Kids wearables</a></iframe></div>
 
-                            <div class="d-inline-block dropdown">
-                                <button class="btn btn-light" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/pengaduan-masyarakat/sktlk">SKTLK (Surat Keterangan Tanda Lapor
-                                        Kehilangan)</a>
-                                    <a class="dropdown-item" href="/pengaduan-masyarakat/sik">Surat Izin Keramaian</a>
-                                    <a class="dropdown-item" href="/pengaduan-masyarakat/sttlp">STTLP</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        {{-- Polres Badung --}}
+                        <h1 style="color: black" class="h1 font-weight-bolder my-4">
+                            Polres Badung</h1>
 
-                {{-- Penindaklanjutan Tindak Kriminal --}}
-                <div class="col-6">
-                    <div class="card shadow-lg">
-                        <img class="card-img-top" width="100%"
-                            src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt="Pengaduan Masyarakat">
-                        <div class="card-body">
-                            <h5 class="d-inline-block h6" style="color: black">Penindaklanjutan Tindak Kriminal</h5>
-
-                            <div class="d-inline-block dropdown">
-                                <button class="btn btn-light" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-caret-down"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/tindak-kriminal">Tindak Kriminal</a>
-                                    <a class="dropdown-item" href="/tindak-kriminal/sp2hp">SP2HP</a>
-                                    <a class="dropdown-item" href="/tindak-kriminal/sttlp">STTLP</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        {{-- Kontak --}}
+                        <ul>
+                            <li>
+                                <a href="#" class="my-1 d-inline-block">
+                                    <i class="fa-solid fa-building d-inline-block mx-2"></i>
+                                    Jl. Kebo Iwa No.1, Mengwitani, Mengwi
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:0361829949" class="my-1 d-inline-block">
+                                    <i class="fa-solid fa-phone d-inline-block mx-2"></i>
+                                    (0361) 829949
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="my-1 d-inline-block">
+                                    <i class="fa-solid fa-envelope d-inline-block mx-2"></i>
+                                    info@polresbadung.id
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.polresbadung.id/" class="my-1 d-inline-block">
+                                    <i class="fa-solid fa-globe d-inline-block mx-2"></i>
+                                    www.polresbadung.id
+                                </a>
+                            </li>
+                        </ul>
                 </div>
             </div>
         </div>
