@@ -52,3 +52,6 @@ Route::view('/tindak-kriminal/sp2hp', 'tindak-kriminal.sp2hp');
 
 // Route ke SP2HP
 Route::view('/tindak-kriminal/sttlp', 'tindak-kriminal.sttlp');
+
+// Route ke form SKTLK
+Route::view('/form-sktlk/lapor', 'form-sktlk.lapor');

@@ -73,16 +73,16 @@
                 <!-- Slide 1 -->
                 <li data-transition="random">
                     <!-- Main Image -->
-                    <img src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt=""
-                        data-bgposition="center center" data-no-retina>
+                    <img style="width: 100%; height: auto; object-fit: none" src="{{ asset('assets-user/img/rev-slider/selamat-datang.png') }}" alt=""
+                        data-bgposition="center center" data-no-retina width="100%">
                 </li>
                 <!-- /End Slide 1 -->
 
                 <!-- Slide 2 -->
                 <li data-transition="random">
                     <!-- Main Image -->
-                    <img src="{{ asset('assets-user/img/rev-slider/gambar2.jpg') }}" alt=""
-                        data-bgposition="center center" data-no-retina>
+                    <img style="width: 100%; height: auto;" src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt=""
+                        data-bgposition="center center" data-no-retina width="100%">
                 </li>
                 <!-- /End Slide 2 -->
             </ul>

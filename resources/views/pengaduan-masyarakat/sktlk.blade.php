@@ -42,6 +42,10 @@
         <div class="container py-5">
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Surat Keterangan Tanda Lapor Kehilangan</h1>
+
+            <div class="flat-appointment btn-linear hv-linear-gradient">
+                <a href="/form-sktlk/lapor" class="font-style linear-color border-corner">Lapor</a>
+            </div>
         </div>
     </section>
 
