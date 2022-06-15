@@ -2,28 +2,33 @@
     <div class="top-bar top-bar-type1">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-12 d-lg-flex align-items-center">
-                    <ul class="flat-information flat-information-type1">
-                        <li>
-                            <a href="#" title="Phone">
-                                <i class="fa-solid fa-phone d-inline-block mx-2"></i>
-                                0361829949
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" title="Email">
-                                <i class="fa-solid fa-envelope d-inline-block mx-2"></i>
-                                info@polresbadung.id
-                            </a>
-                        </li>
-                    </ul>
+                <div class="col-md-8 col-12 d-flex align-items-center">
+                    <div class="d-inline-block">
+                        <a href="#" title="Datetime" class="d-inline-block text-white px-2">
+                            <i class="fa-solid fa-clock d-inline-block mx-2"></i>
+                            <span id="realtimeCounter"></span>
+                        </a>
+                        <script src="{{ asset('assets-user/js/realtimeCounter.js') }}"></script>
+                    </div>
+                    <div class="d-inline-block">
+                        <a href="#" title="Phone" class="d-inline-block text-white px-2">
+                            <i class="fa-solid fa-phone d-inline-block mx-2"></i>
+                            0361829949
+                        </a>
+                    </div>
+                    <div class="d-inline-block">
+                        <a href="#" title="Email" class="d-inline-block text-white px-2">
+                            <i class="fa-solid fa-envelope d-inline-block mx-2"></i>
+                            info@polresbadung.id
+                        </a>
+                    </div>
                 </div>
                 <div class="col-md-4 col-12 d-flex justify-content-md-end justify-content-center">
                 </div>
             </div>
         </div>
     </div>
-    
+
     {{-- Navbar --}}
     <header id="header" class="header header-type1 bg-header-s1 bg-color" data-aos="fade-down" data-aos-duration="500">
         <div class="container">
@@ -56,9 +61,9 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="flat-appointment btn-linear hv-linear-gradient">
+                    {{-- <div class="flat-appointment btn-linear hv-linear-gradient">
                         <a href="/daftar" class="font-style linear-color border-corner">Daftar</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -73,7 +78,8 @@
                 <!-- Slide 1 -->
                 <li data-transition="random">
                     <!-- Main Image -->
-                    <img style="width: 100%; height: auto; object-fit: none" src="{{ asset('assets-user/img/rev-slider/selamat-datang.png') }}" alt=""
+                    <img style="width: 100%; height: auto; object-fit: none"
+                        src="{{ asset('assets-user/img/rev-slider/selamat-datang.png') }}" alt=""
                         data-bgposition="center center" data-no-retina width="100%">
                 </li>
                 <!-- /End Slide 1 -->
@@ -81,7 +87,8 @@
                 <!-- Slide 2 -->
                 <li data-transition="random">
                     <!-- Main Image -->
-                    <img style="width: 100%; height: auto;" src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt=""
+                    <img style="width: 100%; height: auto;"
+                        src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt=""
                         data-bgposition="center center" data-no-retina width="100%">
                 </li>
                 <!-- /End Slide 2 -->

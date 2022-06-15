@@ -26,6 +26,15 @@
     <link rel="stylesheet" href="{{ asset('assets-user/css/shortcodes.css') }}">
     <link rel="stylesheet" href="{{ asset('assets-user/css/responsive.css') }}">
 
+    <style>
+        ol {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-left: 30px;
+        }
+    </style>
     <link href="favicon.ico" rel="shortcut icon">
 </head>
 
@@ -40,6 +49,30 @@
     {{-- Konten --}}
     <section id="main">
         <div class="container py-5">
+            <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
+                data-aos-duration="500">Sentra Pelayanan Kepolisian Terpadu ( SPKT )</h1>
+            <p data-aos="fade-up" data-aos-duration="500">
+                SPKT bertugas memberikan pelayanan kepolisian secara terpadu terhadap laporan/pengaduan masyarakat,
+                memberikan bantuan dan pertolongan, serta memberikan pelayanan informasi.
+                SPKT dapat melayani :
+            </p>
+
+            <ol data-aos="fade-up" data-aos-duration="500">
+                <li>
+                    Surat Keterangan Tanda Lapor Kehilangan (SKTLK)
+                </li>
+                <li>
+                    Surat Ijin Keramaian
+                </li>
+                <li>
+                    Surat Tanda Terima Laporan Polisi (STTPLP)
+                </li>
+                <li>
+                    Surat Pemberitahuan Perkembangan Hasil Penyidikan (SP2HP)
+                </li>
+            </ol>
+            <br>
+            <br>
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Pilihan Layanan</h1>
             <div class="row py-5" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
@@ -57,7 +90,8 @@
                                     <i class="fa-solid fa-caret-down"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/pengaduan-masyarakat/sktlk">SKTLK (Surat Keterangan Tanda Lapor
+                                    <a class="dropdown-item" href="/pengaduan-masyarakat/sktlk">SKTLK (Surat Keterangan
+                                        Tanda Lapor
                                         Kehilangan)</a>
                                     <a class="dropdown-item" href="/pengaduan-masyarakat/sik">Surat Izin Keramaian</a>
                                     <a class="dropdown-item" href="/pengaduan-masyarakat/sttlp">STTLP</a>

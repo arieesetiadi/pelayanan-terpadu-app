@@ -25,6 +25,15 @@
     <link rel="stylesheet" href="{{ asset('assets-user/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets-user/css/shortcodes.css') }}">
     <link rel="stylesheet" href="{{ asset('assets-user/css/responsive.css') }}">
+    <style>
+        ul {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-left: 30px;
+        }
+    </style>
 
     <link href="favicon.ico" rel="shortcut icon">
 </head>
@@ -34,14 +43,273 @@
         <div class="loader"></div>
     </div><!-- loading -->
 
-    {{-- Top Bar --}}
-    @include('layout.topbar')
+    <div data-aos="fade-down" data-aos-duration="500">
+        <div class="top-bar top-bar-type1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-12 d-lg-flex align-items-center">
+                        <ul class="flat-information flat-information-type1">
+                            <li>
+                                <a href="#" title="Datetime">
+                                    <i class="fa-solid fa-clock d-inline-block mx-2"></i>
+                                    <span id="realtimeCounter"></span>
+                                </a>
+                                <script src="{{ asset('assets-user/js/realtimeCounter.js') }} "></script>
+                            </li>
+                            <li>
+                                <a href="#" title="Phone">
+                                    <i class="fa-solid fa-phone d-inline-block mx-2"></i>
+                                    0361829949
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" title="Email">
+                                    <i class="fa-solid fa-envelope d-inline-block mx-2"></i>
+                                    info@polresbadung.id
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-12 d-flex justify-content-md-end justify-content-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Navbar --}}
+        <header id="header" class="header header-type1 bg-header-s1 bg-color" data-aos="fade-down"
+            data-aos-duration="500">
+            <div class="container">
+                <div class="flex-header d-flex">
+                    <div id="logo" class="logo d-flex align-items-center justify-content-start">
+                        <a href="/" title="Logo">
+                            <img src="{{ asset('assets-user/img/logo-main.png') }}" data-width="150" data-height="38"
+                                alt="images" data-retina="{{ asset('assets-user/img/logo-main.png') }}">
+                        </a>
+                    </div>
+                    <div class="content-menu d-flex align-items-center justify-content-end">
+                        <div class="nav-wrap">
+                            <div class="btn-menu"><span></span></div>
+                            <nav id="mainnav" class="mainnav">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="/">Beranda</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Profil</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="/visimisi">Visi & Misi</a></li>
+                                            <li><a href="/sejarah">Sejarah</a></li>
+                                            <li><a href="/tentangpolri">Tentang Polri</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/kontak">Kontak</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        {{-- <div class="flat-appointment btn-linear hv-linear-gradient">
+                        <a href="/daftar" class="font-style linear-color border-corner">Daftar</a>
+                    </div> --}}
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
 
     {{-- Konten --}}
     <section id="main">
         <div class="container py-5">
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Surat Keterangan Tanda Lapor Kehilangan</h1>
+
+            <div class="row py-5" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
+                <div class="col-12">
+                    <p>
+                        Pelayanan Surat Keterangan Tanda Lapor Kehilangan ( SKTLK ) atau yang dulu dikenal dengan
+                        Laporan Kehilangan Barang
+                        (LKB) adalah salah satu jenis pelayanan di Polri. Program ini dengan harapan memberikan
+                        kemudahan kepada masyarakat
+                        dengan melihat efektifitas waktu, tenaga dan biaya.
+                    </p>
+                    <br>
+                    <p>
+                        SKTLK Online dibuka setiap hari senin sampai dengan sabtu pukul 08.00-14.00 WIB untuk data yang
+                        diinput setelah pukul
+                        14.00 WIB akan dikirim hasilnya keesekoan harinya. Syarat – syarat kepengurusan Surat Keterangan
+                        Tanda Lapor Kehilangan (SKTLK) antara lain :
+                    </p>
+                    <br>
+
+                    <ol>
+                        <li><strong>Surat Sertifikat Tanah:</strong>
+                            <ul>
+                                <li>Menunjukan bukti 2x (dua kali) penerbitan pada surat kabar / koran atas Sertifikat
+                                    Hak Milik (SHM) yang hilang.</li>
+                                <li>Rekomendasi yang membenarkan dari Kantor Badan Pertanahan Nasional (BPN), termasuk
+                                    data-data keterangan lengkap berdasarkan Sertifikat Hak Milik (SHM) yang hilang dan
+                                    tidak sedang dalam permasalahan.</li>
+                                <li>Membuat surat pernyataan dari pemilik bahwa Sertifikat Hak Milik (SHM) telah hilang.
+                                </li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Buku Pemilik Kendaraan Bermotor (BPKB) :</strong>
+                            <ul>
+                                <li>Menunjukan bukti 2x (dua kali) penerbitan pada surat kabar / koran atas Buku Pemilik
+                                    Kendaraan Bermotor (BPKB) yang hilang.</li>
+                                <li>Menunjukan Surat Tanda Nomor Kendaraan (STNK) asli dan bukti cek fisik kendaraan.
+                                </li>
+                                <li>Membuat surat pernyataan dari pemilik bahwa Buku Pemilik Kendaraan Bermotor (BPKB)
+                                    telah hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+
+                    <ol>
+                        <li><strong>Surat Tanda Nomor Kendaraan (STNK) :</strong>
+                            <ul>
+                                <li>Menunjukan bukti surat kabar / koran atas Surat Tanda Nomor Kendaraan (STNK) yang
+                                    hilang.</li>
+                                <li>Menunjukan Buku Pemilik Kendaraan Bermotor (BPKB) asli / apabila masih dalam proses
+                                    kredit, minta Rekomendasi dari Dealer dan tidak sedang dalam permasalahan.</li>
+                                <li>Membuat surat pernyataan dari pemilik bahwa Surat Tanda Nomor Kendaraan (STNK).</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>PASPOR :</strong>
+                            <ul>
+                                <li>Menunjukan bukti 2x (dua kali) penerbitan pada surat kabar / koran atas PASPOR yang
+                                    hilang.</li>
+                                <li>Rekomendasi yang membenarkan dari Kantor Imigrasi, termasuk data-data keterangan
+                                    lengkap berdasarkan PASPOR yang hilang dan tidak sedang dalam permasalahan.</li>
+                                <li>Membuat surat pernyataan dari pemilik bahwa PASPOR telah hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Buku Nikah :</strong>
+                            <ul>
+                                <li>Menunjukan bukti 2x (dua kali) penerbitan pada surat kabar / koran atas Buku Nikah
+                                    yang hilang.</li>
+                                <li>Rekomendasi yang membenarkan dari Kantor Urusan Agama (KUA) tempat Buku Nikah
+                                    dikeluarkan, termasuk data-data keterangan lengkap berdasarkan Buku Nikah yang
+                                    hilang dan tidak sedang dalam permasalahan.</li>
+                                <li>Membuat surat pernyataan dari pemilik bahwa Buku Nikah telah hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Surat Ijazah :</strong>
+                            <ul>
+                                <li>Menunjukan bukti 2x (dua kali) penerbitan pada surat kabar / koran atas Buku Nikah
+                                    yang hilang.</li>
+                                <li>Rekomendasi yang membenarkan dari sekolah tempat Ijazah dikeluarkan, termasuk
+                                    data-data keterangan lengkap berdasarkan Ijazah yang hilang.</li>
+                                <li>Membuat surat pernyataan dari pemilik bahwa Ijazah telah hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Surat Ijin Mengemudi (SIM) :</strong>
+                            <ul>
+                                <li>Rekomendasi yang membenarkan dari Sat.Lantas tempat Surat Ijin Mengemudi (SIM)
+                                    dikeluarkan, termasuk data-data keterangan lengkap berdasarkan Surat Ijin Mengemudi
+                                    (SIM) yang hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Kartu Tanda Penduduk (KTP) : </strong>
+                            <ul>
+                                <li>Rekomendasi yang membenarkan dari Kantor Kelurahan / Desa sesuai alamat pada KTP /
+                                    domisili, termasuk data-data keterangan lengkap berdasarkan Kartu Tanda Penduduk
+                                    (KTP) yang hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Kartu Keluarga :</strong>
+                            <ul>
+                                <li>Rekomendasi yang membenarkan dari Kantor Kelurahan / Desa sesuai alamat pada KTP /
+                                    domisili, termasuk data-data keterangan lengkap berdasarkan Kartu Keluarga yang
+                                    hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Buku Tabungan :</strong>
+                            <ul>
+                                <li>Rekomendasi yang membenarkan dari Bank yang bersangkutan, termasuk data-data
+                                    keterangan lengkap berdasarkan Buku Tabungan yang hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Kartu ATM :</strong>
+                            <ul>
+                                <li>Rekomendasi yang membenarkan dari Bank yang bersangkutan, termasuk data-data
+                                    keterangan lengkap berdasarkan Kartu ATM yang hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Surat Gadai (Pegadaian) :</strong>
+                            <ul>
+                                <li>Rekomendasi yang membenarkan dari Kantor Pegadaian yang bersangkutan, termasuk
+                                    data-data keterangan lengkap berdasarkan Surat Gadai yang hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Kartu BPJS (Badan Penyelenggara Jaminan Sosial):</strong>
+                            <ul>
+                                <li>Rekomendasi yang membenarkan dari Kantor BPJS yang bersangkutan, termasuk data-data
+                                    keterangan lengkap berdasarkan Kartu BPJS yang hilang.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>&nbsp;</p>
+                    <ol>
+                        <li><strong>Surat-surat penting lainnya :</strong>
+                            <ul>
+                                <li>Rekomendasi yang membenarkan dari Kantor atau Dinas instansi yang mengeluarkan /
+                                    menerbitkan, termasuk data-data keterangan lengkap berdasarkan surat / dokumen yang
+                                    hilang dan tidak sedang dalam permasalahan.</li>
+                                <li>Foto copy identitas pelapor / yang membuat laporan kehilangan.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
 
             <div class="flat-appointment btn-linear hv-linear-gradient">
                 <a href="/form-sktlk/lapor" class="font-style linear-color border-corner">Lapor</a>
