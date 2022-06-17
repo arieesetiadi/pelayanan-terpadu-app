@@ -36,6 +36,7 @@
 
     {{-- Top Bar --}}
     @include('layout.topbar')
+    @include('layout.banner')
 
     {{-- Konten --}}
     <section id="main">
@@ -44,24 +45,31 @@
                 data-aos-duration="500">Visi & Misi</h1>
             <div class="row py-5" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
                 <div class="col-12">
-                    <p>Terwujudnya pelayanan keamanan dan ketertiban masyarakat yang prima, tegaknya hukum dan keamanan dalam negeri yang
-                    mantap serta terjalinnya sinergi polisional yang proaktif.</p>
+                    <p>Terwujudnya pelayanan keamanan dan ketertiban masyarakat yang prima, tegaknya hukum dan keamanan
+                        dalam negeri yang
+                        mantap serta terjalinnya sinergi polisional yang proaktif.</p>
                     <br>
 
                     <ol style="list-style-type: decimal">
                         <li>
-                        Melaksanakan deteksi dini dan peringatan dini melalui kegiatan/operasi penyelidikan, pengamanan dan penggalangan</li>
-                        <li>Memberikan perlindungan, pengayoman dan pelayanan secara mudah, responsif dan tidak diskriminatif</li>
-                        <li>Menjaga keamanan, ketertiban dan kelancaran lalu lintas untuk menjamin keselamatan dan kelancaran arus orang dan barang</li>
+                            Melaksanakan deteksi dini dan peringatan dini melalui kegiatan/operasi penyelidikan,
+                            pengamanan dan penggalangan</li>
+                        <li>Memberikan perlindungan, pengayoman dan pelayanan secara mudah, responsif dan tidak
+                            diskriminatif</li>
+                        <li>Menjaga keamanan, ketertiban dan kelancaran lalu lintas untuk menjamin keselamatan dan
+                            kelancaran arus orang dan barang</li>
                         <li>Menjamin keberhasilan penanggulangan gangguan keamanan dalam negeri</li>
                         <li>Mengembangkan perpolisian masyarakat yang berbasis pada masyarakat patuh hukum</li>
-                        <li>Menegakkan hukum secara profesional, objektif, proporsional, transparan dan akuntabel untuk menjamin kepastian hukum dan
-                        rasa keadilan</li>
-                        <li>Menegakkan hukum secara profesional, objektif, proporsional, transparan dan akuntabel untuk menjamin kepastian hukum dan
-                        rasa keadilan</li>
-                        <li>Membangun sistem sinergi polisional interdepartemen dan lembaga internasional maupun komponen masyarakat dalam rangka
-                        membangun kemitraan dan jejaring kerja (partnership building/networking)</li>
-                        
+                        <li>Menegakkan hukum secara profesional, objektif, proporsional, transparan dan akuntabel untuk
+                            menjamin kepastian hukum dan
+                            rasa keadilan</li>
+                        <li>Menegakkan hukum secara profesional, objektif, proporsional, transparan dan akuntabel untuk
+                            menjamin kepastian hukum dan
+                            rasa keadilan</li>
+                        <li>Membangun sistem sinergi polisional interdepartemen dan lembaga internasional maupun
+                            komponen masyarakat dalam rangka
+                            membangun kemitraan dan jejaring kerja (partnership building/networking)</li>
+
                     </ol>
                 </div>
             </div>

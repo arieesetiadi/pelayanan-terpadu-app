@@ -45,6 +45,7 @@
 
     {{-- Top Bar --}}
     @include('layout.topbar')
+    @include('layout.banner')
 
     {{-- Konten --}}
     <section id="main">
@@ -54,7 +55,7 @@
             <p data-aos="fade-up" data-aos-duration="500">
                 SPKT bertugas memberikan pelayanan kepolisian secara terpadu terhadap laporan/pengaduan masyarakat,
                 memberikan bantuan dan pertolongan, serta memberikan pelayanan informasi.
-                SPKT dapat melayani :
+                Website ini dapat melayani fungsi SPKT sebagai berikut :
             </p>
 
             <ol data-aos="fade-up" data-aos-duration="500">

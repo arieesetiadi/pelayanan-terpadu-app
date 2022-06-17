@@ -27,7 +27,8 @@
     <link rel="stylesheet" href="{{ asset('assets-user/css/responsive.css') }}">
 
     <style>
-        p, li {
+        p,
+        li {
             text-align: justify;
         }
     </style>
@@ -42,6 +43,7 @@
 
     {{-- Top Bar --}}
     @include('layout.topbar')
+    @include('layout.banner')
 
     {{-- Konten --}}
     <section id="main">
@@ -50,43 +52,43 @@
                 data-aos-duration="500">Kontak</h1>
             <div class="row py-5" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
                 <div class="col-12">
-                  {{-- Google Maps --}}
-                  <div style="width: 100%"><iframe width="100%" height="450" frameborder="0" scrolling="no" marginheight="0"
-                        marginwidth="0"
-                        src="https://maps.google.com/maps?width=100%25&amp;height=450&amp;hl=en&amp;q=Polres%20Badung,%20Jalan%20Kebo%20Iwa,%20Mengwitani,%20Kabupaten%20Badung,%20Bali+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
-                            href="https://www.gps.ie/wearable-gps/">Kids wearables</a></iframe></div>
+                    {{-- Google Maps --}}
+                    <div style="width: 100%"><iframe width="100%" height="450" frameborder="0" scrolling="no"
+                            marginheight="0" marginwidth="0"
+                            src="https://maps.google.com/maps?width=100%25&amp;height=450&amp;hl=en&amp;q=Polres%20Badung,%20Jalan%20Kebo%20Iwa,%20Mengwitani,%20Kabupaten%20Badung,%20Bali+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
+                                href="https://www.gps.ie/wearable-gps/">Kids wearables</a></iframe></div>
 
-                        {{-- Polres Badung --}}
-                        <h1 style="color: black" class="h1 font-weight-bolder my-4">
-                            Polres Badung</h1>
+                    {{-- Polres Badung --}}
+                    <h1 style="color: black" class="h1 font-weight-bolder my-4">
+                        Polres Badung</h1>
 
-                        {{-- Kontak --}}
-                        <ul>
-                            <li>
-                                <a href="#" class="my-1 d-inline-block">
-                                    <i class="fa-solid fa-building d-inline-block mx-2"></i>
-                                    Jl. Kebo Iwa No.1, Mengwitani, Mengwi
-                                </a>
-                            </li>
-                            <li>
-                                <a href="tel:0361829949" class="my-1 d-inline-block">
-                                    <i class="fa-solid fa-phone d-inline-block mx-2"></i>
-                                    (0361) 829949
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="my-1 d-inline-block">
-                                    <i class="fa-solid fa-envelope d-inline-block mx-2"></i>
-                                    info@polresbadung.id
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.polresbadung.id/" class="my-1 d-inline-block">
-                                    <i class="fa-solid fa-globe d-inline-block mx-2"></i>
-                                    www.polresbadung.id
-                                </a>
-                            </li>
-                        </ul>
+                    {{-- Kontak --}}
+                    <ul>
+                        <li>
+                            <a href="#" class="my-1 d-inline-block">
+                                <i class="fa-solid fa-building d-inline-block mx-2"></i>
+                                Jl. Kebo Iwa No.1, Mengwitani, Mengwi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:0361829949" class="my-1 d-inline-block">
+                                <i class="fa-solid fa-phone d-inline-block mx-2"></i>
+                                (0361) 829949
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="my-1 d-inline-block">
+                                <i class="fa-solid fa-envelope d-inline-block mx-2"></i>
+                                info@polresbadung.id
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.polresbadung.id/" class="my-1 d-inline-block">
+                                <i class="fa-solid fa-globe d-inline-block mx-2"></i>
+                                www.polresbadung.id
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

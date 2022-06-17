@@ -69,30 +69,3 @@
         </div>
     </header>
 </div>
-
-{{-- Banner --}}
-<div class="flat-slider clearfix">
-    <div class="rev_slider_wrapper fullwidthbanner-container">
-        <div id="rev-slider1" class="rev_slider fullwidthabanner">
-            <ul>
-                <!-- Slide 1 -->
-                <li data-transition="random">
-                    <!-- Main Image -->
-                    <img style="width: 100%; height: auto; object-fit: none"
-                        src="{{ asset('assets-user/img/rev-slider/selamat-datang.png') }}" alt=""
-                        data-bgposition="center center" data-no-retina width="100%">
-                </li>
-                <!-- /End Slide 1 -->
-
-                <!-- Slide 2 -->
-                <li data-transition="random">
-                    <!-- Main Image -->
-                    <img style="width: 100%; height: auto;"
-                        src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt=""
-                        data-bgposition="center center" data-no-retina width="100%">
-                </li>
-                <!-- /End Slide 2 -->
-            </ul>
-        </div>
-    </div>
-</div>
