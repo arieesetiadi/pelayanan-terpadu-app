@@ -5,7 +5,8 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="widget-text">
-                        <div class="logo"><img src="{{ asset('assets-user/img/logo-main-white.png') }}" alt="images">
+                        <div class="logo"><img src="{{ asset('assets-user/img/logo-main-white.png') }}"
+                                alt="images">
                         </div>
                         <div class="socials-list">
                             <a target="_blank" href="https://www.facebook.com/PolresBadung/">

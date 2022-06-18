@@ -1,4 +1,4 @@
-{{-- Banner --}}
+<!-- {{-- Banner --}} -->
 <div class="flat-slider clearfix">
     <div class="rev_slider_wrapper fullwidthbanner-container">
         <div id="rev-slider1" class="rev_slider fullwidthabanner">
@@ -14,7 +14,7 @@
                 <!-- Slide 2 -->
                 <li data-transition="random">
                     <!-- Main Image -->
-                    <img src="{{ asset('assets-user/img/rev-slider/polres-badung.jpg') }}" alt=""
+                    <img src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt=""
                         data-bgposition="center center" data-no-retina>
                 </li>
                 <!-- /End Slide 2 -->

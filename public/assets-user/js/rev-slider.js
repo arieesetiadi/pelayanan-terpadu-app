@@ -1,20 +1,20 @@
 // Revolution Slider
-var RevSlider = function() {
+var RevSlider = function () {
     "use strict";
     // Slider 1 ( Simple )
-    var handleRevSliderLayout1 = function() {
-        var tpj=jQuery,         
-        revapi1;
-        tpj(document).ready(function() {
-            if(tpj("#rev-slider1").revolution == undefined){
+    var handleRevSliderLayout1 = function () {
+        var tpj = jQuery,
+            revapi1;
+        tpj(document).ready(function () {
+            if (tpj("#rev-slider1").revolution == undefined) {
                 revslider_showDoubleJqueryError("#rev-slider1");
             } else {
                 revapi1 = tpj("#rev-slider1").show().revolution({
 
                     jsFileLocation: "includes/rev-slider/js/",
-                    sliderType:"standard",
-                    sliderLayout:"auto",
-                    fullWidth:"on",
+                    sliderType: "standard",
+                    sliderLayout: "auto",
+                    fullWidth: "on",
                     dottedOverlay: "none",
                     delay: 6000,
                     navigation: {
@@ -68,15 +68,15 @@ var RevSlider = function() {
                         outof: "pause",
                         visible_area: "80%"
                     },
-                    responsiveLevels:[2220,1183,992,750],
-                    gridwidth:[1170,970,740,290],
-                    gridheight: [770,700,600,600],
+                    responsiveLevels: [2220, 1183, 992, 750],
+                    gridwidth: [1170, 970, 740, 290],
+                    gridheight: [600, 600, 600, 600],
                     lazyType: "smart",
                     parallax: {
                         type: "scroll",
                         origo: "enterpoint",
                         speed: 400,
-                        levels: [5,10,15,20,25,30,35,40,45,50],
+                        levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
                     },
                     shadow: 0,
                     spinner: "off",
@@ -102,19 +102,19 @@ var RevSlider = function() {
     }
 
     // Slider 2 ( Simple )
-    var handleRevSliderLayout2 = function() {
-        var tpj=jQuery,         
-        revapi1;
-        tpj(document).ready(function() {
-            if(tpj("#rev-slider2").revolution == undefined){
+    var handleRevSliderLayout2 = function () {
+        var tpj = jQuery,
+            revapi1;
+        tpj(document).ready(function () {
+            if (tpj("#rev-slider2").revolution == undefined) {
                 revslider_showDoubleJqueryError("#rev-slider2");
             } else {
                 revapi1 = tpj("#rev-slider2").show().revolution({
 
                     jsFileLocation: "includes/rev-slider/js/",
-                    sliderType:"standard",
-                    sliderLayout:"auto",
-                    fullWidth:"on",
+                    sliderType: "standard",
+                    sliderLayout: "auto",
+                    fullWidth: "on",
                     dottedOverlay: "none",
                     delay: 6000,
                     navigation: {
@@ -168,15 +168,15 @@ var RevSlider = function() {
                         outof: "pause",
                         visible_area: "80%"
                     },
-                    responsiveLevels:[2220,1183,992,750],
-                    gridwidth:[1170,970,740,290],
-                    gridheight: [750,700,700,700],
+                    responsiveLevels: [2220, 1183, 992, 750],
+                    gridwidth: [1170, 970, 740, 290],
+                    gridheight: [600, 600, 600, 600],
                     lazyType: "smart",
                     parallax: {
                         type: "scroll",
                         origo: "enterpoint",
                         speed: 400,
-                        levels: [5,10,15,20,25,30,35,40,45,50],
+                        levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
                     },
                     shadow: 0,
                     spinner: "off",
@@ -202,19 +202,19 @@ var RevSlider = function() {
     }
 
     // Slider 3 ( Simple )
-    var handleRevSliderLayout3 = function() {
-        var tpj=jQuery,         
-        revapi1;
-        tpj(document).ready(function() {
-            if(tpj("#rev-slider3").revolution == undefined){
+    var handleRevSliderLayout3 = function () {
+        var tpj = jQuery,
+            revapi1;
+        tpj(document).ready(function () {
+            if (tpj("#rev-slider3").revolution == undefined) {
                 revslider_showDoubleJqueryError("#rev-slider3");
             } else {
                 revapi1 = tpj("#rev-slider3").show().revolution({
 
                     jsFileLocation: "includes/rev-slider/js/",
-                    sliderType:"standard",
-                    sliderLayout:"auto",
-                    fullWidth:"on",
+                    sliderType: "standard",
+                    sliderLayout: "auto",
+                    fullWidth: "on",
                     dottedOverlay: "none",
                     delay: 6000,
                     navigation: {
@@ -268,15 +268,15 @@ var RevSlider = function() {
                         outof: "pause",
                         visible_area: "80%"
                     },
-                    responsiveLevels:[2220,1183,992,750],
-                    gridwidth:[1170,970,740,290],
-                    gridheight: [821,800,600,600],
+                    responsiveLevels: [2220, 1183, 992, 750],
+                    gridwidth: [1170, 970, 740, 290],
+                    gridheight: [600, 600, 600, 600],
                     lazyType: "smart",
                     parallax: {
                         type: "scroll",
                         origo: "enterpoint",
                         speed: 400,
-                        levels: [5,10,15,20,25,30,35,40,45,50],
+                        levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
                     },
                     shadow: 0,
                     spinner: "off",
@@ -302,7 +302,7 @@ var RevSlider = function() {
     }
 
     return {
-        init: function() {
+        init: function () {
             handleRevSliderLayout1();
             handleRevSliderLayout2();
             handleRevSliderLayout3();
@@ -310,6 +310,6 @@ var RevSlider = function() {
     }
 }();
 
-$(document).ready(function() {
+$(document).ready(function () {
     RevSlider.init();
 });
