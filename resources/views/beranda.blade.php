@@ -81,7 +81,8 @@
                 <div class="col-6">
                     <div class="card shadow-lg">
                         <img class="card-img-top" width="100%"
-                            src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt="Pengaduan Masyarakat">
+                            src="{{ asset('assets-user/img/rev-slider/polres-badung.jpg') }}"
+                            alt="Pengaduan Masyarakat">
                         <div class="card-body">
                             <h5 class="d-inline-block h6" style="color: black">Pengaduan Masyarakat</h5>
 
@@ -106,7 +107,8 @@
                 <div class="col-6">
                     <div class="card shadow-lg">
                         <img class="card-img-top" width="100%"
-                            src="{{ asset('assets-user/img/rev-slider/gambar1.jpg') }}" alt="Pengaduan Masyarakat">
+                            src="{{ asset('assets-user/img/rev-slider/polres-badung.jpg') }}"
+                            alt="Pengaduan Masyarakat">
                         <div class="card-body">
                             <h5 class="d-inline-block h6" style="color: black">Penindaklanjutan Tindak Kriminal</h5>
 
