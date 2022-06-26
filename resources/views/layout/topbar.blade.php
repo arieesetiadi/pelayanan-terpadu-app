@@ -69,15 +69,21 @@
                                     <div id="notification-box" class="d-none position-absolute mt-4"
                                         style="left: -300px;">
                                         <div class="card">
-                                            <div class="card-body" style="width: 450px; padding:0">
+                                            <div class="card-body" style="width: 450px; padding:0;">
+                                                <center>
+                                                    <span class="d-inline-block my-2">Notifikasi</a>
+                                                </center>
+
                                                 <a href="#" class="d-block notification">Notifikasi 1</a>
                                                 <a href="#" class="d-block notification">Notifikasi 2</a>
-                                                <a href="#"
-                                                    class="d-block notification notification-readed">Notifikasi 3</a>
-                                                <hr>
+                                                <a href="#" class="d-block notification-readed">Notifikasi 3</a>
+                                                <a href="#" class="d-block notification-readed">Notifikasi 4</a>
+
                                                 <center>
-                                                    <a href="#" class="d-inline-block mb-3">Tampilkan semua
-                                                        notifikasi</a>
+                                                    <small>
+                                                        <a href="#" class="d-inline-block my-3">Tampilkan semua
+                                                            notifikasi</a>
+                                                    </small>
                                                 </center>
                                             </div>
                                         </div>

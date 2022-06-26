@@ -1,12 +1,24 @@
 .notification {
     padding: 10px 20px;
     background-color: rgb(244, 244, 244);
-}
-
-#notification-box {
-    background-color: red;
+    color: black !important;
 }
 
 .notification-readed {
+    padding: 10px 20px;
     background-color: rgb(255, 255, 255) !important;
+    color: black !important;
+}
+
+.notification:hover {
+    background-color: rgb(233, 233, 233);
+    color: black !important;
+}
+
+.notification-readed:hover {
+    background-color: rgb(244, 244, 244) !important;
+}
+
+#notification-box {
+    z-index: 1000;
 }

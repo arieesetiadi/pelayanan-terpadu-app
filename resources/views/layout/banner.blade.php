@@ -1,5 +1,5 @@
 {{-- Banner --}}
-<div class="flat-slider clearfix">
+<div id="banner-container" class="flat-slider clearfix">
     <div class="rev_slider_wrapper fullwidthbanner-container">
         <div id="rev-slider1" class="rev_slider fullwidthabanner">
             <ul>
