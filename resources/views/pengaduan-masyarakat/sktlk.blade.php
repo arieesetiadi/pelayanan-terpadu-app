@@ -51,6 +51,12 @@
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Surat Keterangan Tanda Lapor Kehilangan</h1>
 
+            <center>
+                <div class="flat-appointment btn-linear hv-linear-gradient">
+                    <a href="/form-sktlk/lapor" class="font-style linear-color border-corner">Lapor</a>
+                </div>
+            </center>
+
             <div class="row py-5" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
                 <div class="col-12">
                     <p>
@@ -224,7 +230,9 @@
                             </ul>
                         </li>
                     </ol>
+
                     <p>&nbsp;</p>
+
                     <ol>
                         <li><strong>Surat-surat penting lainnya :</strong>
                             <ul>
@@ -236,10 +244,6 @@
                         </li>
                     </ol>
                 </div>
-            </div>
-
-            <div class="flat-appointment btn-linear hv-linear-gradient">
-                <a href="/form-sktlk/lapor" class="font-style linear-color border-corner">Lapor</a>
             </div>
         </div>
     </section>

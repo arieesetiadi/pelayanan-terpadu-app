@@ -1,0 +1,12 @@
+.notification {
+    padding: 10px 20px;
+    background-color: rgb(244, 244, 244);
+}
+
+#notification-box {
+    background-color: red;
+}
+
+.notification-readed {
+    background-color: rgb(255, 255, 255) !important;
+}

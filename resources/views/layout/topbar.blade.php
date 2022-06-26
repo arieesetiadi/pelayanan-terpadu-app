@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ asset('assets-user/css/notification.css') }}">
+
 <div data-aos="fade-down" data-aos-duration="500">
     <div class="top-bar top-bar-type1">
         <div class="container">
@@ -30,7 +32,8 @@
     </div>
 
     {{-- Navbar --}}
-    <header id="header" class="header header-type1 bg-header-s1 bg-color" data-aos="fade-down" data-aos-duration="500">
+    <header id="header" class="header header-type1 bg-header-s1 bg-color" data-aos="fade-down"
+        data-aos-duration="500">
         <div class="container">
             <div class="flex-header d-flex">
                 <div id="logo" class="logo d-flex align-items-center justify-content-start">
@@ -57,6 +60,28 @@
                                 </li>
                                 <li>
                                     <a href="/kontak">Kontak</a>
+                                </li>
+                                <li class="position-relative">
+                                    <button id="notification-button" class="btn btn-lg btn-light">
+                                        <i class="fa-solid fa-bell"></i>
+                                    </button>
+
+                                    <div id="notification-box" class="d-none position-absolute mt-4"
+                                        style="left: -300px;">
+                                        <div class="card">
+                                            <div class="card-body" style="width: 450px; padding:0">
+                                                <a href="#" class="d-block notification">Notifikasi 1</a>
+                                                <a href="#" class="d-block notification">Notifikasi 2</a>
+                                                <a href="#"
+                                                    class="d-block notification notification-readed">Notifikasi 3</a>
+                                                <hr>
+                                                <center>
+                                                    <a href="#" class="d-inline-block mb-3">Tampilkan semua
+                                                        notifikasi</a>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                         </nav>
