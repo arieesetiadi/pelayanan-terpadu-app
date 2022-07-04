@@ -12,8 +12,9 @@ class LoginController extends Controller
         $status = auth()->attempt($data->only('username', 'password'));
 
         if ($status == true) {
-            // Redirect ke halaman pelapor
-            return redirect()->to('/pelapor');
+            if (auth()->user()->jenis_pengguna == 'Pelapor') {
+                return redirect()->to('/');
+            }
         } else {
             // Jika login gagal, kembali ke halaman login
             return back()->with('failed', 'Username / password tidak valid.');

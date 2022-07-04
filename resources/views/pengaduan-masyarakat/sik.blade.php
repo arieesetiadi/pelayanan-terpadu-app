@@ -46,8 +46,17 @@
     {{-- Konten --}}
     <section id="main">
         <div class="container py-5">
-            <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
+            <a href="/">
+                <i class="fa-solid fa-angle-left fa-3x"></i>
+            </a>
+            <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
                 data-aos-duration="500">Surat Izin Keramaian</h1>
+
+            <center>
+                <div class="flat-appointment btn-linear hv-linear-gradient">
+                    <a href="/form/lapor-sik" class="font-style linear-color border-corner">Lapor</a>
+                </div>
+            </center>
 
             <div class="row py-5" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
                 <div class="col-12">
@@ -117,13 +126,10 @@
                                     <ol style="list-style-type: decimal">
                                         <li>KUHP pasal 510 tentang Keramaian Umum.</li>
                                         <li> Petunjuk pelaksanaan kapolri No.Pol : Juklak / 29 / VII / 1991 Tgl
-                                            23
-                                            juli1991 tentang Pengawasan , Pengendalian dan Pengamanan bahan
-                                            Peledak Non
-                                            Organik ABRI.</li>
+                                            23 Juli 1991 tentang Pengawasan , Pengendalian dan Pengamanan bahan
+                                            Peledak Non Organik ABRI.</li>
                                         <li>Petunjuk lapangan Kapolri no. Pol : Juklap / 02 / XII / 1995 /
-                                            Tentang
-                                            Perijinan dan Pemberitahuan Kegiatan Masyarakat.</li>
+                                            Tentang Perijinan dan Pemberitahuan Kegiatan Masyarakat.</li>
                                     </ol>
                                 </li>
                                 <li>
@@ -229,6 +235,15 @@
                                 </li>
                             </ul>
                         </li>
+                    </ol>
+                    <br>
+                    <span class="h6">PERSYARATAN PENGAJUAN SURAT IZIN KERAMAIAN</span>
+                    <ol style="list-style-type: decimal">
+                        <li>Proposal kegiatan</li>
+                        <li>Izin tempat / lokasi kegiatan</li>
+                        <li>Izin / rekomendasi dari instansi terkait acara</li>
+                        <li>Fotokopi paspor (bila melibatkan orang asing)</li>
+                        <li>Rekomendasi dari Polsek setempat</li>
                     </ol>
                 </div>
             </div>

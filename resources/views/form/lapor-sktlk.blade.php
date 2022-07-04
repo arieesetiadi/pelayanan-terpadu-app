@@ -45,6 +45,10 @@
     {{-- Konten --}}
     <section id="main">
         <div class="container py-5">
+            <a href="/pengaduan-masyarakat/sktlk">
+                <i class="fa-solid fa-angle-left fa-3x"></i>
+            </a>
+
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Form Laporan</h1>
 
@@ -59,7 +63,8 @@
                     </td>
                     <td>
                         <div class="form-group">
-                            <input name="namaLengkap" type="text" class="form-control form-control-sm" placeholder="Nama lengkap" style="height: 40px">
+                            <input name="namaLengkap" type="text" class="form-control form-control-sm"
+                                placeholder="Nama lengkap" style="height: 40px">
                         </div>
                     </td>
                 </tr>
@@ -71,9 +76,10 @@
                     </td>
                     <td>
                         <div class="form-group">
-                            <input name="tempatLahir" type="text" class="form-control d-inline-block float-left" placeholder="Tempat lahir"
-                                style="height: 40px; width: 48%; margin-right: 2%">
-                            <input name="tanggalLahir" type="date" class="form-control w-50 d-inline-block float-left" style="height: 40px">
+                            <input name="tempatLahir" type="text" class="form-control d-inline-block float-left"
+                                placeholder="Tempat lahir" style="height: 40px; width: 48%; margin-right: 2%">
+                            <input name="tanggalLahir" type="date"
+                                class="form-control w-50 d-inline-block float-left" style="height: 40px">
                         </div>
                     </td>
                 </tr>
@@ -84,9 +90,9 @@
                         <span class="d-inline-block mt-2">Pekerjaan</span>
                     </td>
                     <td>
-                       <div class="form-group">
-                            <input name="pekerjaan" type="text" class="form-control form-control-sm" placeholder="Pekerjaan"
-                            style="height: 40px">
+                        <div class="form-group">
+                            <input name="pekerjaan" type="text" class="form-control form-control-sm"
+                                placeholder="Pekerjaan" style="height: 40px">
                         </div>
                     </td>
                 </tr>
@@ -97,11 +103,11 @@
                         <span class="d-inline-block mt-2">Kewarganegaraan</span>
                     </td>
                     <td>
-                       <select name="kewarganegaraan" class="custom-select" style="height: 40px">
+                        <select name="kewarganegaraan" class="custom-select" style="height: 40px">
                             <option selected hidden>Pilih kewarganegaraan</option>
                             <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
                             <option value="Warga Negara Asing">Warga Negara Asing</option>
-                    </select>
+                        </select>
                     </td>
                 </tr>
 
@@ -124,8 +130,8 @@
                     </td>
                     <td>
                         <div class="form-group">
-                            <input name="noHandphone" type="text" class="form-control form-control-sm" placeholder="Nomor handphone"
-                                style="height: 40px">
+                            <input name="noHandphone" type="text" class="form-control form-control-sm"
+                                placeholder="Nomor handphone" style="height: 40px">
                         </div>
                     </td>
                 </tr>
@@ -153,8 +159,8 @@
                     </td>
                     <td>
                         <div class="form-group">
-                            <input name="lokasiKejadian" type="text" class="form-control form-control-sm" placeholder="Lokasi kejadian"
-                                style="height: 40px">
+                            <input name="lokasiKejadian" type="text" class="form-control form-control-sm"
+                                placeholder="Lokasi kejadian" style="height: 40px">
                         </div>
                     </td>
                 </tr>
@@ -224,7 +230,8 @@
                         <div class="custom-control custom-checkbox">
                             <input name="persetujuan" type="checkbox" class="custom-control-input" id="persetujuan">
                             <label class="custom-control-label" for="persetujuan">
-                                Dengan mengklik tombol ini berarti anda telah setuju bahwa data yang anda masukkan sudah benar.
+                                Dengan mengklik tombol ini berarti anda telah setuju bahwa data yang anda masukkan sudah
+                                benar.
                             </label>
                         </div>
                     </td>
@@ -233,11 +240,12 @@
                 <tr>
                     <td></td>
                     <td>
-                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#successModal">Kirim</button>
+                        <button type="submit" class="btn btn-primary" data-toggle="modal"
+                            data-target="#successModal">Kirim</button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="successModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -245,7 +253,8 @@
                                             <i class="fa-solid fa-circle-check text-success mx-2 fa-2x"></i>
                                             Berhasil
                                         </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
@@ -253,7 +262,8 @@
                                         <p>Anda Telah Berhasil Mengirim Laporan</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Tutup</button>
                                     </div>
                                 </div>
                             </div>

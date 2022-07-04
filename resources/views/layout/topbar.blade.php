@@ -89,6 +89,37 @@
                                         </div>
                                     </div>
                                 </li>
+                                <li class="position-relative">
+                                    @auth
+                                        @if (auth()->user()->jenis_kelamin == 'Laki-laki')
+                                            <button id="profile-button" class="btn btn-lg btn-light">
+                                                <img width="40" height="40"
+                                                    src="{{ asset('assets-user/img/profiles/man.png') }}" alt="Man">
+                                            </button>
+                                        @else
+                                            <button id="profile-button" class="btn btn-lg btn-light">
+                                                <img width="40" height="40"
+                                                    src="{{ asset('assets-user/img/profiles/woman.png') }}"
+                                                    alt="Woman">
+                                            </button>
+                                        @endif
+                                    @endauth
+
+
+                                    <div id="profile-box" class="d-none position-absolute mt-4" style="left: -300px;">
+                                        <div class="card">
+                                            <div class="card-body" style="width: 450px; padding:0;">
+                                                <center>
+                                                    <span class="d-inline-block my-2">Profile</a>
+                                                </center>
+
+                                                <a href="#"
+                                                    class="d-block notification-readed">{{ auth()->user()->nama }}</a>
+                                                <a href="#" class="d-block notification-readed">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </nav>
                     </div>
