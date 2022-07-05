@@ -93,11 +93,11 @@
                                         @if (auth()->user()->jenis_kelamin == 'Laki-laki')
                                             <img id="profile-button" width="40" height="40"
                                                 src="{{ asset('assets-user/img/profiles/man.png') }}" alt="Man"
-                                                style="cursor: pointer">
+                                                style="cursor: pointer; margin-left: 20px">
                                         @else
                                             <img id="profile-button" width="40" height="40"
                                                 src="{{ asset('assets-user/img/profiles/woman.png') }}" alt="Woman"
-                                                style="cursor: pointer">
+                                                style="cursor: pointer; margin-left: 20px">
                                         @endif
 
 

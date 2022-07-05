@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\DaftarController;
-use App\Http\Controllers\LaporSIKController;
+use App\Http\Controllers\LaporController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PelaporController;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +20,6 @@ Route::post('/daftar', [DaftarController::class, 'daftar']);
 
 // Route Logout
 Route::get('/logout', [LoginController::class, 'logout']);
-
-// Route Pelapor
-Route::get('/pelapor', [PelaporController::class, 'index']);
 
 // Route ke Visi & Misi
 Route::view('/visimisi', 'visimisi');
@@ -55,8 +52,8 @@ Route::view('/tindak-kriminal/sp2hp', 'tindak-kriminal.sp2hp');
 Route::view('/tindak-kriminal/sttlp', 'tindak-kriminal.sttlp');
 
 // Route ke form SKTLK
-Route::view('/form/lapor-sktlk', 'form.lapor-sktlk');
+Route::view('/form/lapor-sktlk', 'form.lapor-sktlk')->middleware('auth');
 
 // Route ke form SIK
 Route::view('/form/lapor-sik', 'form.lapor-sik')->middleware('auth');
-Route::post('/upload-sik', [LaporSIKController::class, 'upload'])->name('upload-sik');
+Route::post('/upload-sik', [LaporController::class, 'uploadSIK'])->name('upload-sik');
