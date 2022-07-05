@@ -106,5 +106,4 @@
     <a id="scroll-top" class="show"></a>
 </footer><!-- footer -->
 
-<script src="{{ asset('assets-user/js/profile.js') }}"></script>
-<script src="{{ asset('assets-user/js/notification.js') }}"></script>
+<script src="{{ asset('assets-user/js/custom.js') }}"></script>

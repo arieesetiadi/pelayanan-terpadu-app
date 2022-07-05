@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('assets-user/css/notification.css') }}">
+<link rel="stylesheet" href="{{ asset('assets-user/css/custom.css') }}">
 
 <div data-aos="fade-down" data-aos-duration="500">
     <div class="top-bar top-bar-type1">
@@ -62,12 +62,11 @@
                                     <a href="/kontak">Kontak</a>
                                 </li>
                                 <li class="position-relative">
-                                    <button id="notification-button" class="btn btn-lg btn-light">
-                                        <i class="fa-solid fa-bell"></i>
-                                    </button>
+                                    <i id="notification-button" class="fa-solid fa-bell text-dark"
+                                        style="cursor: pointer"></i>
 
-                                    <div id="notification-box" class="d-none position-absolute mt-4"
-                                        style="left: -300px;">
+                                    <div id="notification-box" class="d-none position-absolute"
+                                        style="left: -300px; margin-top: 31px">
                                         <div class="card">
                                             <div class="card-body" style="width: 450px; padding:0;">
                                                 <center>
@@ -92,33 +91,27 @@
                                 <li class="position-relative">
                                     @auth
                                         @if (auth()->user()->jenis_kelamin == 'Laki-laki')
-                                            <button id="profile-button" class="btn btn-lg btn-light">
-                                                <img width="40" height="40"
-                                                    src="{{ asset('assets-user/img/profiles/man.png') }}" alt="Man">
-                                            </button>
+                                            <img id="profile-button" width="40" height="40"
+                                                src="{{ asset('assets-user/img/profiles/man.png') }}" alt="Man"
+                                                style="cursor: pointer">
                                         @else
-                                            <button id="profile-button" class="btn btn-lg btn-light">
-                                                <img width="40" height="40"
-                                                    src="{{ asset('assets-user/img/profiles/woman.png') }}"
-                                                    alt="Woman">
-                                            </button>
+                                            <img id="profile-button" width="40" height="40"
+                                                src="{{ asset('assets-user/img/profiles/woman.png') }}" alt="Woman"
+                                                style="cursor: pointer">
                                         @endif
-                                    @endauth
 
 
-                                    <div id="profile-box" class="d-none position-absolute mt-4" style="left: -300px;">
-                                        <div class="card">
-                                            <div class="card-body" style="width: 450px; padding:0;">
-                                                <center>
-                                                    <span class="d-inline-block my-2">Profile</a>
-                                                </center>
-
-                                                <a href="#"
-                                                    class="d-block notification-readed">{{ auth()->user()->nama }}</a>
-                                                <a href="#" class="d-block notification-readed">Logout</a>
+                                        <div id="profile-box" class="d-none position-absolute mt-4"
+                                            style="z-index: 9999; left: -150px;">
+                                            <div class="card">
+                                                <div class="card-body" style="width: 300px">
+                                                    <a class="d-block notification-readed">{{ auth()->user()->nama }}</a>
+                                                    <hr>
+                                                    <a href="#" class="d-block notification-readed">Logout</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endauth
                                 </li>
                             </ul>
                         </nav>
