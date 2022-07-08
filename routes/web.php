@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\LaporController;
 use App\Http\Controllers\LoginController;
@@ -57,3 +58,7 @@ Route::view('/form/lapor-sktlk', 'form.lapor-sktlk')->middleware('auth');
 // Route ke form SIK
 Route::view('/form/lapor-sik', 'form.lapor-sik')->middleware('auth');
 Route::post('/upload-sik', [LaporController::class, 'uploadSIK'])->name('upload-sik');
+
+
+// Route Admin ====================================
+Route::get('/dashboard', [AdminController::class, 'dashboard']);

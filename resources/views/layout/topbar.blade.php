@@ -107,7 +107,7 @@
                                                 <div class="card-body" style="width: 300px">
                                                     <a class="d-block notification-readed">{{ auth()->user()->nama }}</a>
                                                     <hr>
-                                                    <a href="#" class="d-block notification-readed">Logout</a>
+                                                    <a href="/logout" class="d-block notification-readed">Logout</a>
                                                 </div>
                                             </div>
                                         </div>

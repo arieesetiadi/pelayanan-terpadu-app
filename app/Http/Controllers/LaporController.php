@@ -14,11 +14,14 @@ class LaporController extends Controller
     public function uploadSIK(Request $data)
     {
         // Upload file laporan SIK
-        uploadFile($data->file('proposalKegiatan'), 'assets-user/upload/');
-        uploadFile($data->file('izinTempat'), 'assets-user/upload/');
-        uploadFile($data->file('izinInstansi'), 'assets-user/upload/');
-        uploadFile($data->file('fotokopiPaspor'), 'assets-user/upload/');
-        uploadFile($data->file('rekomendasiPolsek'), 'assets-user/upload/');
-        dd('Uploaded Successfully !');
+        $path = 'assets-user/upload/';
+
+        uploadFile($data->file('proposalKegiatan'), $path);
+        uploadFile($data->file('izinTempat'), $path);
+        uploadFile($data->file('izinInstansi'), $path);
+        uploadFile($data->file('fotokopiPaspor'), $path);
+        uploadFile($data->file('rekomendasiPolsek'), $path);
+
+        return back()->with('success', 'Berhasil mengirim berkas laporan');
     }
 }
