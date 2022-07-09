@@ -14,6 +14,8 @@ class LoginController extends Controller
         if ($status == true) {
             if (auth()->user()->jenis_pengguna == 'Pelapor') {
                 return redirect()->to('/');
+            } else if (auth()->user()->jenis_pengguna == 'Admin') {
+                return redirect()->to('/dashboard');
             }
         } else {
             // Jika login gagal, kembali ke halaman login
@@ -23,10 +25,16 @@ class LoginController extends Controller
 
     public function logout()
     {
+        if (auth()->user()->jenis_pengguna == 'Pelapor') {
+            $path = '/';
+        } else {
+            $path = '/login';
+        }
+
         // Proses logout
         auth()->logout();
 
         // Redirect ke halaman login
-        return redirect()->to('/login');
+        return redirect()->to($path);
     }
 }

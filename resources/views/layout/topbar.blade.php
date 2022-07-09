@@ -105,7 +105,8 @@
                                             style="z-index: 9999; left: -150px;">
                                             <div class="card">
                                                 <div class="card-body" style="width: 300px">
-                                                    <a class="d-block notification-readed">{{ auth()->user()->nama }}</a>
+                                                    <a href="/profile/pelapor"
+                                                        class="d-block notification-readed">{{ auth()->user()->nama }}</a>
                                                     <hr>
                                                     <a href="/logout" class="d-block notification-readed">Logout</a>
                                                 </div>

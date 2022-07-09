@@ -96,7 +96,6 @@
                                         Tanda Lapor
                                         Kehilangan)</a>
                                     <a class="dropdown-item" href="/pengaduan-masyarakat/sik">Surat Izin Keramaian</a>
-                                    <a class="dropdown-item" href="/pengaduan-masyarakat/sttlp">STTLP</a>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +118,6 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="/tindak-kriminal">Tindak Kriminal</a>
-                                    <a class="dropdown-item" href="/tindak-kriminal/sp2hp">SP2HP</a>
                                     <a class="dropdown-item" href="/tindak-kriminal/sttlp">STTLP</a>
                                 </div>
                             </div>
