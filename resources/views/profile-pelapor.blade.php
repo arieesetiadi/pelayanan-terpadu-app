@@ -59,7 +59,7 @@
                         <div class="card-body" style="height: 500px">
                             <center>
                                 {{-- Foto Profile --}}
-                                @if (auth()->user()->jenis_kelamin == 'Laki-laki')
+                                @if (session('pelapor')->jenis_kelamin == 'Laki-laki')
                                     <img src="{{ asset('assets-admin/img/avatars/man.png') }}" width="40%"
                                         alt="Profile Man" class="my-3">
                                 @else
@@ -67,13 +67,13 @@
                                         alt="Profile Woman" class="my-3">
                                 @endif
 
-                                <h6>{{ auth()->user()->nama }}</h6>
-                                <span class="d-block">{{ auth()->user()->email }}</span>
-                                <span class="d-block">{{ auth()->user()->telepon }}</span>
+                                <h6>{{ session('pelapor')->nama }}</h6>
+                                <span class="d-block">{{ session('pelapor')->email }}</span>
+                                <span class="d-block">{{ session('pelapor')->telepon }}</span>
 
                                 <hr>
 
-                                <span>{{ auth()->user()->alamat }}</span>
+                                <span>{{ session('pelapor')->alamat }}</span>
                             </center>
                         </div>
                     </div>
@@ -89,22 +89,22 @@
                                 <div class="mb-2">
                                     <label for="nama" class="form-label">Nama :</label>
                                     <input name="nama" type="text" class="form-control" id="nama"
-                                        value="{{ auth()->user()->nama }}">
+                                        value="{{ session('pelapor')->nama }}">
                                 </div>
                                 <div class="mb-2">
                                     <label for="email" class="form-label">Email :</label>
                                     <input name="email" type="email" class="form-control" id="email"
-                                        value="{{ auth()->user()->email }}">
+                                        value="{{ session('pelapor')->email }}">
                                 </div>
                                 <div class="mb-2">
                                     <label for="telepon" class="form-label">Nomor Telepon :</label>
                                     <input name="telepon" type="text" class="form-control" id="telepon"
-                                        value="{{ auth()->user()->telepon }}">
+                                        value="{{ session('pelapor')->telepon }}">
                                 </div>
                                 <div class="mb-2">
                                     <label for="alamat" class="form-label">Alamat :</label>
                                     <input name="alamat" type="text" class="form-control" id="alamat"
-                                        value="{{ auth()->user()->alamat }}">
+                                        value="{{ session('pelapor')->alamat }}">
                                 </div>
                                 <div class="my-3">
                                     <button type="submit" class="btn btn-block btn-primary">Simpan</button>

@@ -52,8 +52,8 @@
                                                 <div class="mb-3 auth-form-group-custom mb-4">
                                                     <i class="fa-solid fa-address-card auti-custom-input-icon"></i>
                                                     <label for="nama">Nama</label>
-                                                    <input name="nama" type="text" class="form-control" id="nama"
-                                                        placeholder="Nama pengguna" required>
+                                                    <input name="nama" type="text" class="form-control"
+                                                        id="nama" placeholder="Nama pengguna" required>
                                                 </div>
 
                                                 <div class="row">
@@ -72,9 +72,8 @@
                                                         <div class="mb-3 auth-form-group-custom mb-4">
                                                             <i class="fa-solid fa-key auti-custom-input-icon"></i>
                                                             <label for="password">Password</label>
-                                                            <input name="password" type="password"
-                                                                class="form-control" id="password"
-                                                                placeholder="Password" required>
+                                                            <input name="password" type="password" class="form-control"
+                                                                id="password" placeholder="Password" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -104,8 +103,29 @@
                                                 <div class="mb-3 auth-form-group-custom mb-4">
                                                     <i class="fa-solid fa-house-chimney auti-custom-input-icon"></i>
                                                     <label for="alamat">Alamat</label>
-                                                    <input name="alamat" type="text" class="form-control" id="alamat"
-                                                        placeholder="Alamat pengguna" required>
+                                                    <input name="alamat" type="text" class="form-control"
+                                                        id="alamat" placeholder="Alamat pengguna" required>
+                                                </div>
+
+                                                <div>
+                                                    <div class="d-block mb-1">
+                                                        <i class="fa-solid fa-venus-mars auti-custom-input-icon"></i>
+                                                        <label for="">Jenis Kelamin</label>
+                                                    </div>
+                                                    <div class="form-check d-inline-block">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="jenis_kelamin" id="Laki-laki" value="Laki-laki">
+                                                        <label class="form-check-label" for="Laki-laki">
+                                                            Laki-laki
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check d-inline-block mx-3">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="jenis_kelamin" id="Perempuan" value="Perempuan">
+                                                        <label class="form-check-label" for="Perempuan">
+                                                            Perempuan
+                                                        </label>
+                                                    </div>
                                                 </div>
 
                                                 <div class="mt-4 text-center">

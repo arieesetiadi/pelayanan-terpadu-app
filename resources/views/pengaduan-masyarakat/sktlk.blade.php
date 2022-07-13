@@ -152,8 +152,6 @@
                     <ol>
                         <li><strong>Surat Ijazah :</strong>
                             <ul>
-                                <li>Menunjukan bukti 2x (dua kali) penerbitan pada surat kabar / koran atas Buku Nikah
-                                    yang hilang.</li>
                                 <li>Rekomendasi yang membenarkan dari sekolah tempat Ijazah dikeluarkan, termasuk
                                     data-data keterangan lengkap berdasarkan Ijazah yang hilang.</li>
                                 <li>Membuat surat pernyataan dari pemilik bahwa Ijazah telah hilang.</li>

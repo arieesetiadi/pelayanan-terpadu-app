@@ -8,7 +8,12 @@ class LaporController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth.pelapor');
+    }
+
+    public function uploadSKTLK(Request $request)
+    {
+        dd($request->all());
     }
 
     public function uploadSIK(Request $data)

@@ -52,7 +52,7 @@
             <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
                 data-aos-duration="500">Form Laporan</h1>
 
-            <form action="{{ route('upload-sik') }}" method="post" enctype="multipart/form-data">
+            <form action="/upload-sik" method="post" enctype="multipart/form-data">
                 @csrf
                 <table class="table table-sm table-borderless">
                     {{-- UPLOAD DOKUMEN --}}

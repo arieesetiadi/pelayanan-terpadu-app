@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    public function loginView(Request $request)
+    {
+        return view('login');
+    }
+
     public function login(Request $data)
     {
         // Proses login setelah daftar
@@ -13,7 +18,12 @@ class LoginController extends Controller
 
         if ($status == true) {
             if (auth()->user()->jenis_pengguna == 'Pelapor') {
-                return redirect()->to('/');
+                session()->put('pelapor', auth()->user());
+                auth()->logout();
+
+                $to = session('to') ?? '/';
+
+                return redirect()->to($to);
             } else if (auth()->user()->jenis_pengguna == 'Admin') {
                 return redirect()->to('/dashboard');
             }
@@ -23,18 +33,24 @@ class LoginController extends Controller
         };
     }
 
+    // Fungsi logout untuk admin
     public function logout()
     {
-        if (auth()->user()->jenis_pengguna == 'Pelapor') {
-            $path = '/';
-        } else {
-            $path = '/login';
-        }
-
         // Proses logout
         auth()->logout();
+        $path = '/login';
 
         // Redirect ke halaman login
+        return redirect()->to($path);
+    }
+
+    // Fungsi logout untuk pelapor
+    public function logoutPelapor()
+    {
+        session()->forget('pelapor');
+
+        $path = '/';
+
         return redirect()->to($path);
     }
 }

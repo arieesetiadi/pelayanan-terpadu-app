@@ -89,8 +89,8 @@
                                     </div>
                                 </li>
                                 <li class="position-relative">
-                                    @auth
-                                        @if (auth()->user()->jenis_kelamin == 'Laki-laki')
+                                    @if (session('pelapor'))
+                                        @if (session('pelapor')->jenis_kelamin == 'Laki-laki')
                                             <img id="profile-button" width="40" height="40"
                                                 src="{{ asset('assets-user/img/profiles/man.png') }}" alt="Man"
                                                 style="cursor: pointer; margin-left: 20px">
@@ -100,19 +100,19 @@
                                                 style="cursor: pointer; margin-left: 20px">
                                         @endif
 
-
                                         <div id="profile-box" class="d-none position-absolute mt-4"
                                             style="z-index: 9999; left: -150px;">
                                             <div class="card">
                                                 <div class="card-body" style="width: 300px">
                                                     <a href="/profile/pelapor"
-                                                        class="d-block notification-readed">{{ auth()->user()->nama }}</a>
+                                                        class="d-block notification-readed">{{ session('pelapor')->nama }}</a>
                                                     <hr>
-                                                    <a href="/logout" class="d-block notification-readed">Logout</a>
+                                                    <a href="/logout/pelapor"
+                                                        class="d-block notification-readed">Logout</a>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endauth
+                                    @endif
                                 </li>
                             </ul>
                         </nav>

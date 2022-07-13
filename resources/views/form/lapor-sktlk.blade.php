@@ -52,225 +52,241 @@
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Form Laporan</h1>
 
-            {{-- Form Data Diri --}}
-            <h1 style="font-size: 24px">Data Diri :</h1>
-            <hr>
-            <table class="table table-sm table-borderless">
-                {{-- Nama Lengkap --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Nama Lengkap</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="namaLengkap" type="text" class="form-control form-control-sm"
-                                placeholder="Nama lengkap" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
+            <form action="/upload-sktlk" method="POST">
+                @csrf
+                {{-- Form Data Diri --}}
+                <h1 style="font-size: 24px">Data Diri :</h1>
+                <hr>
+                <table class="table table-sm table-borderless">
+                    {{-- Nama Lengkap --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Nama Lengkap</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="namaLengkap" type="text" class="form-control form-control-sm"
+                                    placeholder="Nama lengkap" style="height: 40px" required>
+                            </div>
+                        </td>
+                    </tr>
 
-                {{-- Tempat tanggal lahir --}}
-                <tr style="margin-bottom: 50px">
-                    <td>
-                        <span class="d-inline-block mt-2">Tempat & Tanggal lahir</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="tempatLahir" type="text" class="form-control d-inline-block float-left"
-                                placeholder="Tempat lahir" style="height: 40px; width: 48%; margin-right: 2%">
-                            <input name="tanggalLahir" type="date"
-                                class="form-control w-50 d-inline-block float-left" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
+                    {{-- Tempat tanggal lahir --}}
+                    <tr style="margin-bottom: 50px">
+                        <td>
+                            <span class="d-inline-block mt-2">Tempat & Tanggal lahir</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="tempatLahir" type="text" class="form-control d-inline-block float-left"
+                                    placeholder="Tempat lahir" style="height: 40px; width: 48%; margin-right: 2%"
+                                    required>
+                                <input name="tanggalLahir" type="date"
+                                    class="form-control w-50 d-inline-block float-left" style="height: 40px" required>
+                            </div>
+                        </td>
+                    </tr>
 
-                {{-- Pekerjaan --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Pekerjaan</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="pekerjaan" type="text" class="form-control form-control-sm"
-                                placeholder="Pekerjaan" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
+                    {{-- Pekerjaan --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Pekerjaan</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="pekerjaan" type="text" class="form-control form-control-sm"
+                                    placeholder="Pekerjaan" style="height: 40px" required>
+                            </div>
+                        </td>
+                    </tr>
 
-                {{-- Kewarganegaraan --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Kewarganegaraan</span>
-                    </td>
-                    <td>
-                        <select name="kewarganegaraan" class="custom-select" style="height: 40px">
-                            <option selected hidden>Pilih kewarganegaraan</option>
-                            <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
-                            <option value="Warga Negara Asing">Warga Negara Asing</option>
-                        </select>
-                    </td>
-                </tr>
+                    {{-- Kewarganegaraan --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Kewarganegaraan</span>
+                        </td>
+                        <td>
+                            <select name="kewarganegaraan" class="custom-select" style="height: 40px" required>
+                                <option selected hidden>Pilih kewarganegaraan</option>
+                                <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
+                                <option value="Warga Negara Asing">Warga Negara Asing</option>
+                            </select>
+                        </td>
+                    </tr>
 
-                {{-- Alamat --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Alamat</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3"></textarea>
-                        </div>
-                    </td>
-                </tr>
+                    {{-- Alamat --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Alamat</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3" required></textarea>
+                            </div>
+                        </td>
+                    </tr>
 
-                {{-- No HP --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">No. Handphone</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="noHandphone" type="text" class="form-control form-control-sm"
-                                placeholder="Nomor handphone" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
-            </table>
+                    {{-- No HP --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">No. Handphone</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="noHandphone" type="text" class="form-control form-control-sm"
+                                    placeholder="Nomor handphone" style="height: 40px" required>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                {{-- Kronologi Singkat --}}
+                <h1 style="font-size: 24px">Kronologi Singkat :</h1>
+                <hr>
+                <table class="table table-sm table-borderless">
+                    {{-- Tanggal Kejadian --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2" required>Tanggal Kejadian</span>
+                        </td>
+                        <td>
+                            <input name="tanggalKejadian" type="date" class="form-control" style="height: 40px"
+                                required>
+                        </td>
+                    </tr>
+
+                    {{-- Lokasi Kejadian --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Lokasi Kejadian Kehilangan</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="lokasiKejadian" type="text" class="form-control form-control-sm"
+                                    placeholder="Lokasi kejadian" style="height: 40px" required>
+                            </div>
+                        </td>
+                    </tr>
+
+                    {{-- Surat yang hilang --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Surat - surat yang hilang</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea name="suratHilang" placeholder="Surat Hilang" class="form-control" rows="3" required></textarea>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
 
 
-            {{-- Kronologi Singkat --}}
-            <h1 style="font-size: 24px">Kronologi Singkat :</h1>
-            <hr>
-            <table class="table table-sm table-borderless">
-                {{-- Tanggal Kejadian --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Tanggal Kejadian</span>
-                    </td>
-                    <td>
-                        <input name="tanggalKejadian" type="date" class="form-control" style="height: 40px">
-                    </td>
-                </tr>
+                <h1 style="font-size: 24px">Upload Data dan Lokasi Pengambilan :</h1>
+                <hr>
+                <table class="table table-sm table-borderless">
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Foto identitas pelapor (KTP)</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="dokumen1" type="file" class="form-control-file"
+                                    accept=".jpg,.jpeg,.png" required>
+                                <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="dokumen2" type="file" class="form-control-file"
+                                    accept=".jpg,.jpeg,.png" required>
+                                <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Rekomendasi dari instansi yang mengeluarkan</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="dokumen3" type="file" class="form-control-file"
+                                    accept=".pdf,.jpg,.jpeg,.png" required>
+                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Dokumen tambahan (bila diperlukan)</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="dokumen4" type="file" class="form-control-file"
+                                    accept=".pdf,.jpg,.jpeg,.png">
+                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                            </div>
+                        </td>
+                    </tr>
 
-                {{-- Lokasi Kejadian --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Lokasi Kejadian Kehilangan</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="lokasiKejadian" type="text" class="form-control form-control-sm"
-                                placeholder="Lokasi kejadian" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            {{-- <div class="custom-control custom-checkbox">
+                                <input name="persetujuan" type="checkbox" class="custom-control-input"
+                                    id="persetujuan">
+                                <label class="custom-control-label" for="persetujuan">
+                                    Dengan mengklik tombol ini berarti anda telah setuju bahwa data yang anda masukkan
+                                    sudah
+                                    benar.
+                                </label>
+                            </div> --}}
+                        </td>
+                    </tr>
 
-                {{-- Surat yang hilang --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Surat - surat yang hilang</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <textarea name="suratHilang" placeholder="Surat Hilang" class="form-control" rows="3"></textarea>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Kirim</button>
+                            {{-- <button type="submit" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#successModal">Kirim</button> --}}
 
-
-            <h1 style="font-size: 24px">Upload Data dan Lokasi Pengambilan :</h1>
-            <hr>
-            <table class="table table-sm table-borderless">
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Dokumen 1</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="dokumen1" type="file" class="form-control-file">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Dokumen 2</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="dokumen2" type="file" class="form-control-file">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Dokumen 3</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="dokumen3" type="file" class="form-control-file">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Dokumen 4</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="dokumen4" type="file" class="form-control-file">
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input name="persetujuan" type="checkbox" class="custom-control-input" id="persetujuan">
-                            <label class="custom-control-label" for="persetujuan">
-                                Dengan mengklik tombol ini berarti anda telah setuju bahwa data yang anda masukkan sudah
-                                benar.
-                            </label>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td></td>
-                    <td>
-                        <button type="submit" class="btn btn-primary" data-toggle="modal"
-                            data-target="#successModal">Kirim</button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="successModal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">
-                                            <i class="fa-solid fa-circle-check text-success mx-2 fa-2x"></i>
-                                            Berhasil
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Anda Telah Berhasil Mengirim Laporan</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Tutup</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="successModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                <i class="fa-solid fa-circle-check text-success mx-2 fa-2x"></i>
+                                                Berhasil
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Anda Telah Berhasil Mengirim Laporan</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Tutup</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
         </div>
     </section>
 
