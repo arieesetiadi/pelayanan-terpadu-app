@@ -49,10 +49,19 @@
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
 
+            @if (session('success'))
+                <div class="alert alert-success mt-4" role="alert">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span class="d-inline-block mx-2">
+                        {{ session('success') }}
+                    </span>
+                </div>
+            @endif
+
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Form Laporan</h1>
 
-            <form action="/upload-sktlk" method="POST">
+            <form action="/upload-sktlk" method="POST" enctype="multipart/form-data">
                 @csrf
                 {{-- Form Data Diri --}}
                 <h1 style="font-size: 24px">Data Diri :</h1>
@@ -133,7 +142,7 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="noHandphone" type="text" class="form-control form-control-sm"
+                                <input name="telepon" type="text" class="form-control form-control-sm"
                                     placeholder="Nomor handphone" style="height: 40px" required>
                             </div>
                         </td>
@@ -191,7 +200,7 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="dokumen1" type="file" class="form-control-file"
+                                <input name="fotoKtp" type="file" class="form-control-file"
                                     accept=".jpg,.jpeg,.png" required>
                                 <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                             </div>
@@ -203,7 +212,7 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="dokumen2" type="file" class="form-control-file"
+                                <input name="fotoPelapor" type="file" class="form-control-file"
                                     accept=".jpg,.jpeg,.png" required>
                                 <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                             </div>
@@ -215,7 +224,7 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="dokumen3" type="file" class="form-control-file"
+                                <input name="rekomendasiInstansi" type="file" class="form-control-file"
                                     accept=".pdf,.jpg,.jpeg,.png" required>
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
@@ -227,7 +236,7 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="dokumen4" type="file" class="form-control-file"
+                                <input name="dokumenTambahan" type="file" class="form-control-file"
                                     accept=".pdf,.jpg,.jpeg,.png">
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLaporansTable extends Migration
+class CreateLaporanSktlkTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateLaporansTable extends Migration
      */
     public function up()
     {
-        Schema::create('laporans', function (Blueprint $table) {
+        Schema::create('laporan_sktlk', function (Blueprint $table) {
             $table->id();
-            $table->string('name_lengkap');
+            $table->string('nama_lengkap');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('pekerjaan');
@@ -25,11 +25,11 @@ class CreateLaporansTable extends Migration
             $table->string('tanggal_kejadian');
             $table->string('lokasi_kejadian');
             $table->string('surat_hilang');
-            $table->string('dokumen_1')->nullable();
-            $table->string('dokumen_2')->nullable();
-            $table->string('dokumen_3')->nullable();
-            $table->string('dokumen_4')->nullable();
-            $table->timestamps();
+            $table->string('foto_ktp');
+            $table->string('foto_pelapor');
+            $table->string('rekomendasi_instansi');
+            $table->string('dokumen_tambahan')->nullable();
+            $table->timestamp('diunggah_pada');
         });
     }
 
@@ -40,6 +40,6 @@ class CreateLaporansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laporans');
+        Schema::dropIfExists('laporan_sktlk');
     }
 }

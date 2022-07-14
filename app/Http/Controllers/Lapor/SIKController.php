@@ -1,22 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Lapor;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LaporController extends Controller
+class SIKController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth.pelapor');
     }
 
-    public function uploadSKTLK(Request $request)
-    {
-        dd($request->all());
-    }
-
-    public function uploadSIK(Request $data)
+    public function upload(Request $data)
     {
         // Upload file laporan SIK
         $path = 'assets-user/upload/';

@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DaftarController;
-use App\Http\Controllers\LaporController;
+use App\Http\Controllers\Lapor\SIKController;
+use App\Http\Controllers\Lapor\SKTLKController;
 use App\Http\Controllers\LoginController;
-use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -57,11 +57,11 @@ Route::view('/tindak-kriminal/sttlp', 'tindak-kriminal.sttlp');
 
 // Route ke form SKTLK
 Route::view('/form/lapor-sktlk', 'form.lapor-sktlk')->middleware('auth.pelapor');
-Route::post('/upload-sktlk', [LaporController::class, 'uploadSKTLK']);
+Route::post('/upload-sktlk', [SKTLKController::class, 'upload']);
 
 // Route ke form SIK
 Route::view('/form/lapor-sik', 'form.lapor-sik')->middleware('auth.pelapor');
-Route::post('/upload-sik', [LaporController::class, 'uploadSIK']);
+Route::post('/upload-sik', [SIKController::class, 'upload']);
 
 // Route Profile Pelapor
 Route::view('/profile/pelapor', 'profile-pelapor')->middleware('auth.pelapor');
