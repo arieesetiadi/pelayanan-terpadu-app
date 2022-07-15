@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notifikasi;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function loginView(Request $request)
+    public function loginView()
     {
         return view('login');
     }
@@ -17,14 +18,20 @@ class LoginController extends Controller
         $status = auth()->attempt($data->only('username', 'password'));
 
         if ($status == true) {
+            // Login sebagai pelapor
             if (auth()->user()->jenis_pengguna == 'Pelapor') {
                 session()->put('pelapor', auth()->user());
                 auth()->logout();
 
+                $notifikasi = Notifikasi::getNotifikasiPelapor();
+                session()->put('notifikasi', $notifikasi);
+
                 $to = session('to') ?? '/';
 
                 return redirect()->to($to);
-            } else if (auth()->user()->jenis_pengguna == 'Admin') {
+            }
+            // Login sebagai admin
+            else if (auth()->user()->jenis_pengguna == 'Admin') {
                 return redirect()->to('/dashboard');
             }
         } else {

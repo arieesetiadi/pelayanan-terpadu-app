@@ -29,6 +29,7 @@ class CreateLaporanSktlkTable extends Migration
             $table->string('foto_pelapor');
             $table->string('rekomendasi_instansi');
             $table->string('dokumen_tambahan')->nullable();
+            $table->foreignId('pelapor_id');
             $table->timestamp('diunggah_pada');
         });
     }

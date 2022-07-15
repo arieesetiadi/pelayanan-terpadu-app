@@ -5,21 +5,24 @@ use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\Lapor\SIKController;
 use App\Http\Controllers\Lapor\SKTLKController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NotifikasiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('beranda');
 });
 
-Route::middleware('guest')->group(function () {
-    // Route Login
-    Route::get('/login', [LoginController::class, 'loginView'])->name('login');
-    Route::post('/login', [LoginController::class, 'login']);
-
-    // Route Daftar
-    Route::view('/daftar', 'daftar');
-    Route::post('/daftar', [DaftarController::class, 'daftar']);
+Route::get('/notifikasi', function () {
+    dd(session('notifikasi'));
 });
+
+// Route Login
+Route::get('/login', [LoginController::class, 'loginView'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+
+// Route Daftar
+Route::view('/daftar', 'daftar');
+Route::post('/daftar', [DaftarController::class, 'daftar']);
 
 // Route Logout
 Route::get('/logout', [LoginController::class, 'logout']);
@@ -65,6 +68,9 @@ Route::post('/upload-sik', [SIKController::class, 'upload']);
 
 // Route Profile Pelapor
 Route::view('/profile/pelapor', 'profile-pelapor')->middleware('auth.pelapor');
+
+// Route Notifikasi
+Route::get('/notifikasi/detail/{id}', [NotifikasiController::class, 'detail']);
 
 // Route Admin ====================================
 Route::get('/dashboard', [AdminController::class, 'dashboard']);

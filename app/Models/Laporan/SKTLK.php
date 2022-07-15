@@ -25,7 +25,7 @@ class SKTLK extends Model
         $dokumenTambahan = uploadFile($laporan['dokumenTambahan'] ?? null, $path);
 
         // Insert data laporan ke database
-        self::create([
+        return self::create([
             'nama_lengkap' => $laporan['namaLengkap'],
             'tempat_lahir' => $laporan['tempatLahir'],
             'tanggal_lahir' => $laporan['tanggalLahir'],
@@ -40,6 +40,7 @@ class SKTLK extends Model
             'foto_pelapor' => $fotoPelapor,
             'rekomendasi_instansi' => $rekomendasiInstansi,
             'dokumen_tambahan' => $dokumenTambahan,
+            'pelapor_id' => session('pelapor')->id
         ]);
     }
 }
