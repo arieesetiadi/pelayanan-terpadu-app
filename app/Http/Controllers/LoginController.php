@@ -32,6 +32,9 @@ class LoginController extends Controller
             }
             // Login sebagai admin
             else if (auth()->user()->jenis_pengguna == 'Admin') {
+                $notifikasi = Notifikasi::getNotifikasiAdmin();
+                session()->put('notifikasiAdmin', $notifikasi);
+
                 return redirect()->to('/dashboard');
             }
         } else {

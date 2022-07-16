@@ -122,7 +122,7 @@
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                                 data-bs-toggle="dropdown">
                                 <div class="notifications">
-                                    <span class="notify-badge">8</span>
+                                    <span class="notify-badge">{{ count(session('notifikasiAdmin')) }}</span>
                                     <i class="bi bi-bell-fill"></i>
                                 </div>
                             </a>
@@ -131,19 +131,22 @@
                                     <h5 class="h5 mb-0">Notifications</h5>
                                 </div>
                                 <div class="header-notifications-list p-2">
-                                    <a class="dropdown-item" href="#">
-                                        <div class="d-flex align-items-center">
-                                            <div class="notification-box bg-light-primary text-primary"><i
-                                                    class="bi bi-basket2-fill"></i></div>
-                                            <div class="ms-3 flex-grow-1">
-                                                <h6 class="mb-0 dropdown-msg-user">New Orders <span
-                                                        class="msg-time float-end text-secondary">1 m</span></h6>
-                                                <small
-                                                    class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">You
-                                                    have recived new orders</small>
+                                    @forelse (session('notifikasiAdmin') as $notifikasi)
+                                        <a target="_blank" class="dropdown-item"
+                                            href="/notifikasi/cetak-pdf/{{ $notifikasi->id }}">
+                                            <div class="d-flex align-items-center">
+                                                <div class="ms-3 flex-grow-1">
+                                                    <h6 class="mb-0 dropdown-msg-user">{{ $notifikasi->judul }}</h6>
+                                                    <small
+                                                        class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">
+                                                        {{ $notifikasi->isi }}
+                                                    </small>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    @empty
+                                        <span class="d-inline-block text-center">Tidak ada notifikasi.</span>
+                                    @endforelse
                                 </div>
                                 <div class="p-2">
                                     <div>

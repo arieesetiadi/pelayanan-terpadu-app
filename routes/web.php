@@ -6,6 +6,7 @@ use App\Http\Controllers\Lapor\SIKController;
 use App\Http\Controllers\Lapor\SKTLKController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NotifikasiController;
+use App\Models\Notifikasi;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -71,6 +72,7 @@ Route::view('/profile/pelapor', 'profile-pelapor')->middleware('auth.pelapor');
 
 // Route Notifikasi
 Route::get('/notifikasi/detail/{id}', [NotifikasiController::class, 'detail']);
+Route::get('/notifikasi/cetak-pdf/{id}', [NotifikasiController::class, 'cetakPDF']);
 
 // Route Admin ====================================
 Route::get('/dashboard', [AdminController::class, 'dashboard']);

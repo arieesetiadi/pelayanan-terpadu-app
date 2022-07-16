@@ -37,4 +37,14 @@ class Notifikasi extends Model
             ->limit(4)
             ->get();
     }
+
+    public static function getNotifikasiAdmin()
+    {
+        return self
+            ::where([
+                ['dikirim_kepada', 'admin'],
+            ])
+            ->limit(4)
+            ->get();
+    }
 }

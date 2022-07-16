@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 function str($content)
@@ -20,4 +21,18 @@ function uploadFile($file, $path)
     }
 
     return $fileName;
+}
+
+function dateFormat($date, $isFull = true)
+{
+    if ($isFull) {
+        return Carbon::make($date)->isoFormat('dddd, D MMMM Y');
+    }
+
+    return Carbon::make($date)->isoFormat('D MMMM Y');
+}
+
+function timeFormat($time)
+{
+    return Carbon::make($time)->format('H:i');
 }
