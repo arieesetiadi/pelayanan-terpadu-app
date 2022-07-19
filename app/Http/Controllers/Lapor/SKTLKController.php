@@ -14,6 +14,14 @@ class SKTLKController extends Controller
         $this->middleware('auth.pelapor');
     }
 
+    public function index()
+    {
+        return view('admin.sktlk.index', [
+            'title' => 'Laporan SKTLK',
+            'laporanSKTLK' => SKTLK::all()
+        ]);
+    }
+
     public function upload(Request $request)
     {
         // Proses upload data ke database
@@ -43,5 +51,12 @@ class SKTLKController extends Controller
         Notifikasi::insert($toAdmin);
 
         return back()->with('success', 'Laporan anda sedang diproses');
+    }
+
+    public function uploadFile(Request $request)
+    {
+        $path = 'assets-user/upload/';
+        $namaFile = uploadFile($request->file('file'), $path);
+        dd($namaFile);
     }
 }

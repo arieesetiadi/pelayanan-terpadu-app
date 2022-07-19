@@ -77,3 +77,6 @@ Route::get('/notifikasi/cetak-pdf/{id}', [NotifikasiController::class, 'cetakPDF
 // Route Admin ====================================
 Route::get('/dashboard', [AdminController::class, 'dashboard']);
 Route::get('/profile', [AdminController::class, 'profile']);
+
+Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
+Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Laporan\SKTLK;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
@@ -35,4 +36,16 @@ function dateFormat($date, $isFull = true)
 function timeFormat($time)
 {
     return Carbon::make($time)->format('H:i');
+}
+
+function getSKTLKDocumentById($id)
+{
+    $sktlk = SKTLK::find($id);
+
+    $document['fotoKTP'] = $sktlk->foto_ktp;
+    $document['fotoPelapor'] = $sktlk->foto_pelapor;
+    $document['rekomendasiInstansi'] = $sktlk->rekomendasi_instansi;
+    $document['dokumenTambahan'] = $sktlk->dokumen_tambahan;
+
+    return $document;
 }

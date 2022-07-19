@@ -195,7 +195,7 @@
                         <div class="menu-title">Pengaduan Masyarakat</div>
                     </a>
                     <ul>
-                        <li> <a href="index.html"><i class="bi bi-circle"></i>SKTLK</a>
+                        <li> <a href="/admin/sktlk"><i class="bi bi-circle"></i>SKTLK</a>
                         </li>
                         <li> <a href="index2.html"><i class="bi bi-circle"></i>Surat Izin Keramaian</a>
                         </li>

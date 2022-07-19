@@ -33,10 +33,12 @@ class NotifikasiController extends Controller
 
                 $data = [
                     'laporan' => $laporan,
-                    'suratHilang' => explode(',', trim($laporan->surat_hilang, ' '))
+                    'suratHilang' => explode(',', trim($laporan->surat_hilang, ' ')),
+                    'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
+                    'ttdPath' => public_path('\assets-user\img\documents\ttd galuh.png'),
                 ];
 
-                $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadview('pdf.notifikasi-sktlk', $data);
+                $pdf = PDF::loadview('pdf.notifikasi-sktlk', $data);
                 return $pdf->stream('laporan.pdf');
 
             case 'sik':

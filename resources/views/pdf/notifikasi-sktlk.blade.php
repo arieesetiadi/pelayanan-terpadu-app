@@ -24,7 +24,7 @@
         main h3 {
             text-align: center;
             text-decoration: underline;
-            margin: 50px 0
+            margin-bottom: 50px
         }
 
         main p {
@@ -56,6 +56,11 @@
     </header>
 
     <main>
+        {{-- Logo POLRI --}}
+        <center>
+            <img height="150" style="margin-top: 25px" src="{{ $logoPolriPath }}">
+        </center>
+
         <h3>SURAT KETERANGAN TANDA LAPOR KEHILANGAN</h3>
 
         <p>Pada hari ini {{ dateFormat($laporan->diunggah_pada) }} pukul {{ timeFormat($laporan->diunggah_pada) }}
@@ -127,17 +132,21 @@
             <div class="half" style="margin-top: 20px; width: 35%">
                 <span style="display: block; text-align: center">Pelapor</span>
                 <span
-                    style="display: block; text-align: center; margin-top: 50px">({{ $laporan->nama_lengkap }})</span>
+                    style="display: block; text-align: center; margin-top: 84px">({{ $laporan->nama_lengkap }})</span>
             </div>
             <div class="half" style="width: 65%">
                 <span style="display: block; text-align: center">
                     Badung, {{ dateFormat(now(), false) }}
                 </span>
-                <span style="display: block; text-align: center">
+                <span style="display: block; text-align: center;">
                     KEPALA KEPOLISIAN SEKTOR BADUNG
                 </span>
 
-                <span style="display: block; text-align: center; margin-top: 50px">
+                <center>
+                    <img width="150" src="{{ $ttdPath }}">
+                </center>
+
+                <span style="display: block; text-align: center;">
                     Leo Dedy Defretes, SIK, SH, MH
                 </span>
                 <hr style="width: 50%">
