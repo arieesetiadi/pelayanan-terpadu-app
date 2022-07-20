@@ -1,3 +1,8 @@
+@php
+$notifikasi = App\Models\Notifikasi::getNotifikasiPelapor();
+session()->put('notifikasi', $notifikasi);
+@endphp
+
 <link rel="stylesheet" href="{{ asset('assets-user/css/custom.css') }}">
 
 <div data-aos="fade-down" data-aos-duration="500">
@@ -69,38 +74,29 @@
                                         style="left: -350px; margin-top: 31px">
                                         <div class="card">
                                             <div class="card-body" style="width: 450px; padding:0;">
-                                                <center>
-                                                    <span class="d-inline-block my-2">Notifikasi</a>
-                                                </center>
-
-                                                @forelse (session('notifikasi') as $notifikasi)
-                                                    <a href="/notifikasi/detail/{{ $notifikasi->id }}"
-                                                        class="d-block {{ $notifikasi->telah_dibaca ? 'notification-readed' : 'notification' }}">
-                                                        <span style="font-weight: bolder">
-                                                            {{ $notifikasi->judul }}
-                                                        </span>
-                                                        <p>{{ $notifikasi->isi }}</p>
-                                                    </a>
-                                                @empty
+                                                @if (session('notifikasi'))
                                                     <center>
-                                                        <span class="d-inline-block text-center">Tidak ada
+                                                        <span class="d-inline-block my-2">Notifikasi</a>
+                                                    </center>
+                                                    @foreach (session('notifikasi') as $notifikasi)
+                                                        <a href="/notifikasi/detail/{{ $notifikasi->id }}"
+                                                            class="d-block {{ $notifikasi->telah_dibaca ? 'notification-readed' : 'notification' }}">
+                                                            <span style="font-weight: bolder">
+                                                                {{ $notifikasi->judul }}
+                                                            </span>
+                                                            <p>{{ $notifikasi->isi }}</p>
+                                                        </a>
+                                                    @endforeach
+                                                @else
+                                                    <center>
+                                                        <span class="d-inline-block text-center my-4">Tidak ada
                                                             notifikasi.</span>
                                                     </center>
-                                                @endforelse
+                                                @endif
 
                                                 {{-- <a href="#" class="d-block notification">Notifikasi 2</a>
                                                 <a href="#" class="d-block notification-readed">Notifikasi 3</a>
                                                 <a href="#" class="d-block notification-readed">Notifikasi 4</a> --}}
-
-                                                @if (count(session('notifikasi')) > 0)
-                                                    <center>
-                                                        <small>
-                                                            <a href="#" class="d-inline-block my-3">Tampilkan
-                                                                semua
-                                                                notifikasi</a>
-                                                        </small>
-                                                    </center>
-                                                @endif
                                             </div>
                                         </div>
                                     </div>

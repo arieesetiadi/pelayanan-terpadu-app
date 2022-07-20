@@ -12,11 +12,17 @@ class NotifikasiController extends Controller
 {
     public function detail($id)
     {
-        Notifikasi::find($id)->update([
+        $notifikasi =  Notifikasi::find($id);
+        $notifikasi->update([
             'telah_dibaca' => true
         ]);
 
         session()->put('notifikasi', Notifikasi::getNotifikasiPelapor());
+
+        $laporan = getLaporanByNotif($notifikasi);
+        if ($laporan->dokumen_persetujuan != '') {
+            return redirect()->to(asset('assets-user/upload/' . $laporan->dokumen_persetujuan));
+        }
 
         return back();
     }

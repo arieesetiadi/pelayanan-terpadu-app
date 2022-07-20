@@ -23,9 +23,6 @@ class LoginController extends Controller
                 session()->put('pelapor', auth()->user());
                 auth()->logout();
 
-                $notifikasi = Notifikasi::getNotifikasiPelapor();
-                session()->put('notifikasi', $notifikasi);
-
                 $to = session('to') ?? '/';
 
                 return redirect()->to($to);

@@ -30,6 +30,7 @@ class CreateLaporanSktlkTable extends Migration
             $table->string('rekomendasi_instansi');
             $table->string('dokumen_tambahan')->nullable();
             $table->foreignId('pelapor_id');
+            $table->string('dokumen_persetujuan', 100);
             $table->timestamp('diunggah_pada');
         });
     }

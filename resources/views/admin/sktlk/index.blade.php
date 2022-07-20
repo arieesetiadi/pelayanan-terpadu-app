@@ -1,6 +1,17 @@
 @extends('layout.admin-template')
 
 @section('content')
+    {{-- Alert success --}}
+    @if (session('success'))
+        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <div class="mx-2">
+                {{ session('success') }}
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <h3>Laporan SKTLK</h3>
 
     <table class="table table table-borderless mt-3">
@@ -67,9 +78,11 @@
                                         <div class="modal-body">
                                             @csrf
                                             {{-- Input file --}}
+                                            <input type="hidden" name="id" value="{{ $sktlk->id }}">
                                             <div class="mb-3">
                                                 <label for="file" class="form-label">File :</label>
-                                                <input name="file" class="form-control" type="file" id="file">
+                                                <input name="file" class="form-control" type="file" id="file"
+                                                    accept=".pdf">
                                             </div>
                                         </div>
                                         <div class="modal-footer">

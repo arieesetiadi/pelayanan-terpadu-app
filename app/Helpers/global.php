@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Laporan\SKTLK;
+use App\Models\Notifikasi;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
@@ -48,4 +49,17 @@ function getSKTLKDocumentById($id)
     $document['dokumenTambahan'] = $sktlk->dokumen_tambahan;
 
     return $document;
+}
+
+function getLaporanByNotif($notifikasi)
+{
+    $laporan = null;
+
+    switch ($notifikasi->tipe) {
+        case 'sktlk':
+            $laporan = SKTLK::find($notifikasi->laporan_id);
+            break;
+    }
+
+    return $laporan;
 }

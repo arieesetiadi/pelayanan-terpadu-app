@@ -55,8 +55,31 @@ class SKTLKController extends Controller
 
     public function uploadFile(Request $request)
     {
+        // Upload file persetujuan
         $path = 'assets-user/upload/';
         $namaFile = uploadFile($request->file('file'), $path);
-        dd($namaFile);
+
+        // Insert ke database
+        $laporan = SKTLK::find($request->id);
+        $laporan->update([
+            'dokumen_persetujuan' => $namaFile
+        ]);
+
+        // Buat notifikasi
+        $toPelapor = [
+            'judul' => 'Laporan Telah Disetujui',
+            'isi' => 'Dokumen persetujuan dapat diunduh disini.',
+            'tipe' => 'sktlk',
+            'telah_dibaca' => false,
+            'dikirim_kepada' => 'pelapor',
+            'laporan_id' => $request->id,
+            'pelapor_id' => $laporan->pelapor_id,
+            'dokumen_persetujuan' => $namaFile,
+            'dikirim_pada' => now()
+        ];
+
+        Notifikasi::insert($toPelapor);
+
+        return back()->with('success', 'Dokumen persetujuan berhasil diunggah.');
     }
 }
