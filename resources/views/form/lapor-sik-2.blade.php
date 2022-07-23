@@ -60,7 +60,7 @@
                 <tr>
                     <td>
                         <span class="d-inline-block mt-2">Nama Organisasi</span>
-                    </td>
+                </td>
                     <td>
                         <div class="form-group">
                             <input name="namaOrganisasi" type="text" class="form-control form-control-sm"
@@ -119,7 +119,7 @@
                     </td>
                 </tr>
 
-                {{-- Tanggal --}}
+                {{-- Tanggal Kegiatan --}}
                 <tr style="margin-bottom: 50px">
                     <td>
                         <span class="d-inline-block mt-2">Tanggal</span>
@@ -140,26 +140,27 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <input name="waktuAwal" type="time" class="form-control" style="height: 40px">
+                                    <input name="waktuMulai" type="time" class="form-control" style="height: 40px">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <input name="waktuAkhir" type="time" class="form-control" style="height: 40px">
+                                    <input name="waktuSelesai" type="time" class="form-control"
+                                        style="height: 40px">
                                 </div>
                             </div>
                         </div>
                     </td>
                 </tr>
 
-                {{-- Tempat --}}
+                {{-- Lokasi Kegiatan --}}
                 <tr>
                     <td>
-                        <span class="d-inline-block mt-2">Tempat</span>
+                        <span class="d-inline-block mt-2">Lokasi</span>
                     </td>
                     <td>
                         <div class="form-group">
-                            <input name="Tempat" type="text" class="form-control form-control-sm"
+                            <input name="lokasi_kegiatan" type="text" class="form-control form-control-sm"
                                 placeholder="Tempat" style="height: 40px">
                         </div>
                     </td>
@@ -178,20 +179,20 @@
                     </td>
                 </tr>
 
-                {{-- Undangan / Peserta --}}
+                {{-- Jumlah Undangan / Peserta --}}
                 <tr>
                     <td>
-                        <span class="d-inline-block mt-2">Undangan / Peserta</span>
+                        <span class="d-inline-block mt-2">Jumlah Undangan / Peserta</span>
                     </td>
                     <td>
                         <div class="form-group">
-                            <input name="undanganPeserta" type="text" class="form-control form-control-sm"
+                            <input name="jumlahUndanganPeserta" type="number" class="form-control form-control-sm"
                                 placeholder="Undangan / Peserta" style="height: 40px">
                         </div>
                     </td>
                 </tr>
 
-                <tr>
+                {{-- <tr>
                     <td colspan="2">
                         <div class="custom-control custom-checkbox mt-4 mb-2">
                             <input name="persetujuan" type="checkbox" class="custom-control-input" id="persetujuan">
@@ -201,7 +202,7 @@
                             </label>
                         </div>
                     </td>
-                </tr>
+                </tr> --}}
 
                 <tr>
                     <td>
@@ -275,8 +276,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.kenburn.min.js') }}">
     </script>
-    <script
-        src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.migration.min.js') }}">
     </script>
@@ -286,8 +286,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}">
     </script>
-    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}">
-    </script>
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
 </body>
 
 </html>

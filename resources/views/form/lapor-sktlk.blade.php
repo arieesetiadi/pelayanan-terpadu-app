@@ -49,6 +49,7 @@
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
 
+            {{-- Alert success --}}
             @if (session('success'))
                 <div class="alert alert-success mt-4" role="alert">
                     <i class="fa-solid fa-circle-check"></i>
@@ -335,8 +336,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.kenburn.min.js') }}">
     </script>
-    <script
-        src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.migration.min.js') }}">
     </script>
@@ -346,8 +346,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}">
     </script>
-    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}">
-    </script>
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
 </body>
 
 </html>

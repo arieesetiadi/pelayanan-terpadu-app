@@ -5,8 +5,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="widget-text">
-                        <div class="logo"><img src="{{ asset('assets-user/img/logo-main-white.png') }}"
-                                alt="images">
+                        <div class="logo"><img src="{{ asset('assets-user/img/logo-main-white.png') }}" alt="images">
                         </div>
                         <div class="socials-list">
                             <a target="_blank" href="https://www.facebook.com/PolresBadung/">
@@ -66,7 +65,7 @@
                         <h3 class="widget widget-title">Google Maps</h3>
                         <div class="widget-latest-news">
                             <div class="mapouter">
-                                <div class="gmap_canvas rounded"><iframe width="350" height="170" id="gmap_canvas"
+                                <div class="gmap_canvas rounded"><iframe width="300" height="170" id="gmap_canvas"
                                         src="https://maps.google.com/maps?q=Polres%20Badung,%20Jalan%20Kebo%20Iwa,%20Mengwitani,%20Kabupaten%20Badung,%20Bali&t=&z=17&ie=UTF8&iwloc=&output=embed"
                                         frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
                                         href="https://fmovies-online.net"></a><br>
@@ -75,7 +74,7 @@
                                             position: relative;
                                             text-align: right;
                                             height: 170px;
-                                            width: 350px;
+                                            width: 300px;
                                         }
                                     </style><a href="https://www.embedgooglemap.net">map widgets for websites</a>
                                     <style>
@@ -83,7 +82,7 @@
                                             overflow: hidden;
                                             background: none !important;
                                             height: 170px;
-                                            width: 350px;
+                                            width: 300px;
                                         }
                                     </style>
                                 </div>

@@ -49,6 +49,16 @@
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
 
+            {{-- Alert success --}}
+            @if (session('success'))
+                <div class="alert alert-success mt-4" role="alert">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span class="d-inline-block mx-2">
+                        {{ session('success') }}
+                    </span>
+                </div>
+            @endif
+
             <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
                 data-aos-duration="500">Form Laporan</h1>
 
@@ -58,7 +68,7 @@
                     {{-- UPLOAD DOKUMEN --}}
                     <tr>
                         <td colspan="2">
-                            <h1 class="d-block mt-4 text-dark" style="font-size: 24px">Upload Dokumen :</h1>
+                            <h1 class="d-block mt-4 text-dark" style="font-size: 24px">Upload Dokumen Persyaratan :</h1>
                             <hr>
                         </td>
                     </tr>
@@ -68,7 +78,8 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="proposalKegiatan" type="file" class="form-control-file">
+                                <input accept=".pdf,.jpg,.jpeg,.png" required name="proposalKegiatan" type="file"
+                                    class="form-control-file">
                             </div>
                         </td>
                     </tr>
@@ -78,7 +89,8 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="izinTempat" type="file" class="form-control-file">
+                                <input accept=".pdf,.jpg,.jpeg,.png" required name="izinTempat" type="file"
+                                    class="form-control-file">
                             </div>
                         </td>
                     </tr>
@@ -88,7 +100,8 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="izinInstansi" type="file" class="form-control-file">
+                                <input accept=".pdf,.jpg,.jpeg,.png" required name="izinInstansi" type="file"
+                                    class="form-control-file">
                             </div>
                         </td>
                     </tr>
@@ -98,7 +111,8 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="fotokopiPaspor" type="file" class="form-control-file">
+                                <input accept=".pdf,.jpg,.jpeg,.png" name="fotokopiPaspor" type="file"
+                                    class="form-control-file">
                             </div>
                         </td>
                     </tr>
@@ -108,12 +122,13 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="rekomendasiPolsek" type="file" class="form-control-file">
+                                <input accept=".pdf,.jpg,.jpeg,.png" required name="rekomendasiPolsek" type="file"
+                                    class="form-control-file">
                             </div>
                         </td>
                     </tr>
 
-                    <tr>
+                    {{-- <tr>
                         <td colspan="2">
                             <div class="custom-control custom-checkbox mt-4 mb-2">
                                 <input name="persetujuan" type="checkbox" class="custom-control-input" id="persetujuan">
@@ -124,38 +139,11 @@
                                 </label>
                             </div>
                         </td>
-                    </tr>
+                    </tr> --}}
 
                     <tr>
                         <td>
-                            <button type="submit" class="btn btn-primary" data-toggle="modal"
-                                data-target="#successModal">Kirim Data</button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="successModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                <i class="fa-solid fa-circle-check text-success mx-2 fa-2x"></i>
-                                                Berhasil
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Anda Telah Berhasil Mengirim Laporan</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Tutup</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <button type="submit" class="btn btn-primary">Kirim Data</button>
                         </td>
                     </tr>
                 </table>
@@ -199,8 +187,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.kenburn.min.js') }}">
     </script>
-    <script
-        src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.migration.min.js') }}">
     </script>
@@ -210,8 +197,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}">
     </script>
-    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}">
-    </script>
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
 </body>
 
 </html>

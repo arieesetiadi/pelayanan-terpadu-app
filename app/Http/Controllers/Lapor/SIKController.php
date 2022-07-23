@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Lapor;
 
-use App\Http\Controllers\Controller;
+use App\Models\Notifikasi;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Laporan\SIK;
 
 class SIKController extends Controller
 {
@@ -14,14 +16,32 @@ class SIKController extends Controller
 
     public function upload(Request $data)
     {
-        // Upload file laporan SIK
-        $path = 'assets-user/upload/';
+        // Insert nama file ke database
+        $laporan = SIK::insert($data->all());
 
-        uploadFile($data->file('proposalKegiatan'), $path);
-        uploadFile($data->file('izinTempat'), $path);
-        uploadFile($data->file('izinInstansi'), $path);
-        uploadFile($data->file('fotokopiPaspor'), $path);
-        uploadFile($data->file('rekomendasiPolsek'), $path);
+        // Kirim notifikasi
+        $toPelapor = [
+            'judul' => 'Laporan Berhasil',
+            'isi' => 'Anda berhasil melakukan mengunggah dokumen dan sedang dalam proses pengecekkan.',
+            'tipe' => 'sik',
+            'telah_dibaca' => false,
+            'dikirim_kepada' => 'pelapor',
+            'laporan_id' => $laporan->id,
+            'dikirim_pada' => now()
+        ];
+
+        $toAdmin = [
+            'judul' => 'Dokumen Persyaratan SIK Masuk',
+            'isi' => 'Dokumen perlu pengecekkan kelengkapan.',
+            'tipe' => 'sik',
+            'telah_dibaca' => false,
+            'dikirim_kepada' => 'admin',
+            'laporan_id' => $laporan->id,
+            'dikirim_pada' => now()
+        ];
+
+        Notifikasi::insert($toPelapor);
+        Notifikasi::insert($toAdmin);
 
         return back()->with('success', 'Berhasil mengirim berkas laporan');
     }

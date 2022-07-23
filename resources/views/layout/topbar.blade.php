@@ -1,6 +1,8 @@
 @php
-$notifikasi = App\Models\Notifikasi::getNotifikasiPelapor();
-session()->put('notifikasi', $notifikasi);
+if (session('pelapor')) {
+    $notifikasi = App\Models\Notifikasi::getNotifikasiPelapor();
+    session()->put('notifikasi', $notifikasi);
+}
 @endphp
 
 <link rel="stylesheet" href="{{ asset('assets-user/css/custom.css') }}">
