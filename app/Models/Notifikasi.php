@@ -42,11 +42,23 @@ class Notifikasi extends Model
 
     public static function getNotifikasiAdmin()
     {
-        return self
+        $data['notifikasi'] =
+            self
             ::where([
                 ['dikirim_kepada', 'admin'],
             ])
-            ->limit(4)
+            ->orderBy('id', 'desc')
             ->get();
+
+        $data['count'] =
+            self
+            ::where([
+                ['dikirim_kepada', 'admin'],
+                ['telah_dibaca', false]
+            ])
+            ->limit(8)
+            ->count();
+
+        return $data;
     }
 }

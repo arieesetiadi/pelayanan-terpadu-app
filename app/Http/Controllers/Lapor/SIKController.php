@@ -14,6 +14,14 @@ class SIKController extends Controller
         $this->middleware('auth.pelapor');
     }
 
+    public function index()
+    {
+        return view('admin.sik.index', [
+            'title' => 'Laporan SIK',
+            'laporanSIK' => SIK::all()
+        ]);
+    }
+
     public function upload(Request $data)
     {
         // Insert nama file ke database
@@ -22,7 +30,7 @@ class SIKController extends Controller
         // Kirim notifikasi
         $toPelapor = [
             'judul' => 'Laporan Berhasil',
-            'isi' => 'Anda berhasil melakukan mengunggah dokumen dan sedang dalam proses pengecekkan.',
+            'isi' => 'Anda berhasil mengunggah dokumen dan sedang dalam proses pengecekkan.',
             'tipe' => 'sik',
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
@@ -43,6 +51,6 @@ class SIKController extends Controller
         Notifikasi::insert($toPelapor);
         Notifikasi::insert($toAdmin);
 
-        return back()->with('success', 'Berhasil mengirim berkas laporan');
+        return back()->with('success', 'Berhasil mengirim dokumen persyaratan');
     }
 }

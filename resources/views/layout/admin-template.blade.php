@@ -1,3 +1,8 @@
+@php
+$data = App\Models\Notifikasi::getNotifikasiAdmin();
+session()->put('notifikasiAdmin', $data['notifikasi']);
+@endphp
+
 <!doctype html>
 <html lang="en">
 
@@ -28,6 +33,8 @@
     <link href="{{ asset('assets-admin/css/light-theme.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-admin/css/semi-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-admin/css/header-colors.css') }}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{{ asset('assets-admin/css/custom.css') }}">
 
     <title>{{ $title ?? 'Title' }} | Administrator</title>
 </head>
@@ -122,7 +129,7 @@
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                                 data-bs-toggle="dropdown">
                                 <div class="notifications">
-                                    <span class="notify-badge">{{ count(session('notifikasiAdmin')) }}</span>
+                                    <span class="notify-badge">{{ $data['count'] }}</span>
                                     <i class="bi bi-bell-fill"></i>
                                 </div>
                             </a>
@@ -130,9 +137,10 @@
                                 <div class="p-2 border-bottom m-2">
                                     <h5 class="h5 mb-0">Notifications</h5>
                                 </div>
-                                <div class="header-notifications-list p-2">
+                                <div class="header-notifications-list">
                                     @forelse (session('notifikasiAdmin') as $notifikasi)
-                                        <a target="_blank" class="dropdown-item"
+                                        <a target="_blank"
+                                            class="dropdown-item {{ $notifikasi->telah_dibaca == false ? 'bg-grey' : '' }}"
                                             href="/notifikasi/cetak-pdf/{{ $notifikasi->id }}">
                                             <div class="d-flex align-items-center">
                                                 <div class="ms-3 flex-grow-1">
@@ -141,6 +149,7 @@
                                                         class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">
                                                         {{ $notifikasi->isi }}
                                                     </small>
+                                                    <small>{{ humanTimeFormat($notifikasi->dikirim_pada) }}</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -197,7 +206,7 @@
                     <ul>
                         <li> <a href="/admin/sktlk"><i class="bi bi-circle"></i>SKTLK</a>
                         </li>
-                        <li> <a href="index2.html"><i class="bi bi-circle"></i>Surat Izin Keramaian</a>
+                        <li> <a href="/admin/sik"><i class="bi bi-circle"></i>Surat Izin Keramaian</a>
                         </li>
                     </ul>
                 </li>

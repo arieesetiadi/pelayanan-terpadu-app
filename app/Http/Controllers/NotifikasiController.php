@@ -31,6 +31,11 @@ class NotifikasiController extends Controller
     {
         $notifikasi = Notifikasi::find($id);
 
+        // Ubah status menjadi telah dibaca
+        $notifikasi->update([
+            'telah_dibaca' => true
+        ]);
+
         // Cek jenis laporan
         switch ($notifikasi->tipe) {
             case 'sktlk':

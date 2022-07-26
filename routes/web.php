@@ -80,3 +80,5 @@ Route::get('/profile', [AdminController::class, 'profile']);
 
 Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
 Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);
+
+Route::get('/admin/sik', [SIKController::class, 'index']);

@@ -1,0 +1,8 @@
+.bg-grey {
+    background-color: rgb(240, 240, 240);
+}
+
+.table-scrollable {
+    width: 100%;
+    overflow-x: scroll;
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Laporan\SIK;
 use App\Models\Laporan\SKTLK;
 use App\Models\Notifikasi;
 use Carbon\Carbon;
@@ -39,6 +40,11 @@ function timeFormat($time)
     return Carbon::make($time)->format('H:i');
 }
 
+function humanTimeFormat($date)
+{
+    return Carbon::make($date)->diffForHumans();
+}
+
 function getSKTLKDocumentById($id)
 {
     $sktlk = SKTLK::find($id);
@@ -51,6 +57,19 @@ function getSKTLKDocumentById($id)
     return $document;
 }
 
+function getSIKDocumentById($id)
+{
+    $sik = SIK::find($id);
+
+    $document['proposalKegiatan'] = $sik->proposal_kegiatan;
+    $document['izinTempat'] = $sik->izin_tempat;
+    $document['izinInstansi'] = $sik->izin_instansi;
+    $document['fotokopiPaspor'] = $sik->fotokopi_paspor;
+    $document['rekomendasiPolsek'] = $sik->rekomendasi_polsek;
+
+    return $document;
+}
+
 function getLaporanByNotif($notifikasi)
 {
     $laporan = null;
@@ -58,6 +77,9 @@ function getLaporanByNotif($notifikasi)
     switch ($notifikasi->tipe) {
         case 'sktlk':
             $laporan = SKTLK::find($notifikasi->laporan_id);
+            break;
+        case 'sik':
+            $laporan = SIK::find($notifikasi->laporan_id);
             break;
     }
 
