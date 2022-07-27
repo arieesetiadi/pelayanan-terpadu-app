@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 
 class SKTLKController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth.pelapor');
-    }
-
     public function index()
     {
         return view('admin.sktlk.index', [

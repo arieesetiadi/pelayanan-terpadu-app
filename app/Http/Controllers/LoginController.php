@@ -24,7 +24,6 @@ class LoginController extends Controller
                 auth()->logout();
 
                 $to = session('to') ?? '/';
-
                 return redirect()->to($to);
             }
             // Login sebagai admin

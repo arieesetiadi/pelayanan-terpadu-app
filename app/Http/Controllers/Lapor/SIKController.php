@@ -9,17 +9,37 @@ use App\Models\Laporan\SIK;
 
 class SIKController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth.pelapor');
-    }
-
     public function index()
     {
         return view('admin.sik.index', [
             'title' => 'Laporan SIK',
             'laporanSIK' => SIK::all()
         ]);
+    }
+
+    public function setuju($id)
+    {
+        // Mengubah status dari SIK
+        $laporan = SIK::find($id);
+        $laporan->update([
+            'status' => true
+        ]);
+
+        // Mengirim notifikasi ke pelapor
+        $toPelapor = [
+            'judul' => 'Dokumen Disetujui',
+            'isi' => 'Dokumen persyaratan telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.',
+            'tipe' => 'sik',
+            'telah_dibaca' => false,
+            'dikirim_kepada' => 'pelapor',
+            'laporan_id' => $laporan->id,
+            'dikirim_pada' => now()
+        ];
+
+        Notifikasi::insert($toPelapor);
+
+        // Redirect ke halaman admin SIK
+        return back()->with('success', 'Berhasil menyetujui dokumen persyaratan');
     }
 
     public function upload(Request $data)

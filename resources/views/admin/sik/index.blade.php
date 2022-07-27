@@ -64,25 +64,102 @@
                             -
                         </td>
 
-                        {{-- Popup Detail Dokumen --}}
+                        {{-- Pop up Detail Dokumen --}}
                         <div class="modal fade" id="detail-modal-{{ $sik->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Detail Dokumen</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Detail Dokumen Persyaratan</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         @php
                                             $sikDocument = getSIKDocumentById($sik->id);
-                                            dump($sikDocument);
                                         @endphp
+
+                                        {{-- Link Download Proposal Kegiatan --}}
+                                        <a target="_blank"
+                                            href="{{ asset('assets-user/upload/' . $sikDocument['proposalKegiatan']) }}"
+                                            class="d-block btn my-1 text-start">
+                                            <i class="bi bi-arrow-down-circle-fill"></i>
+                                            Download Proposal Kegiatan
+                                        </a>
+
+                                        {{-- Link Download Izin Tempat --}}
+                                        <a target="_blank"
+                                            href="{{ asset('assets-user/upload/' . $sikDocument['izinTempat']) }}"
+                                            class="d-block btn my-1 text-start">
+                                            <i class="bi bi-arrow-down-circle-fill"></i>
+                                            Download Izin Tempat
+                                        </a>
+
+                                        {{-- Link Download Izin Instansi --}}
+                                        <a target="_blank"
+                                            href="{{ asset('assets-user/upload/' . $sikDocument['izinInstansi']) }}"
+                                            class="d-block btn my-1 text-start">
+                                            <i class="bi bi-arrow-down-circle-fill"></i>
+                                            Download Izin Instansi
+                                        </a>
+
+                                        {{-- Link Download Fotokopi Paspor --}}
+                                        @if ($sikDocument['fotokopiPaspor'])
+                                            <a target="_blank"
+                                                href="{{ asset('assets-user/upload/' . $sikDocument['fotokopiPaspor']) }}"
+                                                class="d-block btn my-1 text-start">
+                                                <i class="bi bi-arrow-down-circle-fill"></i>
+                                                Download Fotokopi Paspor
+                                            </a>
+                                        @endif
+
+                                        {{-- Link Download Rekomendasi Polsek --}}
+                                        <a target="_blank"
+                                            href="{{ asset('assets-user/upload/' . $sikDocument['rekomendasiPolsek']) }}"
+                                            class="d-block btn my-1 text-start">
+                                            <i class="bi bi-arrow-down-circle-fill"></i>
+                                            Download Rekomendasi Polsek
+                                        </a>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Tutup</button>
+                                        {{-- Tombol Setuju --}}
+                                        <a href="/admin/sik/setuju/{{ $sik->id }}" type="button"
+                                            class="btn btn-success">Setuju</a>
+
+                                        {{-- Tombol Tolak --}}
+                                        <button type="button" class="btn btn-danger"
+                                            data-bs-target="#tolak-modal-{{ $sik->id }}" data-bs-toggle="modal"
+                                            data-bs-dismiss="modal">Tolak</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Pop up Penolakan --}}
+                        <div class="modal fade" id="tolak-modal-{{ $sik->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Alasan Penolakan</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body" style="height: 250px">
+                                        <form action="#" method="POST">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="alasanPenolakan" class="form-label">Masukkan alasan pada kolom
+                                                    di bawah ini :</label>
+                                                <textarea name="alasanPenolakan" class="form-control" id="alasanPenolakan" rows="6"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        {{-- Tombol Kirim --}}
+                                        <a href="#" type="button" class="btn btn-primary">Kirim</a>
                                     </div>
                                 </div>
                             </div>

@@ -59,26 +59,32 @@ Route::view('/tindak-kriminal/sp2hp', 'tindak-kriminal.sp2hp');
 // Route ke SP2HP
 Route::view('/tindak-kriminal/sttlp', 'tindak-kriminal.sttlp');
 
-// Route ke form SKTLK
-Route::view('/form/lapor-sktlk', 'form.lapor-sktlk')->middleware('auth.pelapor');
-Route::post('/upload-sktlk', [SKTLKController::class, 'upload']);
+// Auth Pelapor
+Route::middleware('auth.pelapor')->group(function () {
+    // Route ke form SKTLK
+    Route::view('/form/lapor-sktlk', 'form.lapor-sktlk');
+    Route::post('/upload-sktlk', [SKTLKController::class, 'upload']);
 
-// Route ke form SIK
-Route::view('/form/lapor-sik', 'form.lapor-sik')->middleware('auth.pelapor');
-Route::post('/upload-sik', [SIKController::class, 'upload']);
+    // Route ke form SIK
+    Route::view('/form/lapor-sik', 'form.lapor-sik');
+    Route::post('/upload-sik', [SIKController::class, 'upload']);
 
-// Route Profile Pelapor
-Route::view('/profile/pelapor', 'profile-pelapor')->middleware('auth.pelapor');
+    // Route Profile Pelapor
+    Route::view('/profile/pelapor', 'profile-pelapor');
 
-// Route Notifikasi
-Route::get('/notifikasi/detail/{id}', [NotifikasiController::class, 'detail']);
-Route::get('/notifikasi/cetak-pdf/{id}', [NotifikasiController::class, 'cetakPDF']);
+    // Route Notifikasi
+    Route::get('/notifikasi/detail/{id}', [NotifikasiController::class, 'detail']);
+    Route::get('/notifikasi/cetak-pdf/{id}', [NotifikasiController::class, 'cetakPDF']);
+});
 
 // Route Admin ====================================
-Route::get('/dashboard', [AdminController::class, 'dashboard']);
-Route::get('/profile', [AdminController::class, 'profile']);
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard']);
+    Route::get('/profile', [AdminController::class, 'profile']);
 
-Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
-Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);
+    Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
+    Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);
 
-Route::get('/admin/sik', [SIKController::class, 'index']);
+    Route::get('/admin/sik', [SIKController::class, 'index']);
+    Route::get('/admin/sik/setuju/{id}', [SIKController::class, 'setuju']);
+});

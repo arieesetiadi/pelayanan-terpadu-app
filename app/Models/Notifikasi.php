@@ -30,14 +30,26 @@ class Notifikasi extends Model
 
     public static function getNotifikasiPelapor()
     {
-        return self
+        $data['notifikasi'] =
+            self
             ::where([
                 ['dikirim_kepada', 'pelapor'],
                 ['pelapor_id', session('pelapor')->id]
             ])
             ->orderBy('id', 'desc')
-            ->limit(4)
             ->get();
+
+        $data['count'] =
+            self
+            ::where([
+                ['dikirim_kepada', 'pelapor'],
+                ['pelapor_id', session('pelapor')->id],
+                ['telah_dibaca', false]
+            ])
+            ->orderBy('id', 'desc')
+            ->count();
+
+        return $data;
     }
 
     public static function getNotifikasiAdmin()
@@ -56,7 +68,6 @@ class Notifikasi extends Model
                 ['dikirim_kepada', 'admin'],
                 ['telah_dibaca', false]
             ])
-            ->limit(8)
             ->count();
 
         return $data;

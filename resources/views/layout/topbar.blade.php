@@ -1,6 +1,7 @@
 @php
 if (session('pelapor')) {
-    $notifikasi = App\Models\Notifikasi::getNotifikasiPelapor();
+    $notifikasi = App\Models\Notifikasi::getNotifikasiPelapor()['notifikasi'];
+    $count = App\Models\Notifikasi::getNotifikasiPelapor()['count'];
     session()->put('notifikasi', $notifikasi);
 }
 @endphp
@@ -71,6 +72,7 @@ if (session('pelapor')) {
                                 <li class="position-relative">
                                     <i id="notification-button" class="fa-solid fa-bell text-dark"
                                         style="cursor: pointer"></i>
+                                    <small class="count-notifikasi-pelapor">{{ $count }}</small>
 
                                     <div id="notification-box" class="d-none position-absolute"
                                         style="left: -350px; margin-top: 31px">
@@ -87,6 +89,7 @@ if (session('pelapor')) {
                                                                 {{ $notifikasi->judul }}
                                                             </span>
                                                             <p>{{ $notifikasi->isi }}</p>
+                                                            <small>{{ humanTimeFormat($notifikasi->dikirim_pada) }}</small>
                                                         </a>
                                                     @endforeach
                                                 @else

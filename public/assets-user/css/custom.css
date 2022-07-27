@@ -22,3 +22,11 @@
 #notification-box {
     z-index: 1000;
 }
+
+.count-notifikasi-pelapor {
+    background-color: red;
+    border-radius: 100%;
+    padding: 1px 9px;
+    margin-left: -3px;
+    color: white;
+}
