@@ -32,4 +32,21 @@ class SIK extends Model
             'rekomendasi_polsek' => $rekomendasiPolsek
         ]);
     }
+
+    public static function insertForm($data)
+    {
+        self::find($data['id'])->update([
+            'nama_organisasi' => $data['namaOrganisasi'],
+            'nama_penanggung_jawab' => $data['namaPenanggungJawab'],
+            'pekerjaan' => $data['pekerjaan'],
+            'alamat' => $data['alamat'],
+            'bentuk_kegiatan' => $data['bentukKegiatan'],
+            'tanggal_kegiatan' => $data['tanggalKegiatan'],
+            'waktu_mulai' => $data['waktuMulai'],
+            'waktu_selesai' => $data['waktuSelesai'],
+            'lokasi_kegiatan' => $data['lokasiKegiatan'],
+            'dalam_rangka' => $data['dalamRangka'],
+            'jumlah_undangan' => $data['jumlahUndangan'],
+        ]);
+    }
 }

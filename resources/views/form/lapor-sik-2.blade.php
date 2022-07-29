@@ -50,193 +50,197 @@
             </a>
 
             <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
-                data-aos-duration="500">Form Laporan</h1>
-
+                data-aos-duration="500">Form Izin Keramaian </h1>
             {{-- Form Data Diri --}}
             <h1 class="text-dark" style="font-size: 24px">Data Laporan :</h1>
             <hr>
-            <table class="table table-sm table-borderless">
-                {{-- Nama Organisasi --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Nama Organisasi</span>
-                </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="namaOrganisasi" type="text" class="form-control form-control-sm"
-                                placeholder="Nama Organisasi" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
 
-                {{-- Nama Penanggung Jawab --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Nama Penanggung Jawab</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="namaPenanggungJawab" type="text" class="form-control form-control-sm"
-                                placeholder="Nama Penanggung Jawab" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
-
-                {{-- Pekerjaan --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Pekerjaan</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="pekerjaan" type="text" class="form-control form-control-sm"
-                                placeholder="Pekerjaan Penanggung Jawab" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
-
-                {{-- Alamat --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Alamat</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <textarea name="alamat" placeholder="Alamat Penanggung Jawab" class="form-control" rows="3"></textarea>
-                        </div>
-                    </td>
-                </tr>
-
-                {{-- Bentuk Macam Kegiatan --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Bentuk Macam Kegiatan</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <textarea name="bentukMacamKegiatan" placeholder="Bentuk / Macam Kegiatan" class="form-control" rows="3"></textarea>
-                        </div>
-                    </td>
-                </tr>
-
-                {{-- Tanggal Kegiatan --}}
-                <tr style="margin-bottom: 50px">
-                    <td>
-                        <span class="d-inline-block mt-2">Tanggal</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="tanggal" type="date" class="form-control" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
-
-                {{-- Waktu Kegiatan --}}
-                <tr style="margin-bottom: 50px">
-                    <td>
-                        <span class="d-inline-block mt-2">Waktu Kegiatan</span>
-                    </td>
-                    <td>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <input name="waktuMulai" type="time" class="form-control" style="height: 40px">
-                                </div>
+            <form action="/upload-form-sik" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{ $laporan->id }}">
+                <table class="table table-sm table-borderless">
+                    {{-- Nama Organisasi --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Nama Organisasi</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="namaOrganisasi" type="text" class="form-control form-control-sm"
+                                    placeholder="Nama Organisasi" style="height: 40px">
                             </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <input name="waktuSelesai" type="time" class="form-control"
-                                        style="height: 40px">
-                                </div>
+                        </td>
+                    </tr>
+
+                    {{-- Nama Penanggung Jawab --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Nama Penanggung Jawab</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="namaPenanggungJawab" type="text" class="form-control form-control-sm"
+                                    placeholder="Nama Penanggung Jawab" style="height: 40px">
                             </div>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
 
-                {{-- Lokasi Kegiatan --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Lokasi</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="lokasi_kegiatan" type="text" class="form-control form-control-sm"
-                                placeholder="Tempat" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
+                    {{-- Pekerjaan --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Pekerjaan</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="pekerjaan" type="text" class="form-control form-control-sm"
+                                    placeholder="Pekerjaan Penanggung Jawab" style="height: 40px">
+                            </div>
+                        </td>
+                    </tr>
 
-                {{-- Dalam Rangka --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Dalam Rangka</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="dalamRangka" type="text" class="form-control form-control-sm"
-                                placeholder="Dalam Rangka" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
+                    {{-- Alamat --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Alamat</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea name="alamat" placeholder="Alamat Penanggung Jawab" class="form-control" rows="3"></textarea>
+                            </div>
+                        </td>
+                    </tr>
 
-                {{-- Jumlah Undangan / Peserta --}}
-                <tr>
-                    <td>
-                        <span class="d-inline-block mt-2">Jumlah Undangan / Peserta</span>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input name="jumlahUndanganPeserta" type="number" class="form-control form-control-sm"
-                                placeholder="Undangan / Peserta" style="height: 40px">
-                        </div>
-                    </td>
-                </tr>
+                    {{-- Bentuk Macam Kegiatan --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Bentuk Macam Kegiatan</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea name="bentukKegiatan" placeholder="Bentuk / Macam Kegiatan" class="form-control" rows="3"></textarea>
+                            </div>
+                        </td>
+                    </tr>
 
-                {{-- <tr>
-                    <td colspan="2">
-                        <div class="custom-control custom-checkbox mt-4 mb-2">
-                            <input name="persetujuan" type="checkbox" class="custom-control-input" id="persetujuan">
-                            <label class="custom-control-label" for="persetujuan">
-                                Dengan mengklik tombol ini berarti anda telah setuju bahwa data yang anda masukkan sudah
-                                benar.
-                            </label>
-                        </div>
-                    </td>
-                </tr> --}}
+                    {{-- Tanggal Kegiatan --}}
+                    <tr style="margin-bottom: 50px">
+                        <td>
+                            <span class="d-inline-block mt-2">Tanggal</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="tanggalKegiatan" type="date" class="form-control" style="height: 40px">
+                            </div>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>
-                        <button type="submit" class="btn btn-primary" data-toggle="modal"
-                            data-target="#successModal">Kirim Data</button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="successModal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">
-                                            <i class="fa-solid fa-circle-check text-success mx-2 fa-2x"></i>
-                                            Berhasil
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                    {{-- Waktu Kegiatan --}}
+                    <tr style="margin-bottom: 50px">
+                        <td>
+                            <span class="d-inline-block mt-2">Waktu Kegiatan</span>
+                        </td>
+                        <td>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input name="waktuMulai" type="time" class="form-control"
+                                            style="height: 40px">
                                     </div>
-                                    <div class="modal-body">
-                                        <p>Anda Telah Berhasil Mengirim Laporan</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Tutup</button>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input name="waktuSelesai" type="time" class="form-control"
+                                            style="height: 40px">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+                        </td>
+                    </tr>
+
+                    {{-- Lokasi Kegiatan --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Lokasi</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="lokasiKegiatan" type="text" class="form-control form-control-sm"
+                                    placeholder="Tempat" style="height: 40px">
+                            </div>
+                        </td>
+                    </tr>
+
+                    {{-- Dalam Rangka --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Dalam Rangka</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="dalamRangka" type="text" class="form-control form-control-sm"
+                                    placeholder="Dalam Rangka" style="height: 40px">
+                            </div>
+                        </td>
+                    </tr>
+
+                    {{-- Jumlah Undangan / Peserta --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Jumlah Undangan / Peserta</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="jumlahUndangan" type="number" class="form-control form-control-sm"
+                                    placeholder="Undangan / Peserta" style="height: 40px">
+                            </div>
+                        </td>
+                    </tr>
+
+                    {{-- <tr>
+                        <td colspan="2">
+                            <div class="custom-control custom-checkbox mt-4 mb-2">
+                                <input name="persetujuan" type="checkbox" class="custom-control-input" id="persetujuan">
+                                <label class="custom-control-label" for="persetujuan">
+                                    Dengan mengklik tombol ini berarti anda telah setuju bahwa data yang anda masukkan sudah
+                                    benar.
+                                </label>
+                            </div>
+                        </td>
+                    </tr> --}}
+
+                    <tr>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Kirim Data</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="successModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                <i class="fa-solid fa-circle-check text-success mx-2 fa-2x"></i>
+                                                Berhasil
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Anda Telah Berhasil Mengirim Laporan</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </section>
 

@@ -72,7 +72,9 @@ if (session('pelapor')) {
                                 <li class="position-relative">
                                     <i id="notification-button" class="fa-solid fa-bell text-dark"
                                         style="cursor: pointer"></i>
-                                    <small class="count-notifikasi-pelapor">{{ $count }}</small>
+                                    @if (isset($count))
+                                        <small class="count-notifikasi-pelapor">{{ $count }}</small>
+                                    @endif
 
                                     <div id="notification-box" class="d-none position-absolute"
                                         style="left: -350px; margin-top: 31px">

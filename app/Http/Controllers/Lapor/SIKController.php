@@ -73,4 +73,13 @@ class SIKController extends Controller
 
         return back()->with('success', 'Berhasil mengirim dokumen persyaratan');
     }
+
+    public function uploadForm(Request $data)
+    {
+        // Insert data form ke database
+        SIK::insertForm($data->all());
+
+        // Redirect ke beranda
+        return redirect()->to('/')->with('success', 'Data Izin Keramaian berhasil dikirim');
+    }
 }

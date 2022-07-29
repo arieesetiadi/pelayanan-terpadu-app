@@ -68,6 +68,7 @@ Route::middleware('auth.pelapor')->group(function () {
     // Route ke form SIK
     Route::view('/form/lapor-sik', 'form.lapor-sik');
     Route::post('/upload-sik', [SIKController::class, 'upload']);
+    Route::post('/upload-form-sik', [SIKController::class, 'uploadForm']);
 
     // Route Profile Pelapor
     Route::view('/profile/pelapor', 'profile-pelapor');

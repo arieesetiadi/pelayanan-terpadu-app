@@ -17,11 +17,22 @@ class NotifikasiController extends Controller
             'telah_dibaca' => true
         ]);
 
+        $laporan = getLaporanByNotif($notifikasi);
         session()->put('notifikasi', Notifikasi::getNotifikasiPelapor());
 
-        $laporan = getLaporanByNotif($notifikasi);
-        if ($laporan->dokumen_persetujuan != '') {
-            return redirect()->to(asset('assets-user/upload/' . $laporan->dokumen_persetujuan));
+
+        switch ($notifikasi->tipe) {
+            case 'sktlk':
+                if ($laporan->dokumen_persetujuan != '') {
+                    return redirect()->to(asset('assets-user/upload/' . $laporan->dokumen_persetujuan));
+                }
+            case 'sik':
+                if ($laporan->status && $laporan->nama_organisasi == '') {
+                    return view('form.lapor-sik-2', [
+                        'laporan' => $laporan
+                    ]);
+                }
+                break;
         }
 
         return back();
@@ -53,6 +64,7 @@ class NotifikasiController extends Controller
                 return $pdf->stream('laporan.pdf');
 
             case 'sik':
+                dd('Test');
                 // $laporan = SIK::find($notifikasi->laporan_id);
                 dd('SIK');
                 break;
