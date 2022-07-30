@@ -59,6 +59,19 @@
                 </div>
             @endif
 
+            {{-- Alert warning alasan --}}
+            @if (session("alasan-$laporan->id"))
+                <div class="alert alert-warning mt-4" role="alert">
+                    <i class="fa-solid fa-triangle-exclamation text-dark"></i>
+                    <span class="d-inline-block mx-2">
+                        {{ session("alasan-$laporan->id") }}
+                        @php
+                            Illuminate\Support\Facades\Session::forget("alasan-$laporan->id");
+                        @endphp
+                    </span>
+                </div>
+            @endif
+
             <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
                 data-aos-duration="500">Form Laporan</h1>
 
@@ -80,6 +93,7 @@
                             <div class="form-group">
                                 <input accept=".pdf,.jpg,.jpeg,.png" required name="proposalKegiatan" type="file"
                                     class="form-control-file">
+                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
                     </tr>
@@ -91,6 +105,7 @@
                             <div class="form-group">
                                 <input accept=".pdf,.jpg,.jpeg,.png" required name="izinTempat" type="file"
                                     class="form-control-file">
+                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
                     </tr>
@@ -102,6 +117,7 @@
                             <div class="form-group">
                                 <input accept=".pdf,.jpg,.jpeg,.png" required name="izinInstansi" type="file"
                                     class="form-control-file">
+                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
                     </tr>
@@ -113,6 +129,7 @@
                             <div class="form-group">
                                 <input accept=".pdf,.jpg,.jpeg,.png" name="fotokopiPaspor" type="file"
                                     class="form-control-file">
+                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
                     </tr>
@@ -124,6 +141,7 @@
                             <div class="form-group">
                                 <input accept=".pdf,.jpg,.jpeg,.png" required name="rekomendasiPolsek" type="file"
                                     class="form-control-file">
+                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
                     </tr>

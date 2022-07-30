@@ -21,6 +21,8 @@
 
 #notification-box {
     z-index: 1000;
+    height: 400px;
+    overflow-y: scroll;
 }
 
 .count-notifikasi-pelapor {

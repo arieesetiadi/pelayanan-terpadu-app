@@ -88,4 +88,5 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin/sik', [SIKController::class, 'index']);
     Route::get('/admin/sik/setuju/{id}', [SIKController::class, 'setuju']);
+    Route::post('/admin/sik/tolak', [SIKController::class, 'tolak']);
 });

@@ -6,6 +6,7 @@ use App\Models\Laporan\SKTLK;
 use App\Models\Notifikasi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use PDF;
 
 class NotifikasiController extends Controller
@@ -29,6 +30,10 @@ class NotifikasiController extends Controller
             case 'sik':
                 if ($laporan->status && $laporan->nama_organisasi == '') {
                     return view('form.lapor-sik-2', [
+                        'laporan' => $laporan
+                    ]);
+                } elseif ($laporan->status == false) {
+                    return view('form.lapor-sik', [
                         'laporan' => $laporan
                     ]);
                 }

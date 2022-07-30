@@ -13,7 +13,7 @@ class SIKController extends Controller
     {
         return view('admin.sik.index', [
             'title' => 'Laporan SIK',
-            'laporanSIK' => SIK::all()
+            'laporanSIK' => SIK::orderBy('id', 'desc')->get()
         ]);
     }
 
@@ -40,6 +40,32 @@ class SIKController extends Controller
 
         // Redirect ke halaman admin SIK
         return back()->with('success', 'Berhasil menyetujui dokumen persyaratan');
+    }
+
+    public function tolak(Request $request)
+    {
+        $laporan = SIK::find($request->id);
+        $laporan->update([
+            'status' => false
+        ]);
+
+        // Mengirim notifikasi ke pelapor
+        $toPelapor = [
+            'judul' => 'Dokumen Ditolak',
+            'isi' => 'Dokumen persyaratan Anda ditolak. Silahkan periksa kembali kelengkapan dokumen persyaratan.',
+            'tipe' => 'sik',
+            'telah_dibaca' => false,
+            'dikirim_kepada' => 'pelapor',
+            'laporan_id' => $laporan->id,
+            'dikirim_pada' => now()
+        ];
+
+        session()->put("alasan-$laporan->id", $request->alasanPenolakan);
+
+        Notifikasi::insert($toPelapor);
+
+        // Redirect ke halaman admin SIK
+        return back()->with('success', 'Anda telah menolak dokumen persyaratan');
     }
 
     public function upload(Request $data)
@@ -80,6 +106,6 @@ class SIKController extends Controller
         SIK::insertForm($data->all());
 
         // Redirect ke beranda
-        return redirect()->to('/')->with('success', 'Data Izin Keramaian berhasil dikirim');
+        return redirect()->to('/pengaduan-masyarakat/sik')->with('success', 'Data Izin Keramaian berhasil dikirim');
     }
 }

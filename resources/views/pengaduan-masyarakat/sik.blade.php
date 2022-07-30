@@ -49,6 +49,17 @@
             <a href="/">
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
+
+            {{-- Alert success --}}
+            @if (session('success'))
+                <div class="alert alert-success mt-4" role="alert">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span class="d-inline-block mx-2">
+                        {{ session('success') }}
+                    </span>
+                </div>
+            @endif
+
             <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
                 data-aos-duration="500">Surat Izin Keramaian</h1>
 
@@ -282,8 +293,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.kenburn.min.js') }}">
     </script>
-    <script
-        src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.migration.min.js') }}">
     </script>
@@ -293,8 +303,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}">
     </script>
-    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}">
-    </script>
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
 </body>
 
 </html>

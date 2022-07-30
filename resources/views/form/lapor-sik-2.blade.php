@@ -141,13 +141,16 @@
                         </td>
                         <td>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-5">
                                     <div class="form-group">
                                         <input name="waktuMulai" type="time" class="form-control"
                                             style="height: 40px">
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-2">
+                                    <span class="d-block text-center">s/d</span>
+                                </div>
+                                <div class="col-5">
                                     <div class="form-group">
                                         <input name="waktuSelesai" type="time" class="form-control"
                                             style="height: 40px">

@@ -20,6 +20,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Dokumen</th>
+                    <th>Status</th>
                     <th>Nama Organisasi</th>
                     <th>Nama Penanggungjawab</th>
                     <th>Pekerjaan</th>
@@ -31,7 +32,6 @@
                     <th>Lokasi Kegiatan</th>
                     <th>Dalam Rangka</th>
                     <th>Jumlah Undangan</th>
-                    <th>Status</th>
                     <th>Pilihan</th>
                 </tr>
             </thead>
@@ -39,6 +39,7 @@
                 @forelse ($laporanSIK as $i => $sik)
                     <tr>
                         <td>{{ $i + 1 }}</td>
+                        {{-- Pop-up dokumen --}}
                         <td>
                             <center>
                                 {{-- Tombol detail dokumen --}}
@@ -48,6 +49,20 @@
                                 </a>
                             </center>
                         </td>
+
+                        {{-- Status --}}
+                        <td>
+                            @if ($sik->status === 1)
+                                {{-- centang --}}
+                                <i class="bi bi-check-circle-fill text-success" title="Disetujui"></i>
+                            @elseif($sik->status === 0)
+                                {{-- x --}}
+                                <i class="bi bi-x-circle-fill text-danger" title="Ditolak"></i>
+                            @else
+                                -
+                            @endif
+                        </td>
+
                         <td>{{ $sik->nama_organisasi ?? '-' }}</td>
                         <td>{{ $sik->nama_penanggung_jawab ?? '-' }}</td>
                         <td>{{ $sik->pekerjaan ?? '-' }}</td>
@@ -59,7 +74,6 @@
                         <td>{{ $sik->lokasi_kegiatan ?? '-' }}</td>
                         <td>{{ $sik->dalam_rangka ?? '-' }}</td>
                         <td>{{ $sik->jumlah_undangan ?? '-' }}</td>
-                        <td>{{ $sik->status ?? '-' }}</td>
                         <td>
                             -
                         </td>
@@ -121,16 +135,18 @@
                                             Download Rekomendasi Polsek
                                         </a>
                                     </div>
-                                    <div class="modal-footer">
-                                        {{-- Tombol Setuju --}}
-                                        <a href="/admin/sik/setuju/{{ $sik->id }}" type="button"
-                                            class="btn btn-success">Setuju</a>
+                                    @if ($sik->status === null)
+                                        <div class="modal-footer">
+                                            {{-- Tombol Setuju --}}
+                                            <a href="/admin/sik/setuju/{{ $sik->id }}" type="button"
+                                                class="btn btn-success">Setuju</a>
 
-                                        {{-- Tombol Tolak --}}
-                                        <button type="button" class="btn btn-danger"
-                                            data-bs-target="#tolak-modal-{{ $sik->id }}" data-bs-toggle="modal"
-                                            data-bs-dismiss="modal">Tolak</button>
-                                    </div>
+                                            {{-- Tombol Tolak --}}
+                                            <button type="button" class="btn btn-danger"
+                                                data-bs-target="#tolak-modal-{{ $sik->id }}" data-bs-toggle="modal"
+                                                data-bs-dismiss="modal">Tolak</button>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -146,21 +162,22 @@
                                             aria-label="Close"></button>
                                     </div>
 
-                                    <div class="modal-body" style="height: 250px">
-                                        <form action="#" method="POST">
+                                    <form action="/admin/sik/tolak" method="POST">
+                                        <div class="modal-body" style="height: 250px">
                                             @csrf
                                             <div class="mb-3">
+                                                <input type="hidden" name="id" value="{{ $sik->id }}">
                                                 <label for="alasanPenolakan" class="form-label">Masukkan alasan pada kolom
                                                     di bawah ini :</label>
                                                 <textarea name="alasanPenolakan" class="form-control" id="alasanPenolakan" rows="6"></textarea>
                                             </div>
-                                        </form>
-                                    </div>
+                                        </div>
 
-                                    <div class="modal-footer">
-                                        {{-- Tombol Kirim --}}
-                                        <a href="#" type="button" class="btn btn-primary">Kirim</a>
-                                    </div>
+                                        <div class="modal-footer">
+                                            {{-- Tombol Kirim --}}
+                                            <button type="submit" class="btn btn-primary">Kirim</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
