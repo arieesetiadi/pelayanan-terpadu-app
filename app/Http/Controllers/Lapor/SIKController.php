@@ -39,7 +39,7 @@ class SIKController extends Controller
         Notifikasi::insert($toPelapor);
 
         // Redirect ke halaman admin SIK
-        return back()->with('success', 'Berhasil menyetujui dokumen persyaratan');
+        return redirect()->to('/admin/sik')->with('success', 'Berhasil menyetujui dokumen persyaratan');
     }
 
     public function tolak(Request $request)
@@ -94,7 +94,6 @@ class SIKController extends Controller
             'dikirim_pada' => now()
         ];
 
-        Notifikasi::insert($toPelapor);
         Notifikasi::insert($toAdmin);
 
         return back()->with('success', 'Berhasil mengirim dokumen persyaratan');
@@ -104,6 +103,18 @@ class SIKController extends Controller
     {
         // Insert data form ke database
         SIK::insertForm($data->all());
+
+        $toAdmin = [
+            'judul' => 'Data Pelaporan SIK Masuk',
+            'isi' => 'Data Izin Keramaian diterima. Lanjutkan ke proses persetujuan.',
+            'tipe' => 'sik',
+            'telah_dibaca' => false,
+            'dikirim_kepada' => 'admin',
+            'laporan_id' => $data['id'],
+            'dikirim_pada' => now()
+        ];
+
+        Notifikasi::insert($toAdmin);
 
         // Redirect ke beranda
         return redirect()->to('/pengaduan-masyarakat/sik')->with('success', 'Data Izin Keramaian berhasil dikirim');

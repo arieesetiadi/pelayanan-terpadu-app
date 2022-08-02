@@ -60,16 +60,15 @@
             @endif
 
             {{-- Alert warning alasan --}}
-            @if (session("alasan-$laporan->id"))
-                <div class="alert alert-warning mt-4" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation text-dark"></i>
-                    <span class="d-inline-block mx-2">
-                        {{ session("alasan-$laporan->id") }}
-                        @php
-                            Illuminate\Support\Facades\Session::forget("alasan-$laporan->id");
-                        @endphp
-                    </span>
-                </div>
+            @if (isset($laporan))
+                @if (session("alasan-$laporan->id"))
+                    <div class="alert alert-warning mt-4" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation text-dark"></i>
+                        <span class="d-inline-block mx-2">
+                            {{ session("alasan-$laporan->id") }}
+                        </span>
+                    </div>
+                @endif
             @endif
 
             <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"

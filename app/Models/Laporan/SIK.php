@@ -35,7 +35,7 @@ class SIK extends Model
 
     public static function insertForm($data)
     {
-        self::find($data['id'])->update([
+        return self::find($data['id'])->update([
             'nama_organisasi' => $data['namaOrganisasi'],
             'nama_penanggung_jawab' => $data['namaPenanggungJawab'],
             'pekerjaan' => $data['pekerjaan'],
