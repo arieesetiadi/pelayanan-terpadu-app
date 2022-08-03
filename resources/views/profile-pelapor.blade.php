@@ -59,7 +59,7 @@
                         <div class="card-body" style="height: 500px">
                             <center>
                                 {{-- Foto Profile --}}
-                                @if (session('pelapor')->jenis_kelamin == 'Laki-laki')
+                                @if (auth()->user()->jenis_kelamin == 'Laki-laki')
                                     <img src="{{ asset('assets-admin/img/avatars/man.png') }}" width="40%"
                                         alt="Profile Man" class="my-3">
                                 @else
@@ -67,13 +67,13 @@
                                         alt="Profile Woman" class="my-3">
                                 @endif
 
-                                <h6>{{ session('pelapor')->nama }}</h6>
-                                <span class="d-block">{{ session('pelapor')->email }}</span>
-                                <span class="d-block">{{ session('pelapor')->telepon }}</span>
+                                <h6>{{ auth()->user()->nama }}</h6>
+                                <span class="d-block">{{ auth()->user()->email }}</span>
+                                <span class="d-block">{{ auth()->user()->telepon }}</span>
 
                                 <hr>
 
-                                <span>{{ session('pelapor')->alamat }}</span>
+                                <span>{{ auth()->user()->alamat }}</span>
                             </center>
                         </div>
                     </div>
@@ -89,22 +89,22 @@
                                 <div class="mb-2">
                                     <label for="nama" class="form-label">Nama :</label>
                                     <input name="nama" type="text" class="form-control" id="nama"
-                                        value="{{ session('pelapor')->nama }}">
+                                        value="{{ auth()->user()->nama }}">
                                 </div>
                                 <div class="mb-2">
                                     <label for="email" class="form-label">Email :</label>
                                     <input name="email" type="email" class="form-control" id="email"
-                                        value="{{ session('pelapor')->email }}">
+                                        value="{{ auth()->user()->email }}">
                                 </div>
                                 <div class="mb-2">
                                     <label for="telepon" class="form-label">Nomor Telepon :</label>
                                     <input name="telepon" type="text" class="form-control" id="telepon"
-                                        value="{{ session('pelapor')->telepon }}">
+                                        value="{{ auth()->user()->telepon }}">
                                 </div>
                                 <div class="mb-2">
                                     <label for="alamat" class="form-label">Alamat :</label>
                                     <input name="alamat" type="text" class="form-control" id="alamat"
-                                        value="{{ session('pelapor')->alamat }}">
+                                        value="{{ auth()->user()->alamat }}">
                                 </div>
                                 <div class="my-3">
                                     <button type="submit" class="btn btn-block btn-primary">Simpan</button>
@@ -146,8 +146,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.kenburn.min.js') }}">
     </script>
-    <script
-        src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.migration.min.js') }}">
     </script>
@@ -157,8 +156,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}">
     </script>
-    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}">
-    </script>
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
 </body>
 
 </html>

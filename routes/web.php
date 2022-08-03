@@ -60,7 +60,7 @@ Route::view('/tindak-kriminal/sp2hp', 'tindak-kriminal.sp2hp');
 Route::view('/tindak-kriminal/sttlp', 'tindak-kriminal.sttlp');
 
 // Auth Pelapor
-Route::middleware('auth.pelapor')->group(function () {
+Route::middleware('auth')->group(function () {
     // Route ke form SKTLK
     Route::view('/form/lapor-sktlk', 'form.lapor-sktlk');
     Route::post('/upload-sktlk', [SKTLKController::class, 'upload']);
@@ -72,11 +72,11 @@ Route::middleware('auth.pelapor')->group(function () {
 
     // Route Profile Pelapor
     Route::view('/profile/pelapor', 'profile-pelapor');
-
-    // Route Notifikasi
-    Route::get('/notifikasi/detail/{id}', [NotifikasiController::class, 'detail']);
-    Route::get('/notifikasi/cetak-pdf/{id}', [NotifikasiController::class, 'cetakPDF']);
 });
+
+// Route Notifikasi
+Route::get('/notifikasi/detail/{id}', [NotifikasiController::class, 'detail']);
+Route::get('/notifikasi/cetak-pdf/{id}', [NotifikasiController::class, 'cetakPDF']);
 
 // Route Admin ====================================
 Route::middleware('auth')->group(function () {

@@ -23,7 +23,7 @@ class Notifikasi extends Model
             'telah_dibaca' => $notifikasi['telah_dibaca'],
             'dikirim_kepada' => $notifikasi['dikirim_kepada'],
             'laporan_id' => $notifikasi['laporan_id'],
-            'pelapor_id' => $notifikasi['pelapor_id'] ?? session('pelapor')->id,
+            'pelapor_id' => $notifikasi['pelapor_id'] ?? auth()->user()->id,
             'dikirim_pada' => $notifikasi['dikirim_pada'],
         ]);
     }
@@ -34,7 +34,7 @@ class Notifikasi extends Model
             self
             ::where([
                 ['dikirim_kepada', 'pelapor'],
-                ['pelapor_id', session('pelapor')->id]
+                ['pelapor_id', auth()->user()->id]
             ])
             ->orderBy('id', 'desc')
             ->get();
@@ -43,7 +43,7 @@ class Notifikasi extends Model
             self
             ::where([
                 ['dikirim_kepada', 'pelapor'],
-                ['pelapor_id', session('pelapor')->id],
+                ['pelapor_id', auth()->user()->id],
                 ['telah_dibaca', false]
             ])
             ->orderBy('id', 'desc')

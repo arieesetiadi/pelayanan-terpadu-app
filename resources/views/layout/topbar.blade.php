@@ -1,5 +1,5 @@
 @php
-if (session('pelapor')) {
+if (auth()->user()) {
     $notifikasi = App\Models\Notifikasi::getNotifikasiPelapor()['notifikasi'];
     $count = App\Models\Notifikasi::getNotifikasiPelapor()['count'];
     session()->put('notifikasi', $notifikasi);
@@ -111,8 +111,8 @@ if (session('pelapor')) {
                                     </div>
                                 </li>
                                 <li class="position-relative">
-                                    @if (session('pelapor'))
-                                        @if (session('pelapor')->jenis_kelamin == 'Laki-laki')
+                                    @if (auth()->user())
+                                        @if (auth()->user()->jenis_kelamin == 'Laki-laki')
                                             <img id="profile-button" width="40" height="40"
                                                 src="{{ asset('assets-user/img/profiles/man.png') }}" alt="Man"
                                                 style="cursor: pointer; margin-left: 20px">
@@ -127,10 +127,9 @@ if (session('pelapor')) {
                                             <div class="card">
                                                 <div class="card-body" style="width: 300px">
                                                     <a href="/profile/pelapor"
-                                                        class="d-block notification-readed">{{ session('pelapor')->nama }}</a>
+                                                        class="d-block notification-readed">{{ auth()->user()->nama }}</a>
                                                     <hr>
-                                                    <a href="/logout/pelapor"
-                                                        class="d-block notification-readed">Logout</a>
+                                                    <a href="/logout" class="d-block notification-readed">Logout</a>
                                                 </div>
                                             </div>
                                         </div>

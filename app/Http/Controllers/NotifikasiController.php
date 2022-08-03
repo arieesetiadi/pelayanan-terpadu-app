@@ -68,16 +68,23 @@ class NotifikasiController extends Controller
 
             case 'sik':
                 $sik = SIK::find($notifikasi->laporan_id);
-                // if($sik->status && ){
-                // } else {
-                // }
-                // Notifikasi ketika pelapor melakukan upload dokumen persyaratan
-                $sikDocument = getSIKDocumentById($notifikasi->laporan_id);
-                return view('admin.sik.notifikasi', [
-                    'title' => 'Dokumen Persyaratan',
-                    'sik' => $sik,
-                    'sikDocument' => $sikDocument
-                ]);
+
+                // Jika sudah disetujui & data lengkap, maka export PDF
+                if ($sik->status == true && $sik->nama_organisasi != null) {
+                    // Export PDF
+                    $pdf = PDF::loadview('pdf.notifikasi-sik');
+                    return $pdf->stream('laporan.pdf');
+                } else {
+                    // Tampilkan dokumen saja
+                    // Notifikasi ketika pelapor melakukan upload dokumen persyaratan
+                    $sikDocument = getSIKDocumentById($notifikasi->laporan_id);
+                    return view('admin.sik.notifikasi', [
+                        'title' => 'Dokumen Persyaratan',
+                        'sik' => $sik,
+                        'sikDocument' => $sikDocument
+                    ]);
+                }
+
                 break;
         }
     }
