@@ -44,6 +44,7 @@ class SIKController extends Controller
 
     public function tolak(Request $request)
     {
+        // Ubah status laporan menjadi false/ditolak
         $laporan = SIK::find($request->id);
         $laporan->update([
             'status' => false
@@ -57,6 +58,7 @@ class SIKController extends Controller
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
             'laporan_id' => $laporan->id,
+            'pelapor_id' => $laporan->pelapor_id,
             'dikirim_pada' => now()
         ];
 
@@ -65,7 +67,7 @@ class SIKController extends Controller
         Notifikasi::insert($toPelapor);
 
         // Redirect ke halaman admin SIK
-        return back()->with('success', 'Anda telah menolak dokumen persyaratan');
+        return redirect()->to('admin/sik')->with('success', 'Anda telah menolak dokumen persyaratan');
     }
 
     public function upload(Request $data)
@@ -73,17 +75,26 @@ class SIKController extends Controller
         // Insert nama file ke database
         $laporan = SIK::insert($data->all());
 
-        // Kirim notifikasi
-        $toPelapor = [
-            'judul' => 'Laporan Berhasil',
-            'isi' => 'Anda berhasil mengunggah dokumen dan sedang dalam proses pengecekkan.',
-            'tipe' => 'sik',
-            'telah_dibaca' => false,
-            'dikirim_kepada' => 'pelapor',
-            'laporan_id' => $laporan->id,
-            'dikirim_pada' => now()
-        ];
+        // Upload file terbaru saja
+        if ($data->laporan_id) {
+            SIK::find($data->laporan_id)->update($data);
 
+            // Kirim notifikasi setelah upload ulang
+            $toAdmin = [
+                'judul' => 'Dokumen Persyaratan SIK Telah Diperbaharui',
+                'isi' => 'Dokumen perlu pengecekkan kelengkapan.',
+                'tipe' => 'sik',
+                'telah_dibaca' => false,
+                'dikirim_kepada' => 'admin',
+                'laporan_id' => $laporan->id,
+                'dikirim_pada' => now()
+            ];
+
+            Notifikasi::insert($toAdmin);
+            return back()->with('success', 'Berhasil mengirim dokumen persyaratan terbaru');
+        }
+
+        // Kirim notifikasi
         $toAdmin = [
             'judul' => 'Dokumen Persyaratan SIK Masuk',
             'isi' => 'Dokumen perlu pengecekkan kelengkapan.',
@@ -95,7 +106,6 @@ class SIKController extends Controller
         ];
 
         Notifikasi::insert($toAdmin);
-
         return back()->with('success', 'Berhasil mengirim dokumen persyaratan');
     }
 

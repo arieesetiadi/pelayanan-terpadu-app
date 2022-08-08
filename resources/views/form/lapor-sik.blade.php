@@ -76,6 +76,7 @@
 
             <form action="/upload-sik" method="post" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="laporan_id" value="{{ $laporan->id }}">
                 <table class="table table-sm table-borderless">
                     {{-- UPLOAD DOKUMEN --}}
                     <tr>
@@ -85,61 +86,76 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="width: 30%">
                             <span class="d-inline-block mt-2">Proposal Kegiatan</span>
                         </td>
                         <td>
                             <div class="form-group">
-                                <input accept=".pdf,.jpg,.jpeg,.png" required name="proposalKegiatan" type="file"
-                                    class="form-control-file">
+                                <label for="proposalKegiatan" class="btn btn-primary d-block w-50">
+                                    {{ $laporan->proposal_kegiatan ?? 'Upload File' }}
+                                </label>
+                                <input id="proposalKegiatan" accept=".pdf,.jpg,.jpeg,.png" required
+                                    name="proposalKegiatan" type="file" class="d-none">
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="width: 30%">
                             <span class="d-inline-block mt-2">Izin Tempat / Lokasi Kegiatan</span>
                         </td>
                         <td>
                             <div class="form-group">
-                                <input accept=".pdf,.jpg,.jpeg,.png" required name="izinTempat" type="file"
-                                    class="form-control-file">
+                                <label for="izinTempat" class="btn btn-primary d-block w-50">
+                                    {{ $laporan->izin_tempat ?? 'Upload File' }}
+                                </label>
+                                <input id="izinTempat" accept=".pdf,.jpg,.jpeg,.png" required name="izinTempat"
+                                    type="file" class="d-none">
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="width: 30%">
                             <span class="d-inline-block mt-2">Izin / rekomendasi dari instansi terkait</span>
                         </td>
                         <td>
                             <div class="form-group">
-                                <input accept=".pdf,.jpg,.jpeg,.png" required name="izinInstansi" type="file"
-                                    class="form-control-file">
+                                <label for="izinInstansi" class="btn btn-primary d-block w-50">
+                                    {{ $laporan->izin_instansi ?? 'Upload File' }}
+                                </label>
+                                <input id="izinInstansi" accept=".pdf,.jpg,.jpeg,.png" required name="izinInstansi"
+                                    type="file" class="d-none">
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="width: 30%">
                             <span class="d-inline-block mt-2">Fotokopi paspor (bila melibatkan WNA)</span>
                         </td>
                         <td>
                             <div class="form-group">
-                                <input accept=".pdf,.jpg,.jpeg,.png" name="fotokopiPaspor" type="file"
-                                    class="form-control-file">
+                                <label for="fotokopiPaspor" class="btn btn-primary d-block w-50">
+                                    {{ $laporan->fotokopi_paspor ?? 'Upload File' }}
+                                </label>
+                                <input id="fotokopiPaspor" accept=".pdf,.jpg,.jpeg,.png" name="fotokopiPaspor"
+                                    type="file" class="d-none">
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="width: 30%">
                             <span class="d-inline-block mt-2">Rekomendasi dari Polsek setempat</span>
                         </td>
                         <td>
                             <div class="form-group">
-                                <input accept=".pdf,.jpg,.jpeg,.png" required name="rekomendasiPolsek" type="file"
-                                    class="form-control-file">
+                                <label for="rekomendasiPolsek" class="btn btn-primary d-block w-50">
+                                    {{ $laporan->rekomendasi_polsek ?? 'Upload File' }}
+                                </label>
+                                <input id="rekomendasiPolsek" accept=".pdf,.jpg,.jpeg,.png" name="rekomendasiPolsek"
+                                    type="file" class="d-none">
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>

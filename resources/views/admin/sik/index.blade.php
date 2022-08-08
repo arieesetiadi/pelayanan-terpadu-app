@@ -135,18 +135,16 @@
                                             Download Rekomendasi Polsek
                                         </a>
                                     </div>
-                                    @if ($sik->status === null)
+                                    {{-- @if ($sik->status === null)
                                         <div class="modal-footer">
-                                            {{-- Tombol Setuju --}}
                                             <a href="/admin/sik/setuju/{{ $sik->id }}" type="button"
                                                 class="btn btn-success">Setuju</a>
 
-                                            {{-- Tombol Tolak --}}
                                             <button type="button" class="btn btn-danger"
                                                 data-bs-target="#tolak-modal-{{ $sik->id }}" data-bs-toggle="modal"
                                                 data-bs-dismiss="modal">Tolak</button>
                                         </div>
-                                    @endif
+                                    @endif --}}
                                 </div>
                             </div>
                         </div>

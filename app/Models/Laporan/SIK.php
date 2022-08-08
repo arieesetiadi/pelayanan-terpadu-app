@@ -29,9 +29,12 @@ class SIK extends Model
             'izin_tempat' => $izinTempat,
             'izin_instansi' => $izinInstansi,
             'fotokopi_paspor' => $fotokopiPaspor,
-            'rekomendasi_polsek' => $rekomendasiPolsek
+            'rekomendasi_polsek' => $rekomendasiPolsek,
+            'pelapor_id' => auth()->user()->id
         ]);
     }
+
+    
 
     public static function insertForm($data)
     {
