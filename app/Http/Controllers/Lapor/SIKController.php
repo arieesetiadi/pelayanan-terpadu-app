@@ -47,7 +47,8 @@ class SIKController extends Controller
         // Ubah status laporan menjadi false/ditolak
         $laporan = SIK::find($request->id);
         $laporan->update([
-            'status' => false
+            'status' => false,
+            'keterangan' => $request->alasanPenolakan
         ]);
 
         // Mengirim notifikasi ke pelapor
@@ -62,8 +63,6 @@ class SIKController extends Controller
             'dikirim_pada' => now()
         ];
 
-        session()->put("alasan-$laporan->id", $request->alasanPenolakan);
-
         Notifikasi::insert($toPelapor);
 
         // Redirect ke halaman admin SIK
@@ -72,12 +71,9 @@ class SIKController extends Controller
 
     public function upload(Request $data)
     {
-        // Insert nama file ke database
-        $laporan = SIK::insert($data->all());
-
         // Upload file terbaru saja
         if ($data->laporan_id) {
-            SIK::find($data->laporan_id)->update($data);
+            SIK::updateDokumen($data->all());
 
             // Kirim notifikasi setelah upload ulang
             $toAdmin = [
@@ -86,13 +82,16 @@ class SIKController extends Controller
                 'tipe' => 'sik',
                 'telah_dibaca' => false,
                 'dikirim_kepada' => 'admin',
-                'laporan_id' => $laporan->id,
+                'laporan_id' => $data->laporan_id,
                 'dikirim_pada' => now()
             ];
 
             Notifikasi::insert($toAdmin);
             return back()->with('success', 'Berhasil mengirim dokumen persyaratan terbaru');
         }
+
+        // Insert nama file ke database
+        $laporan = SIK::insert($data->all());
 
         // Kirim notifikasi
         $toAdmin = [

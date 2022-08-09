@@ -61,11 +61,11 @@
 
             {{-- Alert warning alasan --}}
             @if (isset($laporan))
-                @if (session("alasan-$laporan->id"))
+                @if ($laporan->keterangan != null || $laporan->keterangan != '')
                     <div class="alert alert-warning mt-4" role="alert">
                         <i class="fa-solid fa-triangle-exclamation text-dark"></i>
                         <span class="d-inline-block mx-2">
-                            {{ session("alasan-$laporan->id") }}
+                            {{ $laporan->keterangan }}
                         </span>
                     </div>
                 @endif
@@ -76,7 +76,9 @@
 
             <form action="/upload-sik" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="laporan_id" value="{{ $laporan->id }}">
+                @if (isset($laporan))
+                    <input type="hidden" name="laporan_id" value="{{ $laporan->id }}">
+                @endif
                 <table class="table table-sm table-borderless">
                     {{-- UPLOAD DOKUMEN --}}
                     <tr>
@@ -91,11 +93,13 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <label for="proposalKegiatan" class="btn btn-primary d-block w-50">
+                                <label id="labelProposalKegiatan" for="proposalKegiatan"
+                                    class="btn btn-primary d-block w-50">
                                     {{ $laporan->proposal_kegiatan ?? 'Upload File' }}
                                 </label>
-                                <input id="proposalKegiatan" accept=".pdf,.jpg,.jpeg,.png" required
-                                    name="proposalKegiatan" type="file" class="d-none">
+                                <input id="proposalKegiatan" accept=".pdf,.jpg,.jpeg,.png"
+                                    {{ isset($laporan) ? '' : 'required' }} name="proposalKegiatan" type="file"
+                                    class="d-none">
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -106,11 +110,12 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <label for="izinTempat" class="btn btn-primary d-block w-50">
+                                <label id="labelIzinTempat" for="izinTempat" class="btn btn-primary d-block w-50">
                                     {{ $laporan->izin_tempat ?? 'Upload File' }}
                                 </label>
-                                <input id="izinTempat" accept=".pdf,.jpg,.jpeg,.png" required name="izinTempat"
-                                    type="file" class="d-none">
+                                <input id="izinTempat" accept=".pdf,.jpg,.jpeg,.png"
+                                    {{ isset($laporan) ? '' : 'required' }} name="izinTempat" type="file"
+                                    class="d-none">
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -121,11 +126,12 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <label for="izinInstansi" class="btn btn-primary d-block w-50">
+                                <label id="labelIzinInstansi" for="izinInstansi" class="btn btn-primary d-block w-50">
                                     {{ $laporan->izin_instansi ?? 'Upload File' }}
                                 </label>
-                                <input id="izinInstansi" accept=".pdf,.jpg,.jpeg,.png" required name="izinInstansi"
-                                    type="file" class="d-none">
+                                <input id="izinInstansi" accept=".pdf,.jpg,.jpeg,.png"
+                                    {{ isset($laporan) ? '' : 'required' }} name="izinInstansi" type="file"
+                                    class="d-none">
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -136,7 +142,8 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <label for="fotokopiPaspor" class="btn btn-primary d-block w-50">
+                                <label id="labelFotokopiPaspor" for="fotokopiPaspor"
+                                    class="btn btn-primary d-block w-50">
                                     {{ $laporan->fotokopi_paspor ?? 'Upload File' }}
                                 </label>
                                 <input id="fotokopiPaspor" accept=".pdf,.jpg,.jpeg,.png" name="fotokopiPaspor"
@@ -151,11 +158,12 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <label for="rekomendasiPolsek" class="btn btn-primary d-block w-50">
+                                <label id="labelRekomendasiPolsek" for="rekomendasiPolsek"
+                                    class="btn btn-primary d-block w-50">
                                     {{ $laporan->rekomendasi_polsek ?? 'Upload File' }}
                                 </label>
                                 <input id="rekomendasiPolsek" accept=".pdf,.jpg,.jpeg,.png" name="rekomendasiPolsek"
-                                    type="file" class="d-none">
+                                    type="file" class="d-none" {{ isset($laporan) ? '' : 'required' }}>
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -231,6 +239,29 @@
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}">
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
+
+    <script>
+        // Proposal kegiatan
+        $('#proposalKegiatan').on('change', function() {
+            $('#labelProposalKegiatan').text(this.files[0].name);
+        });
+        // Izin tempat
+        $('#izinTempat').on('change', function() {
+            $('#labelIzinTempat').text(this.files[0].name);
+        });
+        // Izin instansi
+        $('#izinInstansi').on('change', function() {
+            $('#labelIzinInstansi').text(this.files[0].name);
+        });
+        // Fotokopi paspor
+        $('#fotokopiPaspor').on('change', function() {
+            $('#labelFotokopiPaspor').text(this.files[0].name);
+        });
+        // Rekomendasi polsek
+        $('#rekomendasiPolsek').on('change', function() {
+            $('#labelRekomendasiPolsek').text(this.files[0].name);
+        });
+    </script>
 </body>
 
 </html>

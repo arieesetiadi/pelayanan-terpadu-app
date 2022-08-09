@@ -34,7 +34,51 @@ class SIK extends Model
         ]);
     }
 
-    
+    public static function updateDokumen($laporan)
+    {
+        // Upload file laporan SIK
+        $id = $laporan['laporan_id'];
+        $path = 'assets-user/upload/';
+
+        $proposalKegiatan = uploadFile($laporan['proposalKegiatan'] ?? null, $path);
+        $izinTempat = uploadFile($laporan['izinTempat'] ?? null, $path);
+        $izinInstansi = uploadFile($laporan['izinInstansi'] ?? null, $path);
+        $fotokopiPaspor = uploadFile($laporan['fotokopiPaspor'] ?? null, $path);
+        $rekomendasiPolsek = uploadFile($laporan['rekomendasiPolsek'] ?? null, $path);
+
+        // Insert data laporan ke database
+        $laporanSIK = self::find($id);
+        if ($proposalKegiatan != '') {
+            $laporanSIK->update([
+                'proposal_kegiatan' => $proposalKegiatan,
+            ]);
+        }
+        if ($izinTempat != '') {
+            $laporanSIK->update([
+                'izin_tempat' => $izinTempat,
+            ]);
+        }
+        if ($izinInstansi != '') {
+            $laporanSIK->update([
+                'izin_instansi' => $izinInstansi,
+            ]);
+        }
+        if ($fotokopiPaspor != '') {
+            $laporanSIK->update([
+                'fotokopi_paspor' => $fotokopiPaspor,
+            ]);
+        }
+        if ($rekomendasiPolsek != '') {
+            $laporanSIK->update([
+                'rekomendasi_polsek' => $rekomendasiPolsek,
+            ]);
+        }
+
+        $laporanSIK->update([
+            'keterangan' => null,
+            'status' => null
+        ]);
+    }
 
     public static function insertForm($data)
     {
