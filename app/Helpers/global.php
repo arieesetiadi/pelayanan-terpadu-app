@@ -85,3 +85,15 @@ function getLaporanByNotif($notifikasi)
 
     return $laporan;
 }
+
+function getNamaPelaporByNotification($notifikasi)
+{
+    switch ($notifikasi->tipe) {
+        case 'sik':
+            $laporan = SIK::find($notifikasi->laporan_id);
+            return isset($laporan->nama_penanggung_jawab) ? $laporan->nama_penanggung_jawab : null;
+        case 'sktlk':
+            $laporan = SKTLK::find($notifikasi->laporan_id);
+            return $laporan->nama_lengkap;
+    }
+}

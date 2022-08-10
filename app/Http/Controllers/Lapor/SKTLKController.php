@@ -33,8 +33,8 @@ class SKTLKController extends Controller
         ];
 
         $toAdmin = [
-            'judul' => 'Laporan Masuk',
-            'isi' => 'Laporan perlu diproses.',
+            'judul' => 'Pelaporan SKTLK Masuk',
+            'isi' => 'Pelaporan perlu diproses.',
             'tipe' => 'sktlk',
             'telah_dibaca' => false,
             'dikirim_kepada' => 'admin',

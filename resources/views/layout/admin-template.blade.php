@@ -139,19 +139,30 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
                                 </div>
                                 <div class="header-notifications-list">
                                     @forelse (session('notifikasiAdmin') as $notifikasi)
-                                        <a target="_blank"
-                                            class="dropdown-item {{ $notifikasi->telah_dibaca == false ? 'bg-grey' : '' }}"
-                                            href="/notifikasi/cetak-pdf/{{ $notifikasi->id }}">
-                                            <div class="d-flex align-items-center">
-                                                <div class="ms-3 flex-grow-1">
-                                                    <h6 class="mb-0 dropdown-msg-user">{{ $notifikasi->judul }}</h6>
-                                                    <small
-                                                        class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">
-                                                        {{ $notifikasi->isi }}
-                                                    </small>
-                                                    <small>{{ humanTimeFormat($notifikasi->dikirim_pada) }}</small>
-                                                </div>
+                                        @php
+                                            $namaPelapor = getNamaPelaporByNotification($notifikasi);
+                                        @endphp
+                                        @if ($namaPelapor != null)
+                                            <a target="_blank" data-bs-toggle="tooltip" data-bs-placement="left"
+                                                title="Pelapor : {{ $namaPelapor }}"
+                                                class="dropdown-item {{ $notifikasi->telah_dibaca == false ? 'bg-grey' : '' }}"
+                                                href="/notifikasi/cetak-pdf/{{ $notifikasi->id }}">
+                                            @else
+                                                <a target="_blank"
+                                                    class="dropdown-item {{ $notifikasi->telah_dibaca == false ? 'bg-grey' : '' }}"
+                                                    href="/notifikasi/cetak-pdf/{{ $notifikasi->id }}">
+                                        @endif
+
+                                        <div class="d-flex align-items-center">
+                                            <div class="ms-3 flex-grow-1">
+                                                <h6 class="mb-0 dropdown-msg-user">{{ $notifikasi->judul }}</h6>
+                                                <small
+                                                    class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">
+                                                    {{ $notifikasi->isi }}
+                                                </small>
+                                                <small>{{ humanTimeFormat($notifikasi->dikirim_pada) }}</small>
                                             </div>
+                                        </div>
                                         </a>
                                     @empty
                                         <span class="d-inline-block text-center">Tidak ada notifikasi.</span>
