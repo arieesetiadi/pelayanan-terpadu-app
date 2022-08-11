@@ -76,7 +76,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="namaLengkap" type="text" class="form-control form-control-sm"
-                                    placeholder="Nama lengkap" style="height: 40px" required>
+                                    placeholder="Nama lengkap" style="height: 40px"
+                                    value="{{ old('namaLengkap') ?? '' }}" required>
                             </div>
                         </td>
                     </tr>
@@ -90,7 +91,7 @@
                             <div class="form-group">
                                 <input name="tempatLahir" type="text" class="form-control d-inline-block float-left"
                                     placeholder="Tempat lahir" style="height: 40px; width: 48%; margin-right: 2%"
-                                    required>
+                                    value="{{ old('tempatLahir') ?? '' }}" required>
                                 <input name="tanggalLahir" type="date"
                                     class="form-control w-50 d-inline-block float-left" style="height: 40px" required>
                             </div>
@@ -105,7 +106,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="pekerjaan" type="text" class="form-control form-control-sm"
-                                    placeholder="Pekerjaan" style="height: 40px" required>
+                                    placeholder="Pekerjaan" style="height: 40px" value="{{ old('pekerjaan') ?? '' }}"
+                                    required>
                             </div>
                         </td>
                     </tr>
@@ -118,8 +120,19 @@
                         <td>
                             <select name="kewarganegaraan" class="custom-select" style="height: 40px" required>
                                 <option selected hidden>Pilih kewarganegaraan</option>
-                                <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
-                                <option value="Warga Negara Asing">Warga Negara Asing</option>
+                                @if (old('kewarganegaraan'))
+                                    @if (old('kewarganegaraan') == 'Warga Negara Indonesia')
+                                        <option selected value="Warga Negara Indonesia">Warga Negara Indonesia</option>
+                                        <option value="Warga Negara Asing">Warga Negara Asing</option>
+                                    @elseif(old('kewarganegaraan') == 'Warga Negara Asing')
+                                        <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
+                                        <option selected value="Warga Negara Asing">Warga Negara Asing</option>
+                                    @endif
+                                @else
+                                    <option selected hidden>Pilih kewarganegaraan</option>
+                                    <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
+                                    <option value="Warga Negara Asing">Warga Negara Asing</option>
+                                @endif
                             </select>
                         </td>
                     </tr>
@@ -131,7 +144,7 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3" required></textarea>
+                                <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3" required>{{ old('alamat') ?? '' }}</textarea>
                             </div>
                         </td>
                     </tr>
@@ -144,7 +157,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="telepon" type="text" class="form-control form-control-sm"
-                                    placeholder="Nomor handphone" style="height: 40px" required>
+                                    placeholder="Nomor handphone" style="height: 40px"
+                                    value="{{ old('telepon') ?? '' }}" required>
                             </div>
                         </td>
                     </tr>
@@ -161,7 +175,7 @@
                         </td>
                         <td>
                             <input name="tanggalKejadian" type="date" class="form-control" style="height: 40px"
-                                required>
+                                value="{{ old('tanggalKejadian') ?? '' }}" required>
                         </td>
                     </tr>
 
@@ -173,7 +187,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="lokasiKejadian" type="text" class="form-control form-control-sm"
-                                    placeholder="Lokasi kejadian" style="height: 40px" required>
+                                    placeholder="Lokasi kejadian" style="height: 40px"
+                                    value="{{ old('lokasiKejadian') ?? '' }}" required>
                             </div>
                         </td>
                     </tr>
@@ -189,6 +204,16 @@
                             </div>
                         </td>
                     </tr>
+
+                    {{-- Surat pernyataan --}}
+                    <tr>
+                        <td class="pb-4">
+                            <button name="downloadPernyataan" value="downloadPernyataan" type="submit"
+                                class="btn btn-primary">
+                                Surat Pernyataan Keaslian Dokumen
+                            </button>
+                        </td>
+                    </tr>
                 </table>
 
 
@@ -202,7 +227,7 @@
                         <td>
                             <div class="form-group">
                                 <input name="fotoKtp" type="file" class="form-control-file"
-                                    accept=".jpg,.jpeg,.png" required>
+                                    accept=".jpg,.jpeg,.png" {{ session('dokumenDownloaded') ? 'required' : '' }}>
                                 <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -214,7 +239,7 @@
                         <td>
                             <div class="form-group">
                                 <input name="fotoPelapor" type="file" class="form-control-file"
-                                    accept=".jpg,.jpeg,.png" required>
+                                    accept=".jpg,.jpeg,.png" {{ session('dokumenDownloaded') ? 'required' : '' }}>
                                 <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -226,7 +251,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="rekomendasiInstansi" type="file" class="form-control-file"
-                                    accept=".pdf,.jpg,.jpeg,.png" required>
+                                    accept=".pdf,.jpg,.jpeg,.png"
+                                    {{ session('dokumenDownloaded') ? 'required' : '' }}>
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
