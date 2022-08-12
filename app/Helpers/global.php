@@ -52,6 +52,7 @@ function getSKTLKDocumentById($id)
     $document['fotoKTP'] = $sktlk->foto_ktp;
     $document['fotoPelapor'] = $sktlk->foto_pelapor;
     $document['rekomendasiInstansi'] = $sktlk->rekomendasi_instansi;
+    $document['pernyataanKeaslian'] = $sktlk->pernyataan_keaslian;
     $document['dokumenTambahan'] = $sktlk->dokumen_tambahan;
 
     return $document;

@@ -70,6 +70,7 @@ Route::middleware('auth.pelapor')->group(function () {
     Route::view('/form/lapor-sik', 'form.lapor-sik');
     Route::post('/upload-sik', [SIKController::class, 'upload']);
     Route::post('/upload-form-sik', [SIKController::class, 'uploadForm']);
+    Route::post('/download-pernyataan-sik', [SIKController::class, 'downloadPernyataan']);
 
     // Route Profile Pelapor
     Route::view('/profile/pelapor', 'profile-pelapor');

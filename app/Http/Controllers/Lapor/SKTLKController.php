@@ -30,6 +30,7 @@ class SKTLKController extends Controller
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
             'laporan_id' => $laporan->id,
+            'pelapor_id' => $laporan->pelapor_id,
             'dikirim_pada' => now()
         ];
 
@@ -90,7 +91,7 @@ class SKTLKController extends Controller
             'telepon' => $request->pernyataanTelepon,
         ];
 
-        $pdf = PDF::loadview('pdf.dokumen-pernyataan-keaslian', $data);
-        return $pdf->stream('dokumen-pernyataan-keaslian.pdf');
+        $pdf = PDF::loadview('pdf.pernyataan-keaslian-sktlk', $data);
+        return $pdf->stream('pernyataan-keaslian.pdf');
     }
 }

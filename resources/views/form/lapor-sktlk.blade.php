@@ -208,14 +208,13 @@
                     {{-- Download Surat pernyataan --}}
                     <tr>
                         <td class="pb-4">
-                            <a role="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#modalDownloadPernyataan">
+                            <a id="btnDownloadPernyataan" role="button" class="btn btn-primary"
+                                data-bs-toggle="modal" data-bs-target="#modalDownloadPernyataan">
                                 Surat Pernyataan Keaslian Dokumen
                             </a>
                         </td>
                     </tr>
                 </table>
-
 
                 <h1 style="font-size: 24px">Upload Data dan Lokasi Pengambilan :</h1>
                 <hr>
@@ -227,7 +226,7 @@
                         <td>
                             <div class="form-group">
                                 <input name="fotoKtp" type="file" class="form-control-file"
-                                    accept=".jpg,.jpeg,.png" {{ session('dokumenDownloaded') ? 'required' : '' }}>
+                                    accept=".jpg,.jpeg,.png" required>
                                 <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -239,7 +238,7 @@
                         <td>
                             <div class="form-group">
                                 <input name="fotoPelapor" type="file" class="form-control-file"
-                                    accept=".jpg,.jpeg,.png" {{ session('dokumenDownloaded') ? 'required' : '' }}>
+                                    accept=".jpg,.jpeg,.png" required>
                                 <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -251,8 +250,7 @@
                         <td>
                             <div class="form-group">
                                 <input name="rekomendasiInstansi" type="file" class="form-control-file"
-                                    accept=".pdf,.jpg,.jpeg,.png"
-                                    {{ session('dokumenDownloaded') ? 'required' : '' }}>
+                                    accept=".pdf,.jpg,.jpeg,.png" required>
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -265,7 +263,7 @@
                         <td>
                             <div class="form-group mt-3">
                                 <input name="pernyataanKeaslian" type="file" class="form-control-file"
-                                    accept=".pdf,.jpg,.jpeg,.png">
+                                    accept=".pdf,.jpg,.jpeg,.png" required>
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>

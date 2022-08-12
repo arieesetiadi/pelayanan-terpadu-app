@@ -21,7 +21,7 @@ class SKTLK extends Model
         $fotoKtp = uploadFile($laporan['fotoKtp'], $path);
         $fotoPelapor = uploadFile($laporan['fotoPelapor'], $path);
         $rekomendasiInstansi = uploadFile($laporan['rekomendasiInstansi'], $path);
-
+        $pernyataanKeaslian = uploadFile($laporan['pernyataanKeaslian'], $path);
         $dokumenTambahan = uploadFile($laporan['dokumenTambahan'] ?? null, $path);
 
         // Insert data laporan ke database
@@ -40,7 +40,8 @@ class SKTLK extends Model
             'foto_pelapor' => $fotoPelapor,
             'rekomendasi_instansi' => $rekomendasiInstansi,
             'dokumen_tambahan' => $dokumenTambahan,
-            'pelapor_id' => session('pelapor')->id
+            'pernyataan_keaslian' => $pernyataanKeaslian,
+            'pelapor_id' => auth()->user()->id
         ]);
     }
 }

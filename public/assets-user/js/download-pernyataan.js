@@ -32,6 +32,12 @@ $(function () {
         $("input[name=pernyataanTelepon]").val(telepon);
     });
 
+    // Download button
+    $('#btnDownloadPernyataan').addClass('disabled');
+    $('textarea[name=suratHilang]').on('change', function () {
+        $('#btnDownloadPernyataan').removeClass('disabled');
+    })
+
     function assignDefaultValue() {
         $("input[name=pernyataanNamaLengkap]").val(
             $("input[name=namaLengkap]").val()

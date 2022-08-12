@@ -33,6 +33,7 @@ class SIKController extends Controller
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
             'laporan_id' => $laporan->id,
+            'pelapor_id' => $laporan->pelapor_id,
             'dikirim_pada' => now()
         ];
 
@@ -127,5 +128,21 @@ class SIKController extends Controller
 
         // Redirect ke beranda
         return redirect()->to('/pengaduan-masyarakat/sik')->with('success', 'Data Izin Keramaian berhasil dikirim');
+    }
+
+    public function downloadPernyataan(Request $request)
+    {
+        dd($request->all());
+        // Download pernyataan keaslian dokumen
+        $data = [
+            'namaLengkap' => $request->pernyataanNamaLengkap,
+            'tempatLahir' => $request->pernyataanTempatLahir,
+            'tanggalLahir' => $request->pernyataanTanggalLahir,
+            'alamat' => $request->pernyataanAlamat,
+            'telepon' => $request->pernyataanTelepon,
+        ];
+
+        $pdf = PDF::loadview('pdf.pernyataan-keaslian-sik', $data);
+        return $pdf->stream('pernyataan-keaslian.pdf');
     }
 }

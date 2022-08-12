@@ -64,7 +64,7 @@
             <tr>
                 <td>Tempat dan Tanggal Lahir</td>
                 <td>:</td>
-                <td>{{ $tempatLahir }}, {{ $tanggalLahir }}</td>
+                <td>{{ $tempatLahir }}, {{ dateFormat($tanggalLahir, false) }}</td>
             </tr>
             <tr>
                 <td>Alamat</td>
@@ -80,14 +80,16 @@
 
         <br>
 
-        <p>
+        <p style="text-indent: 30px">
             Dengan ini menyatakan bahwa data dan dokumen yang saya lampirkan dalam persyaratan pembuatan Surat
-            Keterangan Tanda Lapor Kehilangan adalah benar dan sah. Apabila ternyata
+            Izin Keramaian adalah benar dan sah. Apabila ternyata
             informasi yang Saya berikan terbukti tidak pernah, maka saya bersedia menerima sanksi sesuai ketentuan
             dan peraturan yang berlaku.
+        </p><br>
+        <p style="text-indent: 30px">
             Demikian surat pernyataan ini Saya buat dengan sebenarnya dan apabila di kemudian hari ternyata
             informasi dan keterangan yang Saya berikan pada permohonan dan lampiran ini tidak benar adanya, maka
-            Saya menyatakan bersedia dibatalkan Surat Keterangan Tanda Lapor Kehilangan yang telah diberikan dan
+            Saya menyatakan bersedia dibatalkan Surat Izin Keramaian yang telah diberikan dan
             bersedia dituntut sesuai dengan ketentuan peraturan perundang-undangan yang berlaku.
         </p>
 

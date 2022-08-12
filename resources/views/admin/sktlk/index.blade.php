@@ -109,7 +109,8 @@
                                         @php
                                             $sktlkDocument = getSKTLKDocumentById($sktlk->id);
                                         @endphp
-                                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                        <div id="carouselExampleControls-{{ $sktlk->id }}" class="carousel slide"
+                                            data-bs-ride="carousel">
                                             {{-- Slideshow gambar --}}
                                             <div class="carousel-inner">
                                                 {{-- Gambar foto KTP --}}
@@ -125,12 +126,14 @@
                                                 </div>
                                             </div>
                                             <button class="carousel-control-prev" type="button"
-                                                data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                data-bs-target="#carouselExampleControls-{{ $sktlk->id }}"
+                                                data-bs-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Previous</span>
                                             </button>
                                             <button class="carousel-control-next" type="button"
-                                                data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                data-bs-target="#carouselExampleControls-{{ $sktlk->id }}"
+                                                data-bs-slide="next">
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Next</span>
                                             </button>
@@ -143,6 +146,16 @@
                                             <i class="bi bi-arrow-down-circle-fill"></i>
                                             Rekomendasi Instansi
                                         </a>
+
+                                        {{-- Pernyataan Keaslian --}}
+                                        @if ($sktlkDocument['pernyataanKeaslian'])
+                                            <a target="_blank"
+                                                href="{{ asset('assets-user/upload/' . $sktlkDocument['pernyataanKeaslian']) }}"
+                                                class="d-block btn my-1">
+                                                <i class="bi bi-arrow-down-circle-fill"></i>
+                                                Pernyataan Keaslian
+                                            </a>
+                                        @endif
 
                                         {{-- Dokumen Tambahan --}}
                                         @if ($sktlkDocument['dokumenTambahan'])

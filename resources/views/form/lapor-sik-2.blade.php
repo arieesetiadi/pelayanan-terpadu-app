@@ -200,12 +200,52 @@
                     </tr>
 
                     <tr>
+                        <td class="pb-4">
+                            <a id="btnDownloadPernyataan" role="button" class="btn btn-primary"
+                                data-bs-toggle="modal" data-bs-target="#modalDownloadPernyataan">
+                                Surat Pernyataan Keaslian Dokumen
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
                         <td>
                             <button type="submit" class="btn btn-primary">Kirim Data</button>
                         </td>
                     </tr>
                 </table>
             </form>
+        </div>
+
+        {{-- Modal untuk download Surat Pernyataan Keaslian Dokumen --}}
+        <div class="modal fade" id="modalDownloadPernyataan" tabindex="-1"
+            aria-labelledby="modalDownloadPernyataanLabel" aria-hidden="true" role="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/download-pernyataan-sik" method="POST">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalDownloadPernyataanLabel">Download Surat Pernyataan
+                                Keaslian</h5>
+                        </div>
+                        <div class="modal-body">
+                            {{-- Hidden Data --}}
+                            {{-- <input name="pernyataanNamaLengkap" type="hidden">
+                            <input name="pernyataanTempatLahir" type="hidden">
+                            <input name="pernyataanTanggalLahir" type="hidden">
+                            <textarea name="pernyataanAlamat" class="d-none"></textarea>
+                            <input name="pernyataanTelepon" type="hidden"> --}}
+
+                            <p>Tekan "Download" untuk mengunduh berkas/surat pernyataan keaslian SKTLK</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button formtarget="_blank" type="submit" type="button"
+                                class="btn btn-primary">Download</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
