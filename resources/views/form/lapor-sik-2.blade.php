@@ -199,47 +199,9 @@
                         </td>
                     </tr>
 
-                    {{-- <tr>
-                        <td colspan="2">
-                            <div class="custom-control custom-checkbox mt-4 mb-2">
-                                <input name="persetujuan" type="checkbox" class="custom-control-input" id="persetujuan">
-                                <label class="custom-control-label" for="persetujuan">
-                                    Dengan mengklik tombol ini berarti anda telah setuju bahwa data yang anda masukkan sudah
-                                    benar.
-                                </label>
-                            </div>
-                        </td>
-                    </tr> --}}
-
                     <tr>
                         <td>
                             <button type="submit" class="btn btn-primary">Kirim Data</button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="successModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                <i class="fa-solid fa-circle-check text-success mx-2 fa-2x"></i>
-                                                Berhasil
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Anda Telah Berhasil Mengirim Laporan</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Tutup</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </td>
                     </tr>
                 </table>

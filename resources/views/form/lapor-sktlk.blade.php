@@ -205,13 +205,13 @@
                         </td>
                     </tr>
 
-                    {{-- Surat pernyataan --}}
+                    {{-- Download Surat pernyataan --}}
                     <tr>
                         <td class="pb-4">
-                            <button name="downloadPernyataan" value="downloadPernyataan" type="submit"
-                                class="btn btn-primary">
+                            <a role="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#modalDownloadPernyataan">
                                 Surat Pernyataan Keaslian Dokumen
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 </table>
@@ -257,13 +257,14 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
+
+                    <tr class="border-top">
                         <td>
-                            <span class="d-inline-block mt-2">Dokumen tambahan (bila diperlukan)</span>
+                            <span class="d-inline-block mt-4">Dokumen Pernyataan Keaslian</span>
                         </td>
                         <td>
-                            <div class="form-group">
-                                <input name="dokumenTambahan" type="file" class="form-control-file"
+                            <div class="form-group mt-3">
+                                <input name="pernyataanKeaslian" type="file" class="form-control-file"
                                     accept=".pdf,.jpg,.jpeg,.png">
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
@@ -271,58 +272,44 @@
                     </tr>
 
                     <tr>
-                        <td>
-                        </td>
-                        <td>
-                            {{-- <div class="custom-control custom-checkbox">
-                                <input name="persetujuan" type="checkbox" class="custom-control-input"
-                                    id="persetujuan">
-                                <label class="custom-control-label" for="persetujuan">
-                                    Dengan mengklik tombol ini berarti anda telah setuju bahwa data yang anda masukkan
-                                    sudah
-                                    benar.
-                                </label>
-                            </div> --}}
-                        </td>
-                    </tr>
-
-                    <tr>
                         <td></td>
                         <td>
                             <button type="submit" class="btn btn-primary">Kirim</button>
-                            {{-- <button type="submit" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#successModal">Kirim</button> --}}
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="successModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                <i class="fa-solid fa-circle-check text-success mx-2 fa-2x"></i>
-                                                Berhasil
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Anda Telah Berhasil Mengirim Laporan</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Tutup</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </td>
                     </tr>
                 </table>
             </form>
+        </div>
 
+        {{-- Modal untuk download Surat Pernyataan Keaslian Dokumen --}}
+        <div class="modal fade" id="modalDownloadPernyataan" tabindex="-1"
+            aria-labelledby="modalDownloadPernyataanLabel" aria-hidden="true" role="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/download-pernyataan-sktlk" method="POST">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalDownloadPernyataanLabel">Download Surat Pernyataan
+                                Keaslian</h5>
+                        </div>
+                        <div class="modal-body">
+                            {{-- Hidden Data --}}
+                            <input name="pernyataanNamaLengkap" type="hidden">
+                            <input name="pernyataanTempatLahir" type="hidden">
+                            <input name="pernyataanTanggalLahir" type="hidden">
+                            <textarea name="pernyataanAlamat" class="d-none"></textarea>
+                            <input name="pernyataanTelepon" type="hidden">
+
+                            <p>Tekan "Download" untuk mengunduh berkas/surat pernyataan keaslian SKTLK</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button formtarget="_blank" type="submit" type="button"
+                                class="btn btn-primary">Download</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -339,13 +326,13 @@
     </script>
 
     {{-- Bootstrap bundle --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
-    </script>
-
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script> --}}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+    </script>
 
     <script src="{{ asset('assets-user/js/wow.min.js') }}"></script>
     <script src="{{ asset('assets-user/js/main.js') }}"></script>
@@ -373,6 +360,8 @@
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}">
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
+
+    <script src="{{ asset('assets-user/js/download-pernyataan.js') }}"></script>
 </body>
 
 </html>

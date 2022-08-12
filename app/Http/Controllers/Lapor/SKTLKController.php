@@ -20,20 +20,6 @@ class SKTLKController extends Controller
 
     public function upload(Request $request)
     {
-        // Download pernyataan keaslian dokumen
-        if (isset($request->downloadPernyataan)) {
-            $data = [
-                'namaLengkap' => $request->namaLengkap,
-                'tempatLahir' => $request->tempatLahir,
-                'tanggalLahir' => $request->tanggalLahir,
-                'alamat' => $request->alamat,
-                'telepon' => $request->telepon,
-            ];
-
-            $pdf = PDF::loadview('pdf.dokumen-pernyataan-keaslian', $data);
-            return $pdf->stream('dokumen-pernyataan-keaslian.pdf');
-            return back()->withInput()->with('dokumenDownloaded', true);
-        }
         // Proses upload data ke database
         $laporan = SKTLK::insert($request->all());
 
@@ -91,5 +77,20 @@ class SKTLKController extends Controller
         Notifikasi::insert($toPelapor);
 
         return back()->with('success', 'Dokumen persetujuan berhasil diunggah.');
+    }
+
+    public function downloadPernyataan(Request $request)
+    {
+        // Download pernyataan keaslian dokumen
+        $data = [
+            'namaLengkap' => $request->pernyataanNamaLengkap,
+            'tempatLahir' => $request->pernyataanTempatLahir,
+            'tanggalLahir' => $request->pernyataanTanggalLahir,
+            'alamat' => $request->pernyataanAlamat,
+            'telepon' => $request->pernyataanTelepon,
+        ];
+
+        $pdf = PDF::loadview('pdf.dokumen-pernyataan-keaslian', $data);
+        return $pdf->stream('dokumen-pernyataan-keaslian.pdf');
     }
 }

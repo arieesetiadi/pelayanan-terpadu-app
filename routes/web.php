@@ -60,10 +60,11 @@ Route::view('/tindak-kriminal/sp2hp', 'tindak-kriminal.sp2hp');
 Route::view('/tindak-kriminal/sttlp', 'tindak-kriminal.sttlp');
 
 // Auth Pelapor
-Route::middleware('auth')->group(function () {
+Route::middleware('auth.pelapor')->group(function () {
     // Route ke form SKTLK
     Route::view('/form/lapor-sktlk', 'form.lapor-sktlk');
     Route::post('/upload-sktlk', [SKTLKController::class, 'upload']);
+    Route::post('/download-pernyataan-sktlk', [SKTLKController::class, 'downloadPernyataan']);
 
     // Route ke form SIK
     Route::view('/form/lapor-sik', 'form.lapor-sik');

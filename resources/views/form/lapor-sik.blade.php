@@ -169,19 +169,6 @@
                         </td>
                     </tr>
 
-                    {{-- <tr>
-                        <td colspan="2">
-                            <div class="custom-control custom-checkbox mt-4 mb-2">
-                                <input name="persetujuan" type="checkbox" class="custom-control-input" id="persetujuan">
-                                <label class="custom-control-label" for="persetujuan">
-                                    Dengan mengklik tombol ini berarti anda telah setuju bahwa data yang anda masukkan
-                                    sudah
-                                    benar.
-                                </label>
-                            </div>
-                        </td>
-                    </tr> --}}
-
                     <tr>
                         <td>
                             <button type="submit" class="btn btn-primary">Kirim Data</button>
