@@ -82,11 +82,16 @@ class SIK extends Model
 
     public static function insertForm($data)
     {
+        // Upload file pernyataan keaslian
+        $path = 'assets-user/upload/';
+        $pernyataanKeaslian = uploadFile($data['pernyataanKeaslian'], $path);
+
         return self::find($data['id'])->update([
             'nama_organisasi' => $data['namaOrganisasi'],
             'nama_penanggung_jawab' => $data['namaPenanggungJawab'],
             'pekerjaan' => $data['pekerjaan'],
             'alamat' => $data['alamat'],
+            'telepon' => $data['telepon'],
             'bentuk_kegiatan' => $data['bentukKegiatan'],
             'tanggal_kegiatan' => $data['tanggalKegiatan'],
             'waktu_mulai' => $data['waktuMulai'],
@@ -94,6 +99,7 @@ class SIK extends Model
             'lokasi_kegiatan' => $data['lokasiKegiatan'],
             'dalam_rangka' => $data['dalamRangka'],
             'jumlah_undangan' => $data['jumlahUndangan'],
+            'pernyataan_keaslian' => $pernyataanKeaslian
         ]);
     }
 }

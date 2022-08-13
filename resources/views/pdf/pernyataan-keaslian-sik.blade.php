@@ -57,23 +57,23 @@
 
         <table>
             <tr>
-                <td>Nama</td>
-                <td>:</td>
-                <td>{{ $namaLengkap }}</td>
+                <td style="width: 45%">Nama Organisasi</td>
+                <td style="width: 5%">:</td>
+                <td>{{ $namaOrganisasi }}</td>
             </tr>
             <tr>
-                <td>Tempat dan Tanggal Lahir</td>
-                <td>:</td>
-                <td>{{ $tempatLahir }}, {{ dateFormat($tanggalLahir, false) }}</td>
+                <td style="width: 45%">Nama Penanggung Jawab</td>
+                <td style="width: 5%">:</td>
+                <td>{{ $namaPenanggungJawab }}</td>
             </tr>
             <tr>
-                <td>Alamat</td>
-                <td>:</td>
+                <td style="width: 45%">Alamat</td>
+                <td style="width: 5%">:</td>
                 <td>{{ $alamat }}</td>
             </tr>
             <tr>
-                <td>Nomor HP</td>
-                <td>:</td>
+                <td style="width: 45%">Nomor HP</td>
+                <td style="width: 5%">:</td>
                 <td>{{ $telepon }}</td>
             </tr>
         </table>
@@ -110,7 +110,7 @@
                 <hr style="width: 50%">
                 <span style="display: block; text-align: center;
                 ">
-                    {{ $namaLengkap }}
+                    {{ $namaPenanggungJawab }}
                 </span>
             </div>
         </div>

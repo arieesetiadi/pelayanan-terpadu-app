@@ -1,7 +1,6 @@
-// === Download surat pernyataan keaslian ===
 $(function () {
-    assignDefaultValue();
-
+    // === Download surat pernyataan keaslian SKTLK ===
+    assignDefaultValueSKTLK();
     // Assign namaLengkap ke dokumen
     $("input[name=namaLengkap]").on("input", function () {
         namaLengkap = $(this).val();
@@ -38,7 +37,7 @@ $(function () {
         $('#btnDownloadPernyataan').removeClass('disabled');
     })
 
-    function assignDefaultValue() {
+    function assignDefaultValueSKTLK() {
         $("input[name=pernyataanNamaLengkap]").val(
             $("input[name=namaLengkap]").val()
         );
@@ -53,4 +52,34 @@ $(function () {
         );
         $("input[name=pernyataanTelepon]").val($("input[name=telepon]").val());
     }
+
+    // Download dokumen keaslian SIK
+    $('#btnDownloadPernyataanSIK').addClass('disabled');
+    $('input[name=jumlahUndangan]').on('change', function () {
+        $('#btnDownloadPernyataanSIK').removeClass('disabled');
+    })
+
+    // Assign namaOrganisasi ke dokumen
+    $("input[name=namaOrganisasi]").on("input", function () {
+        namaOrganisasi = $(this).val();
+        $("input[name=SIKNamaOrganisasi]").val(namaOrganisasi);
+    });
+
+    // Assign namaPenanggungJawab ke dokumen
+    $("input[name=namaPenanggungJawab]").on("input", function () {
+        namaPenanggungJawab = $(this).val();
+        $("input[name=SIKNamaPenanggungJawab]").val(namaPenanggungJawab);
+    });
+
+    // Assign alamat ke dokumen
+    $("textarea[name=alamat]").on("input", function () {
+        alamat = $(this).val();
+        $("textarea[name=SIKAlamat]").val(alamat);
+    });
+
+    // Assign telepon ke dokumen
+    $("input[name=telepon]").on("input", function () {
+        telepon = $(this).val();
+        $("input[name=SIKTelepon]").val(telepon);
+    });
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Lapor;
 
+use PDF;
 use App\Models\Notifikasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -132,14 +133,12 @@ class SIKController extends Controller
 
     public function downloadPernyataan(Request $request)
     {
-        dd($request->all());
         // Download pernyataan keaslian dokumen
         $data = [
-            'namaLengkap' => $request->pernyataanNamaLengkap,
-            'tempatLahir' => $request->pernyataanTempatLahir,
-            'tanggalLahir' => $request->pernyataanTanggalLahir,
-            'alamat' => $request->pernyataanAlamat,
-            'telepon' => $request->pernyataanTelepon,
+            'namaOrganisasi' => $request->SIKNamaOrganisasi,
+            'namaPenanggungJawab' => $request->SIKNamaPenanggungJawab,
+            'alamat' => $request->SIKAlamat,
+            'telepon' => $request->SIKTelepon,
         ];
 
         $pdf = PDF::loadview('pdf.pernyataan-keaslian-sik', $data);
