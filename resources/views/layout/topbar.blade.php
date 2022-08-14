@@ -102,10 +102,6 @@ if (auth()->user()) {
                                                             notifikasi.</span>
                                                     </center>
                                                 @endif
-
-                                                {{-- <a href="#" class="d-block notification">Notifikasi 2</a>
-                                                <a href="#" class="d-block notification-readed">Notifikasi 3</a>
-                                                <a href="#" class="d-block notification-readed">Notifikasi 4</a> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +119,7 @@ if (auth()->user()) {
                                         @endif
 
                                         <div id="profile-box" class="d-none position-absolute mt-4"
-                                            style="z-index: 9999; left: -150px;">
+                                            style="z-index: 9999; left: -200px;">
                                             <div class="card">
                                                 <div class="card-body" style="width: 300px">
                                                     <a href="/profile/pelapor"
@@ -133,14 +129,15 @@ if (auth()->user()) {
                                                 </div>
                                             </div>
                                         </div>
+                                    @else
+                                        <div class="flat-appointment btn-linear hv-linear-gradient">
+                                            <a href="/login" class="font-style linear-color border-corner">Login</a>
+                                        </div>
                                     @endif
                                 </li>
                             </ul>
                         </nav>
                     </div>
-                    {{-- <div class="flat-appointment btn-linear hv-linear-gradient">
-                        <a href="/daftar" class="font-style linear-color border-corner">Daftar</a>
-                    </div> --}}
                 </div>
             </div>
         </div>

@@ -55,8 +55,19 @@ $(function () {
 
     // Download dokumen keaslian SIK
     $('#btnDownloadPernyataanSIK').addClass('disabled');
+    $('button[name=kirim]').addClass('disabled');
+
+    if ($('input[name=jumlahUndangan]').val() != '') {
+        $('#btnDownloadPernyataanSIK').removeClass('disabled');
+    }
     $('input[name=jumlahUndangan]').on('change', function () {
         $('#btnDownloadPernyataanSIK').removeClass('disabled');
+    })
+    $('input[name=pernyataanKeaslian]').on('change', function () {
+        $('button[name=kirim]').removeClass('disabled');
+    })
+    $('button[name=simpanSementara]').on('click', function () {
+        $('input[name=pernyataanKeaslian]').prop('required', false)
     })
 
     // Assign namaOrganisasi ke dokumen

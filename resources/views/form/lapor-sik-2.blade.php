@@ -49,6 +49,16 @@
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
 
+            {{-- Alert success --}}
+            @if (session('success'))
+                <div class="alert alert-success mt-4" role="alert">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span class="d-inline-block mx-2">
+                        {{ session('success') }}
+                    </span>
+                </div>
+            @endif
+
             <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
                 data-aos-duration="500">Form Izin Keramaian </h1>
             {{-- Form Data Diri --}}
@@ -67,7 +77,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="namaOrganisasi" type="text" class="form-control form-control-sm"
-                                    placeholder="Nama Organisasi" style="height: 40px">
+                                    placeholder="Nama Organisasi" style="height: 40px"
+                                    value="{{ $laporan->nama_organisasi != '' ? $laporan->nama_organisasi : '' }}">
                             </div>
                         </td>
                     </tr>
@@ -80,7 +91,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="namaPenanggungJawab" type="text" class="form-control form-control-sm"
-                                    placeholder="Nama Penanggung Jawab" style="height: 40px">
+                                    placeholder="Nama Penanggung Jawab" style="height: 40px"
+                                    value="{{ $laporan->nama_penanggung_jawab != '' ? $laporan->nama_penanggung_jawab : '' }}">
                             </div>
                         </td>
                     </tr>
@@ -93,7 +105,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="pekerjaan" type="text" class="form-control form-control-sm"
-                                    placeholder="Pekerjaan Penanggung Jawab" style="height: 40px">
+                                    placeholder="Pekerjaan Penanggung Jawab" style="height: 40px"
+                                    value="{{ $laporan->pekerjaan != '' ? $laporan->pekerjaan : '' }}">
                             </div>
                         </td>
                     </tr>
@@ -105,7 +118,7 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <textarea name="alamat" placeholder="Alamat Penanggung Jawab" class="form-control" rows="3"></textarea>
+                                <textarea name="alamat" placeholder="Alamat Penanggung Jawab" class="form-control" rows="3">{{ $laporan->alamat != '' ? $laporan->alamat : '' }}</textarea>
                             </div>
                         </td>
                     </tr>
@@ -118,7 +131,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="telepon" type="text" class="form-control form-control-sm"
-                                    placeholder="Nomor telepon" style="height: 40px">
+                                    placeholder="Nomor telepon" style="height: 40px"
+                                    value="{{ $laporan->telepon != '' ? $laporan->telepon : '' }}">
                             </div>
                         </td>
                     </tr>
@@ -130,7 +144,7 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <textarea name="bentukKegiatan" placeholder="Bentuk / Macam Kegiatan" class="form-control" rows="3"></textarea>
+                                <textarea name="bentukKegiatan" placeholder="Bentuk / Macam Kegiatan" class="form-control" rows="3">{{ $laporan->bentuk_kegiatan != '' ? $laporan->bentuk_kegiatan : '' }}</textarea>
                             </div>
                         </td>
                     </tr>
@@ -142,7 +156,9 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input name="tanggalKegiatan" type="date" class="form-control" style="height: 40px">
+                                <input name="tanggalKegiatan" type="date" class="form-control"
+                                    style="height: 40px"
+                                    value="{{ $laporan->tanggal_kegiatan != '' ? $laporan->tanggal_kegiatan : '' }}">
                             </div>
                         </td>
                     </tr>
@@ -157,7 +173,8 @@
                                 <div class="col-5">
                                     <div class="form-group">
                                         <input name="waktuMulai" type="time" class="form-control"
-                                            style="height: 40px">
+                                            style="height: 40px"
+                                            value="{{ $laporan->waktu_mulai != '' ? $laporan->waktu_mulai : '' }}">
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -166,7 +183,8 @@
                                 <div class="col-5">
                                     <div class="form-group">
                                         <input name="waktuSelesai" type="time" class="form-control"
-                                            style="height: 40px">
+                                            style="height: 40px"
+                                            value="{{ $laporan->waktu_selesai != '' ? $laporan->waktu_selesai : '' }}">
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +199,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="lokasiKegiatan" type="text" class="form-control form-control-sm"
-                                    placeholder="Tempat" style="height: 40px">
+                                    placeholder="Tempat" style="height: 40px"
+                                    value="{{ $laporan->lokasi_kegiatan != '' ? $laporan->lokasi_kegiatan : '' }}">
                             </div>
                         </td>
                     </tr>
@@ -194,7 +213,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="dalamRangka" type="text" class="form-control form-control-sm"
-                                    placeholder="Dalam Rangka" style="height: 40px">
+                                    placeholder="Dalam Rangka" style="height: 40px"
+                                    value="{{ $laporan->dalam_rangka != '' ? $laporan->dalam_rangka : '' }}">
                             </div>
                         </td>
                     </tr>
@@ -207,7 +227,8 @@
                         <td>
                             <div class="form-group">
                                 <input name="jumlahUndangan" type="number" class="form-control form-control-sm"
-                                    placeholder="Undangan / Peserta" style="height: 40px">
+                                    placeholder="Undangan / Peserta" style="height: 40px"
+                                    value="{{ $laporan->jumlah_undangan != '' ? $laporan->jumlah_undangan : '' }}">
                             </div>
                         </td>
                     </tr>
@@ -238,7 +259,12 @@
 
                     <tr>
                         <td>
-                            <button type="submit" class="btn btn-primary">Kirim Data</button>
+                            <button name="simpanSementara" value="simpan" type="submit" class="btn btn-primary">
+                                Simpan Sementara
+                            </button>
+                            <button name="kirim" value="kirim" type="submit" class="btn btn-primary">
+                                Kirim Data
+                            </button>
                         </td>
                     </tr>
                 </table>

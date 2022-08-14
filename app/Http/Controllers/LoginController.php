@@ -38,6 +38,7 @@ class LoginController extends Controller
         // Proses logout
         auth()->logout();
         $path = '/login';
+        session()->remove('to');
 
         // Redirect ke halaman login
         return redirect()->to($path);
