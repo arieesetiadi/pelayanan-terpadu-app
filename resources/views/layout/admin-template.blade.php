@@ -129,7 +129,9 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                                 data-bs-toggle="dropdown">
                                 <div class="notifications">
-                                    <span class="notify-badge">{{ $data['count'] }}</span>
+                                    @if ($data['count'] > 0)
+                                        <span class="notify-badge">{{ $data['count'] }}</span>
+                                    @endif
                                     <i class="bi bi-bell-fill"></i>
                                 </div>
                             </a>

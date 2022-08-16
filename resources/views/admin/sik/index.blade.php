@@ -74,8 +74,18 @@
                         <td>{{ $sik->lokasi_kegiatan ?? '-' }}</td>
                         <td>{{ $sik->dalam_rangka ?? '-' }}</td>
                         <td>{{ $sik->jumlah_undangan ?? '-' }}</td>
-                        <td>
-                            -
+
+                        <td class="d-flex gap-2">
+                            {{-- Tombol Ubah SIK --}}
+                            <a href="#" title="Ubah">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+
+                            {{-- Tombol Hapus SIK --}}
+                            <a href="/admin/sik/hapus/{{ $sik->id }}" title="Hapus"
+                                onclick="return confirm('Apakah anda yakin untuk menghapus data SIK ?')">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
                         </td>
 
                         {{-- Pop up Detail Dokumen --}}

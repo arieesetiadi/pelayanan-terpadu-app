@@ -149,4 +149,19 @@ class SIKController extends Controller
         $pdf = PDF::loadview('pdf.pernyataan-keaslian-sik', $data);
         return $pdf->stream('pernyataan-keaslian.pdf');
     }
+
+    // Fungsi untuk menghapus data SIK
+    public function hapus($id)
+    {
+        // Hapus SIK
+        SIK::find($id)->delete();
+
+        // Hapus notifikasi dari SIK
+        Notifikasi
+            ::where('tipe', 'sik')
+            ->where('laporan_id', $id)
+            ->delete();
+
+        return redirect()->to('admin/sik')->with('success', 'Anda berhasil menghapus data');
+    }
 }
