@@ -139,7 +139,7 @@
                     Badung, {{ dateFormat(now(), false) }}
                 </span>
                 <span style="display: block; text-align: center;">
-                    KEPALA KEPOLISIAN SEKTOR BADUNG
+                    KEPALA KEPOLISIAN RESOR BADUNG
                 </span>
 
                 <center>

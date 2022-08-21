@@ -72,7 +72,12 @@ class NotifikasiController extends Controller
                 // Jika sudah disetujui & data lengkap, maka export PDF
                 if ($sik->status == true && $sik->nama_organisasi != null) {
                     // Export PDF
-                    $pdf = PDF::loadview('pdf.notifikasi-sik');
+                    $data = [
+                        'laporan' => $sik,
+                        'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
+                        'ttdPath' => public_path('\assets-user\img\documents\ttd galuh.png'),
+                    ];
+                    $pdf = PDF::loadview('pdf.notifikasi-sik', $data);
                     return $pdf->stream('laporan.pdf');
                 } else {
                     // Tampilkan dokumen saja
