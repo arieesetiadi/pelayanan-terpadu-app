@@ -76,6 +76,43 @@
                         <td>{{ $sik->jumlah_undangan ?? '-' }}</td>
 
                         <td class="d-flex gap-2">
+                            {{-- Tombol upload --}}
+                            <a href="#" class="" title="Upload File" data-bs-toggle="modal"
+                                data-bs-target="#upload-modal-{{ $sik->id }}">
+                                <i class="bi bi-upload"></i>
+                            </a>
+
+                            {{-- Popup upload file --}}
+                            <div class="modal fade" id="upload-modal-{{ $sik->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Upload File</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <form action="/admin/sik/upload-file" method="POST" enctype="multipart/form-data">
+                                            <div class="modal-body">
+                                                @csrf
+                                                {{-- Input file --}}
+                                                <input type="hidden" name="id" value="{{ $sik->id }}">
+                                                <div class="mb-3">
+                                                    <label for="file" class="form-label">File :</label>
+                                                    <input name="file" class="form-control" type="file" id="file"
+                                                        accept=".pdf">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-primary">Upload</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
                             {{-- Tombol Ubah SIK --}}
                             <a href="#" title="Ubah">
                                 <i class="bi bi-pencil-square"></i>

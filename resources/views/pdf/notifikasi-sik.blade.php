@@ -104,7 +104,6 @@
             Demikian surat izin kami keluarkan untuk digunakan sebagaimana mestinya.
         </p>
 
-
         {{-- Bagian TTD --}}
         <div style="margin-top: 40px">
             <div class="half" style="margin-top: 20px; width: 35%">

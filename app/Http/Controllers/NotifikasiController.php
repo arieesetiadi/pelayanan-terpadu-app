@@ -28,7 +28,9 @@ class NotifikasiController extends Controller
                     return redirect()->to(asset('assets-user/upload/' . $laporan->dokumen_persetujuan));
                 }
             case 'sik':
-                if (($laporan->status && $laporan->nama_organisasi == '') || ($laporan->status_pernyataan == 'draft')) {
+                if ($laporan->dokumen_persetujuan != '') {
+                    return redirect()->to(asset('assets-user/upload/' . $laporan->dokumen_persetujuan));
+                } elseif (($laporan->status && $laporan->nama_organisasi == '') || ($laporan->status_pernyataan == 'draft')) {
                     return view('form.lapor-sik-2', [
                         'laporan' => $laporan
                     ]);

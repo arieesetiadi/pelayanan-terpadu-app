@@ -136,6 +136,37 @@ class SIKController extends Controller
         return redirect()->to('/pengaduan-masyarakat/sik')->with('success', 'Data Izin Keramaian berhasil dikirim');
     }
 
+    public function uploadFile(Request $request)
+    {
+        // Upload file persetujuan
+        $path = 'assets-user/upload/';
+        $namaFile = uploadFile($request->file('file'), $path);
+
+        // Insert ke database
+        $laporan = SIK::find($request->id);
+        $laporan->update([
+            'dokumen_persetujuan' => $namaFile
+        ]);
+
+        // Buat notifikasi
+        $toPelapor = [
+            'judul' => 'Surat Izin Keramaian Diterima',
+            'isi' => 'Surat izin keramaian dapat diunduh disini.',
+            'tipe' => 'sik',
+            'telah_dibaca' => false,
+            'dikirim_kepada' => 'pelapor',
+            'laporan_id' => $request->id,
+            'pelapor_id' => $laporan->pelapor_id,
+            'dokumen_persetujuan' => $namaFile,
+            'dikirim_pada' => now()
+        ];
+
+        // Insert notifikasi ke database
+        Notifikasi::insert($toPelapor);
+
+        return back()->with('success', 'Surat izin keramaian berhasil diunggah.');
+    }
+
     public function downloadPernyataan(Request $request)
     {
         // Download pernyataan keaslian dokumen
