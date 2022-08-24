@@ -38,7 +38,7 @@
             <tbody>
                 @forelse ($laporanSIK as $i => $sik)
                     <tr>
-                        <td>{{ $i + 1 }}</td>
+                        <td>{{ $laporanSIK->firstItem() + $i }}</td>
                         {{-- Pop-up dokumen --}}
                         <td>
                             <center>
@@ -114,9 +114,9 @@
                             </div>
 
                             {{-- Tombol Ubah SIK --}}
-                            <a href="#" title="Ubah">
+                            {{-- <a href="#" title="Ubah">
                                 <i class="bi bi-pencil-square"></i>
-                            </a>
+                            </a> --}}
 
                             {{-- Tombol Hapus SIK --}}
                             <a href="/admin/sik/hapus/{{ $sik->id }}" title="Hapus"
@@ -232,5 +232,8 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
+    <div class="w-100 d-flex justify-content-end pt-3">
+        {{ $laporanSIK->links() }}
     </div>
 @endsection

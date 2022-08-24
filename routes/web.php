@@ -6,7 +6,6 @@ use App\Http\Controllers\Lapor\SIKController;
 use App\Http\Controllers\Lapor\SKTLKController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NotifikasiController;
-use App\Models\Notifikasi;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -55,9 +54,6 @@ Route::view('/tindak-kriminal', 'tindak-kriminal.tindak-kriminal');
 
 // Route ke SP2HP
 Route::view('/tindak-kriminal/sp2hp', 'tindak-kriminal.sp2hp');
-
-// Route ke SP2HP
-Route::view('/tindak-kriminal/sttlp', 'tindak-kriminal.sttlp');
 
 // Auth Pelapor
 Route::middleware('auth.pelapor')->group(function () {

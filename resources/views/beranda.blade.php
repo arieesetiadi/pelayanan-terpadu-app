@@ -66,7 +66,7 @@
                     Surat Ijin Keramaian
                 </li>
                 <li>
-                    Surat Tanda Terima Laporan Polisi (STTPLP)
+                    Tindak Kriminal
                 </li>
                 <li>
                     Surat Pemberitahuan Perkembangan Hasil Penyidikan (SP2HP)
@@ -118,7 +118,7 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="/tindak-kriminal">Tindak Kriminal</a>
-                                    <a class="dropdown-item" href="/tindak-kriminal/sttlp">STTLP</a>
+                                    <a class="dropdown-item" href="/tindak-kriminal/sp2hp">SP2HP</a>
                                 </div>
                             </div>
                         </div>

@@ -30,7 +30,7 @@
         <tbody>
             @forelse ($laporanSKTLK as $i => $sktlk)
                 <tr>
-                    <td>{{ $i + 1 }}</td>
+                    <td>{{ $laporanSKTLK->firstItem() + $i }}</td>
                     <td>{{ $sktlk->nama_lengkap }}</td>
                     <td>{{ $sktlk->alamat }}</td>
                     <td>{{ $sktlk->tanggal_kejadian }}</td>
@@ -53,9 +53,9 @@
                         </a>
 
                         {{-- Tombol ubah --}}
-                        <a href="#" class="" title="Ubah">
+                        {{-- <a href="#" class="" title="Ubah">
                             <i class="bi bi-pencil-square"></i>
-                        </a>
+                        </a> --}}
 
                         {{-- Tombol hapus --}}
                         <a href="#" class="" title="Hapus">
@@ -179,6 +179,11 @@
             @empty
                 <h6 class="text-center">Tidak ada laporan.</h6>
             @endforelse
+
         </tbody>
     </table>
+
+    <div class="w-100 d-flex justify-content-end pt-3">
+        {{ $laporanSKTLK->links() }}
+    </div>
 @endsection
