@@ -72,7 +72,7 @@
             @endif
 
             <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
-                data-aos-duration="500">Form Laporan</h1>
+                data-aos-duration="500">Form Dokumen Persyaratan SIK</h1>
 
             <form action="/upload-sik" method="post" enctype="multipart/form-data">
                 @csrf

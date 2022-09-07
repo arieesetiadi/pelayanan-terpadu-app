@@ -25,8 +25,8 @@ class SKTLKController extends Controller
         $laporan = SKTLK::insert($request->all());
 
         $toPelapor = [
-            'judul' => 'Laporan Berhasil',
-            'isi' => 'Anda berhasil melakukan pengajuan laporan dan sedang dalam proses.',
+            'judul' => 'Pelaporan SKTLK Berhasil',
+            'isi' => 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.',
             'tipe' => 'sktlk',
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
@@ -65,8 +65,8 @@ class SKTLKController extends Controller
 
         // Buat notifikasi
         $toPelapor = [
-            'judul' => 'Laporan Telah Disetujui',
-            'isi' => 'Dokumen persetujuan dapat diunduh disini.',
+            'judul' => 'Laporan SKTLK Telah Disetujui',
+            'isi' => 'Dokumen persetujuan SKTLK dapat diunduh disini.',
             'tipe' => 'sktlk',
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',

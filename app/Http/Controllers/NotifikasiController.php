@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use PDF;
-use App\Models\User;
 use App\Models\Notifikasi;
 use App\Models\Laporan\SIK;
-use Illuminate\Http\Request;
 use App\Models\Laporan\SKTLK;
-use Illuminate\Support\Facades\Session;
 
 class NotifikasiController extends Controller
 {
     public function detail($id)
     {
+        // Ubah status menjadi telah dibaca
         $notifikasi =  Notifikasi::find($id);
         $notifikasi->update([
             'telah_dibaca' => true
@@ -21,11 +19,12 @@ class NotifikasiController extends Controller
 
         $laporan = getLaporanByNotif($notifikasi);
         session()->put('notifikasi', Notifikasi::getNotifikasiPelapor());
-
         switch ($notifikasi->tipe) {
             case 'sktlk':
                 if ($laporan->dokumen_persetujuan != '') {
                     return redirect()->to(asset('assets-user/upload/' . $laporan->dokumen_persetujuan));
+                } else {
+                    return back();
                 }
             case 'sik':
                 if ($laporan->dokumen_persetujuan != '') {

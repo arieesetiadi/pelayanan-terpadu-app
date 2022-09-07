@@ -28,8 +28,8 @@ class SIKController extends Controller
 
         // Mengirim notifikasi ke pelapor
         $toPelapor = [
-            'judul' => 'Dokumen Disetujui',
-            'isi' => 'Dokumen persyaratan telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.',
+            'judul' => 'Dokumen SIK Disetujui',
+            'isi' => 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.',
             'tipe' => 'sik',
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
@@ -55,8 +55,8 @@ class SIKController extends Controller
 
         // Mengirim notifikasi ke pelapor
         $toPelapor = [
-            'judul' => 'Dokumen Ditolak',
-            'isi' => 'Dokumen persyaratan Anda ditolak. Silahkan periksa kembali kelengkapan dokumen persyaratan.',
+            'judul' => 'Dokumen SIK Ditolak',
+            'isi' => 'Dokumen persyaratan SIK Anda ditolak. Silahkan periksa kembali kelengkapan dokumen persyaratan.',
             'tipe' => 'sik',
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
