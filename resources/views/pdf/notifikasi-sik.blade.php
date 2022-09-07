@@ -117,8 +117,9 @@
                 </span>
 
                 <center>
-                    <img width="150" src="{{ $ttdPath }}">
+                    {{-- <img width="150" src="{{ $ttdPath }}"> --}}
                 </center>
+                <br><br><br><br>
 
                 <span style="display: block; text-align: center;">
                     Leo Dedy Defretes, SIK, SH, MH

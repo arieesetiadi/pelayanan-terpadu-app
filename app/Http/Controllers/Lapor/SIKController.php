@@ -15,7 +15,7 @@ class SIKController extends Controller
         return view('admin.sik.index', [
             'title' => 'Laporan SIK',
             'laporanSIK' => SIK::paginate(20)
-        ]);`
+        ]);
     }
 
     public function setuju($id)
