@@ -83,6 +83,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
     Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);
+    Route::get('/admin/sktlk/hapus/{id}', [SKTLKController::class, 'hapus']);
 
     Route::get('/admin/sik', [SIKController::class, 'index']);
     Route::get('/admin/sik/setuju/{id}', [SIKController::class, 'setuju']);

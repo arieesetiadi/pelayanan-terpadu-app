@@ -98,3 +98,11 @@ function getNamaPelaporByNotification($notifikasi)
             return $laporan->nama_lengkap;
     }
 }
+
+function isImage($fileName)
+{
+    $fileNames = explode(".", $fileName);
+    $format = strtolower($fileNames[count($fileNames) - 1]);
+
+    return $format == "png" || $format == "jpg" || $format === "jpeg";
+}

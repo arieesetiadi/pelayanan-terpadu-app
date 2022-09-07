@@ -95,4 +95,19 @@ class SKTLKController extends Controller
         $pdf = PDF::loadview('pdf.pernyataan-keaslian-sktlk', $data);
         return $pdf->stream('pernyataan-keaslian.pdf');
     }
+
+    // Fungsi untuk menghapus data SKTLK
+    public function hapus($id)
+    {
+        // Hapus SKTLK
+        SKTLK::find($id)->delete();
+
+        // Hapus notifikasi dari SKTLK
+        Notifikasi
+            ::where('tipe', 'sktlk')
+            ->where('laporan_id', $id)
+            ->delete();
+
+        return redirect()->to('admin/sktlk')->with('success', 'Anda berhasil menghapus data');
+    }
 }

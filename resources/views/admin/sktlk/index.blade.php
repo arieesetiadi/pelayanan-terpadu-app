@@ -58,7 +58,8 @@
                         </a> --}}
 
                         {{-- Tombol hapus --}}
-                        <a href="#" class="" title="Hapus">
+                        <a href="/admin/sktlk/hapus/{{ $sktlk->id }}" title="Hapus"
+                            onclick="return confirm('Apakah anda yakin untuk menghapus data SKTLK ?')">
                             <i class="bi bi-trash-fill"></i>
                         </a>
 
@@ -124,6 +125,30 @@
                                                     <img src="{{ asset('assets-user/upload/' . $sktlkDocument['fotoPelapor']) }}"
                                                         class="d-block w-100" alt="Foto Pelapor">
                                                 </div>
+
+                                                {{-- Rekomendasi instansi --}}
+                                                @if (isImage($sktlkDocument['rekomendasiInstansi']))
+                                                    <div class="carousel-item">
+                                                        <img src="{{ asset('assets-user/upload/' . $sktlkDocument['rekomendasiInstansi']) }}"
+                                                            class="d-block w-100" alt="Rekomendasi Instansi">
+                                                    </div>
+                                                @endif
+
+                                                {{-- Pernyataan Keaslian --}}
+                                                @if (isImage($sktlkDocument['pernyataanKeaslian']))
+                                                    <div class="carousel-item">
+                                                        <img src="{{ asset('assets-user/upload/' . $sktlkDocument['pernyataanKeaslian']) }}"
+                                                            class="d-block w-100" alt="Rekomendasi Instansi">
+                                                    </div>
+                                                @endif
+
+                                                {{-- Dokumen Tambahan --}}
+                                                @if (isImage($sktlkDocument['dokumenTambahan']))
+                                                    <div class="carousel-item">
+                                                        <img src="{{ asset('assets-user/upload/' . $sktlkDocument['dokumenTambahan']) }}"
+                                                            class="d-block w-100" alt="Rekomendasi Instansi">
+                                                    </div>
+                                                @endif
                                             </div>
                                             <button class="carousel-control-prev" type="button"
                                                 data-bs-target="#carouselExampleControls-{{ $sktlk->id }}"
@@ -140,31 +165,37 @@
                                         </div>
 
                                         {{-- Rekomendasi Instansi --}}
-                                        <a target="_blank"
-                                            href="{{ asset('assets-user/upload/' . $sktlkDocument['rekomendasiInstansi']) }}"
-                                            class="d-block btn mb-1 mt-4">
-                                            <i class="bi bi-arrow-down-circle-fill"></i>
-                                            Rekomendasi Instansi
-                                        </a>
+                                        @if (!isImage($sktlkDocument['rekomendasiInstansi']))
+                                            <a target="_blank"
+                                                href="{{ asset('assets-user/upload/' . $sktlkDocument['rekomendasiInstansi']) }}"
+                                                class="d-block btn mb-1 mt-4">
+                                                <i class="bi bi-arrow-down-circle-fill"></i>
+                                                Rekomendasi Instansi
+                                            </a>
+                                        @endif
 
                                         {{-- Pernyataan Keaslian --}}
                                         @if ($sktlkDocument['pernyataanKeaslian'])
-                                            <a target="_blank"
-                                                href="{{ asset('assets-user/upload/' . $sktlkDocument['pernyataanKeaslian']) }}"
-                                                class="d-block btn my-1">
-                                                <i class="bi bi-arrow-down-circle-fill"></i>
-                                                Pernyataan Keaslian
-                                            </a>
+                                            @if (!isImage($sktlkDocument['pernyataanKeaslian']))
+                                                <a target="_blank"
+                                                    href="{{ asset('assets-user/upload/' . $sktlkDocument['pernyataanKeaslian']) }}"
+                                                    class="d-block btn my-1">
+                                                    <i class="bi bi-arrow-down-circle-fill"></i>
+                                                    Pernyataan Keaslian
+                                                </a>
+                                            @endif
                                         @endif
 
                                         {{-- Dokumen Tambahan --}}
                                         @if ($sktlkDocument['dokumenTambahan'])
-                                            <a target="_blank"
-                                                href="{{ asset('assets-user/upload/' . $sktlkDocument['dokumenTambahan']) }}"
-                                                class="d-block btn my-1">
-                                                <i class="bi bi-arrow-down-circle-fill"></i>
-                                                Dokumen Tambahan
-                                            </a>
+                                            @if (!isImage($sktlkDocument['dokumenTambahan']))
+                                                <a target="_blank"
+                                                    href="{{ asset('assets-user/upload/' . $sktlkDocument['dokumenTambahan']) }}"
+                                                    class="d-block btn my-1">
+                                                    <i class="bi bi-arrow-down-circle-fill"></i>
+                                                    Dokumen Tambahan
+                                                </a>
+                                            @endif
                                         @endif
                                     </div>
                                     <div class="modal-footer">
