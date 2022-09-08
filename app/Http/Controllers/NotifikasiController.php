@@ -19,13 +19,14 @@ class NotifikasiController extends Controller
 
         $laporan = getLaporanByNotif($notifikasi);
         session()->put('notifikasi', Notifikasi::getNotifikasiPelapor());
+
         switch ($notifikasi->tipe) {
             case 'sktlk':
                 if ($laporan->dokumen_persetujuan != '') {
+                    // dd($laporan);
                     return redirect()->to(asset('assets-user/upload/' . $laporan->dokumen_persetujuan));
-                } else {
-                    return back();
                 }
+                return back();
             case 'sik':
                 if ($laporan->dokumen_persetujuan != '') {
                     return redirect()->to(asset('assets-user/upload/' . $laporan->dokumen_persetujuan));

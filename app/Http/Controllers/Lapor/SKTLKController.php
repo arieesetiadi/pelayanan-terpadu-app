@@ -21,6 +21,11 @@ class SKTLKController extends Controller
 
     public function upload(Request $request)
     {
+        // if (isset($request->simpanSementara)) {
+        //     SKTLK::insertDraft($request->all());
+        //     return back()->with('success', 'Data Anda berhasil disimpan sementara');
+        // }
+
         // Proses upload data ke database
         $laporan = SKTLK::insert($request->all());
 

@@ -32,10 +32,10 @@ $(function () {
     });
 
     // Download button
-    $('#btnDownloadPernyataan').addClass('disabled');
-    $('textarea[name=suratHilang]').on('change', function () {
-        $('#btnDownloadPernyataan').removeClass('disabled');
-    })
+    $("#btnDownloadPernyataan").addClass("disabled");
+    $("textarea[name=suratHilang]").on("change", function () {
+        $("#btnDownloadPernyataan").removeClass("disabled");
+    });
 
     function assignDefaultValueSKTLK() {
         $("input[name=pernyataanNamaLengkap]").val(
@@ -54,21 +54,21 @@ $(function () {
     }
 
     // Download dokumen keaslian SIK
-    $('#btnDownloadPernyataanSIK').addClass('disabled');
-    $('button[name=kirim]').addClass('disabled');
+    $("#btnDownloadPernyataanSIK").addClass("disabled");
+    $("button[name=kirim]").addClass("disabled");
 
-    if ($('input[name=jumlahUndangan]').val() != '') {
-        $('#btnDownloadPernyataanSIK').removeClass('disabled');
+    if ($("input[name=jumlahUndangan]").val() != "") {
+        $("#btnDownloadPernyataanSIK").removeClass("disabled");
     }
-    $('input[name=jumlahUndangan]').on('change', function () {
-        $('#btnDownloadPernyataanSIK').removeClass('disabled');
-    })
-    $('input[name=pernyataanKeaslian]').on('change', function () {
-        $('button[name=kirim]').removeClass('disabled');
-    })
-    $('button[name=simpanSementara]').on('click', function () {
-        $('input[name=pernyataanKeaslian]').prop('required', false)
-    })
+    $("input[name=jumlahUndangan]").on("change", function () {
+        $("#btnDownloadPernyataanSIK").removeClass("disabled");
+    });
+    $("input[name=pernyataanKeaslian]").on("change", function () {
+        $("button[name=kirim]").removeClass("disabled");
+    });
+    $("button[name=simpanSementara]").on("click", function () {
+        $("input[name=pernyataanKeaslian]").prop("required", false);
+    });
 
     // Assign namaOrganisasi ke dokumen
     $("input[name=namaOrganisasi]").on("input", function () {
