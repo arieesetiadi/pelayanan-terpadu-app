@@ -26,6 +26,11 @@ function uploadFile($file, $path)
     return $fileName;
 }
 
+function dateTimeFormat($date)
+{
+    return Carbon::make($date)->isoFormat('dddd, D MMMM Y hh:mm a');
+}
+
 function dateFormat($date, $isFull = true)
 {
     if ($isFull) {

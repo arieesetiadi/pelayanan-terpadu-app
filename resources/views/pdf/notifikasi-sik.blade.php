@@ -71,32 +71,31 @@
 
         <table>
             <tr>
-                <td>Nama Organisasi</td>
-                <td>:</td>
+                <td style="width: 45%">Nama Organisasi</td>
+                <td style="width: 20px">:</td>
                 <td>{{ $laporan->nama_organisasi }}</td>
             </tr>
             <tr>
-                <td>Nama Penanggung Jawab</td>
-                <td>:</td>
+                <td style="width: 45%">Nama Penanggung Jawab</td>
+                <td style="width: 20px">:</td>
                 <td>{{ $laporan->nama_penanggung_jawab }}</td>
             </tr>
             <tr>
-                <td>Alamat</td>
-                <td>:</td>
+                <td style="width: 45%">Alamat</td>
+                <td style="width: 20px">:</td>
                 <td>{{ $laporan->alamat }}</td>
             </tr>
             <tr>
-                <td>Telepon</td>
-                <td>:</td>
+                <td style="width: 45%">Telepon</td>
+                <td style="width: 20px">:</td>
                 <td>{{ $laporan->telepon }}</td>
             </tr>
         </table>
 
         <p style="margin-top: 20px">
-            Untuk menyelenggarakan kegiatan {{ $laporan->bentuk_kegiatan }} pada
-            {{ dateFormat($laporan->tanggal_kegiatan, false) }}, mulai dari pukul
-            {{ timeFormat($laporan->waktu_mulai) }} WITA
-            hingga pukul {{ timeFormat($laporan->waktu_selesai) }} WITA yang berlokasi di
+            Untuk menyelenggarakan kegiatan {{ $laporan->bentuk_kegiatan }} yang dimulai dari
+            {{ dateTimeFormat($laporan->waktu_mulai) }} s/d
+            {{ dateTimeFormat($laporan->waktu_selesai) }} yang berlokasi di
             {{ $laporan->lokasi_kegiatan }} dalam rangka {{ $laporan->dalam_rangka }}.
         </p>
 

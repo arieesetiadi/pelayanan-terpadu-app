@@ -70,7 +70,6 @@ class NotifikasiController extends Controller
 
             case 'sik':
                 $sik = SIK::find($notifikasi->laporan_id);
-
                 // Jika sudah disetujui & data lengkap, maka export PDF
                 if ($sik->status == true && $sik->nama_organisasi != null) {
                     // Export PDF

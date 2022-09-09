@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Lapor;
 
-use Barryvdh\DomPDF\PDF;
+use PDF;
 use App\Http\Controllers\Controller;
 use App\Models\Laporan\SKTLK;
 use App\Models\Notifikasi;

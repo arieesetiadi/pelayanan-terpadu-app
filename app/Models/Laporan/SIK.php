@@ -95,7 +95,6 @@ class SIK extends Model
             'alamat' => $data['alamat'],
             'telepon' => $data['telepon'],
             'bentuk_kegiatan' => $data['bentukKegiatan'],
-            'tanggal_kegiatan' => $data['tanggalKegiatan'],
             'waktu_mulai' => $data['waktuMulai'],
             'waktu_selesai' => $data['waktuSelesai'],
             'lokasi_kegiatan' => $data['lokasiKegiatan'],

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Lapor;
 
-use Barryvdh\DomPDF\PDF;
+use PDF;
 use App\Models\Notifikasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\SIKDisetujui;
 use App\Models\Laporan\SIK;
+use Illuminate\Support\Facades\Mail;
 
 class SIKController extends Controller
 {
@@ -20,6 +22,9 @@ class SIKController extends Controller
 
     public function setuju($id)
     {
+        Mail::send(new SIKDisetujui());
+        dd('Sent');
+
         // Mengubah status dari SIK
         $laporan = SIK::find($id);
         $laporan->update([
@@ -38,6 +43,10 @@ class SIKController extends Controller
             'dikirim_pada' => now()
         ];
 
+        // Mengirim notifikasi email ke pelapor
+        Mail::send(new SIKDisetujui());
+
+        // Insert notifikasi ke database
         Notifikasi::insert($toPelapor);
 
         // Redirect ke halaman admin SIK
