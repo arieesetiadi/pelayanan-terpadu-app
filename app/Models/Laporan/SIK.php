@@ -85,6 +85,8 @@ class SIK extends Model
         // Upload file pernyataan keaslian
         $path = 'assets-user/upload/';
         $pernyataanKeaslian = uploadFile($data['pernyataanKeaslian'], $path);
+        $fotoKtp = uploadFile($data['fotoKtp'], $path);
+        $fotoPelapor = uploadFile($data['fotoPelapor'], $path);
 
         return self::find($data['id'])->update([
             'nama_organisasi' => $data['namaOrganisasi'],
@@ -99,6 +101,8 @@ class SIK extends Model
             'lokasi_kegiatan' => $data['lokasiKegiatan'],
             'dalam_rangka' => $data['dalamRangka'],
             'jumlah_undangan' => $data['jumlahUndangan'],
+            'foto_ktp' => $fotoKtp,
+            'foto_pelapor' => $fotoPelapor,
             'pernyataan_keaslian' => $pernyataanKeaslian
         ]);
     }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Lapor;
 
-use PDF;
+use Barryvdh\DomPDF\PDF;
 use App\Http\Controllers\Controller;
 use App\Models\Laporan\SKTLK;
 use App\Models\Notifikasi;
@@ -21,11 +21,6 @@ class SKTLKController extends Controller
 
     public function upload(Request $request)
     {
-        // if (isset($request->simpanSementara)) {
-        //     SKTLK::insertDraft($request->all());
-        //     return back()->with('success', 'Data Anda berhasil disimpan sementara');
-        // }
-
         // Proses upload data ke database
         $laporan = SKTLK::insert($request->all());
 
@@ -53,7 +48,7 @@ class SKTLKController extends Controller
         Notifikasi::insert($toPelapor);
         Notifikasi::insert($toAdmin);
 
-        return back()->with('success', 'Laporan anda sedang diproses');
+        return back()->with('success', 'Pelaporan anda sedang diproses');
     }
 
     public function uploadFile(Request $request)
@@ -70,7 +65,7 @@ class SKTLKController extends Controller
 
         // Buat notifikasi
         $toPelapor = [
-            'judul' => 'Laporan SKTLK Telah Disetujui',
+            'judul' => 'Pelaporan SKTLK Telah Disetujui',
             'isi' => 'Dokumen persetujuan SKTLK dapat diunduh disini.',
             'tipe' => 'sktlk',
             'telah_dibaca' => false,

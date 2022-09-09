@@ -150,7 +150,7 @@
                     </tr>
 
                     {{-- Tanggal Kegiatan --}}
-                    <tr style="margin-bottom: 50px">
+                    {{-- <tr style="margin-bottom: 50px">
                         <td>
                             <span class="d-inline-block mt-2">Tanggal Kegiatan</span>
                         </td>
@@ -161,7 +161,7 @@
                                     value="{{ $laporan->tanggal_kegiatan != '' ? $laporan->tanggal_kegiatan : '' }}">
                             </div>
                         </td>
-                    </tr>
+                    </tr> --}}
 
                     {{-- Waktu Kegiatan --}}
                     <tr style="margin-bottom: 50px">
@@ -172,7 +172,7 @@
                             <div class="row">
                                 <div class="col-5">
                                     <div class="form-group">
-                                        <input name="waktuMulai" type="time" class="form-control"
+                                        <input name="waktuMulai" type="datetime-local" class="form-control"
                                             style="height: 40px"
                                             value="{{ $laporan->waktu_mulai != '' ? $laporan->waktu_mulai : '' }}">
                                     </div>
@@ -182,7 +182,7 @@
                                 </div>
                                 <div class="col-5">
                                     <div class="form-group">
-                                        <input name="waktuSelesai" type="time" class="form-control"
+                                        <input name="waktuSelesai" type="datetime-local" class="form-control"
                                             style="height: 40px"
                                             value="{{ $laporan->waktu_selesai != '' ? $laporan->waktu_selesai : '' }}">
                                     </div>
@@ -229,6 +229,34 @@
                                 <input name="jumlahUndangan" type="number" class="form-control form-control-sm"
                                     placeholder="Undangan / Peserta" style="height: 40px"
                                     value="{{ $laporan->jumlah_undangan != '' ? $laporan->jumlah_undangan : '' }}">
+                            </div>
+                        </td>
+                    </tr>
+
+                    {{-- Form upload KTP --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Foto identitas pelapor (KTP)</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="fotoKtp" type="file" class="form-control-file"
+                                    accept=".jpg,.jpeg,.png">
+                                <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                            </div>
+                        </td>
+                    </tr>
+
+                    {{-- Form upload KTP + orang --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="fotoPelapor" type="file" class="form-control-file"
+                                    accept=".jpg,.jpeg,.png">
+                                <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                             </div>
                         </td>
                     </tr>

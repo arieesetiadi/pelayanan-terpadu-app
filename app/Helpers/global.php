@@ -67,6 +67,8 @@ function getSIKDocumentById($id)
     $document['izinInstansi'] = $sik->izin_instansi;
     $document['fotokopiPaspor'] = $sik->fotokopi_paspor;
     $document['rekomendasiPolsek'] = $sik->rekomendasi_polsek;
+    $document['fotoKtp'] = $sik->foto_ktp;
+    $document['fotoPelapor'] = $sik->foto_pelapor;
 
     return $document;
 }

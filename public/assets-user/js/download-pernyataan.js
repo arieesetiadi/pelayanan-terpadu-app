@@ -57,10 +57,10 @@ $(function () {
     $("#btnDownloadPernyataanSIK").addClass("disabled");
     $("button[name=kirim]").addClass("disabled");
 
-    if ($("input[name=jumlahUndangan]").val() != "") {
+    if ($("input[name=fotoPelapor]").val() != "") {
         $("#btnDownloadPernyataanSIK").removeClass("disabled");
     }
-    $("input[name=jumlahUndangan]").on("change", function () {
+    $("input[name=fotoPelapor]").on("change", function () {
         $("#btnDownloadPernyataanSIK").removeClass("disabled");
     });
     $("input[name=pernyataanKeaslian]").on("change", function () {

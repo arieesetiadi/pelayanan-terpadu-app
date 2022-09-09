@@ -140,6 +140,26 @@
                                             $sikDocument = getSIKDocumentById($sik->id);
                                         @endphp
 
+                                        {{-- Foto KTP --}}
+                                        @if ($sikDocument['fotoKtp'])
+                                            <a target="_blank"
+                                                href="{{ asset('assets-user/upload/' . $sikDocument['fotoKtp']) }}"
+                                                class="d-block btn my-1 text-start">
+                                                <i class="bi bi-arrow-down-circle-fill"></i>
+                                                Foto KTP
+                                            </a>
+                                        @endif
+
+                                        {{-- Dokumen Tambahan --}}
+                                        @if ($sikDocument['fotoPelapor'])
+                                            <a target="_blank"
+                                                href="{{ asset('assets-user/upload/' . $sikDocument['fotoPelapor']) }}"
+                                                class="d-block btn my-1 text-start">
+                                                <i class="bi bi-arrow-down-circle-fill"></i>
+                                                Foto Pelapor
+                                            </a>
+                                        @endif
+
                                         {{-- Link Download Proposal Kegiatan --}}
                                         <a target="_blank"
                                             href="{{ asset('assets-user/upload/' . $sikDocument['proposalKegiatan']) }}"
