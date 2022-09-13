@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SIKDitolak extends Mailable
+class SKTLKUploadFile extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,13 +17,13 @@ class SIKDitolak extends Mailable
      * @return void
      */
     private $id;
-    private $alasanPenolakan;
+    private $file;
     private $pelapor;
 
-    public function __construct($id, $alasanPenolakan, $pelapor)
+    public function __construct($id, $file, $pelapor)
     {
         $this->id = $id;
-        $this->alasanPenolakan = $alasanPenolakan;
+        $this->file = $file;
         $this->pelapor = $pelapor;
     }
 
@@ -34,14 +34,10 @@ class SIKDitolak extends Mailable
      */
     public function build()
     {
-        $data = [
-            'id' => $this->id,
-            'alasanPenolakan' => $this->alasanPenolakan
-        ];
-
         return $this
             ->to($this->pelapor->email, $this->pelapor->nama)
-            ->subject('Laporan SIK Ditolak')
-            ->view('email.sik-ditolak', $data);
+            ->subject('Pelaporan SKTLK Telah Disetujui')
+            ->attach(public_path('assets-user\upload\\') . $this->file)
+            ->view('email.sktlk-upload-file', ['id' => $this->id]);
     }
 }

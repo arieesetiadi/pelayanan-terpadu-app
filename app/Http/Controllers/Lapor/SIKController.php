@@ -10,6 +10,7 @@ use App\Mail\SIKDisetujui;
 use App\Mail\SIKDitolak;
 use App\Mail\SIKUploadPersetujuan;
 use App\Models\Laporan\SIK;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 class SIKController extends Controller
@@ -30,6 +31,8 @@ class SIKController extends Controller
             'status' => true
         ]);
 
+        $pelapor = User::find($laporan->pelapor_id);
+
         // Mengirim notifikasi ke pelapor
         $toPelapor = [
             'judul' => 'Dokumen SIK Disetujui',
@@ -46,7 +49,7 @@ class SIKController extends Controller
         $notif = Notifikasi::insert($toPelapor);
 
         // Kirim email ke pelapor
-        Mail::send(new SIKDisetujui($notif->id));
+        Mail::send(new SIKDisetujui($notif->id, $pelapor));
 
         // Redirect ke halaman admin SIK
         return redirect()->to('/admin/sik')->with('success', 'Berhasil menyetujui dokumen persyaratan');
@@ -60,6 +63,8 @@ class SIKController extends Controller
             'status' => false,
             'keterangan' => $request->alasanPenolakan
         ]);
+
+        $pelapor = User::find($laporan->pelapor_id);
 
         // Mengirim notifikasi ke pelapor
         $toPelapor = [
@@ -77,7 +82,7 @@ class SIKController extends Controller
         $notif = Notifikasi::insert($toPelapor);
 
         // Kirim email ke pelapor
-        Mail::send(new SIKDitolak($notif->id, $request->alasanPenolakan));
+        Mail::send(new SIKDitolak($notif->id, $request->alasanPenolakan, $pelapor));
 
         // Redirect ke halaman admin SIK
         return redirect()->to('admin/sik')->with('success', 'Anda telah menolak dokumen persyaratan');
@@ -160,6 +165,8 @@ class SIKController extends Controller
             'dokumen_persetujuan' => $namaFile
         ]);
 
+        $pelapor = User::find($laporan->pelapor_id);
+
         // Buat notifikasi
         $toPelapor = [
             'judul' => 'Surat Izin Keramaian Diterima',
@@ -175,8 +182,9 @@ class SIKController extends Controller
 
         // Insert notifikasi ke database
         $notif = Notifikasi::insert($toPelapor);
-        Mail::send(new SIKUploadPersetujuan($notif->id, $namaFile));
-        dd('Sent');
+
+        // Kirim email ke pelapor
+        Mail::send(new SIKUploadPersetujuan($notif->id, $namaFile, $pelapor));
 
         return back()->with('success', 'Surat izin keramaian berhasil diunggah.');
     }

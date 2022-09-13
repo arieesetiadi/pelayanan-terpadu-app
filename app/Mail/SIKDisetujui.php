@@ -17,10 +17,12 @@ class SIKDisetujui extends Mailable
      * @return void
      */
     private $id;
+    private $pelapor;
 
-    public function __construct($id)
+    public function __construct($id, $pelapor)
     {
         $this->id = $id;
+        $this->pelapor = $pelapor;
     }
 
     /**
@@ -31,7 +33,7 @@ class SIKDisetujui extends Mailable
     public function build()
     {
         return $this
-            ->to('galuhcandrawardani@gmail.com', 'Galuh')
+            ->to($this->pelapor->email, $this->pelapor->nama)
             ->subject('Laporan SIK Telah Disetujui')
             ->view('email.sik-disetujui', ['id' => $this->id]);
     }

@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Lapor;
 
 use PDF;
 use App\Http\Controllers\Controller;
+use App\Mail\SKTLKUploadFile;
 use App\Models\Laporan\SKTLK;
 use App\Models\Notifikasi;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SKTLKController extends Controller
 {
@@ -63,6 +66,8 @@ class SKTLKController extends Controller
             'dokumen_persetujuan' => $namaFile
         ]);
 
+        $pelapor = User::find($laporan->pelapor_id);
+
         // Buat notifikasi
         $toPelapor = [
             'judul' => 'Pelaporan SKTLK Telah Disetujui',
@@ -77,6 +82,9 @@ class SKTLKController extends Controller
         ];
 
         Notifikasi::insert($toPelapor);
+
+        // Kirim notifikasi ke pelapor
+        Mail::send(new SKTLKUploadFile($request->id, $namaFile, $pelapor));
 
         return back()->with('success', 'Dokumen persetujuan berhasil diunggah.');
     }

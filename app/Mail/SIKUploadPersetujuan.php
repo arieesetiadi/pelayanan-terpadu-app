@@ -18,11 +18,13 @@ class SIKUploadPersetujuan extends Mailable
      */
     private $id;
     private $filePersetujuan;
+    private $pelapor;
 
-    public function __construct($id, $filePersetujuan)
+    public function __construct($id, $filePersetujuan, $pelapor)
     {
         $this->id = $id;
         $this->filePersetujuan = $filePersetujuan;
+        $this->pelapor = $pelapor;
     }
 
     /**
@@ -33,7 +35,7 @@ class SIKUploadPersetujuan extends Mailable
     public function build()
     {
         return $this
-            ->to('galuhcandrawardani@gmail.com', 'Galuh')
+            ->to($this->pelapor->email, $this->pelapor->nama)
             ->subject('Surat Izin Keramaian Diterima')
             ->attach(public_path('assets-user\upload\\') . $this->filePersetujuan)
             ->view('email.sik-upload-persetujuan', ['id' => $this->id]);
