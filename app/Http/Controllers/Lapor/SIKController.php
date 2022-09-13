@@ -7,6 +7,8 @@ use App\Models\Notifikasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Mail\SIKDisetujui;
+use App\Mail\SIKDitolak;
+use App\Mail\SIKUploadPersetujuan;
 use App\Models\Laporan\SIK;
 use Illuminate\Support\Facades\Mail;
 
@@ -22,9 +24,6 @@ class SIKController extends Controller
 
     public function setuju($id)
     {
-        Mail::send(new SIKDisetujui());
-        dd('Sent');
-
         // Mengubah status dari SIK
         $laporan = SIK::find($id);
         $laporan->update([
@@ -43,11 +42,11 @@ class SIKController extends Controller
             'dikirim_pada' => now()
         ];
 
-        // Mengirim notifikasi email ke pelapor
-        Mail::send(new SIKDisetujui());
-
         // Insert notifikasi ke database
-        Notifikasi::insert($toPelapor);
+        $notif = Notifikasi::insert($toPelapor);
+
+        // Kirim email ke pelapor
+        Mail::send(new SIKDisetujui($notif->id));
 
         // Redirect ke halaman admin SIK
         return redirect()->to('/admin/sik')->with('success', 'Berhasil menyetujui dokumen persyaratan');
@@ -74,7 +73,11 @@ class SIKController extends Controller
             'dikirim_pada' => now()
         ];
 
-        Notifikasi::insert($toPelapor);
+        // Insert notifikasi ke database
+        $notif = Notifikasi::insert($toPelapor);
+
+        // Kirim email ke pelapor
+        Mail::send(new SIKDitolak($notif->id, $request->alasanPenolakan));
 
         // Redirect ke halaman admin SIK
         return redirect()->to('admin/sik')->with('success', 'Anda telah menolak dokumen persyaratan');
@@ -171,7 +174,9 @@ class SIKController extends Controller
         ];
 
         // Insert notifikasi ke database
-        Notifikasi::insert($toPelapor);
+        $notif = Notifikasi::insert($toPelapor);
+        Mail::send(new SIKUploadPersetujuan($notif->id, $namaFile));
+        dd('Sent');
 
         return back()->with('success', 'Surat izin keramaian berhasil diunggah.');
     }

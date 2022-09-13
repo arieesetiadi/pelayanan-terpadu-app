@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SIKDisetujui extends Mailable
+class SIKDitolak extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,10 +17,12 @@ class SIKDisetujui extends Mailable
      * @return void
      */
     private $id;
+    private $alasanPenolakan;
 
-    public function __construct($id)
+    public function __construct($id, $alasanPenolakan)
     {
         $this->id = $id;
+        $this->alasanPenolakan = $alasanPenolakan;
     }
 
     /**
@@ -30,9 +32,14 @@ class SIKDisetujui extends Mailable
      */
     public function build()
     {
+        $data = [
+            'id' => $this->id,
+            'alasanPenolakan' => $this->alasanPenolakan
+        ];
+
         return $this
             ->to('galuhcandrawardani@gmail.com', 'Galuh')
-            ->subject('Laporan SIK Telah Disetujui')
-            ->view('email.sik-disetujui', ['id' => $this->id]);
+            ->subject('Laporan SIK Ditolak')
+            ->view('email.sik-ditolak', $data);
     }
 }

@@ -12,6 +12,10 @@ Route::get('/', function () {
     return view('beranda');
 });
 
+Route::get('/info', function (){
+    phpinfo();
+});
+
 Route::get('/notifikasi', function () {
     dd(session('notifikasi'));
 });

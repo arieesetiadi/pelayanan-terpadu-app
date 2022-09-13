@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SIK Disetujui</title>
+    <title>SIK Ditolak</title>
 </head>
 
 <body>
-    <h2>Laporan SIK Telah Disetujui</h2>
+    <h2>Laporan SIK Ditolak</h2>
 
-    <p>Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya pada link berikut:</p>
+    <h3>Dokumen persyaratan SIK Anda ditolak : </h3>
+    <p>{{ $alasanPenolakan }}</p>
+    <p>Silahkan periksa kembali kelengkapan dokumen persyaratan.</p>
 
     <h3>
         <a href="http://localhost:8000/notifikasi/detail/{{$id}}">Link</a>

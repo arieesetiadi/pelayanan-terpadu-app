@@ -16,7 +16,7 @@ class Notifikasi extends Model
 
     public static function insert($notifikasi)
     {
-        self::create([
+        return self::create([
             'judul' => $notifikasi['judul'],
             'isi' => $notifikasi['isi'],
             'tipe' => $notifikasi['tipe'],
