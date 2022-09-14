@@ -20,8 +20,12 @@ class authPelapor
         session()->put('to', $to);
 
         // Boleh masuk jika pengguna adalah seorang Pelapor
-        if (auth()->user()->jenis_pengguna == 'Pelapor') {
-            return $next($request);
+        if(auth()->check()){
+            if (auth()->user()->jenis_pengguna == 'Pelapor') {
+                return $next($request);
+            } else {
+                return redirect()->to('/login');
+            }
         } else {
             return redirect()->to('/login');
         }
