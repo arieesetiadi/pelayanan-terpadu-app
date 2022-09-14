@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserVerification;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class DaftarController extends Controller
 {
     public function daftar(Request $data)
     {
-        // Inserta data pengguna ke tabel users
-        DB::table('users')->insert([
+        // Insert data pengguna ke tabel users
+        $id = DB::table('users')->insertGetId([
             'nama' => $data->nama,
             'username' => $data->username,
             'password' => Hash::make($data->password),
@@ -19,22 +22,25 @@ class DaftarController extends Controller
             'telepon' => $data->telepon,
             'jenis_kelamin' => $data->jenis_kelamin,
             'jenis_pengguna' => 'Pelapor',
-            'alamat' => $data->alamat
+            'alamat' => $data->alamat,
+            'status' => false
         ]);
 
-        // Proses login setela  h daftar
-        auth()->attempt($data->only('username', 'password'));
-
-        if (auth()->user()->jenis_pengguna == 'Pelapor') {
-            session()->put('pelapor', auth()->user());
-            auth()->logout();
-
-            $path = '/';
-        } else if (auth()->user()->jenis_pengguna == 'Admin') {
-            $path = '/dashboard';
-        }
+        // Kirim email verifikasi
+        Mail::send(new UserVerification($id, $data->all()));
 
         // Redirect ke halaman pelapor
-        return redirect()->to($path);
+        return redirect()->to('/login')->with('success', 'Pendaftaran akun berhasil, silahkan cek alamat ' . $data->email . ' untuk melakukan aktivasi akun.');
+    }
+
+    public function activation($id)
+    {
+        // Aktifkan status pengguna
+        DB::table('users')->where('id', $id)->update([
+            'status' => true
+        ]);
+
+        // Redirect ke halaman login
+        return redirect()->to('/login')->with('success', 'Akun anda telah berhasil diaktifkan.');
     }
 }

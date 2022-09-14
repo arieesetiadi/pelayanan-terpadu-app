@@ -47,6 +47,14 @@
                                         <div class="mt-5">
                                             {{-- Form Daftar --}}
                                             <form action="/login" method="POST">
+                                                @if (session('success'))
+                                                    <div class="alert alert-success d-flex align-items-center"
+                                                        role="alert">
+                                                        <div>
+                                                            {{ session('success') }}
+                                                        </div>
+                                                    </div>
+                                                @endif
                                                 @if (session('failed'))
                                                     <div class="alert alert-danger d-flex align-items-center"
                                                         role="alert">

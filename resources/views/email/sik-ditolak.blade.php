@@ -16,7 +16,7 @@
     <p>Silahkan periksa kembali kelengkapan dokumen persyaratan.</p>
 
     <h3>
-        <a href="http://localhost:8000/notifikasi/detail/{{$id}}">Link</a>
+        <a href="{{ url()->to('/notifikasi/detail/') . '/' . $id }}">Link</a>
     </h3>
 </body>
 

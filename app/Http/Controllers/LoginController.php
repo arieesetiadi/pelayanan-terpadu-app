@@ -15,9 +15,14 @@ class LoginController extends Controller
 
     public function login(Request $data)
     {
-        $status = auth()->attempt($data->only('username', 'password'));
+        $result = auth()->attempt($data->only('username', 'password'));
 
-        if ($status == true) {
+        if ($result == true) {
+            // Redirect back jika status user nonaktif
+            if (!auth()->user()->status) {
+                return back()->with('failed', 'Pengguna berstatus tidak aktif, silahkan cek alamat email untuk malakukan aktivasi.');
+            }
+
             switch (auth()->user()->jenis_pengguna) {
                 case 'Admin':
                     // Redirect ke dashboard

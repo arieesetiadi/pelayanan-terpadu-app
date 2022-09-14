@@ -12,14 +12,6 @@ Route::get('/', function () {
     return view('beranda');
 });
 
-Route::get('/info', function (){
-    phpinfo();
-});
-
-Route::get('/notifikasi', function () {
-    dd(session('notifikasi'));
-});
-
 // Route Login
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -95,3 +87,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/sik/tolak', [SIKController::class, 'tolak']);
     Route::get('/admin/sik/hapus/{id}', [SIKController::class, 'hapus']);
 });
+
+// Route aktivasi akun
+Route::get('/users/activation/{id}', [DaftarController::class, 'activation']);
