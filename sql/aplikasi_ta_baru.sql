@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Sep 2022 pada 07.56
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.2
+-- Generation Time: Sep 14, 2022 at 03:25 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `laporan_sik`
+-- Table structure for table `laporan_sik`
 --
 
 CREATE TABLE `laporan_sik` (
@@ -59,7 +59,7 @@ CREATE TABLE `laporan_sik` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `laporan_sik`
+-- Dumping data for table `laporan_sik`
 --
 
 INSERT INTO `laporan_sik` (`id`, `nama_organisasi`, `nama_penanggung_jawab`, `pekerjaan`, `alamat`, `telepon`, `bentuk_kegiatan`, `waktu_mulai`, `waktu_selesai`, `lokasi_kegiatan`, `dalam_rangka`, `jumlah_undangan`, `status`, `proposal_kegiatan`, `izin_tempat`, `izin_instansi`, `fotokopi_paspor`, `rekomendasi_polsek`, `pernyataan_keaslian`, `pelapor_id`, `keterangan`, `status_pernyataan`, `dokumen_persetujuan`, `foto_ktp`, `foto_pelapor`, `created_at`, `updated_at`) VALUES
@@ -72,12 +72,17 @@ INSERT INTO `laporan_sik` (`id`, `nama_organisasi`, `nama_penanggung_jawab`, `pe
 (28, 'STT Wibhak', 'Dika Widya', 'Mahasiswa', 'Br. Pande Mengwi', '08787873892', 'Lomba', '2022-12-12 09:00:00', '2022-12-12 13:00:00', 'Balai Banjar', 'Ultah STT Wibhak', 250, 1, '1662695875_pernyataan-keaslian.pdf', '1662695875_pernyataan-keaslian.pdf', '1662695875_pernyataan-keaslian.pdf', '1662695875_pernyataan-keaslian.pdf', '1662695875_pernyataan-keaslian.pdf', '1662731233_proposal kegiatan.jpg', 1, NULL, NULL, NULL, '1662731233_foto ktp.jpg', '1662731233_orang dan katp2.png', '2022-09-09 03:57:55', '2022-09-09 13:47:13'),
 (29, 'qw', 'qw', 'qw', 'qw', '12', 'qw', '0001-01-01 01:01:00', '0011-01-01 01:02:00', 'aas', 'as', 121212, 1, '1662731319_izin lokasi kegiatan.jpg', '1662731319_surat rekomendasi.jpg', '1662731319_proposal kegiatan.jpg', '1662731319_maudy.jpeg', '1662731319_orang dan katp2.png', '1662731655_maudy.jpeg', 1, NULL, NULL, NULL, '1662731655_foto ktp.jpg', '1662731655_izin lokasi kegiatan.jpg', '2022-09-09 13:48:39', '2022-09-09 13:54:15'),
 (30, 'hjh', 'gjg', 'hkk', 'da', '898', 'tgwsgd', '2022-09-19 09:00:00', '2022-09-22 20:00:00', 'hgkjbk', 'esfca', 344, 1, '1662733730_proposal kegiatan.jpg', '1662733730_izin lokasi kegiatan.jpg', '1662733730_surat rekomendasi.jpg', '1662733730_foto ktp.jpg', '1662733730_surat rekomendasi.jpg', '1662733924_pernyataan-keaslian.pdf', 1, NULL, NULL, NULL, '1662733924_foto ktp.jpg', '1662733924_orang dan ktp.jpg', '2022-09-09 14:28:50', '2022-09-09 14:32:04'),
-(31, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1662734027_pernyataan-keaslian.pdf', '1662734027_pernyataan-keaslian.pdf', '1662734027_pernyataan-keaslian.pdf', '1662734027_pernyataan-keaslian.pdf', '1662734027_pernyataan-keaslian.pdf', NULL, 1, NULL, NULL, NULL, NULL, NULL, '2022-09-09 14:33:47', '2022-09-09 14:33:47');
+(32, 'Dupa Harum', 'Winayanti', 'PNS', 'Badung, Bali', '0987789897989', 'Sosialisasi', '2022-12-10 09:00:00', '2022-12-10 13:00:00', 'Balai Desa', 'HUT Kecamatan Mengwi', 300, 1, '1662969759_proposal kegiatan.jpg', '1662969759_izin lokasi kegiatan.jpg', '1662969759_surat rekomendasi.jpg', '1662969759_orang dan ktp.jpg', '1662969759_surat rekomendasi.jpg', '1662970221_pernyataan-keaslian_2.pdf', 6, NULL, NULL, '1662970278_sik winayanti.pdf', '1662970221_foto ktp.jpg', '1662970221_orang dan katp2.png', '2022-09-12 08:02:39', '2022-09-12 08:11:18'),
+(36, 'Viva liga', 'Wira Pratama', 'PNS', 'Kapal, Badung', '087789898898', 'Sosialisasi', '2022-12-10 08:00:00', '2022-12-10 10:00:00', 'Balai Desa', 'HUT Desa Kapal', 250, 1, '1663127694_proposal kegiatan.jpg', '1663127694_izin lokasi kegiatan.jpg', '1663127694_surat rekomendasi.jpg', '1663127694_foto ktp.jpg', '1663127694_surat rekomendasi.jpg', '1663128065_pernyataan-keaslian_3.pdf', 8, NULL, NULL, '1663128149_sik wira.pdf', '1663128065_foto ktp.jpg', '1663128065_orang dan katp2.png', '2022-09-14 04:54:54', '2022-09-14 05:02:29'),
+(38, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1663140685_proposal kegiatan.jpg', '1663140685_izin lokasi kegiatan.jpg', '1663140685_izin lokasi kegiatan.jpg', '1663140685_foto ktp.jpg', '1663140685_surat rekomendasi.jpg', NULL, 8, NULL, NULL, NULL, NULL, NULL, '2022-09-14 08:31:25', '2022-09-14 08:31:25'),
+(39, 'aa', 'aa', 'aa', 'aa', '098878787999', 'aa', '2022-12-12 10:00:00', '2022-12-12 11:00:00', 'aa', 'aa', 200, 1, '1663141668_proposal kegiatan.jpg', '1663141668_izin lokasi kegiatan.jpg', '1663141668_surat rekomendasi.jpg', '1663141668_foto ktp.jpg', '1663141668_surat rekomendasi.jpg', '1663141811_pernyataan-keaslian_3.pdf', 8, NULL, NULL, '1663141862_1663141562_aa.pdf', '1663141811_foto ktp.jpg', '1663141811_orang dan katp2.png', '2022-09-14 08:47:48', '2022-09-14 08:51:02'),
+(40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '1663142037_proposal kegiatan.jpg', '1663142037_izin lokasi kegiatan.jpg', '1663142037_surat rekomendasi.jpg', '1663142037_foto ktp.jpg', '1663142037_surat rekomendasi.jpg', NULL, 8, 'proposal kegiatan kurang lengkap', NULL, NULL, NULL, NULL, '2022-09-14 08:53:57', '2022-09-14 08:54:28'),
+(41, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1663143856_tugas_akhir_180030048_final.pdf', '1663143856_tugas_akhir_180030048_final.pdf', '1663143856_tugas_akhir_180030048_final.pdf', '', '1663143856_tugas_akhir_180030048_final.pdf', NULL, 8, NULL, NULL, NULL, NULL, NULL, '2022-09-14 09:24:16', '2022-09-14 09:24:16');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `laporan_sktlk`
+-- Table structure for table `laporan_sktlk`
 --
 
 CREATE TABLE `laporan_sktlk` (
@@ -99,25 +104,31 @@ CREATE TABLE `laporan_sktlk` (
   `pernyataan_keaslian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pelapor_id` tinyint(4) NOT NULL,
   `dokumen_persetujuan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `diunggah_pada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `diunggah_pada` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `laporan_sktlk`
+-- Dumping data for table `laporan_sktlk`
 --
 
 INSERT INTO `laporan_sktlk` (`id`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `kewarganegaraan`, `alamat`, `telepon`, `tanggal_kejadian`, `lokasi_kejadian`, `surat_hilang`, `foto_ktp`, `foto_pelapor`, `rekomendasi_instansi`, `dokumen_tambahan`, `pernyataan_keaslian`, `pelapor_id`, `dokumen_persetujuan`, `diunggah_pada`) VALUES
-(2, 'Porsche Pachara Nattiwingpat', 'Chaopraya', '1994-02-28', 'bb', 'Warga Negara Indonesia', 'Thailand', '08112345678', '2022-07-12', 'Taman Ayun', 'KTM', '1657811738_foto profil.jpg', '1657811738_foto profil2.jpg', '1657811738_800_1318_kominfo.pdf', '', '', 1, '1658331017_laporan.pdf', '2022-07-14 15:15:38'),
+(2, 'Porsche Pachara Nattiwingpat', 'Chaopraya', '1994-02-28', 'bb', 'Warga Negara Indonesia', 'Thailand', '08112345678', '2022-07-12', 'Taman Ayun', 'KTM', '1657811738_foto profil.jpg', '1657811738_foto profil2.jpg', '1657811738_800_1318_kominfo.pdf', '', '', 1, '1663081281_cetak kartu rencana studi.pdf', '2022-07-14 15:15:38'),
 (4, 'Kinn Tanakul', 'Guangshou', '1992-06-22', 'oio', 'Warga Negara Asing', 'Thailand', '0876767556', '2022-07-05', 'Depan indomart', 'STNK', '1657812418_foto profil.jpg', '1657812418_foto profil2.jpg', '1657812418_800_1318_kominfo.pdf', '1657812418_800_1318_kominfo.pdf', '', 1, '1658331803_laporan.pdf', '2022-07-14 15:26:58'),
 (9, 'Olivia Rodrigo', 'Tapesan', '2011-11-11', 'Penyanyi', 'Warga Negara Asing', 'Br. Yangapi', '088988373939', '2020-05-07', 'Taman Ayun', 'Driver License', '1660314675_qq.jpg', '1660314675_qq.jpg', '1660314675_laporan.pdf', '', '1660314675_dokumen-pernyataan-keaslian (1).pdf', 1, NULL, '2022-08-12 14:31:15'),
 (10, 'Mila Karmila', 'Badung', '1995-08-12', 'PNS', 'Warga Negara Indonesia', 'Kapal', '087887878789', '2021-06-22', 'Taman Ayun', 'Sertifikat Tanah', '1660315306_taeyang.jpg', '1660315306_qq.jpg', '1660315306_taeyang.jpg', '', '1660315306_dokumen-pernyataan-keaslian (1).pdf', 1, NULL, '2022-08-12 14:41:46'),
 (11, 'Dewi Sandra', 'Kupang', '1989-12-12', 'Guru', 'Warga Negara Indonesia', 'NTT, Kupang', '08988989800', '2022-09-02', 'Depan Bank BCA Kupang', 'SIM', '1662530568_foto ktp.jpg', '1662530568_orang dan katp2.png', '1662530568_surat rekomendasi.jpg', '', '1662530568_pernyataan-keaslian.pdf', 1, '1662531079_sktlk sah.pdf', '2022-09-07 06:02:48'),
-(12, 'Anjasmara', 'Bandung', '1993-09-10', 'Karyawan', 'Warga Negara Indonesia', 'Bogor', '089883789', '2022-01-08', 'Depan Indomart Bogor', 'Sertifikat Rumah', '1662605373_foto ktp.jpg', '1662605373_orang dan ktp.jpg', '1662605373_surat rekomendasi.jpg', '', '1662605373_pernyataan-keaslian.pdf', 1, '1662605575_laporan.pdf', '2022-09-08 02:49:33');
+(12, 'Anjasmara', 'Bandung', '1993-09-10', 'Karyawan', 'Warga Negara Indonesia', 'Bogor', '089883789', '2022-01-08', 'Depan Indomart Bogor', 'Sertifikat Rumah', '1662605373_foto ktp.jpg', '1662605373_orang dan ktp.jpg', '1662605373_surat rekomendasi.jpg', '', '1662605373_pernyataan-keaslian.pdf', 1, '1662605575_laporan.pdf', '2022-09-08 02:49:33'),
+(13, 'Adi Jaya', 'Denpasar', '1998-12-12', 'PNS', 'Warga Negara Indonesia', 'Denpasar, Bali', '0987789897989', '2022-12-08', 'Depan Indomart', 'KTP', '1662965019_foto ktp.jpg', '1662965019_orang dan ktp.jpg', '1662965019_surat rekomendasi.jpg', '', '1662965019_pernyataan-keaslian.pdf', 6, '1662969654_sktlk adi.pdf', '2022-09-12 06:43:39'),
+(15, 'onastatia', 'nganjuk', '1998-12-06', 'PNS', 'Warga Negara Indonesia', 'Nganjuk, Jatim', '0867763883787', '2022-12-08', 'Depan Bank BCA', 'KTM', '1663125131_foto ktp.jpg', '1663125131_orang dan katp2.png', '1663125131_surat rekomendasi.jpg', '', '1663125131_pernyataan-keaslian.pdf', 6, '1663125296_sktlkonas.pdf', '2022-09-14 03:12:11'),
+(16, 'Wira Pratama', 'Badung', '1992-12-12', 'PNS', 'Warga Negara Indonesia', 'Kapal, Badung', '087787768778', '2022-02-08', 'Depan Bank BCA', 'Kartu keluarga', '1663127302_foto ktp.jpg', '1663127302_orang dan katp2.png', '1663127302_surat rekomendasi.jpg', '', '1663127302_pernyataan-keaslian_2.pdf', 8, '1663127422_sktlk wira.pdf', '2022-09-14 03:48:22'),
+(17, 'aa', 'aa', '1998-11-11', 'aa', 'Warga Negara Indonesia', 'bd', '09099988', '2022-12-10', 'aa', 'ktm', '1663140572_foto ktp.jpg', '1663140572_orang dan ktp.jpg', '1663140572_surat rekomendasi.jpg', '', '1663140572_pernyataan-keaslian.pdf', 8, NULL, '2022-09-14 07:29:32'),
+(18, 'aa', 'aa', '1999-12-12', 'aa', 'Warga Negara Indonesia', 'aa', '09099988', '1999-12-12', 'aa', 'ktm', '1663141486_foto ktp.jpg', '1663141486_orang dan katp2.png', '1663141486_surat rekomendasi.jpg', '', '1663141486_pernyataan-keaslian_2.pdf', 8, '1663141562_aa.pdf', '2022-09-14 07:44:46'),
+(19, 'galuh', 'denpasar', '2000-12-02', 'Mahasiswa', 'Warga Negara Indonesia', 'Badung, Bali', '087889900', '2022-12-08', 'Depan Indomart', 'KTM', '1663143317_foto ktp.jpg', '1663143317_orang dan katp2.png', '1663143317_surat rekomendasi.jpg', '', '1663143317_pernyataan-keaslian.pdf', 8, '1663143384_laporan galuh.pdf', '2022-09-14 08:15:17');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -127,7 +138,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -138,7 +149,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `notifikasi`
+-- Table structure for table `notifikasi`
 --
 
 CREATE TABLE `notifikasi` (
@@ -154,7 +165,7 @@ CREATE TABLE `notifikasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `notifikasi`
+-- Dumping data for table `notifikasi`
 --
 
 INSERT INTO `notifikasi` (`id`, `judul`, `isi`, `tipe`, `telah_dibaca`, `dikirim_kepada`, `laporan_id`, `pelapor_id`, `dikirim_pada`) VALUES
@@ -231,12 +242,66 @@ INSERT INTO `notifikasi` (`id`, `judul`, `isi`, `tipe`, `telah_dibaca`, `dikirim
 (77, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 30, 1, '2022-09-09 14:28:50'),
 (78, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 30, 1, '2022-09-09 14:29:48'),
 (79, 'Data Pelaporan SIK Masuk', 'Data Izin Keramaian diterima. Lanjutkan ke proses persetujuan.', 'sik', 1, 'admin', 30, 1, '2022-09-09 14:32:04'),
-(80, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 31, 1, '2022-09-09 14:33:47');
+(80, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 31, 1, '2022-09-09 14:33:47'),
+(81, 'Pelaporan SKTLK Berhasil', 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.', 'sktlk', 1, 'pelapor', 13, 6, '2022-09-12 06:43:39'),
+(82, 'Pelaporan SKTLK Masuk', 'Pelaporan perlu diproses.', 'sktlk', 1, 'admin', 13, 6, '2022-09-12 06:43:39'),
+(83, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 1, 'pelapor', 13, 6, '2022-09-12 08:00:54'),
+(84, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 32, 6, '2022-09-12 08:02:39'),
+(85, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 32, 6, '2022-09-12 08:03:36'),
+(86, 'Data Pelaporan SIK Masuk', 'Data Izin Keramaian diterima. Lanjutkan ke proses persetujuan.', 'sik', 1, 'admin', 32, 6, '2022-09-12 08:10:21'),
+(87, 'Surat Izin Keramaian Diterima', 'Surat izin keramaian dapat diunduh disini.', 'sik', 1, 'pelapor', 32, 6, '2022-09-12 08:11:18'),
+(88, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 33, 6, '2022-09-13 06:42:38'),
+(89, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 33, 6, '2022-09-13 08:02:17'),
+(90, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 33, 6, '2022-09-13 08:08:25'),
+(91, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 33, 6, '2022-09-13 08:09:50'),
+(92, 'Dokumen SIK Ditolak', 'Dokumen persyaratan SIK Anda ditolak. Silahkan periksa kembali kelengkapan dokumen persyaratan.', 'sik', 1, 'pelapor', 33, 6, '2022-09-13 08:24:45'),
+(93, 'Dokumen SIK Ditolak', 'Dokumen persyaratan SIK Anda ditolak. Silahkan periksa kembali kelengkapan dokumen persyaratan.', 'sik', 1, 'pelapor', 33, 6, '2022-09-13 08:26:42'),
+(94, 'Dokumen SIK Ditolak', 'Dokumen persyaratan SIK Anda ditolak. Silahkan periksa kembali kelengkapan dokumen persyaratan.', 'sik', 1, 'pelapor', 33, 6, '2022-09-13 08:29:27'),
+(95, 'Surat Izin Keramaian Diterima', 'Surat izin keramaian dapat diunduh disini.', 'sik', 1, 'pelapor', 33, 6, '2022-09-13 08:48:48'),
+(96, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 34, 1, '2022-09-13 15:33:21'),
+(97, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 35, 7, '2022-09-13 15:36:57'),
+(98, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 35, 7, '2022-09-13 15:39:11'),
+(99, 'Dokumen SIK Ditolak', 'Dokumen persyaratan SIK Anda ditolak. Silahkan periksa kembali kelengkapan dokumen persyaratan.', 'sik', 0, 'pelapor', 35, 7, '2022-09-13 15:44:14'),
+(100, 'Surat Izin Keramaian Diterima', 'Surat izin keramaian dapat diunduh disini.', 'sik', 0, 'pelapor', 35, 7, '2022-09-13 15:48:26'),
+(101, 'Surat Izin Keramaian Diterima', 'Surat izin keramaian dapat diunduh disini.', 'sik', 0, 'pelapor', 35, 7, '2022-09-13 15:49:07'),
+(102, 'Pelaporan SKTLK Berhasil', 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.', 'sktlk', 0, 'pelapor', 14, 7, '2022-09-13 15:53:17'),
+(103, 'Pelaporan SKTLK Masuk', 'Pelaporan perlu diproses.', 'sktlk', 1, 'admin', 14, 7, '2022-09-13 15:53:17'),
+(104, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 0, 'pelapor', 2, 1, '2022-09-13 16:01:22'),
+(105, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 0, 'pelapor', 14, 7, '2022-09-13 16:03:32'),
+(106, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 0, 'pelapor', 14, 7, '2022-09-13 16:04:40'),
+(107, 'Pelaporan SKTLK Berhasil', 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.', 'sktlk', 1, 'pelapor', 15, 6, '2022-09-14 04:12:12'),
+(108, 'Pelaporan SKTLK Masuk', 'Pelaporan perlu diproses.', 'sktlk', 1, 'admin', 15, 6, '2022-09-14 04:12:12'),
+(109, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 0, 'pelapor', 15, 6, '2022-09-14 04:14:57'),
+(110, 'Pelaporan SKTLK Berhasil', 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.', 'sktlk', 1, 'pelapor', 16, 8, '2022-09-14 04:48:22'),
+(111, 'Pelaporan SKTLK Masuk', 'Pelaporan perlu diproses.', 'sktlk', 1, 'admin', 16, 8, '2022-09-14 04:48:22'),
+(112, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 1, 'pelapor', 16, 8, '2022-09-14 04:50:22'),
+(113, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 36, 8, '2022-09-14 04:54:54'),
+(114, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 36, 8, '2022-09-14 04:55:38'),
+(115, 'Data Pelaporan SIK Masuk', 'Data Izin Keramaian diterima. Lanjutkan ke proses persetujuan.', 'sik', 1, 'admin', 36, 8, '2022-09-14 05:01:05'),
+(116, 'Surat Izin Keramaian Diterima', 'Surat izin keramaian dapat diunduh disini.', 'sik', 1, 'pelapor', 36, 8, '2022-09-14 05:02:30'),
+(117, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 37, 8, '2022-09-14 05:04:43'),
+(118, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 37, 8, '2022-09-14 05:05:03'),
+(119, 'Pelaporan SKTLK Berhasil', 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.', 'sktlk', 1, 'pelapor', 17, 8, '2022-09-14 08:29:32'),
+(120, 'Pelaporan SKTLK Masuk', 'Pelaporan perlu diproses.', 'sktlk', 1, 'admin', 17, 8, '2022-09-14 08:29:32'),
+(121, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 38, 8, '2022-09-14 08:31:26'),
+(122, 'Pelaporan SKTLK Berhasil', 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.', 'sktlk', 1, 'pelapor', 18, 8, '2022-09-14 08:44:47'),
+(123, 'Pelaporan SKTLK Masuk', 'Pelaporan perlu diproses.', 'sktlk', 1, 'admin', 18, 8, '2022-09-14 08:44:47'),
+(124, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 1, 'pelapor', 18, 8, '2022-09-14 08:46:02'),
+(125, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 39, 8, '2022-09-14 08:47:48'),
+(126, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 39, 8, '2022-09-14 08:48:13'),
+(127, 'Data Pelaporan SIK Masuk', 'Data Izin Keramaian diterima. Lanjutkan ke proses persetujuan.', 'sik', 1, 'admin', 39, 8, '2022-09-14 08:50:12'),
+(128, 'Surat Izin Keramaian Diterima', 'Surat izin keramaian dapat diunduh disini.', 'sik', 1, 'pelapor', 39, 8, '2022-09-14 08:51:02'),
+(129, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 40, 8, '2022-09-14 08:53:58'),
+(130, 'Dokumen SIK Ditolak', 'Dokumen persyaratan SIK Anda ditolak. Silahkan periksa kembali kelengkapan dokumen persyaratan.', 'sik', 1, 'pelapor', 40, 8, '2022-09-14 08:54:28'),
+(131, 'Pelaporan SKTLK Berhasil', 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.', 'sktlk', 0, 'pelapor', 19, 8, '2022-09-14 09:15:17'),
+(132, 'Pelaporan SKTLK Masuk', 'Pelaporan perlu diproses.', 'sktlk', 1, 'admin', 19, 8, '2022-09-14 09:15:17'),
+(133, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 0, 'pelapor', 19, 8, '2022-09-14 09:16:24'),
+(134, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 0, 'admin', 41, 8, '2022-09-14 09:24:16');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -252,82 +317,85 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `nama`, `email`, `telepon`, `jenis_kelamin`, `password`, `jenis_pengguna`, `alamat`) VALUES
 (1, 'tuarie', 'Tuarie', 'tuarimb29@gmail.com', '082146335727', 'Laki-laki', '$2y$10$Qp8Lg5oKRDUUesF55nFGjeS9DINemIiDhlDtelLPYBqUpWagxFrie', 'Pelapor', 'Br. Munggu, Mengwi'),
 (3, 'galuh', 'galuh', 'galuh@gmail.com', '9000000', 'Perempuan', '$2y$10$BqwDjmmf6nuOMnOsw/yG1eYtl/09FDjOfBPkIpGLBQkyecKv4v1M.', 'Admin', 'Mengwi'),
 (4, 'ana', 'ana', 'ana@gmail.com', '999999999', 'Perempuan', '$2y$10$DuRaBSxowXB4BFVTnCmdaeiijut09A9b8o4SHD48oZ3BJhLA6ffBC', 'Pelapor', 'irian jaya'),
-(5, 'lisabp', 'lisa', 'lisabp@gmail.com', '08112345678', 'Perempuan', '$2y$10$AZGY7gQMwqbBGo/MUvhpPuYlTaH3vDQdUWS8eWNYVn2q2K7Ad6EPW', 'Pelapor', 'Thailand');
+(5, 'lisabp', 'lisa', 'lisabp@gmail.com', '08112345678', 'Perempuan', '$2y$10$AZGY7gQMwqbBGo/MUvhpPuYlTaH3vDQdUWS8eWNYVn2q2K7Ad6EPW', 'Pelapor', 'Thailand'),
+(6, 'adijaya', 'Adi Jaya', 'adijaya@gmail.com', '098989889898', 'Laki-laki', '$2y$10$MiQKI/4r6pEuQ9FXH7NOQO8Gw.3Hpof9QessOOgguN1hJhLyX8OFq', 'Pelapor', 'Denpasar'),
+(7, 'winayanti', 'winayanti', 'galuhcandrawardani@gmail.com', '087878773388', 'Perempuan', '$2y$10$14pTkQEUJ0y4fO0BB79i1OTfacA16GxCz9Nok6iQM0.snHv8SBXLy', 'Pelapor', 'Denpasar'),
+(8, 'apolres', 'Admin Polres', 'apolresbadung@gmail.com', '098878787878', 'Laki-laki', '$2y$10$pYfB/m6Cj6/91Fnz0L2vO.vZjXnYNou9Fyx35pU8GNgXWwWblpRhK', 'Pelapor', 'Badung, Bali');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `laporan_sik`
+-- Indexes for table `laporan_sik`
 --
 ALTER TABLE `laporan_sik`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `laporan_sktlk`
+-- Indexes for table `laporan_sktlk`
 --
 ALTER TABLE `laporan_sktlk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `notifikasi`
+-- Indexes for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `laporan_sik`
+-- AUTO_INCREMENT for table `laporan_sik`
 --
 ALTER TABLE `laporan_sik`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT untuk tabel `laporan_sktlk`
+-- AUTO_INCREMENT for table `laporan_sktlk`
 --
 ALTER TABLE `laporan_sktlk`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `notifikasi`
+-- AUTO_INCREMENT for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

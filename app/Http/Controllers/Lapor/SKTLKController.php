@@ -91,7 +91,7 @@ class SKTLKController extends Controller
 
     public function downloadPernyataan(Request $request)
     {
-        // Download pernyataan keaslian dokumen
+        // Download pernyataan keaslian do kumen
         $data = [
             'namaLengkap' => $request->pernyataanNamaLengkap,
             'tempatLahir' => $request->pernyataanTempatLahir,

@@ -102,7 +102,7 @@ function getNamaPelaporByNotification($notifikasi)
             return isset($laporan->nama_penanggung_jawab) ? $laporan->nama_penanggung_jawab : null;
         case 'sktlk':
             $laporan = SKTLK::find($notifikasi->laporan_id);
-            return $laporan->nama_lengkap;
+            return 'Pelapor';
     }
 }
 
