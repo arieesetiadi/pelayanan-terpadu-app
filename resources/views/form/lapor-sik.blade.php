@@ -90,16 +90,23 @@
                     <tr>
                         <td style="width: 30%">
                             <span class="d-inline-block mt-2">Proposal Kegiatan</span>
+                            <span class="text-danger">*</span>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label id="labelProposalKegiatan" for="proposalKegiatan"
-                                    class="btn btn-primary d-block w-50">
+                                    class="btn btn-primary d-block w-50 @error('proposalKegiatan') border-error @enderror">
                                     {{ $laporan->proposal_kegiatan ?? 'Upload File' }}
                                 </label>
+
                                 <input id="proposalKegiatan" accept=".pdf,.jpg,.jpeg,.png"
-                                    {{ isset($laporan) ? '' : 'required' }} name="proposalKegiatan" type="file"
+                                    {{ isset($laporan) ? '' : '' }} name="proposalKegiatan" type="file"
                                     class="d-none">
+                                @error('proposalKegiatan')
+                                    <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -107,15 +114,21 @@
                     <tr>
                         <td style="width: 30%">
                             <span class="d-inline-block mt-2">Izin Tempat / Lokasi Kegiatan</span>
+                            <span class="text-danger">*</span>
                         </td>
                         <td>
                             <div class="form-group">
-                                <label id="labelIzinTempat" for="izinTempat" class="btn btn-primary d-block w-50">
+                                <label id="labelIzinTempat" for="izinTempat"
+                                    class="btn btn-primary d-block w-50 @error('izinTempat') border-error @enderror">
                                     {{ $laporan->izin_tempat ?? 'Upload File' }}
                                 </label>
-                                <input id="izinTempat" accept=".pdf,.jpg,.jpeg,.png"
-                                    {{ isset($laporan) ? '' : 'required' }} name="izinTempat" type="file"
-                                    class="d-none">
+                                <input id="izinTempat" accept=".pdf,.jpg,.jpeg,.png" {{ isset($laporan) ? '' : '' }}
+                                    name="izinTempat" type="file" class="d-none">
+                                @error('izinTempat')
+                                    <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -123,15 +136,21 @@
                     <tr>
                         <td style="width: 30%">
                             <span class="d-inline-block mt-2">Izin / rekomendasi dari instansi terkait</span>
+                            <span class="text-danger">*</span>
                         </td>
                         <td>
                             <div class="form-group">
-                                <label id="labelIzinInstansi" for="izinInstansi" class="btn btn-primary d-block w-50">
+                                <label id="labelIzinInstansi" for="izinInstansi"
+                                    class="btn btn-primary d-block w-50 @error('izinInstansi') border-error @enderror">
                                     {{ $laporan->izin_instansi ?? 'Upload File' }}
                                 </label>
-                                <input id="izinInstansi" accept=".pdf,.jpg,.jpeg,.png"
-                                    {{ isset($laporan) ? '' : 'required' }} name="izinInstansi" type="file"
-                                    class="d-none">
+                                <input id="izinInstansi" accept=".pdf,.jpg,.jpeg,.png" {{ isset($laporan) ? '' : '' }}
+                                    name="izinInstansi" type="file" class="d-none">
+                                @error('izinInstansi')
+                                    <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -155,15 +174,21 @@
                     <tr>
                         <td style="width: 30%">
                             <span class="d-inline-block mt-2">Rekomendasi dari Polsek setempat</span>
+                            <span class="text-danger">*</span>
                         </td>
                         <td>
                             <div class="form-group">
                                 <label id="labelRekomendasiPolsek" for="rekomendasiPolsek"
-                                    class="btn btn-primary d-block w-50">
+                                    class="btn btn-primary d-block w-50 @error('rekomendasiPolsek') border-error @enderror">
                                     {{ $laporan->rekomendasi_polsek ?? 'Upload File' }}
                                 </label>
                                 <input id="rekomendasiPolsek" accept=".pdf,.jpg,.jpeg,.png" name="rekomendasiPolsek"
-                                    type="file" class="d-none" {{ isset($laporan) ? '' : 'required' }}>
+                                    type="file" class="d-none" {{ isset($laporan) ? '' : '' }}>
+                                @error('rekomendasiPolsek')
+                                    <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
                                 <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                             </div>
                         </td>
@@ -171,7 +196,9 @@
 
                     <tr>
                         <td>
-                            <button type="submit" class="btn btn-primary">Kirim Data</button>
+                            <h6><span class="font-weight-bolder">Note</span> : <span class="text-danger">*</span>
+                                Dokumen wajib diisi</h6>
+                            <button type="submit" class="btn btn-primary mt-4">Kirim Data</button>
                         </td>
                     </tr>
                 </table>

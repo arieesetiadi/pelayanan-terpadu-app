@@ -90,6 +90,13 @@ class SIKController extends Controller
 
     public function upload(Request $data)
     {
+        $data->validate([
+            'proposalKegiatan' => 'required',
+            'izinTempat' => 'required',
+            'izinInstansi' => 'required',
+            'rekomendasiPolsek' => 'required',
+        ]);
+
         // Upload file terbaru saja
         if ($data->laporan_id) {
             SIK::updateDokumen($data->all());
