@@ -3,6 +3,7 @@
 use App\Models\Laporan\SIK;
 use App\Models\Laporan\SKTLK;
 use App\Models\Notifikasi;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
@@ -96,14 +97,7 @@ function getLaporanByNotif($notifikasi)
 
 function getNamaPelaporByNotification($notifikasi)
 {
-    switch ($notifikasi->tipe) {
-        case 'sik':
-            $laporan = SIK::find($notifikasi->laporan_id);
-            return isset($laporan->nama_penanggung_jawab) ? $laporan->nama_penanggung_jawab : null;
-        case 'sktlk':
-            $laporan = SKTLK::find($notifikasi->laporan_id);
-            return 'Pelapor';
-    }
+    return User::find($notifikasi->pelapor_id)->nama;
 }
 
 function isImage($fileName)
