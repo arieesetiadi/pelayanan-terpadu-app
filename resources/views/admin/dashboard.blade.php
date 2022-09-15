@@ -12,7 +12,7 @@
                         <div class="d-flex align-items-center">
                             <div class="">
                                 <p class="mb-1">Laporan SKTLK</p>
-                                <h4 class="mb-0 text-tiffany">25</h4>
+                                <h4 class="mb-0 text-tiffany">{{ $countSKTLK }}</h4>
                             </div>
                             <div class="ms-auto widget-icon bg-tiffany text-white">
                                 <i class="bi bi-card-list"></i>
@@ -29,7 +29,7 @@
                         <div class="d-flex align-items-center">
                             <div class="">
                                 <p class="mb-1">Laporan SIK</p>
-                                <h4 class="mb-0 text-success">50</h4>
+                                <h4 class="mb-0 text-success">{{ $countSIK }}</h4>
                             </div>
                             <div class="ms-auto widget-icon bg-success text-white">
                                 <i class="bi bi-card-list"></i>
