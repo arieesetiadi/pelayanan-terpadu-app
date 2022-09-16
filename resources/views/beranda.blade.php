@@ -117,7 +117,6 @@
                                     <i class="fa-solid fa-caret-down"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/tindak-kriminal">Tindak Kriminal</a>
                                     <a class="dropdown-item" href="/tindak-kriminal/sp2hp">SP2HP</a>
                                 </div>
                             </div>

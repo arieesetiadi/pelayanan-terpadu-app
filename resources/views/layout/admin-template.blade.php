@@ -232,9 +232,7 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
                         <div class="menu-title">Tindak Kriminal</div>
                     </a>
                     <ul>
-                        <li> <a href="index.html"><i class="bi bi-circle"></i>Tindak Kriminal</a>
-                        </li>
-                        <li> <a href="index2.html"><i class="bi bi-circle"></i>STTLP</a>
+                        <li> <a href="index.html"><i class="bi bi-circle"></i>SP2HP</a>
                         </li>
                     </ul>
                 </li>
