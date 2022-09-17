@@ -62,9 +62,30 @@
     {{-- Konten --}}
     <section id="main">
         <div class="container py-5">
+            <a href="/">
+                <i class="fa-solid fa-angle-left fa-3x"></i>
+            </a>
+
+            {{-- Alert success --}}
+            @if (session('success'))
+                <div class="alert alert-success mt-4" role="alert">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span class="d-inline-block mx-2">
+                        {{ session('success') }}
+                    </span>
+                </div>
+            @endif
+            
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Surat Pemberitahuan Perkembangan Hasil Penyidikan</h1>
+            
+            <center>
+                <div class="flat-appointment btn-linear hv-linear-gradient">
+                    <a href="/form/lapor-sp2hp" class="font-style linear-color border-corner">Lapor</a>
+                </div>
+            </center>
             <br>
+
             <p>
                 Surat Pemberitahuan Perkembangan Hasil Penyidikan (SP2HP) merupakan hak bagi pelapor. Dalam hal menjamin
                 akuntabilitas dan transparansi penyelidikan /penyidikan, penyidik wajib memberikan SP2HP kepada pihak

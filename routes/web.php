@@ -6,6 +6,7 @@ use App\Http\Controllers\Lapor\SIKController;
 use App\Http\Controllers\Lapor\SKTLKController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NotifikasiController;
+use App\Http\Controllers\SP2HPController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -64,6 +65,10 @@ Route::middleware('auth.pelapor')->group(function () {
     Route::post('/upload-form-sik', [SIKController::class, 'uploadForm']);
     Route::post('/download-pernyataan-sik', [SIKController::class, 'downloadPernyataan']);
 
+    // Route SP2HP
+    Route::view('/form/lapor-sp2hp', 'form.lapor-sp2hp');
+    Route::post('/lapor-sp2hp', [SP2HPController::class, 'lapor']);
+
     // Route Profile Pelapor
     Route::view('/profile/pelapor', 'profile-pelapor');
 });
@@ -80,12 +85,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
     Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);
     Route::get('/admin/sktlk/hapus/{id}', [SKTLKController::class, 'hapus']);
-
+    
     Route::get('/admin/sik', [SIKController::class, 'index']);
     Route::get('/admin/sik/setuju/{id}', [SIKController::class, 'setuju']);
     Route::post('/admin/sik/upload-file', [SIKController::class, 'uploadFile']);
     Route::post('/admin/sik/tolak', [SIKController::class, 'tolak']);
     Route::get('/admin/sik/hapus/{id}', [SIKController::class, 'hapus']);
+
+    Route::get('/admin/sp2hp', [SP2HPController::class, 'index']);
 });
 
 // Route aktivasi akun
