@@ -37,15 +37,20 @@
                     <td>{{ $item->judul_laporan }}</td>
                     <td>
                         {{-- Tombol detail dokumen --}}
-                        <a href="#" title="Tampilkan Detail Dokumen" data-bs-toggle="modal"
+                        <a href="#" title="Tampilkan Detail Kejadian" data-bs-toggle="modal"
                             data-bs-target="#detail-modal-{{ $item->id }}">
                             <i class="bi bi-info-circle-fill"></i> Detail
                         </a>
                     </td>
                     <td>
-                        <a href="{{ asset('assets-user/upload/') . '/' . $item->lampiran }}" target="_blank" title="Download Lampiran">
-                            <i class="bi bi-download"></i> Lampiran
-                        </a>
+                        @if ($item->lampiran != '')
+                            <a href="{{ asset('assets-user/upload/') . '/' . $item->lampiran }}" target="_blank"
+                                title="Download Lampiran">
+                                <i class="bi bi-download"></i> Lampiran
+                            </a>
+                        @else
+                            -
+                        @endif
                     </td>
                     <td>
                         {{-- Tombol upload --}}
@@ -55,7 +60,7 @@
                         </a>
 
                         {{-- Tombol hapus --}}
-                        <a href="/admin/sktlk/hapus/{{ $item->id }}" title="Hapus"
+                        <a href="/admin/sp2hp/hapus/{{ $item->id }}" title="Hapus"
                             onclick="return confirm('Apakah anda yakin untuk menghapus data SP2HP ?')">
                             <i class="bi bi-trash-fill"></i>
                         </a>
@@ -72,7 +77,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form action="/admin/sktlk/upload-file" method="POST" enctype="multipart/form-data">
+                                    <form action="/admin/sp2hp/upload-keterangan" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
                                             @csrf
                                             {{-- Input file --}}
@@ -81,6 +86,12 @@
                                                 <label for="file" class="form-label">File :</label>
                                                 <input name="file" class="form-control" type="file" id="file"
                                                     accept=".pdf">
+                                            </div>
+                                            <div class="mb-3">
+                                                <span class="d-inline-block my-2">Keterangan:</span>
+                                                <div class="form-group">
+                                                    <textarea name="keterangan" placeholder="Keterangan" class="form-control" rows="3"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -93,13 +104,13 @@
                             </div>
                         </div>
 
-                        {{-- Popup Detail Dokumen --}}
+                        {{-- Popup Detail Kejadian --}}
                         <div class="modal fade" id="detail-modal-{{ $item->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Detail Dokumen</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Detail Kejadian</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>

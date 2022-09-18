@@ -2,6 +2,7 @@
 
 use App\Models\Laporan\SIK;
 use App\Models\Laporan\SKTLK;
+use App\Models\Laporan\SP2HP;
 use App\Models\Notifikasi;
 use App\Models\User;
 use Carbon\Carbon;
@@ -89,6 +90,9 @@ function getLaporanByNotif($notifikasi)
             break;
         case 'sik':
             $laporan = SIK::find($notifikasi->laporan_id);
+            break;
+        case 'sp2hp':
+            $laporan = SP2HP::find($notifikasi->laporan_id);
             break;
     }
 

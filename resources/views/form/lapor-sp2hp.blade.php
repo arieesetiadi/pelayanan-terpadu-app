@@ -213,7 +213,7 @@
                             <span class="d-inline-block mt-2">Kategori :</span>
                         </td>
                         <td>
-                            <select name="lokasiKejadian" class="custom-select" style="height: 40px" required>
+                            <select name="kategori" class="custom-select" style="height: 40px" required>
                                 <option selected hidden>Pilih Kategori</option>
                                 <option value="Pencurian">Pencurian</option>
                                 <option value="Penganiayaan">Penganiayaan</option>
@@ -226,6 +226,34 @@
                                 <option value="KDRT">KDRT</option>
                                 <option value="Pelanggaran HAM">Pelanggaran HAM</option>
                             </select>
+                        </td>
+                    </tr>
+
+                    {{-- Upload KTP --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-3">Foto identitas pelapor (KTP)</span>
+                        </td>
+                        <td>
+                            <div class="form-group mt-3">
+                                <input name="fotoKtp" type="file" class="form-control-file"
+                                    accept=".jpg,.jpeg,.png">
+                                <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    {{-- Upload Foto Orang + KTP --}}
+                    <tr>
+                        <td>
+                            <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input name="fotoPelapor" type="file" class="form-control-file"
+                                    accept=".jpg,.jpeg,.png">
+                                <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                            </div>
                         </td>
                     </tr>
                     

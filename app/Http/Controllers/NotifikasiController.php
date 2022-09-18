@@ -40,6 +40,9 @@ class NotifikasiController extends Controller
                     ]);
                 }
                 break;
+            case 'sp2hp':
+                return redirect()->to(asset('assets-user/upload/' . $laporan->perkembangan));
+                break;
         }
 
         return back();

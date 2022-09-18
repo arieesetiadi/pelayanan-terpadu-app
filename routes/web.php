@@ -91,8 +91,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/sik/upload-file', [SIKController::class, 'uploadFile']);
     Route::post('/admin/sik/tolak', [SIKController::class, 'tolak']);
     Route::get('/admin/sik/hapus/{id}', [SIKController::class, 'hapus']);
-
+    
     Route::get('/admin/sp2hp', [SP2HPController::class, 'index']);
+    Route::get('/admin/sp2hp/hapus/{id}', [SP2HPController::class, 'hapus']);
+    Route::post('/admin/sp2hp/upload-keterangan', [SP2HPController::class, 'uploadKeterangan']);
 });
 
 // Route aktivasi akun
