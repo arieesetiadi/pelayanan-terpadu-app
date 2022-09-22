@@ -6,6 +6,7 @@ use PDF;
 use App\Models\Notifikasi;
 use App\Models\Laporan\SIK;
 use App\Models\Laporan\SKTLK;
+use App\Models\Laporan\SP2HP;
 
 class NotifikasiController extends Controller
 {
@@ -93,8 +94,13 @@ class NotifikasiController extends Controller
                         'sikDocument' => $sikDocument
                     ]);
                 }
-
                 break;
+            case 'sp2hp':
+                $laporan = SP2HP::find($notifikasi->laporan_id);
+                return view('admin.sp2hp.notifikasi', [
+                    'title' => 'Validasi Laporan',
+                    'laporan' => $laporan,
+                ]);
         }
     }
 }

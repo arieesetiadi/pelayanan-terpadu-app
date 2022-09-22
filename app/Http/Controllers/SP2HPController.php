@@ -77,14 +77,14 @@ class SP2HPController extends Controller
         Notifikasi
             ::where('tipe', 'sp2hp')
             ->where('laporan_id', $id)
-            ->delete(); 
+            ->delete();
 
         // Redirect ke halaman admin SP2HP
         return redirect()->to('admin/sp2hp')->with('success', 'Anda berhasil menghapus data');
-        
     }
 
-    public function uploadKeterangan(Request $request){
+    public function uploadKeterangan(Request $request)
+    {
         $path = 'assets-user/upload/';
 
         // Ambil data dari form upload
@@ -96,8 +96,8 @@ class SP2HPController extends Controller
 
         // Update data perkembangan ke database
         $laporan->update([
-            'perkembangan' => $perkembangan,
-            'keterangan' => $keterangan
+            'file_pemberitahuan' => $perkembangan,
+            'keterangan_pemberitahuan' => $keterangan
         ]);
 
         // Kirim notifikasi ke halaman pelapor
