@@ -44,7 +44,7 @@
 
     {{-- Konten --}}
     <section id="main">
-        <div class="container py-5">
+        <div class="container py-5 styled-bg" style="padding: 0 8%">
             <a href="/pengaduan-masyarakat/sik">
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
@@ -71,138 +71,147 @@
                 @endif
             @endif
 
-            <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
-                data-aos-duration="500">Form Dokumen Persyaratan SIK</h1>
+            <div class="card shadow p-5 my-5">
+                <div class="card-body">
+                    <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
+                        data-aos-duration="500">Form Dokumen Persyaratan SIK</h1>
 
-            <form action="/upload-sik" method="post" enctype="multipart/form-data">
-                @csrf
-                @if (isset($laporan))
-                    <input type="hidden" name="laporan_id" value="{{ $laporan->id }}">
-                @endif
-                <table class="table table-sm table-borderless">
-                    {{-- UPLOAD DOKUMEN --}}
-                    <tr>
-                        <td colspan="2">
-                            <h1 class="d-block mt-4 text-dark" style="font-size: 24px">Upload Dokumen Persyaratan :</h1>
-                            <hr>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 30%">
-                            <span class="d-inline-block mt-2">Proposal Kegiatan</span>
-                            <span class="text-danger">*</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label id="labelProposalKegiatan" for="proposalKegiatan"
-                                    class="btn btn-primary d-block w-50 @error('proposalKegiatan') border-error @enderror">
-                                    {{ $laporan->proposal_kegiatan ?? 'Upload File' }}
-                                </label>
+                    <form action="/upload-sik" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @if (isset($laporan))
+                            <input type="hidden" name="laporan_id" value="{{ $laporan->id }}">
+                        @endif
+                        <table class="table table-sm table-borderless">
+                            {{-- UPLOAD DOKUMEN --}}
+                            <tr>
+                                <td colspan="2">
+                                    <h1 class="d-block mt-4 text-dark" style="font-size: 24px">Upload Dokumen
+                                        Persyaratan :</h1>
+                                    <hr>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 55%">
+                                    <span class="d-inline-block mt-2">Proposal Kegiatan</span>
+                                    <span class="text-danger">*</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label id="labelProposalKegiatan" for="proposalKegiatan"
+                                            class="btn btn-primary d-block w-100 @error('proposalKegiatan') border-error @enderror">
+                                            {{ $laporan->proposal_kegiatan ?? 'Upload File' }}
+                                        </label>
 
-                                <input id="proposalKegiatan" accept=".pdf,.jpg,.jpeg,.png"
-                                    {{ isset($laporan) ? '' : '' }} name="proposalKegiatan" type="file"
-                                    class="d-none">
-                                @error('proposalKegiatan')
-                                    <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 30%">
-                            <span class="d-inline-block mt-2">Izin Tempat / Lokasi Kegiatan</span>
-                            <span class="text-danger">*</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label id="labelIzinTempat" for="izinTempat"
-                                    class="btn btn-primary d-block w-50 @error('izinTempat') border-error @enderror">
-                                    {{ $laporan->izin_tempat ?? 'Upload File' }}
-                                </label>
-                                <input id="izinTempat" accept=".pdf,.jpg,.jpeg,.png" {{ isset($laporan) ? '' : '' }}
-                                    name="izinTempat" type="file" class="d-none">
-                                @error('izinTempat')
-                                    <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 30%">
-                            <span class="d-inline-block mt-2">Izin / rekomendasi dari instansi terkait</span>
-                            <span class="text-danger">*</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label id="labelIzinInstansi" for="izinInstansi"
-                                    class="btn btn-primary d-block w-50 @error('izinInstansi') border-error @enderror">
-                                    {{ $laporan->izin_instansi ?? 'Upload File' }}
-                                </label>
-                                <input id="izinInstansi" accept=".pdf,.jpg,.jpeg,.png" {{ isset($laporan) ? '' : '' }}
-                                    name="izinInstansi" type="file" class="d-none">
-                                @error('izinInstansi')
-                                    <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 30%">
-                            <span class="d-inline-block mt-2">Fotokopi paspor (bila melibatkan WNA)</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label id="labelFotokopiPaspor" for="fotokopiPaspor"
-                                    class="btn btn-primary d-block w-50">
-                                    {{ $laporan->fotokopi_paspor ?? 'Upload File' }}
-                                </label>
-                                <input id="fotokopiPaspor" accept=".pdf,.jpg,.jpeg,.png" name="fotokopiPaspor"
-                                    type="file" class="d-none">
-                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 30%">
-                            <span class="d-inline-block mt-2">Rekomendasi dari Polsek setempat</span>
-                            <span class="text-danger">*</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label id="labelRekomendasiPolsek" for="rekomendasiPolsek"
-                                    class="btn btn-primary d-block w-50 @error('rekomendasiPolsek') border-error @enderror">
-                                    {{ $laporan->rekomendasi_polsek ?? 'Upload File' }}
-                                </label>
-                                <input id="rekomendasiPolsek" accept=".pdf,.jpg,.jpeg,.png" name="rekomendasiPolsek"
-                                    type="file" class="d-none" {{ isset($laporan) ? '' : '' }}>
-                                @error('rekomendasiPolsek')
-                                    <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
-                                        {{ $message }}
-                                    </small>
-                                @enderror
-                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
+                                        <input id="proposalKegiatan" accept=".pdf,.jpg,.jpeg,.png"
+                                            {{ isset($laporan) ? '' : '' }} name="proposalKegiatan" type="file"
+                                            class="d-none">
+                                        @error('proposalKegiatan')
+                                            <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
+                                                {{ $message }}
+                                            </small>
+                                        @enderror
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 55%">
+                                    <span class="d-inline-block mt-2">Izin Tempat / Lokasi Kegiatan</span>
+                                    <span class="text-danger">*</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label id="labelIzinTempat" for="izinTempat"
+                                            class="btn btn-primary d-block w-100 @error('izinTempat') border-error @enderror">
+                                            {{ $laporan->izin_tempat ?? 'Upload File' }}
+                                        </label>
+                                        <input id="izinTempat" accept=".pdf,.jpg,.jpeg,.png"
+                                            {{ isset($laporan) ? '' : '' }} name="izinTempat" type="file"
+                                            class="d-none">
+                                        @error('izinTempat')
+                                            <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
+                                                {{ $message }}
+                                            </small>
+                                        @enderror
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 55%">
+                                    <span class="d-inline-block mt-2">Izin / rekomendasi dari instansi terkait</span>
+                                    <span class="text-danger">*</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label id="labelIzinInstansi" for="izinInstansi"
+                                            class="btn btn-primary d-block w-100 @error('izinInstansi') border-error @enderror">
+                                            {{ $laporan->izin_instansi ?? 'Upload File' }}
+                                        </label>
+                                        <input id="izinInstansi" accept=".pdf,.jpg,.jpeg,.png"
+                                            {{ isset($laporan) ? '' : '' }} name="izinInstansi" type="file"
+                                            class="d-none">
+                                        @error('izinInstansi')
+                                            <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
+                                                {{ $message }}
+                                            </small>
+                                        @enderror
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 55%">
+                                    <span class="d-inline-block mt-2">Fotokopi paspor (bila melibatkan WNA)</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label id="labelFotokopiPaspor" for="fotokopiPaspor"
+                                            class="btn btn-primary d-block w-100">
+                                            {{ $laporan->fotokopi_paspor ?? 'Upload File' }}
+                                        </label>
+                                        <input id="fotokopiPaspor" accept=".pdf,.jpg,.jpeg,.png"
+                                            name="fotokopiPaspor" type="file" class="d-none">
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 55%">
+                                    <span class="d-inline-block mt-2">Rekomendasi dari Polsek setempat</span>
+                                    <span class="text-danger">*</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label id="labelRekomendasiPolsek" for="rekomendasiPolsek"
+                                            class="btn btn-primary d-block w-100 @error('rekomendasiPolsek') border-error @enderror">
+                                            {{ $laporan->rekomendasi_polsek ?? 'Upload File' }}
+                                        </label>
+                                        <input id="rekomendasiPolsek" accept=".pdf,.jpg,.jpeg,.png"
+                                            name="rekomendasiPolsek" type="file" class="d-none"
+                                            {{ isset($laporan) ? '' : '' }}>
+                                        @error('rekomendasiPolsek')
+                                            <small class="text-danger d-inline-block mr-2" style="font-size: 80%">
+                                                {{ $message }}
+                                            </small>
+                                        @enderror
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
 
-                    <tr>
-                        <td>
-                            <h6><span class="font-weight-bolder">Note</span> : <span class="text-danger">*</span>
-                                Dokumen wajib diisi</h6>
-                            <button type="submit" class="btn btn-primary mt-4">Kirim Data</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+                            <tr>
+                                <td>
+                                    <h6><span class="font-weight-bolder">Note</span> : <span
+                                            class="text-danger">*</span>
+                                        Dokumen wajib diisi</h6>
+                                    <button type="submit" class="btn btn-primary mt-4">Kirim Data</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 

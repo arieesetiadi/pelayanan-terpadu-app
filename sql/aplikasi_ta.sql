@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2022 at 06:56 AM
+-- Generation Time: Sep 22, 2022 at 04:18 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -89,6 +89,44 @@ CREATE TABLE `laporan_sktlk` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `laporan_sp2hp`
+--
+
+CREATE TABLE `laporan_sp2hp` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `nama_lengkap` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tempat_lahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `pekerjaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kewarganegaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telepon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul_laporan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isi_laporan` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal_kejadian` date NOT NULL,
+  `lokasi_kejadian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detail_lokasi_kejadian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kategori` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto_pelapor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lampiran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `perkembangan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `keterangan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pelapor_id` int(11) NOT NULL,
+  `dilaporkan_pada` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `laporan_sp2hp`
+--
+
+INSERT INTO `laporan_sp2hp` (`id`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `kewarganegaraan`, `alamat`, `telepon`, `judul_laporan`, `isi_laporan`, `tanggal_kejadian`, `lokasi_kejadian`, `detail_lokasi_kejadian`, `kategori`, `foto_ktp`, `foto_pelapor`, `lampiran`, `perkembangan`, `keterangan`, `pelapor_id`, `dilaporkan_pada`) VALUES
+(6, 'Galuh Candra', 'Dps', '2004-08-18', 'PNS', 'Warga Negara Indonesia', 'Br. Serangan Mengwi', '088787489998', 'Pencurian Kucing', 'Selasa, 13 Agustus 2022 kucing saya hilang diambil oleh seorang laki-laki kira-kira berumur 30-an tahun di Gang Nanas Br. serangan mengwi', '2022-08-13', 'Mengwi', 'Br. Serangan Mengwi Gang Nanas No 02', 'Pencurian', '1663475938_foto ktp.jpg', '1663475938_orang dan katp2.png', '', '1663480037_16-52-1-pb.pdf', 'sdsdsd', 8, '2022-09-18 05:47:17'),
+(8, 'Pande Brado', 'Badung', '2013-01-01', 'PNS', 'Warga Negara Indonesia', 'Badung', '0987787898', 'Pencurian Anjing', 'Sekitar pukul 15.00 anjing hilang di sekitaran rumah', '2021-08-22', 'Mengwi', 'Gang Rama no 9 Mengwi, Badung', 'Pencurian', '1663480332_foto ktp.jpg', '1663480332_orang dan katp2.png', '', '1663480376_1663141562_aa.pdf', 'ahhahggss', 8, '2022-09-18 05:52:56');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -105,7 +143,8 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2022_07_14_140958_create_laporan_sktlk_table', 1),
 (3, '2022_07_15_135449_create_notifikasi_table', 2),
-(7, '2022_07_14_141016_create_laporan_sik_table', 3);
+(7, '2022_07_14_141016_create_laporan_sik_table', 3),
+(8, '2022_09_17_112352_create_laporan_sp2hp_table', 4);
 
 -- --------------------------------------------------------
 
@@ -124,6 +163,17 @@ CREATE TABLE `notifikasi` (
   `pelapor_id` int(11) NOT NULL,
   `dikirim_pada` timestamp NOT NULL DEFAULT '2022-07-15 07:10:55'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifikasi`
+--
+
+INSERT INTO `notifikasi` (`id`, `judul`, `isi`, `tipe`, `telah_dibaca`, `dikirim_kepada`, `laporan_id`, `pelapor_id`, `dikirim_pada`) VALUES
+(6, 'Pelaporan Tindak Kriminal Masuk', 'Pelaporan perlu diproses.', 'sp2hp', 1, 'admin', 6, 8, '2022-09-18 05:38:58'),
+(8, 'Perkembangan SP2HP', 'Progres penyidikan tindak kriminal dapat dilihat pada file pdf berikut.', 'sp2hp', 1, 'pelapor', 6, 8, '2022-09-18 06:40:18'),
+(9, 'Perkembangan SP2HP', 'Progres penyidikan tindak kriminal dapat dilihat pada file pdf berikut.', 'sp2hp', 1, 'pelapor', 6, 8, '2022-09-18 06:47:18'),
+(10, 'Pelaporan Tindak Kriminal Masuk', 'Pelaporan perlu diproses.', 'sp2hp', 1, 'admin', 8, 8, '2022-09-18 06:52:12'),
+(11, 'Perkembangan SP2HP', 'Progres penyidikan tindak kriminal dapat dilihat pada file pdf berikut.', 'sp2hp', 1, 'pelapor', 8, 8, '2022-09-18 06:52:57');
 
 -- --------------------------------------------------------
 
@@ -177,6 +227,13 @@ ALTER TABLE `laporan_sktlk`
   ADD KEY `pelapor_id` (`pelapor_id`);
 
 --
+-- Indexes for table `laporan_sp2hp`
+--
+ALTER TABLE `laporan_sp2hp`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pelapor_id` (`pelapor_id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -187,8 +244,7 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `notifikasi`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `pelapor_id` (`pelapor_id`),
-  ADD KEY `laporan_id` (`laporan_id`);
+  ADD KEY `pelapor_id` (`pelapor_id`);
 
 --
 -- Indexes for table `users`
@@ -213,16 +269,22 @@ ALTER TABLE `laporan_sktlk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `laporan_sp2hp`
+--
+ALTER TABLE `laporan_sp2hp`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -250,8 +312,7 @@ ALTER TABLE `laporan_sktlk`
 -- Constraints for table `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  ADD CONSTRAINT `notifikasi_ibfk_1` FOREIGN KEY (`pelapor_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `notifikasi_ibfk_2` FOREIGN KEY (`laporan_id`) REFERENCES `laporan_sktlk` (`id`);
+  ADD CONSTRAINT `notifikasi_ibfk_1` FOREIGN KEY (`pelapor_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

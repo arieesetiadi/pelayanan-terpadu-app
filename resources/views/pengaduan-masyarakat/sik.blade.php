@@ -30,6 +30,17 @@
         ol {
             margin-left: 20px
         }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        li {
+            color: black
+        }
     </style>
 
     <link href="favicon.ico" rel="shortcut icon">
@@ -45,7 +56,7 @@
 
     {{-- Konten --}}
     <section id="main">
-        <div class="container py-5">
+        <div class="container p-5 styled-bg">
             <a href="/">
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>

@@ -31,6 +31,17 @@
         li {
             text-align: justify;
         }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        li {
+            color: black
+        }
     </style>
 
     <link href="favicon.ico" rel="shortcut icon">
@@ -47,7 +58,7 @@
 
     {{-- Konten --}}
     <section id="main">
-        <div class="container py-5">
+        <div class="container py-5" style="padding: 0 8%">
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Tentang Polri</h1>
             <div class="row py-5" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
@@ -138,8 +149,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.kenburn.min.js') }}">
     </script>
-    <script
-        src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.layeranimation.min.js') }}">
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.migration.min.js') }}">
     </script>
@@ -149,8 +159,7 @@
     </script>
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.slideanims.min.js') }}">
     </script>
-    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}">
-    </script>
+    <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
 </body>
 
 </html>

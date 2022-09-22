@@ -48,6 +48,17 @@
         h6 {
             font-size: 20px
         }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        li {
+            color: black
+        }
     </style>
 </head>
 
@@ -61,7 +72,7 @@
 
     {{-- Konten --}}
     <section id="main">
-        <div class="container py-5">
+        <div class="container p-5 styled-bg">
             <a href="/">
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
@@ -75,10 +86,10 @@
                     </span>
                 </div>
             @endif
-            
+
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Surat Pemberitahuan Perkembangan Hasil Penyidikan</h1>
-            
+
             <center>
                 <div class="flat-appointment btn-linear hv-linear-gradient">
                     <a href="/form/lapor-sp2hp" class="font-style linear-color border-corner">Lapor</a>

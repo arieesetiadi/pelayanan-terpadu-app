@@ -32,6 +32,19 @@
     <link rel="stylesheet" href="{{ asset('assets-user/css/responsive.css') }}">
 
     <link href="favicon.ico" rel="shortcut icon">
+
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        li {
+            color: black
+        }
+    </style>
 </head>
 
 <body class="counter-scroll">
@@ -44,11 +57,10 @@
 
     {{-- Konten --}}
     <section id="main">
-        <div class="container py-5">
+        <div class="container py-5 styled-bg" style="padding: 0 8%">
             <a href="/pengaduan-masyarakat/sktlk">
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
-
             {{-- Alert success --}}
             @if (session('success'))
                 <div class="alert alert-success mt-4" role="alert">
@@ -59,227 +71,227 @@
                 </div>
             @endif
 
-            <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
-                data-aos-duration="500">Form Pelaporan SKTLK</h1>
+            <div class="card shadow p-5 my-5">
+                <div class="card-body">
+                    <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
+                        data-aos-duration="500">Form Pelaporan SKTLK</h1>
 
-            <form action="/upload-sktlk" method="POST" enctype="multipart/form-data">
-                @csrf
-                {{-- Form Data Diri --}}
-                <h1 style="font-size: 24px">Data Diri :</h1>
-                <hr>
-                <table class="table table-sm table-borderless">
-                    {{-- Nama Lengkap --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Nama Lengkap</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="namaLengkap" type="text" class="form-control form-control-sm"
-                                    placeholder="Nama lengkap" style="height: 40px"
-                                    value="{{ old('namaLengkap') ?? '' }}">
-                            </div>
-                        </td>
-                    </tr>
+                    <form action="/upload-sktlk" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        {{-- Form Data Diri --}}
+                        <h1 style="font-size: 24px">Data Diri :</h1>
+                        <hr>
+                        <table class="table table-sm table-borderless">
+                            {{-- Nama Lengkap --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Nama Lengkap</span>
+                                </td>
+                                <td>
+                                    <input name="namaLengkap" type="text" class="form-control form-control-sm"
+                                        placeholder="Nama lengkap" style="height: 40px"
+                                        value="{{ old('namaLengkap') ?? '' }}">
+                                </td>
+                            </tr>
 
-                    {{-- Tempat tanggal lahir --}}
-                    <tr style="margin-bottom: 50px">
-                        <td>
-                            <span class="d-inline-block mt-2">Tempat & Tanggal lahir</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="tempatLahir" type="text" class="form-control d-inline-block float-left"
-                                    placeholder="Tempat lahir" style="height: 40px; width: 48%; margin-right: 2%"
-                                    value="{{ old('tempatLahir') ?? '' }}">
-                                <input name="tanggalLahir" type="date"
-                                    class="form-control w-50 d-inline-block float-left" style="height: 40px">
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Tempat tanggal lahir --}}
+                            <tr style="margin-bottom: 50px">
+                                <td>
+                                    <span class="d-inline-block mt-2">Tempat & Tanggal lahir</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="tempatLahir" type="text"
+                                            class="form-control d-inline-block float-left" placeholder="Tempat lahir"
+                                            style="height: 40px; width: 48%; margin-right: 2%"
+                                            value="{{ old('tempatLahir') ?? '' }}">
+                                        <input name="tanggalLahir" type="date"
+                                            class="form-control w-50 d-inline-block float-left" style="height: 40px">
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Pekerjaan --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Pekerjaan</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="pekerjaan" type="text" class="form-control form-control-sm"
-                                    placeholder="Pekerjaan" style="height: 40px" value="{{ old('pekerjaan') ?? '' }}">
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Pekerjaan --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Pekerjaan</span>
+                                </td>
+                                <td>
+                                    <input name="pekerjaan" type="text" class="form-control form-control-sm"
+                                        placeholder="Pekerjaan" style="height: 40px"
+                                        value="{{ old('pekerjaan') ?? '' }}">
+                                </td>
+                            </tr>
 
-                    {{-- Kewarganegaraan --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Kewarganegaraan</span>
-                        </td>
-                        <td>
-                            <select name="kewarganegaraan" class="custom-select" style="height: 40px">
-                                <option selected hidden>Pilih kewarganegaraan</option>
-                                @if (old('kewarganegaraan'))
-                                    @if (old('kewarganegaraan') == 'Warga Negara Indonesia')
-                                        <option selected value="Warga Negara Indonesia">Warga Negara Indonesia</option>
-                                        <option value="Warga Negara Asing">Warga Negara Asing</option>
-                                    @elseif(old('kewarganegaraan') == 'Warga Negara Asing')
-                                        <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
-                                        <option selected value="Warga Negara Asing">Warga Negara Asing</option>
-                                    @endif
-                                @else
-                                    <option selected hidden>Pilih kewarganegaraan</option>
-                                    <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
-                                    <option value="Warga Negara Asing">Warga Negara Asing</option>
-                                @endif
-                            </select>
-                        </td>
-                    </tr>
+                            {{-- Kewarganegaraan --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block">Kewarganegaraan</span>
+                                </td>
+                                <td>
+                                    <select name="kewarganegaraan" class="custom-select" style="height: 40px">
+                                        <option selected hidden>Pilih kewarganegaraan</option>
+                                        @if (old('kewarganegaraan'))
+                                            @if (old('kewarganegaraan') == 'Warga Negara Indonesia')
+                                                <option selected value="Warga Negara Indonesia">Warga Negara Indonesia
+                                                </option>
+                                                <option value="Warga Negara Asing">Warga Negara Asing</option>
+                                            @elseif(old('kewarganegaraan') == 'Warga Negara Asing')
+                                                <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
+                                                <option selected value="Warga Negara Asing">Warga Negara Asing</option>
+                                            @endif
+                                        @else
+                                            <option selected hidden>Pilih kewarganegaraan</option>
+                                            <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
+                                            <option value="Warga Negara Asing">Warga Negara Asing</option>
+                                        @endif
+                                    </select>
+                                </td>
+                            </tr>
 
-                    {{-- Alamat --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Alamat</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3">{{ old('alamat') ?? '' }}</textarea>
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Alamat --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Alamat</span>
+                                </td>
+                                <td>
+                                    <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3">{{ old('alamat') ?? '' }}</textarea>
+                                </td>
+                            </tr>
 
-                    {{-- No HP --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">No. Handphone</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="telepon" type="text" class="form-control form-control-sm"
-                                    placeholder="Nomor handphone" style="height: 40px"
-                                    value="{{ old('telepon') ?? '' }}">
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                            {{-- No HP --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">No. Handphone</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="telepon" type="text" class="form-control form-control-sm"
+                                            placeholder="Nomor handphone" style="height: 40px"
+                                            value="{{ old('telepon') ?? '' }}">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
 
-                {{-- Kronologi Singkat --}}
-                <h1 style="font-size: 24px">Kronologi Singkat :</h1>
-                <hr>
-                <table class="table table-sm table-borderless">
-                    {{-- Tanggal Kejadian --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Tanggal Kejadian</span>
-                        </td>
-                        <td>
-                            <input name="tanggalKejadian" type="date" class="form-control" style="height: 40px"
-                                value="{{ old('tanggalKejadian') ?? '' }}">
-                        </td>
-                    </tr>
+                        {{-- Kronologi Singkat --}}
+                        <h1 style="font-size: 24px">Kronologi Singkat :</h1>
+                        <hr>
+                        <table class="table table-sm table-borderless">
+                            {{-- Tanggal Kejadian --}}
+                            <tr>
+                                <td style="width: 270px">
+                                    <span class="d-inline-block mt-2">Tanggal Kejadian</span>
+                                </td>
+                                <td>
+                                    <input name="tanggalKejadian" type="date" class="form-control"
+                                        style="height: 40px" value="{{ old('tanggalKejadian') ?? '' }}">
+                                </td>
+                            </tr>
 
-                    {{-- Lokasi Kejadian --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Lokasi Kejadian Kehilangan</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="lokasiKejadian" type="text" class="form-control form-control-sm"
-                                    placeholder="Lokasi kejadian" style="height: 40px"
-                                    value="{{ old('lokasiKejadian') ?? '' }}">
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Lokasi Kejadian --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Lokasi Kejadian Kehilangan</span>
+                                </td>
+                                <td>
+                                    <input name="lokasiKejadian" type="text" class="form-control form-control-sm"
+                                        placeholder="Lokasi kejadian" style="height: 40px"
+                                        value="{{ old('lokasiKejadian') ?? '' }}">
+                                </td>
+                            </tr>
 
-                    {{-- Surat yang hilang --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Surat - surat yang hilang</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <textarea name="suratHilang" placeholder="Surat Hilang" class="form-control" rows="3"></textarea>
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Surat yang hilang --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Surat - surat yang hilang</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <textarea name="suratHilang" placeholder="Surat Hilang" class="form-control" rows="3"></textarea>
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Download Surat pernyataan --}}
-                    <tr>
-                        <td class="pb-4">
-                            <a id="btnDownloadPernyataan" role="button" class="btn btn-primary"
-                                data-bs-toggle="modal" data-bs-target="#modalDownloadPernyataan">
-                                Surat Pernyataan Keaslian Dokumen
-                            </a>
-                        </td>
-                    </tr>
-                </table>
+                            {{-- Download Surat pernyataan --}}
+                            <tr>
+                                <td class="pb-4">
+                                    <a id="btnDownloadPernyataan" role="button" class="btn btn-primary"
+                                        data-bs-toggle="modal" data-bs-target="#modalDownloadPernyataan">
+                                        Surat Pernyataan Keaslian Dokumen
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
 
-                <h1 style="font-size: 24px">Upload Data dan Lokasi Pengambilan :</h1>
-                <hr>
-                <table class="table table-sm table-borderless">
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Foto identitas pelapor (KTP)</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="fotoKtp" type="file" class="form-control-file"
-                                    accept=".jpg,.jpeg,.png">
-                                <small style="font-size: 80%">.jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="fotoPelapor" type="file" class="form-control-file"
-                                    accept=".jpg,.jpeg,.png">
-                                <small style="font-size: 80%">.jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Rekomendasi dari instansi yang mengeluarkan</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="rekomendasiInstansi" type="file" class="form-control-file"
-                                    accept=".pdf,.jpg,.jpeg,.png">
-                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
+                        <h1 style="font-size: 24px">Upload Data dan Lokasi Pengambilan :</h1>
+                        <hr>
+                        <table class="table table-sm table-borderless">
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Foto identitas pelapor (KTP)</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="fotoKtp" type="file" class="form-control-file"
+                                            accept=".jpg,.jpeg,.png">
+                                        <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="fotoPelapor" type="file" class="form-control-file"
+                                            accept=".jpg,.jpeg,.png">
+                                        <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Rekomendasi dari instansi yang
+                                        mengeluarkan</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="rekomendasiInstansi" type="file" class="form-control-file"
+                                            accept=".pdf,.jpg,.jpeg,.png">
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
 
-                    <tr class="border-top">
-                        <td>
-                            <span class="d-inline-block mt-4">Dokumen Pernyataan Keaslian</span>
-                        </td>
-                        <td>
-                            <div class="form-group mt-3">
-                                <input name="pernyataanKeaslian" type="file" class="form-control-file"
-                                    accept=".pdf,.jpg,.jpeg,.png">
-                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
+                            <tr class="border-top">
+                                <td>
+                                    <span class="d-inline-block mt-4">Dokumen Pernyataan Keaslian</span>
+                                </td>
+                                <td>
+                                    <div class="form-group mt-3">
+                                        <input name="pernyataanKeaslian" type="file" class="form-control-file"
+                                            accept=".pdf,.jpg,.jpeg,.png">
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
 
-                    <tr>
-                        <td>
-                            {{-- <button name="simpanSementara" value="simpan" type="submit" class="btn btn-primary">
+                            <tr>
+                                <td>
+                                    {{-- <button name="simpanSementara" value="simpan" type="submit" class="btn btn-primary">
                                 Simpan Sementara
                             </button> --}}
-                            <button name="kirim" value="kirim" type="submit" class="btn btn-primary">
-                                Kirim
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+                                    <button name="kirim" value="kirim" type="submit" class="btn btn-primary">
+                                        Kirim
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
         </div>
 
         {{-- Modal untuk download Surat Pernyataan Keaslian Dokumen --}}

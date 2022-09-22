@@ -44,7 +44,7 @@
 
     {{-- Konten --}}
     <section id="main">
-        <div class="container py-5">
+        <div class="container py-5 styled-bg" style="padding: 0 8%">
             <a href="/pengaduan-masyarakat/sik">
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
@@ -59,103 +59,106 @@
                 </div>
             @endif
 
-            <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
-                data-aos-duration="500">Form Izin Keramaian </h1>
-            {{-- Form Data Diri --}}
-            <h1 class="text-dark" style="font-size: 24px">Data Laporan :</h1>
-            <hr>
+            <div class="card shadow p-5 my-5">
+                <div class="card-body">
+                    <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
+                        data-aos-duration="500">Form Izin Keramaian </h1>
+                    {{-- Form Data Diri --}}
+                    <h1 class="text-dark" style="font-size: 24px">Data Laporan :</h1>
+                    <hr>
 
-            <form action="/upload-form-sik" method="post" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="id" value="{{ $laporan->id }}">
-                <table class="table table-sm table-borderless">
-                    {{-- Nama Organisasi --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Nama Organisasi</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="namaOrganisasi" type="text" class="form-control form-control-sm"
-                                    placeholder="Nama Organisasi" style="height: 40px"
-                                    value="{{ $laporan->nama_organisasi != '' ? $laporan->nama_organisasi : '' }}">
-                            </div>
-                        </td>
-                    </tr>
+                    <form action="/upload-form-sik" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $laporan->id }}">
+                        <table class="table table-sm table-borderless">
+                            {{-- Nama Organisasi --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Nama Organisasi</span>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <input name="namaOrganisasi" type="text" class="form-control form-control-sm"
+                                            placeholder="Nama Organisasi" style="height: 40px"
+                                            value="{{ $laporan->nama_organisasi != '' ? $laporan->nama_organisasi : '' }}">
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Nama Penanggung Jawab --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Nama Penanggung Jawab</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="namaPenanggungJawab" type="text" class="form-control form-control-sm"
-                                    placeholder="Nama Penanggung Jawab" style="height: 40px"
-                                    value="{{ $laporan->nama_penanggung_jawab != '' ? $laporan->nama_penanggung_jawab : '' }}">
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Nama Penanggung Jawab --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Nama Penanggung Jawab</span>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <input name="namaPenanggungJawab" type="text"
+                                            class="form-control form-control-sm" placeholder="Nama Penanggung Jawab"
+                                            style="height: 40px"
+                                            value="{{ $laporan->nama_penanggung_jawab != '' ? $laporan->nama_penanggung_jawab : '' }}">
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Pekerjaan --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Pekerjaan</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="pekerjaan" type="text" class="form-control form-control-sm"
-                                    placeholder="Pekerjaan Penanggung Jawab" style="height: 40px"
-                                    value="{{ $laporan->pekerjaan != '' ? $laporan->pekerjaan : '' }}">
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Pekerjaan --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Pekerjaan</span>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <input name="pekerjaan" type="text" class="form-control form-control-sm"
+                                            placeholder="Pekerjaan Penanggung Jawab" style="height: 40px"
+                                            value="{{ $laporan->pekerjaan != '' ? $laporan->pekerjaan : '' }}">
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Alamat --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Alamat</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <textarea name="alamat" placeholder="Alamat Penanggung Jawab" class="form-control" rows="3">{{ $laporan->alamat != '' ? $laporan->alamat : '' }}</textarea>
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Alamat --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Alamat</span>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <textarea name="alamat" placeholder="Alamat Penanggung Jawab" class="form-control" rows="3">{{ $laporan->alamat != '' ? $laporan->alamat : '' }}</textarea>
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Nomor Telepon --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Nomor Telepon</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="telepon" type="text" class="form-control form-control-sm"
-                                    placeholder="Nomor telepon" style="height: 40px"
-                                    value="{{ $laporan->telepon != '' ? $laporan->telepon : '' }}">
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Nomor Telepon --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Nomor Telepon</span>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <input name="telepon" type="text" class="form-control form-control-sm"
+                                            placeholder="Nomor telepon" style="height: 40px"
+                                            value="{{ $laporan->telepon != '' ? $laporan->telepon : '' }}">
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Bentuk Macam Kegiatan --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Bentuk Macam Kegiatan</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <textarea name="bentukKegiatan" placeholder="Bentuk / Macam Kegiatan" class="form-control" rows="3">{{ $laporan->bentuk_kegiatan != '' ? $laporan->bentuk_kegiatan : '' }}</textarea>
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Bentuk Macam Kegiatan --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Bentuk Macam Kegiatan</span>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <textarea name="bentukKegiatan" placeholder="Bentuk / Macam Kegiatan" class="form-control" rows="3">{{ $laporan->bentuk_kegiatan != '' ? $laporan->bentuk_kegiatan : '' }}</textarea>
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Tanggal Kegiatan --}}
-                    {{-- <tr style="margin-bottom: 50px">
+                            {{-- Tanggal Kegiatan --}}
+                            {{-- <tr style="margin-bottom: 50px">
                         <td>
                             <span class="d-inline-block mt-2">Tanggal Kegiatan</span>
                         </td>
                         <td>
-                            <div class="form-group">
+                            <div class="">
                                 <input name="tanggalKegiatan" type="date" class="form-control"
                                     style="height: 40px"
                                     value="{{ $laporan->tanggal_kegiatan != '' ? $laporan->tanggal_kegiatan : '' }}">
@@ -163,140 +166,145 @@
                         </td>
                     </tr> --}}
 
-                    {{-- Waktu Kegiatan --}}
-                    <tr style="margin-bottom: 50px">
-                        <td>
-                            <span class="d-inline-block mt-2">Waktu Kegiatan</span>
-                        </td>
-                        <td>
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="form-group">
-                                        <input name="waktuMulai" type="datetime-local" class="form-control"
-                                            style="height: 40px"
-                                            value="{{ $laporan->waktu_mulai != '' ? $laporan->waktu_mulai : '' }}">
+                            {{-- Waktu Kegiatan --}}
+                            <tr style="margin-bottom: 50px">
+                                <td>
+                                    <span class="d-inline-block mt-2">Waktu Kegiatan</span>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <div class="">
+                                                <input name="waktuMulai" type="datetime-local" class="form-control"
+                                                    style="height: 40px"
+                                                    value="{{ $laporan->waktu_mulai != '' ? $laporan->waktu_mulai : '' }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <span class="d-block text-center">s/d</span>
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="">
+                                                <input name="waktuSelesai" type="datetime-local" class="form-control"
+                                                    style="height: 40px"
+                                                    value="{{ $laporan->waktu_selesai != '' ? $laporan->waktu_selesai : '' }}">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-2">
-                                    <span class="d-block text-center">s/d</span>
-                                </div>
-                                <div class="col-5">
-                                    <div class="form-group">
-                                        <input name="waktuSelesai" type="datetime-local" class="form-control"
+                                </td>
+                            </tr>
+
+                            {{-- Lokasi Kegiatan --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Lokasi</span>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <input name="lokasiKegiatan" type="text"
+                                            class="form-control form-control-sm" placeholder="Tempat"
                                             style="height: 40px"
-                                            value="{{ $laporan->waktu_selesai != '' ? $laporan->waktu_selesai : '' }}">
+                                            value="{{ $laporan->lokasi_kegiatan != '' ? $laporan->lokasi_kegiatan : '' }}">
                                     </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                                </td>
+                            </tr>
 
-                    {{-- Lokasi Kegiatan --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Lokasi</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="lokasiKegiatan" type="text" class="form-control form-control-sm"
-                                    placeholder="Tempat" style="height: 40px"
-                                    value="{{ $laporan->lokasi_kegiatan != '' ? $laporan->lokasi_kegiatan : '' }}">
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Dalam Rangka --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Dalam Rangka</span>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <input name="dalamRangka" type="text" class="form-control form-control-sm"
+                                            placeholder="Dalam Rangka" style="height: 40px"
+                                            value="{{ $laporan->dalam_rangka != '' ? $laporan->dalam_rangka : '' }}">
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Dalam Rangka --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Dalam Rangka</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="dalamRangka" type="text" class="form-control form-control-sm"
-                                    placeholder="Dalam Rangka" style="height: 40px"
-                                    value="{{ $laporan->dalam_rangka != '' ? $laporan->dalam_rangka : '' }}">
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Jumlah Undangan / Peserta --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Jumlah Undangan / Peserta</span>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <input name="jumlahUndangan" type="number"
+                                            class="form-control form-control-sm" placeholder="Undangan / Peserta"
+                                            style="height: 40px"
+                                            value="{{ $laporan->jumlah_undangan != '' ? $laporan->jumlah_undangan : '' }}">
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Jumlah Undangan / Peserta --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Jumlah Undangan / Peserta</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="jumlahUndangan" type="number" class="form-control form-control-sm"
-                                    placeholder="Undangan / Peserta" style="height: 40px"
-                                    value="{{ $laporan->jumlah_undangan != '' ? $laporan->jumlah_undangan : '' }}">
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Form upload KTP --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-3">Foto identitas pelapor (KTP)</span>
+                                </td>
+                                <td>
+                                    <div class="mt-3">
+                                        <input name="fotoKtp" type="file" class="form-control-file"
+                                            accept=".jpg,.jpeg,.png">
+                                        <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Form upload KTP --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Foto identitas pelapor (KTP)</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="fotoKtp" type="file" class="form-control-file"
-                                    accept=".jpg,.jpeg,.png">
-                                <small style="font-size: 80%">.jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Form upload KTP + orang --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
+                                </td>
+                                <td>
+                                    <div class="mt-1">
+                                        <input name="fotoPelapor" type="file" class="form-control-file"
+                                            accept=".jpg,.jpeg,.png">
+                                        <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Form upload KTP + orang --}}
-                    <tr>
-                        <td>
-                            <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input name="fotoPelapor" type="file" class="form-control-file"
-                                    accept=".jpg,.jpeg,.png">
-                                <small style="font-size: 80%">.jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
+                            {{-- Download persyaratan keaslian SIK --}}
+                            <tr>
+                                <td class="pb-4">
+                                    <a id="btnDownloadPernyataanSIK" role="button" class="btn btn-primary"
+                                        data-bs-toggle="modal" data-bs-target="#modalDownloadPernyataan">
+                                        Surat Pernyataan Keaslian Dokumen
+                                    </a>
+                                </td>
+                            </tr>
 
-                    {{-- Download persyaratan keaslian SIK --}}
-                    <tr>
-                        <td class="pb-4">
-                            <a id="btnDownloadPernyataanSIK" role="button" class="btn btn-primary"
-                                data-bs-toggle="modal" data-bs-target="#modalDownloadPernyataan">
-                                Surat Pernyataan Keaslian Dokumen
-                            </a>
-                        </td>
-                    </tr>
+                            {{-- Upload pernyataan keaslian SIK --}}
+                            <tr class="border-top">
+                                <td>
+                                    <span class="d-inline-block mt-4">Dokumen Pernyataan Keaslian</span>
+                                </td>
+                                <td>
+                                    <div class=" mt-3">
+                                        <input name="pernyataanKeaslian" type="file" class="form-control-file"
+                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
 
-                    {{-- Upload pernyataan keaslian SIK --}}
-                    <tr class="border-top">
-                        <td>
-                            <span class="d-inline-block mt-4">Dokumen Pernyataan Keaslian</span>
-                        </td>
-                        <td>
-                            <div class="form-group mt-3">
-                                <input name="pernyataanKeaslian" type="file" class="form-control-file"
-                                    accept=".pdf,.jpg,.jpeg,.png" required>
-                                <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <button name="simpanSementara" value="simpan" type="submit" class="btn btn-primary">
-                                Simpan Sementara
-                            </button>
-                            <button name="kirim" value="kirim" type="submit" class="btn btn-primary">
-                                Kirim Data
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+                            <tr>
+                                <td>
+                                    <button name="simpanSementara" value="simpan" type="submit"
+                                        class="btn btn-primary">
+                                        Simpan Sementara
+                                    </button>
+                                    <button name="kirim" value="kirim" type="submit" class="btn btn-primary">
+                                        Kirim Data
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
         </div>
 
         {{-- Modal untuk download Surat Pernyataan Keaslian Dokumen --}}

@@ -36,3 +36,8 @@
 .border-error {
     border: 1.3px solid red;
 }
+
+.styled-bg {
+    background-image: url('../img/shapes/map-50.png');
+    background-color: rgba(255, 255, 255, 0.1)
+}

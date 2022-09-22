@@ -34,6 +34,17 @@
         li {
             margin-left: 30px;
         }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        li {
+            color: black
+        }
     </style>
     <link href="favicon.ico" rel="shortcut icon">
 </head>
@@ -49,7 +60,7 @@
 
     {{-- Konten --}}
     <section id="main">
-        <div class="container py-5">
+        <div class="container py-5" style="padding: 0 10%">
             <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
                 data-aos-duration="500">Sentra Pelayanan Kepolisian Terpadu ( SPKT )</h1>
             <p data-aos="fade-up" data-aos-duration="500">

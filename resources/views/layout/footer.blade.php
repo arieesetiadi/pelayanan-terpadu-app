@@ -29,7 +29,7 @@
                     <div class="mg-widget-mobi kcl-widget2">
                         <h3 class="widget widget-title">Kontak Informasi</h3>
                         <div class="widget-services d-sm-flex">
-                            <ul>
+                            <ul style="list-style-type: none">
                                 <li>
                                     <a href="#" class="text-white my-1 d-inline-block">
                                         <i class="fa-solid fa-building d-inline-block mx-2"></i>
