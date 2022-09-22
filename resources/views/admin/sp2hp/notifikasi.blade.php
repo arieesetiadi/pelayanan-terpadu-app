@@ -17,7 +17,7 @@
         <tr>
             <td>Tanggal Lahir</td>
             <td>:</td>
-            <td>{{ $laporan->tanggal_lahir }}</td>
+            <td>{{ dateFormat($laporan->tanggal_lahir) }}</td>
         </tr>
         <tr>
             <td>Pekerjaan</td>
@@ -52,7 +52,7 @@
         <tr>
             <td>Tanggal Kejadian</td>
             <td>:</td>
-            <td>{{ $laporan->tanggal_kejadian }}</td>
+            <td>{{ dateFormat($laporan->tanggal_kejadian) }}</td>
         </tr>
         <tr>
             <td>Lokasi Kejadian</td>
