@@ -85,15 +85,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
     Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);
     Route::get('/admin/sktlk/hapus/{id}', [SKTLKController::class, 'hapus']);
-    
+
     Route::get('/admin/sik', [SIKController::class, 'index']);
     Route::get('/admin/sik/setuju/{id}', [SIKController::class, 'setuju']);
     Route::post('/admin/sik/upload-file', [SIKController::class, 'uploadFile']);
     Route::post('/admin/sik/tolak', [SIKController::class, 'tolak']);
     Route::get('/admin/sik/hapus/{id}', [SIKController::class, 'hapus']);
-    
+
     Route::get('/admin/sp2hp', [SP2HPController::class, 'index']);
     Route::get('/admin/sp2hp/hapus/{id}', [SP2HPController::class, 'hapus']);
+    Route::get('/admin/sp2hp/valid/{id}', [SP2HPController::class, 'valid']);
+    Route::post('/admin/sp2hp/invalid', [SP2HPController::class, 'invalid']);
     Route::post('/admin/sp2hp/upload-keterangan', [SP2HPController::class, 'uploadKeterangan']);
 });
 

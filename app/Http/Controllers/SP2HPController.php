@@ -119,4 +119,43 @@ class SP2HPController extends Controller
         // Redirect ke halaman admin SP2HP
         return redirect()->to('admin/sp2hp')->with('success', 'Anda berhasil mengunggah perkembangan penyidikan.');
     }
+
+    public function valid($id)
+    {
+        $nomorPolisi = generateNomorPolisi();
+        // Ubah status SP2HP menjadi valid/true
+        $laporan = SP2HP::find($id);
+        $laporan->update([
+            'status' => true,
+            'nomor_polisi' => $nomorPolisi
+        ]);
+
+        $pelapor = User::find($laporan->pelapor_id);
+        // Nomor : LP / / K / VII / 2011/ Polsek Asera
+
+        // Mengirim notifikasi ke pelapor
+        // $toPelapor = [
+        //     'judul' => 'Dokumen SIK Disetujui',
+        //     'isi' => 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.',
+        //     'tipe' => 'sik',
+        //     'telah_dibaca' => false,
+        //     'dikirim_kepada' => 'pelapor',
+        // 'laporan_id' => $laporan->id,
+        //     'pelapor_id' => $laporan->pelapor_id,
+        //     'dikirim_pada' => now()
+        // ];
+
+        // Insert notifikasi ke database
+        // $notif = Notifikasi::insert($toPelapor);
+
+        // Kirim email ke pelapor
+        // Mail::send();
+
+        // Redirect ke halaman admin SIK
+        return redirect()->to('/admin/sp2hp')->with('success', 'Berhasil melakukan validasi pelaporan SP2HP');
+    }
+
+    public function invalid($id)
+    {
+    }
 }
