@@ -202,9 +202,11 @@
 
                             <tr>
                                 <td>
-                                    <h6><span class="font-weight-bolder">Note</span> : <span
-                                            class="text-danger">*</span>
-                                        Dokumen wajib diisi</h6>
+                                    <h6>
+                                        <span class="font-weight-bolder">Note</span> : 
+                                        <span class="text-danger">*</span>
+                                        Dokumen wajib diisi
+                                    </h6>
                                     <button type="submit" class="btn btn-primary mt-4">Kirim Data</button>
                                 </td>
                             </tr>

@@ -123,6 +123,7 @@ class SP2HPController extends Controller
     public function valid($id)
     {
         $nomorPolisi = generateNomorPolisi();
+        dd($nomorPolisi);
         // Ubah status SP2HP menjadi valid/true
         $laporan = SP2HP::find($id);
         $laporan->update([
@@ -131,19 +132,18 @@ class SP2HPController extends Controller
         ]);
 
         $pelapor = User::find($laporan->pelapor_id);
-        // Nomor : LP / / K / VII / 2011/ Polsek Asera
 
         // Mengirim notifikasi ke pelapor
-        // $toPelapor = [
-        //     'judul' => 'Dokumen SIK Disetujui',
-        //     'isi' => 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.',
-        //     'tipe' => 'sik',
-        //     'telah_dibaca' => false,
-        //     'dikirim_kepada' => 'pelapor',
-        // 'laporan_id' => $laporan->id,
-        //     'pelapor_id' => $laporan->pelapor_id,
-        //     'dikirim_pada' => now()
-        // ];
+        $toPelapor = [
+            'judul' => 'Dokumen SIK Disetujui',
+            'isi' => 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.',
+            'tipe' => 'sik',
+            'telah_dibaca' => false,
+            'dikirim_kepada' => 'pelapor',
+            'laporan_id' => $laporan->id,
+            'pelapor_id' => $laporan->pelapor_id,
+            'dikirim_pada' => now()
+        ];
 
         // Insert notifikasi ke database
         // $notif = Notifikasi::insert($toPelapor);

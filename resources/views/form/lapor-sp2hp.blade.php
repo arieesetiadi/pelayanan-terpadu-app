@@ -74,6 +74,7 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Nama Lengkap</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -87,6 +88,7 @@
                             <tr style="margin-bottom: 50px">
                                 <td>
                                     <span class="d-inline-block mt-2">Tempat & Tanggal lahir</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -104,6 +106,7 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Pekerjaan</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -117,6 +120,7 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Kewarganegaraan</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <select name="kewarganegaraan" class="custom-select" style="height: 40px" required>
@@ -131,6 +135,7 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Alamat</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -143,6 +148,7 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">No. Handphone</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -161,6 +167,7 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Judul Laporan :</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <input name="judulLaporan" type="text" class="form-control"
@@ -172,6 +179,7 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Isi Laporan :</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -186,6 +194,7 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Tanggal Kejadian :</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <input name="tanggalKejadian" type="date" class="form-control"
@@ -197,6 +206,7 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Lokasi Kejadian :</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <select name="lokasiKejadian" class="custom-select" style="height: 40px"
@@ -210,7 +220,8 @@
                                         <option value="Petang">Petang</option>
                                     </select>
                                     <div class="form-group mt-2">
-                                        <textarea name="detailLokasiKejadian" placeholder="Detail lokasi kejadian" class="form-control" rows="3"></textarea>
+                                        <textarea name="detailLokasiKejadian" placeholder="Detail lokasi kejadian" class="form-control" rows="3"
+                                            required></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -219,6 +230,7 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Kategori :</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <select name="kategori" class="custom-select" style="height: 40px" required>
@@ -241,12 +253,13 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-3">Foto identitas pelapor (KTP)</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group mt-3">
                                         <input name="fotoKtp" type="file" class="form-control-file"
-                                            accept=".jpg,.jpeg,.png">
-                                        <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
                             </tr>
@@ -255,12 +268,13 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
                                         <input name="fotoPelapor" type="file" class="form-control-file"
-                                            accept=".jpg,.jpeg,.png">
-                                        <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
                             </tr>
@@ -279,6 +293,12 @@
                                 </td>
                             </tr>
                         </table>
+
+                        <h6 class="mb-4">
+                            <span class="font-weight-bolder">Note</span> :
+                            <span class="text-danger">*</span>
+                            Dokumen wajib diisi
+                        </h6>
                         <button type="submit" class="btn btn-primary">Lapor</button>
                     </form>
                 </div>

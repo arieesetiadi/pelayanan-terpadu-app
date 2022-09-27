@@ -75,12 +75,14 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Nama Organisasi</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="">
                                         <input name="namaOrganisasi" type="text" class="form-control form-control-sm"
                                             placeholder="Nama Organisasi" style="height: 40px"
-                                            value="{{ $laporan->nama_organisasi != '' ? $laporan->nama_organisasi : '' }}">
+                                            value="{{ $laporan->nama_organisasi != '' ? $laporan->nama_organisasi : '' }}"
+                                            required>
                                     </div>
                                 </td>
                             </tr>
@@ -89,13 +91,15 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Nama Penanggung Jawab</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="">
                                         <input name="namaPenanggungJawab" type="text"
                                             class="form-control form-control-sm" placeholder="Nama Penanggung Jawab"
                                             style="height: 40px"
-                                            value="{{ $laporan->nama_penanggung_jawab != '' ? $laporan->nama_penanggung_jawab : '' }}">
+                                            value="{{ $laporan->nama_penanggung_jawab != '' ? $laporan->nama_penanggung_jawab : '' }}"
+                                            required>
                                     </div>
                                 </td>
                             </tr>
@@ -104,12 +108,13 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Pekerjaan</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="">
                                         <input name="pekerjaan" type="text" class="form-control form-control-sm"
                                             placeholder="Pekerjaan Penanggung Jawab" style="height: 40px"
-                                            value="{{ $laporan->pekerjaan != '' ? $laporan->pekerjaan : '' }}">
+                                            value="{{ $laporan->pekerjaan != '' ? $laporan->pekerjaan : '' }}" required>
                                     </div>
                                 </td>
                             </tr>
@@ -118,10 +123,11 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Alamat</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="">
-                                        <textarea name="alamat" placeholder="Alamat Penanggung Jawab" class="form-control" rows="3">{{ $laporan->alamat != '' ? $laporan->alamat : '' }}</textarea>
+                                        <textarea name="alamat" placeholder="Alamat Penanggung Jawab" class="form-control" rows="3" required>{{ $laporan->alamat != '' ? $laporan->alamat : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -130,12 +136,13 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Nomor Telepon</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="">
                                         <input name="telepon" type="text" class="form-control form-control-sm"
                                             placeholder="Nomor telepon" style="height: 40px"
-                                            value="{{ $laporan->telepon != '' ? $laporan->telepon : '' }}">
+                                            value="{{ $laporan->telepon != '' ? $laporan->telepon : '' }}" required>
                                     </div>
                                 </td>
                             </tr>
@@ -144,32 +151,20 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Bentuk Macam Kegiatan</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="">
-                                        <textarea name="bentukKegiatan" placeholder="Bentuk / Macam Kegiatan" class="form-control" rows="3">{{ $laporan->bentuk_kegiatan != '' ? $laporan->bentuk_kegiatan : '' }}</textarea>
+                                        <textarea name="bentukKegiatan" placeholder="Bentuk / Macam Kegiatan" class="form-control" rows="3" required>{{ $laporan->bentuk_kegiatan != '' ? $laporan->bentuk_kegiatan : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
-
-                            {{-- Tanggal Kegiatan --}}
-                            {{-- <tr style="margin-bottom: 50px">
-                        <td>
-                            <span class="d-inline-block mt-2">Tanggal Kegiatan</span>
-                        </td>
-                        <td>
-                            <div class="">
-                                <input name="tanggalKegiatan" type="date" class="form-control"
-                                    style="height: 40px"
-                                    value="{{ $laporan->tanggal_kegiatan != '' ? $laporan->tanggal_kegiatan : '' }}">
-                            </div>
-                        </td>
-                    </tr> --}}
 
                             {{-- Waktu Kegiatan --}}
                             <tr style="margin-bottom: 50px">
                                 <td>
                                     <span class="d-inline-block mt-2">Waktu Kegiatan</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="row">
@@ -177,7 +172,8 @@
                                             <div class="">
                                                 <input name="waktuMulai" type="datetime-local" class="form-control"
                                                     style="height: 40px"
-                                                    value="{{ $laporan->waktu_mulai != '' ? $laporan->waktu_mulai : '' }}">
+                                                    value="{{ $laporan->waktu_mulai != '' ? $laporan->waktu_mulai : '' }}"
+                                                    required>
                                             </div>
                                         </div>
                                         <div class="col-2">
@@ -187,7 +183,8 @@
                                             <div class="">
                                                 <input name="waktuSelesai" type="datetime-local" class="form-control"
                                                     style="height: 40px"
-                                                    value="{{ $laporan->waktu_selesai != '' ? $laporan->waktu_selesai : '' }}">
+                                                    value="{{ $laporan->waktu_selesai != '' ? $laporan->waktu_selesai : '' }}"
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
@@ -198,13 +195,15 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Lokasi</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="">
                                         <input name="lokasiKegiatan" type="text"
                                             class="form-control form-control-sm" placeholder="Tempat"
                                             style="height: 40px"
-                                            value="{{ $laporan->lokasi_kegiatan != '' ? $laporan->lokasi_kegiatan : '' }}">
+                                            value="{{ $laporan->lokasi_kegiatan != '' ? $laporan->lokasi_kegiatan : '' }}"
+                                            required>
                                     </div>
                                 </td>
                             </tr>
@@ -213,12 +212,14 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Dalam Rangka</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="">
                                         <input name="dalamRangka" type="text" class="form-control form-control-sm"
                                             placeholder="Dalam Rangka" style="height: 40px"
-                                            value="{{ $laporan->dalam_rangka != '' ? $laporan->dalam_rangka : '' }}">
+                                            value="{{ $laporan->dalam_rangka != '' ? $laporan->dalam_rangka : '' }}"
+                                            required>
                                     </div>
                                 </td>
                             </tr>
@@ -227,13 +228,15 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Jumlah Undangan / Peserta</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="">
                                         <input name="jumlahUndangan" type="number"
                                             class="form-control form-control-sm" placeholder="Undangan / Peserta"
                                             style="height: 40px"
-                                            value="{{ $laporan->jumlah_undangan != '' ? $laporan->jumlah_undangan : '' }}">
+                                            value="{{ $laporan->jumlah_undangan != '' ? $laporan->jumlah_undangan : '' }}"
+                                            required>
                                     </div>
                                 </td>
                             </tr>
@@ -242,11 +245,12 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-3">Foto identitas pelapor (KTP)</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="mt-3">
                                         <input name="fotoKtp" type="file" class="form-control-file"
-                                            accept=".jpg,.jpeg,.png">
+                                            accept=".jpg,.jpeg,.png" required>
                                         <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -256,11 +260,12 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="mt-1">
                                         <input name="fotoPelapor" type="file" class="form-control-file"
-                                            accept=".jpg,.jpeg,.png">
+                                            accept=".jpg,.jpeg,.png" required>
                                         <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -280,6 +285,7 @@
                             <tr class="border-top">
                                 <td>
                                     <span class="d-inline-block mt-4">Dokumen Pernyataan Keaslian</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class=" mt-3">
@@ -292,6 +298,11 @@
 
                             <tr>
                                 <td>
+                                    <h6 class="my-4">
+                                        <span class="font-weight-bolder">Note</span> :
+                                        <span class="text-danger">*</span>
+                                        Dokumen wajib diisi
+                                    </h6>
                                     <button name="simpanSementara" value="simpan" type="submit"
                                         class="btn btn-primary">
                                         Simpan Sementara

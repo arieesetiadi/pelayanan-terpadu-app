@@ -86,11 +86,12 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Nama Lengkap</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <input name="namaLengkap" type="text" class="form-control form-control-sm"
                                         placeholder="Nama lengkap" style="height: 40px"
-                                        value="{{ old('namaLengkap') ?? '' }}">
+                                        value="{{ old('namaLengkap') ?? '' }}" required>
                                 </td>
                             </tr>
 
@@ -98,15 +99,17 @@
                             <tr style="margin-bottom: 50px">
                                 <td>
                                     <span class="d-inline-block mt-2">Tempat & Tanggal lahir</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
                                         <input name="tempatLahir" type="text"
                                             class="form-control d-inline-block float-left" placeholder="Tempat lahir"
                                             style="height: 40px; width: 48%; margin-right: 2%"
-                                            value="{{ old('tempatLahir') ?? '' }}">
+                                            value="{{ old('tempatLahir') ?? '' }}" required>
                                         <input name="tanggalLahir" type="date"
-                                            class="form-control w-50 d-inline-block float-left" style="height: 40px">
+                                            class="form-control w-50 d-inline-block float-left" style="height: 40px"
+                                            required>
                                     </div>
                                 </td>
                             </tr>
@@ -115,11 +118,12 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Pekerjaan</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <input name="pekerjaan" type="text" class="form-control form-control-sm"
                                         placeholder="Pekerjaan" style="height: 40px"
-                                        value="{{ old('pekerjaan') ?? '' }}">
+                                        value="{{ old('pekerjaan') ?? '' }}" required>
                                 </td>
                             </tr>
 
@@ -127,9 +131,10 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block">Kewarganegaraan</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    <select name="kewarganegaraan" class="custom-select" style="height: 40px">
+                                    <select name="kewarganegaraan" class="custom-select" style="height: 40px" required>
                                         <option selected hidden>Pilih kewarganegaraan</option>
                                         @if (old('kewarganegaraan'))
                                             @if (old('kewarganegaraan') == 'Warga Negara Indonesia')
@@ -153,9 +158,10 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Alamat</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3">{{ old('alamat') ?? '' }}</textarea>
+                                    <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3" required>{{ old('alamat') ?? '' }}</textarea>
                                 </td>
                             </tr>
 
@@ -163,12 +169,13 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">No. Handphone</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
                                         <input name="telepon" type="text" class="form-control form-control-sm"
                                             placeholder="Nomor handphone" style="height: 40px"
-                                            value="{{ old('telepon') ?? '' }}">
+                                            value="{{ old('telepon') ?? '' }}" required>
                                     </div>
                                 </td>
                             </tr>
@@ -182,10 +189,11 @@
                             <tr>
                                 <td style="width: 270px">
                                     <span class="d-inline-block mt-2">Tanggal Kejadian</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <input name="tanggalKejadian" type="date" class="form-control"
-                                        style="height: 40px" value="{{ old('tanggalKejadian') ?? '' }}">
+                                        style="height: 40px" value="{{ old('tanggalKejadian') ?? '' }}" required>
                                 </td>
                             </tr>
 
@@ -193,11 +201,12 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Lokasi Kejadian Kehilangan</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <input name="lokasiKejadian" type="text" class="form-control form-control-sm"
                                         placeholder="Lokasi kejadian" style="height: 40px"
-                                        value="{{ old('lokasiKejadian') ?? '' }}">
+                                        value="{{ old('lokasiKejadian') ?? '' }}" required>
                                 </td>
                             </tr>
 
@@ -205,10 +214,11 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Surat - surat yang hilang</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <textarea name="suratHilang" placeholder="Surat Hilang" class="form-control" rows="3"></textarea>
+                                        <textarea name="suratHilang" placeholder="Surat Hilang" class="form-control" rows="3" required></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -230,24 +240,26 @@
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Foto identitas pelapor (KTP)</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
                                         <input name="fotoKtp" type="file" class="form-control-file"
-                                            accept=".jpg,.jpeg,.png">
-                                        <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
                                         <input name="fotoPelapor" type="file" class="form-control-file"
-                                            accept=".jpg,.jpeg,.png">
-                                        <small style="font-size: 80%">.jpg, .jpeg, .png</small>
+                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
                             </tr>
@@ -255,11 +267,12 @@
                                 <td>
                                     <span class="d-inline-block mt-2">Rekomendasi dari instansi yang
                                         mengeluarkan</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group">
                                         <input name="rekomendasiInstansi" type="file" class="form-control-file"
-                                            accept=".pdf,.jpg,.jpeg,.png">
+                                            accept=".pdf,.jpg,.jpeg,.png" required>
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -268,11 +281,12 @@
                             <tr class="border-top">
                                 <td>
                                     <span class="d-inline-block mt-4">Dokumen Pernyataan Keaslian</span>
+                                    <span class="text-danger">*</span>
                                 </td>
                                 <td>
                                     <div class="form-group mt-3">
                                         <input name="pernyataanKeaslian" type="file" class="form-control-file"
-                                            accept=".pdf,.jpg,.jpeg,.png">
+                                            accept=".pdf,.jpg,.jpeg,.png" required>
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -280,9 +294,11 @@
 
                             <tr>
                                 <td>
-                                    {{-- <button name="simpanSementara" value="simpan" type="submit" class="btn btn-primary">
-                                Simpan Sementara
-                            </button> --}}
+                                    <h6 class="mb-4">
+                                        <span class="font-weight-bolder">Note</span> :
+                                        <span class="text-danger">*</span>
+                                        Data wajib diisi
+                                    </h6>
                                     <button name="kirim" value="kirim" type="submit" class="btn btn-primary">
                                         Kirim
                                     </button>

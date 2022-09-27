@@ -119,9 +119,10 @@ function generateNomorPolisi()
 
     if (!$nomorPolisi) {
         $nomor = 1;
+    } else {
+        $nomor = explode('/', $nomorPolisi)[1] + 1;
     }
 
-    $nomor = explode('/', $nomorPolisi)[1] + 1;
     $bulan = intToRomawi(now()->month);
     $tahun = now()->year;
 
