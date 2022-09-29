@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\LaporanPerkembanganSP2HP;
+use App\Mail\SP2HPValid;
 use App\Models\Laporan\SP2HP;
 use App\Models\Notifikasi;
 use App\Models\User;
@@ -122,8 +123,9 @@ class SP2HPController extends Controller
 
     public function valid($id)
     {
+        // Generate nomor polisi
         $nomorPolisi = generateNomorPolisi();
-        dd($nomorPolisi);
+
         // Ubah status SP2HP menjadi valid/true
         $laporan = SP2HP::find($id);
         $laporan->update([
@@ -135,9 +137,9 @@ class SP2HPController extends Controller
 
         // Mengirim notifikasi ke pelapor
         $toPelapor = [
-            'judul' => 'Dokumen SIK Disetujui',
-            'isi' => 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.',
-            'tipe' => 'sik',
+            'judul' => 'Pelaporan SP2HP Telah Divalidasi',
+            'isi' => 'Pelaporan SP2HP Telah Divalidasi. Dokumen validasi SP2HP dapat diunduh disini.',
+            'tipe' => 'sp2hp',
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
             'laporan_id' => $laporan->id,
@@ -146,10 +148,10 @@ class SP2HPController extends Controller
         ];
 
         // Insert notifikasi ke database
-        // $notif = Notifikasi::insert($toPelapor);
+        Notifikasi::insert($toPelapor);
 
         // Kirim email ke pelapor
-        // Mail::send();
+        Mail::send(new SP2HPValid($pelapor));
 
         // Redirect ke halaman admin SIK
         return redirect()->to('/admin/sp2hp')->with('success', 'Berhasil melakukan validasi pelaporan SP2HP');

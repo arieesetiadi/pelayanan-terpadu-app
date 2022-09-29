@@ -42,8 +42,11 @@ class NotifikasiController extends Controller
                 }
                 break;
             case 'sp2hp':
-                return redirect()->to(asset('assets-user/upload/' . $laporan->perkembangan));
-                break;
+                if ($laporan->status && $laporan->perkembangan != null) {
+                    return redirect()->to(asset('assets-user/upload/' . $laporan->perkembangan));
+                } elseif ($laporan->status) {
+                    return redirect()->to('/notifikasi/cetak-pdf/' . $id);
+                }
         }
 
         return back();
@@ -97,10 +100,20 @@ class NotifikasiController extends Controller
                 break;
             case 'sp2hp':
                 $laporan = SP2HP::find($notifikasi->laporan_id);
-                return view('admin.sp2hp.notifikasi', [
-                    'title' => 'Validasi Laporan',
-                    'laporan' => $laporan,
-                ]);
+                if ($laporan->status && $laporan->perkembangan != null) {
+                    return view('admin.sp2hp.notifikasi', [
+                        'title' => 'Validasi Laporan',
+                        'laporan' => $laporan,
+                    ]);
+                } elseif ($laporan->status) {
+                    // Export PDF
+                    $data = [
+                        'laporan' => $laporan,
+                        'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
+                    ];
+                    $pdf = PDF::loadview('pdf.validasi-sp2hp', $data);
+                    return $pdf->stream('validasi-sp2hp.pdf');
+                }
         }
     }
 }
