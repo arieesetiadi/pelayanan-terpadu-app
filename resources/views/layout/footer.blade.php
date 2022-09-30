@@ -106,3 +106,4 @@
 </footer><!-- footer -->
 
 <script src="{{ asset('assets-user/js/custom.js') }}"></script>
+<script src="{{ asset('assets-user/js/sp2hp.js') }}"></script>

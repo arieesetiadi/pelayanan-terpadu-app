@@ -249,6 +249,65 @@
                                 </td>
                             </tr>
 
+                            {{-- Terlapor / Pelaku --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Terlapor / Pelaku :</span>
+                                </td>
+                                <td>
+                                    <input name="terlapor" type="text" class="form-control" style="height: 40px"
+                                        placeholder="Terlapor / pelaku">
+                                </td>
+                            </tr>
+
+                            {{-- Saksi - saksi --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Saksi - saksi :</span>
+                                </td>
+                                <td>
+                                    <div id="saksiContainer">
+                                        <div>
+                                            <input name="namaSaksi-1" type="text" class="form-control"
+                                                style="height: 40px" placeholder="Nama saksi">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <input name="umurSaksi" type="number" class="form-control"
+                                                        style="height: 40px" placeholder="Umur saksi">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input name="pekerjaanSaksi" type="number" class="form-control"
+                                                        style="height: 40px" placeholder="Pekerjaan saksi">
+                                                </div>
+                                            </div>
+                                            <input name="alamatSaksi" type="number" class="form-control mb-2"
+                                                style="height: 40px" placeholder="Alamat saksi">
+                                        </div>
+                                    </div>
+                                    <a id="tambahSaksi" style="font-size: 80%" class="btn btn-sm btn-primary mb-2">
+                                        <i class="fa-solid fa-user-plus"></i>
+                                        Tambah Saksi
+                                    </a>
+                                </td>
+                            </tr>
+
+                            {{-- Bukti --}}
+                            <tr>
+                                <td>
+                                    <span class="d-inline-block mt-2">Barang Bukti :</span>
+                                </td>
+                                <td class="row">
+                                    <div class="col-6">
+                                        <input name="namaBukti" type="text" class="form-control"
+                                            style="height: 40px" placeholder="Barang bukti">
+                                    </div>
+                                    <div class="col-6">
+                                        <input name="gambarBukti" type="file" class="form-control-file mt-1"
+                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                    </div>
+                                </td>
+                            </tr>
+
                             {{-- Upload KTP --}}
                             <tr>
                                 <td>
