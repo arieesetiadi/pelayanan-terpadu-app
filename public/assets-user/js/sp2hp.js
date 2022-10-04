@@ -1,8 +1,9 @@
 // Mekanisme form saksi
 const tambahSaksi = document.getElementById("tambahSaksi");
 const saksiContainer = document.getElementById("saksiContainer");
+const dataCountSaksi = saksiContainer.dataset.count;
 
-localStorage.setItem("countSaksi", 1);
+localStorage.setItem("countSaksi", dataCountSaksi);
 
 tambahSaksi.addEventListener("click", function () {
     addSaksiForm();
@@ -68,8 +69,9 @@ function deleteCountSaksi() {
 // Mekanisme form barang bukti
 const tambahBukti = document.getElementById("tambahBukti");
 const buktiContainer = document.getElementById("buktiContainer");
+const dataCountBukti = buktiContainer.dataset.count;
 
-localStorage.setItem("countBukti", 1);
+localStorage.setItem("countBukti", dataCountBukti);
 
 tambahBukti.addEventListener("click", function () {
     addBuktiForm();

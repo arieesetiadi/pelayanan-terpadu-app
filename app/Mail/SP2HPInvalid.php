@@ -16,9 +16,13 @@ class SP2HPInvalid extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    private $pelapor, $keteranganInvalid, $id;
+
+    public function __construct($pelapor, $keteranganInvalid, $id)
     {
-        //
+        $this->pelapor = $pelapor;
+        $this->keteranganInvalid = $keteranganInvalid;
+        $this->id = $id;
     }
 
     /**
@@ -28,6 +32,12 @@ class SP2HPInvalid extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this
+            ->to($this->pelapor)
+            ->subject('Pelaporan SP2HP Tidak Valid')
+            ->view('email.sp2hp-invalid', [
+                'keteranganInvalid' => $this->keteranganInvalid,
+                'id' => $this->id
+            ]);
     }
 }

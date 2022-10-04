@@ -66,6 +66,12 @@
 
                     <form action="/lapor-sp2hp" method="POST" enctype="multipart/form-data">
                         @csrf
+
+                        @if ($laporan)
+                            <input type="hidden" name="id" value="{{ $laporan->id }}">
+                            <input type="hidden" name="reupload" value="true">
+                        @endif
+
                         {{-- Form Data Diri --}}
                         <h1 style="font-size: 24px">Data Diri :</h1>
                         <hr>
@@ -79,7 +85,8 @@
                                 <td>
                                     <div class="form-group">
                                         <input name="namaLengkap" type="text" class="form-control form-control-sm"
-                                            placeholder="Nama lengkap" style="height: 40px" required>
+                                            placeholder="Nama lengkap" style="height: 40px" required
+                                            value="{{ $laporan ? $laporan->nama_lengkap : '' }}">
                                     </div>
                                 </td>
                             </tr>
@@ -94,10 +101,11 @@
                                     <div class="form-group">
                                         <input name="tempatLahir" type="text"
                                             class="form-control d-inline-block float-left" placeholder="Tempat lahir"
-                                            style="height: 40px; width: 48%; margin-right: 2%" required>
+                                            style="height: 40px; width: 48%; margin-right: 2%" required
+                                            value="{{ $laporan ? $laporan->tempat_lahir : '' }}">
                                         <input name="tanggalLahir" type="date"
                                             class="form-control w-50 d-inline-block float-left" style="height: 40px"
-                                            required>
+                                            required value="{{ $laporan ? $laporan->tanggal_lahir : '' }}">
                                     </div>
                                 </td>
                             </tr>
@@ -111,7 +119,8 @@
                                 <td>
                                     <div class="form-group">
                                         <input name="pekerjaan" type="text" class="form-control form-control-sm"
-                                            placeholder="Pekerjaan" style="height: 40px" required>
+                                            placeholder="Pekerjaan" style="height: 40px" required
+                                            value="{{ $laporan ? $laporan->pekerjaan : '' }}">
                                     </div>
                                 </td>
                             </tr>
@@ -124,9 +133,22 @@
                                 </td>
                                 <td>
                                     <select name="kewarganegaraan" class="custom-select" style="height: 40px" required>
-                                        <option selected hidden>Pilih kewarganegaraan</option>
-                                        <option selected value="Warga Negara Indonesia">Warga Negara Indonesia</option>
-                                        <option value="Warga Negara Asing">Warga Negara Asing</option>
+                                        @if ($laporan)
+                                            @if ($laporan->kewarganegaraan == 'Warga Negara Indonesia')
+                                                <option selected value="Warga Negara Indonesia">Warga Negara Indonesia
+                                                </option>
+                                                <option value="Warga Negara Asing">Warga Negara Asing</option>
+                                            @else
+                                                <option value="Warga Negara Indonesia">Warga Negara Indonesia
+                                                </option>
+                                                <option selected value="Warga Negara Asing">Warga Negara Asing</option>
+                                            @endif
+                                        @else
+                                            <option selected hidden>Pilih kewarganegaraan</option>
+                                            <option selected value="Warga Negara Indonesia">Warga Negara Indonesia
+                                            </option>
+                                            <option value="Warga Negara Asing">Warga Negara Asing</option>
+                                        @endif
                                     </select>
                                 </td>
                             </tr>
@@ -139,7 +161,7 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3" required></textarea>
+                                        <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3" required>{{ $laporan ? $laporan->alamat : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -153,7 +175,8 @@
                                 <td>
                                     <div class="form-group">
                                         <input name="telepon" type="text" class="form-control form-control-sm"
-                                            placeholder="Nomor handphone" style="height: 40px" required>
+                                            placeholder="Nomor handphone" style="height: 40px" required
+                                            value="{{ $laporan ? $laporan->telepon : '' }}">
                                     </div>
                                 </td>
                             </tr>
@@ -171,7 +194,8 @@
                                 </td>
                                 <td>
                                     <input name="judulLaporan" type="text" class="form-control"
-                                        style="height: 40px" placeholder="Judul laporan" required>
+                                        style="height: 40px" placeholder="Judul laporan" required
+                                        value="{{ $laporan ? $laporan->judul_laporan : '' }}">
                                 </td>
                             </tr>
 
@@ -185,7 +209,7 @@
                                     <div class="form-group">
                                         <textarea name="isiLaporan"
                                             placeholder="Tuliskan detil kejadian, meliputi nama pelaku, jumlah kerugian, dan keterangan lainnya secara lengkap"
-                                            class="form-control" rows="3" required></textarea>
+                                            class="form-control" rows="3" required>{{ $laporan ? $laporan->isi_laporan : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -198,7 +222,8 @@
                                 </td>
                                 <td>
                                     <input name="tanggalKejadian" type="date" class="form-control"
-                                        style="height: 40px" placeholder="Tanggal Kejadian" required>
+                                        style="height: 40px" placeholder="Tanggal Kejadian" required
+                                        value="{{ $laporan ? $laporan->tanggal_kejadian : '' }}">
                                 </td>
                             </tr>
 
@@ -212,16 +237,27 @@
                                     <select name="lokasiKejadian" class="custom-select" style="height: 40px"
                                         required>
                                         <option selected value="" hidden>Pilih Lokasi Kejadian</option>
-                                        <option value="Abiansemal">Abiansemal</option>
-                                        <option value="Kuta">Kuta</option>
-                                        <option value="Kuta Selatan">Kuta Selatan</option>
-                                        <option value="Kuta Utara">Kuta Utara</option>
-                                        <option value="Mengwi">Mengwi</option>
-                                        <option value="Petang">Petang</option>
+                                        <option
+                                            {{ $laporan && $laporan->lokasi_kejadian == 'Abiansemal' ? 'selected' : '' }}
+                                            value="Abiansemal">Abiansemal</option>
+                                        <option {{ $laporan && $laporan->lokasi_kejadian == 'Kuta' ? 'selected' : '' }}
+                                            value="Kuta">Kuta</option>
+                                        <option
+                                            {{ $laporan && $laporan->lokasi_kejadian == 'Kuta Selatan' ? 'selected' : '' }}
+                                            value="Kuta Selatan">Kuta Selatan</option>
+                                        <option
+                                            {{ $laporan && $laporan->lokasi_kejadian == 'Kuta Utara' ? 'selected' : '' }}
+                                            value="Kuta Utara">Kuta Utara</option>
+                                        <option
+                                            {{ $laporan && $laporan->lokasi_kejadian == 'Mengwi' ? 'selected' : '' }}
+                                            value="Mengwi">Mengwi</option>
+                                        <option
+                                            {{ $laporan && $laporan->lokasi_kejadian == 'Petang' ? 'selected' : '' }}
+                                            value="Petang">Petang</option>
                                     </select>
                                     <div class="form-group mt-2">
                                         <textarea name="detailLokasiKejadian" placeholder="Detail lokasi kejadian" class="form-control" rows="3"
-                                            required></textarea>
+                                            required>{{ $laporan ? $laporan->detail_lokasi_kejadian : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -235,16 +271,30 @@
                                 <td>
                                     <select name="kategori" class="custom-select" style="height: 40px" required>
                                         <option selected value="" hidden>Pilih Kategori</option>
-                                        <option value="Pencurian">Pencurian</option>
-                                        <option value="Penganiayaan">Penganiayaan</option>
-                                        <option value="Pembunuhan">Pembunuhan</option>
-                                        <option value="Perkosaan">Perkosaan</option>
-                                        <option value="Perzinahan">Perzinahan</option>
-                                        <option value="Kesusilaan/Cabul">Kesusilaan/Cabul</option>
-                                        <option value="Penggelapan">Penggelapan</option>
-                                        <option value="Penipuan/Perbuatan Curang">Penipuan/Perbuatan Curang</option>
-                                        <option value="KDRT">KDRT</option>
-                                        <option value="Pelanggaran HAM">Pelanggaran HAM</option>
+                                        <option {{ $laporan && $laporan->kategori == 'Pencurian' ? 'selected' : '' }}
+                                            value="Pencurian">Pencurian</option>
+                                        <option
+                                            {{ $laporan && $laporan->kategori == 'Penganiayaan' ? 'selected' : '' }}
+                                            value="Penganiayaan">Penganiayaan</option>
+                                        <option {{ $laporan && $laporan->kategori == 'Pembunuhan' ? 'selected' : '' }}
+                                            value="Pembunuhan">Pembunuhan</option>
+                                        <option {{ $laporan && $laporan->kategori == 'Perkosaan' ? 'selected' : '' }}
+                                            value="Perkosaan">Perkosaan</option>
+                                        <option {{ $laporan && $laporan->kategori == 'Perzinahan' ? 'selected' : '' }}
+                                            value="Perzinahan">Perzinahan</option>
+                                        <option
+                                            {{ $laporan && $laporan->kategori == 'Kesusilaan/Cabul' ? 'selected' : '' }}
+                                            value="Kesusilaan/Cabul">Kesusilaan/Cabul</option>
+                                        <option {{ $laporan && $laporan->kategori == 'Penggelapan' ? 'selected' : '' }}
+                                            value="Penggelapan">Penggelapan</option>
+                                        <option
+                                            {{ $laporan && $laporan->kategori == 'Penipuan/Perbuatan Curang' ? 'selected' : '' }}
+                                            value="Penipuan/Perbuatan Curang">Penipuan/Perbuatan Curang</option>
+                                        <option {{ $laporan && $laporan->kategori == 'KDRT' ? 'selected' : '' }}
+                                            value="KDRT">KDRT</option>
+                                        <option
+                                            {{ $laporan && $laporan->kategori == 'Pelanggaran HAM' ? 'selected' : '' }}
+                                            value="Pelanggaran HAM">Pelanggaran HAM</option>
                                     </select>
                                 </td>
                             </tr>
@@ -256,7 +306,8 @@
                                 </td>
                                 <td>
                                     <input name="terlapor" type="text" class="form-control" style="height: 40px"
-                                        placeholder="Terlapor / pelaku">
+                                        placeholder="Terlapor / pelaku"
+                                        value="{{ $laporan ? $laporan->terlapor : '' }}">
                                 </td>
                             </tr>
 
@@ -267,28 +318,72 @@
                                 </td>
                                 <td>
                                     <div>
-                                        <div id="saksiContainer">
-                                            <div id="saksi-1">
-                                                <div>
-                                                    <span style="font-weight: bolder" class="m-1 d-inline-block">Saksi
-                                                        - 1</span>
-                                                </div>
-                                                <input name="namaSaksi-1" type="text" class="form-control"
-                                                    style="height: 40px" placeholder="Nama saksi">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <input name="umurSaksi-1" type="number" class="form-control"
-                                                            style="height: 40px" placeholder="Umur saksi">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <input name="pekerjaanSaksi-1" type="text"
+                                        <div id="saksiContainer" data-count="{{ $saksi ? count($saksi->nama) : 1 }}">
+                                            @if ($saksi)
+                                                @for ($i = 0; $i < count($saksi->nama); $i++)
+                                                    <div id="saksi-{{ $i + 1 }}">
+                                                        <div>
+                                                            <span style="font-weight: bolder"
+                                                                class="m-{{ $i + 1 }} d-inline-block">Saksi
+                                                                - {{ $i + 1 }}</span>
+                                                            @if ($i > 0)
+                                                                <a id="hapusSaksi-{{ $i + 1 }}" href="#hapus"
+                                                                    class="text-danger hapusSaksi mb-1 d-inline-block"
+                                                                    onClick="deleteSaksiForm({{ $i + 1 }})"
+                                                                    title="Hapus Saksi {{ $i + 1 }}">
+                                                                    <i class="fa-solid fa-circle-minus"></i>
+                                                                </a>
+                                                            @endif
+                                                        </div>
+                                                        <input name="namaSaksi-{{ $i + 1 }}" type="text"
                                                             class="form-control" style="height: 40px"
-                                                            placeholder="Pekerjaan saksi">
+                                                            placeholder="Nama saksi" value="{{ $saksi->nama[$i] }}">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <input name="umurSaksi-{{ $i + 1 }}"
+                                                                    type="number" class="form-control"
+                                                                    style="height: 40px" placeholder="Umur saksi"
+                                                                    value="{{ $saksi->umur[$i] }}">
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <input name="pekerjaanSaksi-{{ $i + 1 }}"
+                                                                    type="text" class="form-control"
+                                                                    style="height: 40px" placeholder="Pekerjaan saksi"
+                                                                    value="{{ $saksi->pekerjaan[$i] }}">
+                                                            </div>
+                                                        </div>
+                                                        <input name="alamatSaksi-{{ $i + 1 }}" type="text"
+                                                            class="form-control mb-2" style="height: 40px"
+                                                            placeholder="Alamat saksi"
+                                                            value="{{ $saksi->alamat[$i] }}">
                                                     </div>
+                                                @endfor
+                                            @else
+                                                <div id="saksi-1">
+                                                    <div>
+                                                        <span style="font-weight: bolder"
+                                                            class="m-1 d-inline-block">Saksi
+                                                            - 1</span>
+                                                    </div>
+                                                    <input name="namaSaksi-1" type="text" class="form-control"
+                                                        style="height: 40px" placeholder="Nama saksi">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <input name="umurSaksi-1" type="number"
+                                                                class="form-control" style="height: 40px"
+                                                                placeholder="Umur saksi">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <input name="pekerjaanSaksi-1" type="text"
+                                                                class="form-control" style="height: 40px"
+                                                                placeholder="Pekerjaan saksi">
+                                                        </div>
+                                                    </div>
+                                                    <input name="alamatSaksi-1" type="text"
+                                                        class="form-control mb-2" style="height: 40px"
+                                                        placeholder="Alamat saksi">
                                                 </div>
-                                                <input name="alamatSaksi-1" type="text" class="form-control mb-2"
-                                                    style="height: 40px" placeholder="Alamat saksi">
-                                            </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <a id="tambahSaksi" style="font-size: 80%"
@@ -305,24 +400,57 @@
                                     <span class="d-inline-block mt-2">Barang Bukti :</span>
                                 </td>
                                 <td>
-                                    <div id="buktiContainer">
-                                        <div id="bukti-1" class="row">
-                                            <div class="col-12">
-                                                <span style="font-weight: bolder"
-                                                    class="mb-1 mr-2 d-inline-block">Barang
-                                                    Bukti - 1</span>
+                                    <div id="buktiContainer"
+                                        data-count="{{ $bukti ? count($bukti->namaBukti) : 1 }}">
+                                        @if ($bukti)
+                                            @for ($i = 0; $i < count($bukti->namaBukti); $i++)
+                                                <div id="bukti-{{ $i + 1 }}" class="row">
+                                                    <div class="col-12">
+                                                        <span style="font-weight: bolder"
+                                                            class="mb-1 mr-2 d-inline-block">Barang
+                                                            Bukti - {{ $i + 1 }}</span>
+                                                        @if ($i > 0)
+                                                            <a id="hapusBukti-{{ $i + 1 }}" href="#hapus"
+                                                                class="text-danger mb-2"
+                                                                title="Hapus barang bukti {{ $i + 1 }}"
+                                                                onClick="deleteBuktiForm({{ $i + 1 }})">
+                                                                <i class="fa-solid fa-circle-minus"></i>
+                                                            </a>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input name="namaBukti-{{ $i + 1 }}" type="text"
+                                                            class="form-control" style="height: 40px"
+                                                            placeholder="Nama barang bukti"
+                                                            value="{{ $bukti->namaBukti[$i] }}">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input name="gambarBukti-{{ $i + 1 }}" type="file"
+                                                            class="form-control-file" accept=".jpg,.jpeg,.png">
+                                                        <small style="font-size: 80%">Upload foto bukti - .jpg,
+                                                            .jpeg, .png</small>
+                                                    </div>
+                                                </div>
+                                            @endfor
+                                        @else
+                                            <div id="bukti-1" class="row">
+                                                <div class="col-12">
+                                                    <span style="font-weight: bolder"
+                                                        class="mb-1 mr-2 d-inline-block">Barang
+                                                        Bukti - 1</span>
+                                                </div>
+                                                <div class="col-6">
+                                                    <input name="namaBukti-1" type="text" class="form-control"
+                                                        style="height: 40px" placeholder="Nama barang bukti">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input name="gambarBukti-1" type="file"
+                                                        class="form-control-file" accept=".jpg,.jpeg,.png">
+                                                    <small style="font-size: 80%">Upload foto bukti - .jpg,
+                                                        .jpeg, .png</small>
+                                                </div>
                                             </div>
-                                            <div class="col-6">
-                                                <input name="namaBukti-1" type="text" class="form-control"
-                                                    style="height: 40px" placeholder="Nama barang bukti">
-                                            </div>
-                                            <div class="col-6">
-                                                <input name="gambarBukti-1" type="file" class="form-control-file"
-                                                    accept=".jpg,.jpeg,.png">
-                                                <small style="font-size: 80%">Upload foto bukti - .jpg,
-                                                    .jpeg, .png</small>
-                                            </div>
-                                        </div>
+                                        @endif
                                     </div>
                                     <a id="tambahBukti" style="font-size: 80%" class="btn btn-sm btn-primary mb-2">
                                         <i class="fa-solid fa-file-circle-plus"></i>

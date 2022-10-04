@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\LaporanPerkembanganSP2HP;
+use App\Mail\SP2HPInvalid;
 use App\Mail\SP2HPValid;
 use App\Models\Laporan\SP2HP;
 use App\Models\Notifikasi;
@@ -37,29 +38,56 @@ class SP2HPController extends Controller
         $fotoPelapor = uploadFile($request->file('fotoPelapor'), $path);
         $lampiran = uploadFile($request->file('lampiran'), $path);
 
-        // Insert data SP2HP ke database
-        $laporan = SP2HP::create([
-            'nama_lengkap' => $request->namaLengkap,
-            'tempat_lahir' => $request->tempatLahir,
-            'tanggal_lahir' => $request->tanggalLahir,
-            'pekerjaan' => $request->pekerjaan,
-            'kewarganegaraan' => $request->kewarganegaraan,
-            'alamat' => $request->alamat,
-            'telepon' => $request->telepon,
-            'judul_laporan' => $request->judulLaporan,
-            'isi_laporan' => $request->isiLaporan,
-            'tanggal_kejadian' => $request->tanggalKejadian,
-            'lokasi_kejadian' => $request->lokasiKejadian,
-            'detail_lokasi_kejadian' => $request->detailLokasiKejadian,
-            'kategori' => $request->kategori,
-            'foto_ktp' => $fotoKtp,
-            'foto_pelapor' => $fotoPelapor,
-            'lampiran' => $lampiran,
-            'terlapor' => $terlapor,
-            'saksi' => $saksi,
-            'bukti' => $bukti,
-            'pelapor_id' => auth()->user()->id
-        ]);
+        if ($request->reupload) {
+            $laporan = SP2HP::find($request->id);
+            $laporan->update([
+                'nama_lengkap' => $request->namaLengkap,
+                'tempat_lahir' => $request->tempatLahir,
+                'tanggal_lahir' => $request->tanggalLahir,
+                'pekerjaan' => $request->pekerjaan,
+                'kewarganegaraan' => $request->kewarganegaraan,
+                'alamat' => $request->alamat,
+                'telepon' => $request->telepon,
+                'judul_laporan' => $request->judulLaporan,
+                'isi_laporan' => $request->isiLaporan,
+                'tanggal_kejadian' => $request->tanggalKejadian,
+                'lokasi_kejadian' => $request->lokasiKejadian,
+                'detail_lokasi_kejadian' => $request->detailLokasiKejadian,
+                'kategori' => $request->kategori,
+                'foto_ktp' => $fotoKtp,
+                'foto_pelapor' => $fotoPelapor,
+                'lampiran' => $lampiran,
+                'terlapor' => $terlapor,
+                'saksi' => $saksi,
+                'bukti' => $bukti,
+                'status' => null
+            ]);
+        } else {
+            // Insert data SP2HP ke database
+            $laporan = SP2HP::create([
+                'nama_lengkap' => $request->namaLengkap,
+                'tempat_lahir' => $request->tempatLahir,
+                'tanggal_lahir' => $request->tanggalLahir,
+                'pekerjaan' => $request->pekerjaan,
+                'kewarganegaraan' => $request->kewarganegaraan,
+                'alamat' => $request->alamat,
+                'telepon' => $request->telepon,
+                'judul_laporan' => $request->judulLaporan,
+                'isi_laporan' => $request->isiLaporan,
+                'tanggal_kejadian' => $request->tanggalKejadian,
+                'lokasi_kejadian' => $request->lokasiKejadian,
+                'detail_lokasi_kejadian' => $request->detailLokasiKejadian,
+                'kategori' => $request->kategori,
+                'foto_ktp' => $fotoKtp,
+                'foto_pelapor' => $fotoPelapor,
+                'lampiran' => $lampiran,
+                'terlapor' => $terlapor,
+                'saksi' => $saksi,
+                'bukti' => $bukti,
+                'pelapor_id' => auth()->user()->id
+            ]);
+        }
+
 
         // Kirim notifikasi ke admin
         $toAdmin = [
@@ -163,11 +191,42 @@ class SP2HPController extends Controller
         // Kirim email ke pelapor
         Mail::send(new SP2HPValid($pelapor));
 
-        // Redirect ke halaman admin SIK
+        // Redirect ke halaman admin SP2HP
         return redirect()->to('/admin/sp2hp')->with('success', 'Berhasil melakukan validasi pelaporan SP2HP');
     }
 
-    public function invalid($id)
+    public function invalid(Request $request)
     {
+        $keteranganInvalid = $request->keteranganInvalid;
+
+        // Ubah status SP2HP menjadi invalid/false
+        $laporan = SP2HP::find($request->id);
+        $laporan->update([
+            'status' => false,
+        ]);
+
+        // Kirim notifikasi ke pelapor
+        $pelapor = User::find($laporan->pelapor_id);
+
+        // Mengirim notifikasi ke pelapor
+        $toPelapor = [
+            'judul' => 'Pelaporan SP2HP Tidak Valid',
+            'isi' => 'Silahkan periksa kembali kelengkapan pelaporan tindak kriminal.',
+            'tipe' => 'sp2hp',
+            'telah_dibaca' => false,
+            'dikirim_kepada' => 'pelapor',
+            'laporan_id' => $laporan->id,
+            'pelapor_id' => $laporan->pelapor_id,
+            'dikirim_pada' => now()
+        ];
+
+        // // Insert notifikasi ke database
+        $notif = Notifikasi::insert($toPelapor);
+
+        // Kirim email ke pelapor
+        Mail::send(new SP2HPInvalid($pelapor, $keteranganInvalid, $notif->id));
+
+        // Redirect ke halaman admin SP2HP
+        return redirect()->to('/admin/sp2hp')->with('success', 'Berhasil menolak pelaporan SP2HP');
     }
 }

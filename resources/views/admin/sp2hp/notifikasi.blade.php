@@ -164,8 +164,8 @@
                             @csrf
                             <div class="mb-3">
                                 <input type="hidden" name="id" value="{{ $laporan->id }}">
-                                <label for="alasanPenolakan" class="form-label">Masukkan keterangan :</label>
-                                <textarea name="alasanPenolakan" class="form-control" id="alasanPenolakan" rows="6"></textarea>
+                                <label for="keteranganInvalid" class="form-label">Masukkan keterangan :</label>
+                                <textarea name="keteranganInvalid" class="form-control" id="keteranganInvalid" rows="6"></textarea>
                             </div>
                         </div>
 

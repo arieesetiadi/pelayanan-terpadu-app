@@ -46,6 +46,12 @@ class NotifikasiController extends Controller
                     return redirect()->to(asset('assets-user/upload/' . $laporan->perkembangan));
                 } elseif ($laporan->status) {
                     return redirect()->to('/notifikasi/cetak-pdf/' . $id);
+                } elseif (!$laporan->status) {
+                    return view('form.lapor-sp2hp', [
+                        'laporan' => $laporan,
+                        'saksi' => json_decode($laporan->saksi),
+                        'bukti' => json_decode($laporan->bukti),
+                    ]);
                 }
         }
 
