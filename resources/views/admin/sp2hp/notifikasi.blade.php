@@ -5,7 +5,7 @@
 
     <table class="w-100">
         <tr>
-            <td style="width: 200px">Nama Lengkap</td>
+            <td style="width: 170px">Nama Lengkap</td>
             <td style="width: 20px">:</td>
             <td>{{ $laporan->nama_lengkap }}</td>
         </tr>
@@ -45,7 +45,7 @@
             <td>{{ $laporan->judul_laporan }}</td>
         </tr>
         <tr>
-            <td>Isi Laporan</td>
+            <td>Isi/Detail Laporan</td>
             <td>:</td>
             <td>{{ $laporan->isi_laporan }}</td>
         </tr>
@@ -68,6 +68,46 @@
             <td>Kategori</td>
             <td>:</td>
             <td>{{ $laporan->kategori }}</td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top">Terlapor/Pelaku</td>
+            <td style="vertical-align: top">:</td>
+            <td>
+                <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
+                    @foreach ($terlapor as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top">Saksi</td>
+            <td style="vertical-align: top">:</td>
+            <td>
+                <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
+                    @for ($i = 0; $i < count($saksi->nama); $i++)
+                        <li>{{ $saksi->nama[$i] }}, {{ $saksi->umur[$i] }} tahun, {{ $saksi->pekerjaan[$i] }},
+                            {{ $saksi->alamat[$i] }}</li>
+                    @endfor
+                </ol>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="vertical-align: top">Bukti</td>
+            <td style="vertical-align: top">:</td>
+            <td>
+                <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
+                    @for ($i = 0; $i < count($bukti->namaBukti); $i++)
+                        <li>
+                            <i class="bi bi-download"></i>
+                            <a href="{{ asset('assets-user/upload/') . '/' . $bukti->gambarBukti[$i] }}" target="_blank">
+                                {{ $bukti->namaBukti[$i] }}
+                            </a>
+                        </li>
+                    @endfor
+                </ol>
+            </td>
         </tr>
         <tr>
             <td>Foto KTP</td>

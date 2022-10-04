@@ -171,7 +171,7 @@
                                 </td>
                                 <td>
                                     <input name="judulLaporan" type="text" class="form-control"
-                                        style="height: 40px" placeholder="Judul laporan">
+                                        style="height: 40px" placeholder="Judul laporan" required>
                                 </td>
                             </tr>
 
@@ -211,7 +211,7 @@
                                 <td>
                                     <select name="lokasiKejadian" class="custom-select" style="height: 40px"
                                         required>
-                                        <option selected hidden>Pilih Lokasi Kejadian</option>
+                                        <option selected value="" hidden>Pilih Lokasi Kejadian</option>
                                         <option value="Abiansemal">Abiansemal</option>
                                         <option value="Kuta">Kuta</option>
                                         <option value="Kuta Selatan">Kuta Selatan</option>
@@ -234,7 +234,7 @@
                                 </td>
                                 <td>
                                     <select name="kategori" class="custom-select" style="height: 40px" required>
-                                        <option selected hidden>Pilih Kategori</option>
+                                        <option selected value="" hidden>Pilih Kategori</option>
                                         <option value="Pencurian">Pencurian</option>
                                         <option value="Penganiayaan">Penganiayaan</option>
                                         <option value="Pembunuhan">Pembunuhan</option>
@@ -318,7 +318,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <input name="gambarBukti-1" type="file" class="form-control-file"
-                                                    accept=".jpg,.jpeg,.png" required>
+                                                    accept=".jpg,.jpeg,.png">
                                                 <small style="font-size: 80%">Upload foto bukti - .jpg,
                                                     .jpeg, .png</small>
                                             </div>
@@ -349,7 +349,7 @@
                             {{-- Upload Foto Orang + KTP --}}
                             <tr>
                                 <td>
-                                    <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
+                                    <span class=" mt-2">Foto pelapor sambil membawa identitas</span>
                                     <span class="text-danger">*</span>
                                 </td>
                                 <td>

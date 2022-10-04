@@ -23,6 +23,13 @@ class SP2HPController extends Controller
     // Fungsi untuk melaporkan tindak kriminal
     public function lapor(Request $request)
     {
+        $data = $request->all();
+        $keys = array_keys($data);
+
+        $terlapor = $request->terlapor;
+        $saksi = getSaksi($keys, $data);
+        $bukti = getBukti($keys, $data);
+
         // Upload file lampiran jika ada
         $path = 'assets-user/upload/';
 
@@ -48,6 +55,9 @@ class SP2HPController extends Controller
             'foto_ktp' => $fotoKtp,
             'foto_pelapor' => $fotoPelapor,
             'lampiran' => $lampiran,
+            'terlapor' => $terlapor,
+            'saksi' => $saksi,
+            'bukti' => $bukti,
             'pelapor_id' => auth()->user()->id
         ]);
 

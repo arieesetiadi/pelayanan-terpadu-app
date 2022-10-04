@@ -100,9 +100,12 @@ class NotifikasiController extends Controller
                 break;
             case 'sp2hp':
                 $laporan = SP2HP::find($notifikasi->laporan_id);
-                if ($laporan->status && $laporan->perkembangan != null) {
+                if ($laporan->status == null && $laporan->perkembangan == null) {
                     return view('admin.sp2hp.notifikasi', [
                         'title' => 'Validasi Laporan',
+                        'terlapor' => explode(',', trim($laporan->terlapor, " ")),
+                        'saksi' => json_decode($laporan->saksi),
+                        'bukti' => json_decode($laporan->bukti),
                         'laporan' => $laporan,
                     ]);
                 } elseif ($laporan->status) {

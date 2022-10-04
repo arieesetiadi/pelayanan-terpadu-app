@@ -160,3 +160,77 @@ function intToRomawi($angka)
 
     return $result;
 }
+
+function getSaksi($keys, $data)
+{
+    // Ambil hanya nama saksi dari form SP2HP
+    $indexNama = array_filter($keys, function ($key) {
+        return str_contains($key, 'namaSaksi');
+    });
+    $nama = [];
+    foreach ($indexNama as $i) {
+        $nama[] = $data[$i];
+    }
+
+    // Ambil hanya umur saksi dari form SP2HP
+    $indexUmur = array_filter($keys, function ($key) {
+        return str_contains($key, 'umurSaksi');
+    });
+    $umur = [];
+    foreach ($indexUmur as $i) {
+        $umur[] = $data[$i];
+    }
+
+    // Ambil hanya pekerjaan saksi dari form SP2HP
+    $indexPekerjaan = array_filter($keys, function ($key) {
+        return str_contains($key, 'pekerjaanSaksi');
+    });
+    $pekerjaan = [];
+    foreach ($indexPekerjaan as $i) {
+        $pekerjaan[] = $data[$i];
+    }
+
+    // Ambil hanya alamat saksi dari form SP2HP
+    $indexAlamat = array_filter($keys, function ($key) {
+        return str_contains($key, 'alamatSaksi');
+    });
+    $alamat = [];
+    foreach ($indexAlamat as $i) {
+        $alamat[] = $data[$i];
+    }
+
+    return json_encode([
+        'nama' => $nama,
+        'umur' => $umur,
+        'pekerjaan' => $pekerjaan,
+        'alamat' => $pekerjaan
+    ]);
+}
+
+function getBukti($keys, $data)
+{
+    // Ambil hanya nama bukti dari form SP2HP
+    $indexNamaBukti = array_filter($keys, function ($key) {
+        return str_contains($key, 'namaBukti');
+    });
+    $namaBukti = [];
+    foreach ($indexNamaBukti as $i) {
+        $namaBukti[] = $data[$i];
+    }
+
+    // Ambil hanya nama bukti dari form SP2HP
+    $indexGambarBukti = array_filter($keys, function ($key) {
+        return str_contains($key, 'gambarBukti');
+    });
+    $gambarBukti = [];
+    foreach ($indexGambarBukti as $i) {
+        $path = 'assets-user/upload/';
+        $namaFile = uploadFile($data[$i], $path);
+        $gambarBukti[] = $namaFile;
+    }
+
+    return json_encode([
+        'namaBukti' => $namaBukti,
+        'gambarBukti' => $gambarBukti
+    ]);
+}

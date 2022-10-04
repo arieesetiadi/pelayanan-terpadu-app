@@ -97,7 +97,7 @@ function addBuktiForm() {
         </div>
         <div class="col-6">
             <input name="gambarBukti-${count}" type="file" class="form-control-file"
-                accept=".jpg,.jpeg,.png" required>
+                accept=".jpg,.jpeg,.png">
             <small style="font-size: 80%">Upload foto bukti - .jpg,
                 .jpeg, .png</small>
         </div>
