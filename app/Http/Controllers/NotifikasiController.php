@@ -10,6 +10,11 @@ use App\Models\Laporan\SP2HP;
 
 class NotifikasiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth.pelapor');
+    }
+
     public function detail($id)
     {
         // Ubah status menjadi telah dibaca
