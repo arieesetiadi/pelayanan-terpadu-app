@@ -45,8 +45,8 @@
             <td>{{ $laporan->judul_laporan }}</td>
         </tr>
         <tr>
-            <td>Isi/Detail Laporan</td>
-            <td>:</td>
+            <td style="vertical-align: top">Isi/Detail Laporan</td>
+            <td style="vertical-align: top">:</td>
             <td>{{ $laporan->isi_laporan }}</td>
         </tr>
         <tr>

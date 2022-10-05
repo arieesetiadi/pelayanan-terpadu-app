@@ -67,7 +67,7 @@
                     <form action="/lapor-sp2hp" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        @if ($laporan)
+                        @if (isset($laporan))
                             <input type="hidden" name="id" value="{{ $laporan->id }}">
                             <input type="hidden" name="reupload" value="true">
                         @endif
@@ -86,7 +86,7 @@
                                     <div class="form-group">
                                         <input name="namaLengkap" type="text" class="form-control form-control-sm"
                                             placeholder="Nama lengkap" style="height: 40px" required
-                                            value="{{ $laporan ? $laporan->nama_lengkap : '' }}">
+                                            value="{{ isset($laporan) ? $laporan->nama_lengkap : '' }}">
                                     </div>
                                 </td>
                             </tr>
@@ -102,10 +102,10 @@
                                         <input name="tempatLahir" type="text"
                                             class="form-control d-inline-block float-left" placeholder="Tempat lahir"
                                             style="height: 40px; width: 48%; margin-right: 2%" required
-                                            value="{{ $laporan ? $laporan->tempat_lahir : '' }}">
+                                            value="{{ isset($laporan) ? $laporan->tempat_lahir : '' }}">
                                         <input name="tanggalLahir" type="date"
                                             class="form-control w-50 d-inline-block float-left" style="height: 40px"
-                                            required value="{{ $laporan ? $laporan->tanggal_lahir : '' }}">
+                                            required value="{{ isset($laporan) ? $laporan->tanggal_lahir : '' }}">
                                     </div>
                                 </td>
                             </tr>
@@ -120,7 +120,7 @@
                                     <div class="form-group">
                                         <input name="pekerjaan" type="text" class="form-control form-control-sm"
                                             placeholder="Pekerjaan" style="height: 40px" required
-                                            value="{{ $laporan ? $laporan->pekerjaan : '' }}">
+                                            value="{{ isset($laporan) ? $laporan->pekerjaan : '' }}">
                                     </div>
                                 </td>
                             </tr>
@@ -133,7 +133,7 @@
                                 </td>
                                 <td>
                                     <select name="kewarganegaraan" class="custom-select" style="height: 40px" required>
-                                        @if ($laporan)
+                                        @if (isset($laporan))
                                             @if ($laporan->kewarganegaraan == 'Warga Negara Indonesia')
                                                 <option selected value="Warga Negara Indonesia">Warga Negara Indonesia
                                                 </option>
@@ -161,7 +161,7 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3" required>{{ $laporan ? $laporan->alamat : '' }}</textarea>
+                                        <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3" required>{{ isset($laporan) ? $laporan->alamat : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -176,7 +176,7 @@
                                     <div class="form-group">
                                         <input name="telepon" type="text" class="form-control form-control-sm"
                                             placeholder="Nomor handphone" style="height: 40px" required
-                                            value="{{ $laporan ? $laporan->telepon : '' }}">
+                                            value="{{ isset($laporan) ? $laporan->telepon : '' }}">
                                     </div>
                                 </td>
                             </tr>
@@ -195,7 +195,7 @@
                                 <td>
                                     <input name="judulLaporan" type="text" class="form-control"
                                         style="height: 40px" placeholder="Judul laporan" required
-                                        value="{{ $laporan ? $laporan->judul_laporan : '' }}">
+                                        value="{{ isset($laporan) ? $laporan->judul_laporan : '' }}">
                                 </td>
                             </tr>
 
@@ -209,7 +209,7 @@
                                     <div class="form-group">
                                         <textarea name="isiLaporan"
                                             placeholder="Tuliskan detil kejadian, meliputi nama pelaku, jumlah kerugian, dan keterangan lainnya secara lengkap"
-                                            class="form-control" rows="3" required>{{ $laporan ? $laporan->isi_laporan : '' }}</textarea>
+                                            class="form-control" rows="3" required>{{ isset($laporan) ? $laporan->isi_laporan : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -223,7 +223,7 @@
                                 <td>
                                     <input name="tanggalKejadian" type="date" class="form-control"
                                         style="height: 40px" placeholder="Tanggal Kejadian" required
-                                        value="{{ $laporan ? $laporan->tanggal_kejadian : '' }}">
+                                        value="{{ isset($laporan) ? $laporan->tanggal_kejadian : '' }}">
                                 </td>
                             </tr>
 
@@ -238,26 +238,27 @@
                                         required>
                                         <option selected value="" hidden>Pilih Lokasi Kejadian</option>
                                         <option
-                                            {{ $laporan && $laporan->lokasi_kejadian == 'Abiansemal' ? 'selected' : '' }}
+                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Abiansemal' ? 'selected' : '' }}
                                             value="Abiansemal">Abiansemal</option>
-                                        <option {{ $laporan && $laporan->lokasi_kejadian == 'Kuta' ? 'selected' : '' }}
+                                        <option
+                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta' ? 'selected' : '' }}
                                             value="Kuta">Kuta</option>
                                         <option
-                                            {{ $laporan && $laporan->lokasi_kejadian == 'Kuta Selatan' ? 'selected' : '' }}
+                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta Selatan' ? 'selected' : '' }}
                                             value="Kuta Selatan">Kuta Selatan</option>
                                         <option
-                                            {{ $laporan && $laporan->lokasi_kejadian == 'Kuta Utara' ? 'selected' : '' }}
+                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta Utara' ? 'selected' : '' }}
                                             value="Kuta Utara">Kuta Utara</option>
                                         <option
-                                            {{ $laporan && $laporan->lokasi_kejadian == 'Mengwi' ? 'selected' : '' }}
+                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Mengwi' ? 'selected' : '' }}
                                             value="Mengwi">Mengwi</option>
                                         <option
-                                            {{ $laporan && $laporan->lokasi_kejadian == 'Petang' ? 'selected' : '' }}
+                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Petang' ? 'selected' : '' }}
                                             value="Petang">Petang</option>
                                     </select>
                                     <div class="form-group mt-2">
                                         <textarea name="detailLokasiKejadian" placeholder="Detail lokasi kejadian" class="form-control" rows="3"
-                                            required>{{ $laporan ? $laporan->detail_lokasi_kejadian : '' }}</textarea>
+                                            required>{{ isset($laporan) ? $laporan->detail_lokasi_kejadian : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -271,29 +272,34 @@
                                 <td>
                                     <select name="kategori" class="custom-select" style="height: 40px" required>
                                         <option selected value="" hidden>Pilih Kategori</option>
-                                        <option {{ $laporan && $laporan->kategori == 'Pencurian' ? 'selected' : '' }}
+                                        <option
+                                            {{ isset($laporan) && $laporan->kategori == 'Pencurian' ? 'selected' : '' }}
                                             value="Pencurian">Pencurian</option>
                                         <option
-                                            {{ $laporan && $laporan->kategori == 'Penganiayaan' ? 'selected' : '' }}
+                                            {{ isset($laporan) && $laporan->kategori == 'Penganiayaan' ? 'selected' : '' }}
                                             value="Penganiayaan">Penganiayaan</option>
-                                        <option {{ $laporan && $laporan->kategori == 'Pembunuhan' ? 'selected' : '' }}
+                                        <option
+                                            {{ isset($laporan) && $laporan->kategori == 'Pembunuhan' ? 'selected' : '' }}
                                             value="Pembunuhan">Pembunuhan</option>
-                                        <option {{ $laporan && $laporan->kategori == 'Perkosaan' ? 'selected' : '' }}
+                                        <option
+                                            {{ isset($laporan) && $laporan->kategori == 'Perkosaan' ? 'selected' : '' }}
                                             value="Perkosaan">Perkosaan</option>
-                                        <option {{ $laporan && $laporan->kategori == 'Perzinahan' ? 'selected' : '' }}
+                                        <option
+                                            {{ isset($laporan) && $laporan->kategori == 'Perzinahan' ? 'selected' : '' }}
                                             value="Perzinahan">Perzinahan</option>
                                         <option
-                                            {{ $laporan && $laporan->kategori == 'Kesusilaan/Cabul' ? 'selected' : '' }}
+                                            {{ isset($laporan) && $laporan->kategori == 'Kesusilaan/Cabul' ? 'selected' : '' }}
                                             value="Kesusilaan/Cabul">Kesusilaan/Cabul</option>
-                                        <option {{ $laporan && $laporan->kategori == 'Penggelapan' ? 'selected' : '' }}
+                                        <option
+                                            {{ isset($laporan) && $laporan->kategori == 'Penggelapan' ? 'selected' : '' }}
                                             value="Penggelapan">Penggelapan</option>
                                         <option
-                                            {{ $laporan && $laporan->kategori == 'Penipuan/Perbuatan Curang' ? 'selected' : '' }}
+                                            {{ isset($laporan) && $laporan->kategori == 'Penipuan/Perbuatan Curang' ? 'selected' : '' }}
                                             value="Penipuan/Perbuatan Curang">Penipuan/Perbuatan Curang</option>
-                                        <option {{ $laporan && $laporan->kategori == 'KDRT' ? 'selected' : '' }}
+                                        <option {{ isset($laporan) && $laporan->kategori == 'KDRT' ? 'selected' : '' }}
                                             value="KDRT">KDRT</option>
                                         <option
-                                            {{ $laporan && $laporan->kategori == 'Pelanggaran HAM' ? 'selected' : '' }}
+                                            {{ isset($laporan) && $laporan->kategori == 'Pelanggaran HAM' ? 'selected' : '' }}
                                             value="Pelanggaran HAM">Pelanggaran HAM</option>
                                     </select>
                                 </td>
@@ -307,7 +313,7 @@
                                 <td>
                                     <input name="terlapor" type="text" class="form-control" style="height: 40px"
                                         placeholder="Terlapor / pelaku"
-                                        value="{{ $laporan ? $laporan->terlapor : '' }}">
+                                        value="{{ isset($laporan) ? $laporan->terlapor : '' }}">
                                 </td>
                             </tr>
 
@@ -318,8 +324,9 @@
                                 </td>
                                 <td>
                                     <div>
-                                        <div id="saksiContainer" data-count="{{ $saksi ? count($saksi->nama) : 1 }}">
-                                            @if ($saksi)
+                                        <div id="saksiContainer"
+                                            data-count="{{ isset($saksi) ? count($saksi->nama) : 1 }}">
+                                            @if (isset($saksi))
                                                 @for ($i = 0; $i < count($saksi->nama); $i++)
                                                     <div id="saksi-{{ $i + 1 }}">
                                                         <div>
@@ -401,8 +408,8 @@
                                 </td>
                                 <td>
                                     <div id="buktiContainer"
-                                        data-count="{{ $bukti ? count($bukti->namaBukti) : 1 }}">
-                                        @if ($bukti)
+                                        data-count="{{ isset($bukti) ? count($bukti->namaBukti) : 1 }}">
+                                        @if (isset($bukti))
                                             @for ($i = 0; $i < count($bukti->namaBukti); $i++)
                                                 <div id="bukti-{{ $i + 1 }}" class="row">
                                                     <div class="col-12">

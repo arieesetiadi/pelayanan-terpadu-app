@@ -176,7 +176,7 @@ class SP2HPController extends Controller
         // Mengirim notifikasi ke pelapor
         $toPelapor = [
             'judul' => 'Pelaporan SP2HP Telah Divalidasi',
-            'isi' => 'Pelaporan SP2HP Telah Divalidasi. Dokumen validasi SP2HP dapat diunduh disini.',
+            'isi' => 'Pelaporan SP2HP telah divalidasi dan sedang dalam proses.',
             'tipe' => 'sp2hp',
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
@@ -186,13 +186,13 @@ class SP2HPController extends Controller
         ];
 
         // Insert notifikasi ke database
-        Notifikasi::insert($toPelapor);
+        $notif = Notifikasi::insert($toPelapor);
 
         // Kirim email ke pelapor
         Mail::send(new SP2HPValid($pelapor));
 
         // Redirect ke halaman admin SP2HP
-        return redirect()->to('/admin/sp2hp')->with('success', 'Berhasil melakukan validasi pelaporan SP2HP');
+        return redirect()->to('/notifikasi/cetak-pdf/' . $notif->id);
     }
 
     public function invalid(Request $request)

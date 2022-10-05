@@ -21,23 +21,17 @@
             text-align: center;
         }
 
+        table {
+            width: 100%
+        }
+
         main h3 {
             text-align: center;
             text-decoration: underline;
         }
 
-        main p {
-            margin: 0 10%;
-        }
-
-        table {
-            width: 65%;
-            margin: 0 15%;
-        }
-
-        ol {
-            width: 65%;
-            margin: 0 13%;
+        td {
+            vertical-align: top;
         }
 
         .half {
@@ -112,18 +106,38 @@
 
         <hr>
 
-        <div>
-            {{-- Barang Bukti --}}
-            <div style="width: 49%; display: inline-block">
-                <h4>BARANG BUKTI :</h4>
-            </div>
+        <table>
+            <tr>
+                <td style="width: 30%">
+                    <h4>TINDAK PIDANA APA :</h4>
+                    <h4 style="text-transform: uppercase">{{ $laporan->kategori }}</h4>
+                </td>
+                <td style="width: 70%">
+                    {{-- Saksi --}}
+                    <h4>NAMA DAN ALAMAT SAKSI – SAKSI :</h4>
+                    <ol>
+                        @for ($i = 0; $i < count($saksi->nama); $i++)
+                            <li>Nama : {{ $saksi->nama[$i] }}, Umur: {{ $saksi->umur[$i] }} tahun, Alamat :
+                                {{ $saksi->alamat[$i] }}, Pekerjaan : {{ $saksi->pekerjaan[$i] }}</li>
+                        @endfor
+                    </ol>
+                </td>
+            </tr>
+        </table>
 
-            {{-- Uraian Singkat --}}
-            <div style="width: 50%; display: inline-block">
-                <H4>URAIAN SINGKAT KEJADIAN :</H4>
-                <p style="text-align: justify">{{ $laporan->isi_laporan }}</p>
-            </div>
-        </div>
+        <hr>
+
+        <table style="width: 100%">
+            <tr>
+                <td style="width: 30%">
+                    <h4>BARANG BUKTI :</h4>
+                </td>
+                <td style="width: 70%">
+                    <h4>URAIAN SINGKAT KEJADIAN :</h4>
+                    <p style="text-align: justify">{{ $laporan->isi_laporan }}</p>
+                </td>
+            </tr>
+        </table>
 
         <hr>
 
@@ -132,77 +146,81 @@
             dibawah
             ini.</p>
 
-        <div style="margin-top: 40px">
-            <div class="half" style="margin-top: 20px; width: 35%">
-            </div>
-            <div class="half" style="width: 64%">
-                <span style="display: block; text-align: center;">
-                    Pelapor
-                </span>
+        <table>
+            <tr>
+                <td style="width: 50%">-</td>
+                <td style="width: 50%">
+                    <span style="display: block; text-align: center;">
+                        Pelapor
+                    </span>
 
-                <center>
-                    {{-- <img width="150" src="{{ $ttdPath }}"> --}}
-                </center>
-                <br><br><br><br>
+                    <center>
+                        {{-- <img width="150" src="{{ $ttdPath }}"> --}}
+                    </center>
+                    <br><br><br><br>
 
-                <strong
-                    style="display: block; text-align: center; text-transform: uppercase; text-decoration: underline">
-                    {{ $laporan->nama_lengkap }}
-                </strong>
-            </div>
-        </div>
+                    <strong
+                        style="display: block; text-align: center; text-transform: uppercase; text-decoration: underline">
+                        {{ $laporan->nama_lengkap }}
+                    </strong>
+                </td>
+            </tr>
+        </table>
 
         <hr>
         <div><strong>TINDAKAN YANG DIAMBIL</strong> : - Menerima / Membuat Laporan Polisi</div>
         <hr>
 
-        <div>
-            <div class="half" style="width:50%">
-                <span style="display: block; text-align: center;">
-                    MENGETAHUI
-                </span>
-                <span style="display: block; text-align: center;">
-                    KEPALA KEPOLISIAN RESOR BADUNG
-                </span>
+        <table>
+            <tr>
+                <td style="width: 50%">
+                    <center>
+                        <span style="display: block; text-align: center;">
+                            MENGETAHUI
+                        </span>
+                        <span style="display: block; text-align: center;">
+                            KEPALA KEPOLISIAN RESOR BADUNG
+                        </span>
 
-                <center>
-                    {{-- <img width="150" src="{{ $ttdPath }}"> --}}
-                </center>
-                <br><br><br><br>
+                        <center>
+                            {{-- <img width="150" src="{{ $ttdPath }}"> --}}
+                        </center>
+                        <br><br><br><br>
 
-                <span style="display: block; text-align: center;">
-                    Leo Dedy Defretes, SIK, SH, MH
-                </span>
-                <hr style="width: 50%">
-                <span style="display: block; text-align: center;
-                ">
-                    AKBP NRP 123456
-                </span>
-            </div>
+                        <span style="display: block; text-align: center;">
+                            Leo Dedy Defretes, SIK, SH, MH
+                        </span>
+                        <hr style="width: 50%">
+                        <span style="display: block; text-align: center;">
+                            AKBP NRP 123456
+                        </span>
+                    </center>
+                </td>
+                <td style="width: 50%">
+                    <center>
+                        <span style="display: block; text-align: center">
+                            Badung, {{ dateFormat(now(), false) }}
+                        </span>
+                        <span style="display: block; text-align: center;">
+                            Yang Menerima Laporan,
+                        </span>
 
-            <div class="half" style="width: 49%">
-                <span style="display: block; text-align: center">
-                    Badung, {{ dateFormat(now(), false) }}
-                </span>
-                <span style="display: block; text-align: center;">
-                    Yang Menerima Laporan,
-                </span>
+                        <center>
+                            {{-- <img width="150" src="{{ $ttdPath }}"> --}}
+                        </center>
+                        <br><br><br><br>
 
-                <center>
-                    {{-- <img width="150" src="{{ $ttdPath }}"> --}}
-                </center>
-                <br><br><br><br>
-
-                <span style="display: block; text-align: center;">
-                    I Komang Gede Artayasa
-                </span>
-                <hr style="width: 50%">
-                <span style="display: block; text-align: center;
-                ">
-                    AKBP NRP 123456?????
-                </span>
-            </div>
-        </div>
+                        <span style="display: block; text-align: center;">
+                            I Komang Gede Artayasa
+                        </span>
+                        <hr style="width: 50%">
+                        <span style="display: block; text-align: center;">
+                            AKBP NRP 123456?????
+                        </span>
+                    </center>
+                </td>
+            </tr>
+        </table>
     </main>
 </body>
 

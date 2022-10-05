@@ -19,6 +19,7 @@
             <tr>
                 <th>No.</th>
                 <th>Nama Lengkap</th>
+                <th>Status</th>
                 <th>Alamat</th>
                 <th>Telepon</th>
                 <th>Judul</th>
@@ -32,6 +33,20 @@
                 <tr>
                     <td>{{ $laporanSP2HP->firstItem() + $i }}</td>
                     <td>{{ $item->nama_lengkap }}</td>
+
+                    {{-- Status --}}
+                    <td>
+                        @if ($item->status === 1)
+                            {{-- centang --}}
+                            <i class="bi bi-check-circle-fill text-success" title="Valid"></i>
+                        @elseif($item->status === 0)
+                            {{-- x --}}
+                            <i class="bi bi-x-circle-fill text-danger" title="Tidak Valid"></i>
+                        @else
+                            -
+                        @endif
+                    </td>
+
                     <td>{{ $item->alamat }}</td>
                     <td>{{ $item->telepon }}</td>
                     <td>{{ $item->judul_laporan }}</td>
@@ -77,7 +92,8 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form action="/admin/sp2hp/upload-keterangan" method="POST" enctype="multipart/form-data">
+                                    <form action="/admin/sp2hp/upload-keterangan" method="POST"
+                                        enctype="multipart/form-data">
                                         <div class="modal-body">
                                             @csrf
                                             {{-- Input file --}}

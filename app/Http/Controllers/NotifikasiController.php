@@ -12,7 +12,7 @@ class NotifikasiController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth.pelapor');
+        $this->middleware('auth');
     }
 
     public function detail($id)
@@ -50,7 +50,7 @@ class NotifikasiController extends Controller
                 if ($laporan->status && $laporan->perkembangan != null) {
                     return redirect()->to(asset('assets-user/upload/' . $laporan->perkembangan));
                 } elseif ($laporan->status) {
-                    return redirect()->to('/notifikasi/cetak-pdf/' . $id);
+                    return back();
                 } elseif (!$laporan->status) {
                     return view('form.lapor-sp2hp', [
                         'laporan' => $laporan,
@@ -112,18 +112,15 @@ class NotifikasiController extends Controller
             case 'sp2hp':
                 $laporan = SP2HP::find($notifikasi->laporan_id);
                 if ($laporan->status == null && $laporan->perkembangan == null) {
-                    return view('admin.sp2hp.notifikasi', [
-                        'title' => 'Validasi Laporan',
-                        'terlapor' => explode(',', trim($laporan->terlapor, " ")),
-                        'saksi' => json_decode($laporan->saksi),
-                        'bukti' => json_decode($laporan->bukti),
-                        'laporan' => $laporan,
-                    ]);
+                    return view('admin.sp2hp.notifikasi');
                 } elseif ($laporan->status) {
                     // Export PDF
                     $data = [
                         'laporan' => $laporan,
                         'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
+                        'terlapor' => explode(',', trim($laporan->terlapor, " ")),
+                        'saksi' => json_decode($laporan->saksi),
+                        'bukti' => json_decode($laporan->bukti),
                     ];
                     $pdf = PDF::loadview('pdf.validasi-sp2hp', $data);
                     return $pdf->stream('validasi-sp2hp.pdf');
