@@ -242,3 +242,8 @@ function ageFormat($date)
 
     return $birth->diffInYears($now);
 }
+
+function getNotifSP2HP($laporanId)
+{
+    return Notifikasi::where('laporan_id', $laporanId)->orderBy('id', 'desc')->get()[0]->id;
+}

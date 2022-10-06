@@ -48,7 +48,7 @@ class NotifikasiController extends Controller
                 break;
             case 'sp2hp':
                 if ($laporan->status && $laporan->perkembangan != null) {
-                    return redirect()->to(asset('assets-user/upload/' . $laporan->perkembangan));
+                    return redirect()->to(asset('assets-user/upload/' . $laporan->file_pemberitahuan));
                 } elseif ($laporan->status) {
                     return back();
                 } elseif (!$laporan->status) {

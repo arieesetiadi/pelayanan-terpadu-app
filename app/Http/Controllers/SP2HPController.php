@@ -136,13 +136,14 @@ class SP2HPController extends Controller
         // Update data perkembangan ke database
         $laporan->update([
             'file_pemberitahuan' => $perkembangan,
-            'keterangan_pemberitahuan' => $keterangan
+            'keterangan_pemberitahuan' => $keterangan,
+            'perkembangan' => 'Sedang Diproses'
         ]);
 
         // Kirim notifikasi ke halaman pelapor
         $toPelapor = [
             'judul' => 'Perkembangan SP2HP',
-            'isi' => 'Progres penyidikan tindak kriminal dapat dilihat pada file pdf berikut.',
+            'isi' => 'Pelaporan tindak kriminal Anda sudah diterima dan sedang dalam proses. Surat tanda terima pelaporan Anda dapat dilihat pada file pdf berikut.',
             'tipe' => 'sp2hp',
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
@@ -156,7 +157,7 @@ class SP2HPController extends Controller
         Mail::send(new LaporanPerkembanganSP2HP($perkembangan, $keterangan, $pelapor));
 
         // Redirect ke halaman admin SP2HP
-        return redirect()->to('admin/sp2hp')->with('success', 'Anda berhasil mengunggah perkembangan penyidikan.');
+        return redirect()->to('admin/sp2hp')->with('success', 'Anda berhasil mengunggah pemberitahuan ke pelapor.');
     }
 
     public function valid($id)

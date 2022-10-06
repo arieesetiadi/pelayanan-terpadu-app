@@ -67,9 +67,17 @@
                             -
                         @endif
                     </td>
-                    <td>
+                    <td class="d-flex justify-content-end gap-1">
+                        {{-- Tombol download --}}
+                        @if ($item->status)
+                            <a target="_blank" href="/notifikasi/cetak-pdf/{{ getNotifSP2HP($item->id) }}" class=""
+                                title="Dok. Validasi">
+                                <i class="bi bi-download"></i>
+                            </a>
+                        @endif
+
                         {{-- Tombol upload --}}
-                        <a href="#" class="" title="Upload File" data-bs-toggle="modal"
+                        <a href="#" class="" title="Upload Validasi/Perkembangan" data-bs-toggle="modal"
                             data-bs-target="#upload-modal-{{ $item->id }}">
                             <i class="bi bi-upload"></i>
                         </a>
@@ -78,6 +86,12 @@
                         <a href="/admin/sp2hp/hapus/{{ $item->id }}" title="Hapus"
                             onclick="return confirm('Apakah anda yakin untuk menghapus data SP2HP ?')">
                             <i class="bi bi-trash-fill"></i>
+                        </a>
+
+                        {{-- Tombol selesai --}}
+                        <a href="#" class="" title="Selesaikan Pelaporan" data-bs-toggle="modal"
+                            data-bs-target="#upload-modal-{{ $item->id }}">
+                            <i class="bi bi-check-circle-fill text-success"></i>
                         </a>
 
                         {{-- ===================================== --}}

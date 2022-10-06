@@ -60,7 +60,11 @@
         <span style="font-weight: bolder">DAERAH KABUPATEN BADUNG</span>
         <span style="font-weight: bolder ;text-decoration: underline">SENTRA PELAYANAN KEPOLISIAN TERPADU</span>
         <span>Jl. Kebo Iwa No.1, Mengwitani, Mengwi</span>
+        <span
+            style="font-weight: bolder; text-decoration: underline; margin-top: 10px; text-align: left; margin-left: 35px">PRO
+            JUSTITIA</span>
     </header>
+
 
     <main>
         {{-- Logo POLRI --}}
@@ -183,10 +187,9 @@
                     </center>
                     <br><br><br><br>
 
-                    <strong
-                        style="display: block; text-align: center; text-transform: uppercase; text-decoration: underline">
+                    <span style="display: block; text-align: center; text-decoration: underline">
                         {{ $laporan->nama_lengkap }}
-                    </strong>
+                    </span>
                 </td>
             </tr>
         </table>
@@ -200,10 +203,10 @@
                 <td style="width: 50%; padding: 0 20px">
                     <center>
                         <span style="display: block; text-align: center;">
-                            MENGETAHUI
+                            Mengetahui
                         </span>
                         <span style="display: block; text-align: center;">
-                            KEPALA KEPOLISIAN RESOR BADUNG,
+                            Kepala Kepolisian Resor Badung,
                         </span>
 
                         <center>
@@ -259,11 +262,14 @@
                 <span style="font-weight: bolder">DAERAH KABUPATEN BADUNG</span>
                 <span style="font-weight: bolder ;text-decoration: underline">SENTRA PELAYANAN KEPOLISIAN TERPADU</span>
                 <span>Jl. Kebo Iwa No.1, Mengwitani, Mengwi</span>
+                <span
+                    style="font-weight: bolder; text-decoration: underline; margin-top: 10px; text-align: left; margin-left: 35px">PRO
+                    JUSTITIA</span>
             </header>
 
             {{-- Logo POLRI --}}
             <center>
-                <img height="150" style="margin-top: 0px" src="{{ $logoPolriPath }}">
+                <img height="75" style="margin-top: 0px" src="{{ $logoPolriPath }}">
             </center>
 
             <h4 style="margin-top: 0px; text-decoration: underline; text-align: center">LAPORAN POLISI</h4>
@@ -271,90 +277,94 @@
                 {{ $laporan->nomor_polisi }}
             </h4>
 
-            <p>
-                Yang bertanda tangan dibawah ini menerangkan bahwa pada hari
-                {{ dateFormat($laporan->dilaporkan_pada) }} pukul {{ timeFormat($laporan->dilaporkan_pada) }} WITA
-                telah melakukan pelaporan, yang mengaku :
-            </p>
+            <div style="padding-left: 60px">
+                <p style="text-align: justify; margin: 5px;">
+                    ------ Yang bertanda tangan dibawah ini menerangkan bahwa pada hari
+                    {{ dateFormat($laporan->dilaporkan_pada) }} pukul {{ timeFormat($laporan->dilaporkan_pada) }} WITA
+                    telah melakukan pelaporan, yang mengaku :
+                </p>
 
-            <table>
-                {{-- Waktu Kejadian --}}
-                <tr>
-                    <td>1. Nama</td>
-                    <td>:</td>
-                    <td>{{ $laporan->nama_lengkap }}</td>
-                </tr>
+                <table style="margin-left: 36px">
+                    {{-- Waktu Kejadian --}}
+                    <tr>
+                        <td style="width: 25%">Nama</td>
+                        <td style="width: 12px">:</td>
+                        <td>{{ $laporan->nama_lengkap }}</td>
+                    </tr>
 
-                <tr>
-                    <td>2. Tempat/Tanggal Lahir</td>
-                    <td>:</td>
-                    <td>{{ $laporan->tempat_lahir }}, {{ dateFormat($laporan->tanggal_lahir) }}</td>
-                </tr>
+                    <tr>
+                        <td>Tempat/Tanggal Lahir</td>
+                        <td>:</td>
+                        <td>{{ $laporan->tempat_lahir }}, {{ dateFormat($laporan->tanggal_lahir) }}</td>
+                    </tr>
 
-                <tr>
-                    <td>3. Umur</td>
-                    <td>:</td>
-                    <td>
-                        {{ ageFormat($laporan->tanggal_lahir) }} Tahun
-                    </td>
-                </tr>
+                    <tr>
+                        <td>Umur</td>
+                        <td>:</td>
+                        <td>
+                            {{ ageFormat($laporan->tanggal_lahir) }} Tahun
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>4. Pekerjaan</td>
-                    <td>:</td>
-                    <td>{{ $laporan->pekerjaan }}</td>
-                </tr>
+                    <tr>
+                        <td>Pekerjaan</td>
+                        <td>:</td>
+                        <td>{{ $laporan->pekerjaan }}</td>
+                    </tr>
 
-                <tr>
-                    <td>5. Kewarganegaraan</td>
-                    <td>:</td>
-                    <td>{{ $laporan->kewarganegaraan }}</td>
-                </tr>
+                    <tr>
+                        <td>Kewarganegaraan</td>
+                        <td>:</td>
+                        <td>{{ $laporan->kewarganegaraan }}</td>
+                    </tr>
 
-                <tr>
-                    <td>6. Alamat</td>
-                    <td>:</td>
-                    <td>{{ $laporan->alamat }}</td>
-                </tr>
-            </table>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>{{ $laporan->alamat }}</td>
+                    </tr>
+                </table>
 
-            <p>
-                Telah melaporkan bahwa telah terjadi Tindak Pidana <strong
-                    style="text-transform: capitalize">{{ $laporan->kategori }}</strong> yang
-                diduga dilakukan oleh <strong>{{ $terlapor }}</strong> yang
-                terjadi pada hari {{ dateFormat($laporan->tanggal_kejadian) }} di {{ $laporan->lokasi_kejadian }},
-                {{ $laporan->detail_lokasi_kejadian }} yang merupakan wilayah Hukum Polres Badung.
-            </p>
+                <p style="text-align: justify; margin: 5px">
+                    ------ Telah melaporkan bahwa telah terjadi Tindak Pidana <strong
+                        style="text-transform: capitalize">{{ $laporan->kategori }}</strong> yang
+                    diduga dilakukan oleh <strong>{{ $terlapor }}</strong> yang
+                    terjadi pada hari {{ dateFormat($laporan->tanggal_kejadian) }} di {{ $laporan->lokasi_kejadian }},
+                    {{ $laporan->detail_lokasi_kejadian }} yang merupakan wilayah Hukum Polres Badung.
+                </p>
 
-            <p>
-                Dengan adanya kejadian di atas, korban melaporkan ke Polres Badung guna Pengusutan lebih lanjut.
-            </p>
+                <p style="text-align: justify; margin: 5px">
+                    ------ Dengan adanya kejadian di atas, korban melaporkan ke Polres Badung guna Pengusutan lebih
+                    lanjut.
+                </p>
 
-            <table>
-                {{-- Waktu Kejadian --}}
-                <tr>
-                    <td>1. Terlapor</td>
-                    <td>:</td>
-                    <td>{{ $terlapor }}</td>
-                </tr>
+                <table style="margin-left: 36px">
+                    {{-- Waktu Kejadian --}}
+                    <tr>
+                        <td style="width: 25%">Terlapor</td>
+                        <td style="width: 12px">:</td>
+                        <td>{{ $terlapor }}</td>
+                    </tr>
 
-                <tr>
-                    <td>2. Kerugian</td>
-                    <td>:</td>
-                    <td>-</td>
-                </tr>
-            </table>
+                    <tr>
+                        <td>Kerugian</td>
+                        <td>:</td>
+                        <td>-</td>
+                    </tr>
+                </table>
 
-            <p>
-                Sesuai dengan Pengaduan / Laporan Polisi Nomor : {{ $laporan->nomor_polisi }} tanggal
-                {{ dateFormat($laporan->dilaporkan_pada) }}.
-            </p>
+                <p style="text-align: justify; margin: 5px">
+                    ------ Sesuai dengan Pengaduan / Laporan Polisi Nomor : {{ $laporan->nomor_polisi }} tanggal
+                    {{ dateFormat($laporan->dilaporkan_pada) }}.
+                </p>
 
-            <p>
-                Demikian Tanda Bukti Penerimaan Laporan ini dibuat dengan sebenar – benarnya untuk dipergunakan
-                seperlunya. Telpon Polres Badung : (0361) 829949.
-            </p>
+                <p style="text-align: justify; margin: 5px">
+                    ------ Demikian Tanda Bukti Penerimaan Laporan ini dibuat dengan sebenar – benarnya untuk
+                    dipergunakan
+                    seperlunya. Telpon Polres Badung : (0361) 829949.
+                </p>
 
+            </div>
             <table>
                 <tr>
                     <td style="width: 50%; padding: 0 20px">
@@ -366,12 +376,11 @@
                         <center>
                             {{-- <img width="150" src="{{ $ttdPath }}"> --}}
                         </center>
-                        <br><br><br><br><br>
+                        <br><br><br><br>
 
-                        <strong
-                            style="display: block; text-align: center; text-transform: uppercase; text-decoration: underline">
+                        <span style="display: block; text-align: center; text-decoration: underline">
                             {{ $laporan->nama_lengkap }}
-                        </strong>
+                        </span>
                     </td>
                     <td style="width: 50%; padding: 0 20px">
                         <center>
@@ -394,20 +403,20 @@
                                 <hr style="margin: 2px 0; text-align: center">
                             </center>
                             <span style="display: block;
-                            text-align: center;">
+                        text-align: center;">
                                 AKBP NRP 123456?????
                             </span>
                         </center>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100%; padding: 0 30%" colspan="2">
+                    <td style="width: 100%; padding: 0 30%; padding-top: 20px" colspan="2">
                         <center>
                             <span style="display: block; text-align: center;">
-                                MENGETAHUI
+                                Mengetahui
                             </span>
                             <span style="display: block; text-align: center;">
-                                KEPALA KEPOLISIAN RESOR BADUNG,
+                                Kepala Kepolisian Resor Badung,
                             </span>
 
                             <center>
@@ -422,7 +431,7 @@
                                 <hr style="margin: 2px 0; text-align: center">
                             </center>
                             <span style="display: block;
-                            text-align: center;">
+                        text-align: center;">
                                 AKBP NRP 123456
                             </span>
                         </center>
