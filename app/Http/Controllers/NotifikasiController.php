@@ -118,7 +118,7 @@ class NotifikasiController extends Controller
                     $data = [
                         'laporan' => $laporan,
                         'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
-                        'terlapor' => explode(',', trim($laporan->terlapor, " ")),
+                        'terlapor' => $laporan->terlapor,
                         'saksi' => json_decode($laporan->saksi),
                         'bukti' => json_decode($laporan->bukti),
                     ];

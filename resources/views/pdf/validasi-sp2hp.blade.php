@@ -12,8 +12,14 @@
             font-family: 'Times New Roman', Times, serif
         }
 
+        ol {
+            margin-left: -18px;
+            margin-bottom: -3px;
+            margin-top: 0px;
+        }
+
         header {
-            width: 50%;
+            width: 60%;
         }
 
         header span {
@@ -37,38 +43,48 @@
         .half {
             display: inline-block;
         }
+
+        strong {
+            margin-top: -2px;
+        }
+
+        hr {
+            margin: -1px
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <span>KEPOLISIAN NEGARA REPUBLIK INDONESIA</span>
-        <span>DAERAH BALI</span>
-        <span style="text-decoration: underline">SENTRA PELAYANAN KEPOLISIAN TERPADU</span>
+        <span style="font-weight: bolder">KEPOLISIAN NEGARA REPUBLIK INDONESIA</span>
+        <span style="font-weight: bolder">DAERAH KABUPATEN BADUNG</span>
+        <span style="font-weight: bolder ;text-decoration: underline">SENTRA PELAYANAN KEPOLISIAN TERPADU</span>
+        <span>Jl. Kebo Iwa No.1, Mengwitani, Mengwi</span>
     </header>
 
     <main>
         {{-- Logo POLRI --}}
         <center>
-            <img height="150" style="margin-top: 25px" src="{{ $logoPolriPath }}">
+            <img height="150" style="margin-top: 0px" src="{{ $logoPolriPath }}">
         </center>
 
-        <h4 style="margin-top: 9px; text-decoration: underline; text-align: center">LAPORAN POLISI</h4>
-        <h4 style="text-align: center; margin-top: -15px">Nomor : {{ $laporan->nomor_polisi }}</h4>
+        <h4 style="margin-top: 0px; text-decoration: underline; text-align: center">LAPORAN POLISI</h4>
+        <h4 style="text-align: center; margin-top: -15px; margin-bottom: 0px">Nomor : {{ $laporan->nomor_polisi }}
+        </h4>
 
         <hr>
 
         {{-- Yang Melaporkan --}}
-        <h4>YANG MELAPORKAN :</h4>
-        <p>1. Nama : {{ $laporan->nama_lengkap }}. 2. Tempat/Tanggal Lahir :
+        <strong>YANG MELAPORKAN :</strong>
+        <div style="margin-bottom: 5px">1. Nama : {{ $laporan->nama_lengkap }}. 2. Tempat/Tanggal Lahir :
             {{ $laporan->tempat_lahir . ', ' . dateFormat($laporan->tanggal_lahir) }}. 3. Pekerjaan :
             {{ $laporan->pekerjaan }}. 4. Kewarganegaraan : {{ $laporan->kewarganegaraan }}. 5. Alamat :
-            {{ $laporan->alamat }}. 6. Nomor Telepon : {{ $laporan->telepon }}</p>
+            {{ $laporan->alamat }}. 6. Nomor Telepon : {{ $laporan->telepon }}</div>
 
         <hr>
 
         {{-- Hal Yang Dilaporkan --}}
-        <h4>HAL YANG DILAPORKAN :</h4>
+        <strong>HAL YANG DILAPORKAN :</strong>
         <table>
             {{-- Waktu Kejadian --}}
             <tr>
@@ -92,9 +108,9 @@
             </tr>
 
             <tr>
-                <td>4. Siapa</td>
+                <td>4. Nama Terlapor</td>
                 <td>:</td>
-                <td>Nama</td>
+                <td>{{ $terlapor }}</td>
             </tr>
 
             <tr>
@@ -109,12 +125,12 @@
         <table>
             <tr>
                 <td style="width: 30%">
-                    <h4>TINDAK PIDANA APA :</h4>
-                    <h4 style="text-transform: uppercase">{{ $laporan->kategori }}</h4>
+                    <strong>TINDAK PIDANA APA :</strong>
+                    <strong style="text-transform: uppercase">{{ $laporan->kategori }}</strong>
                 </td>
                 <td style="width: 70%">
                     {{-- Saksi --}}
-                    <h4>NAMA DAN ALAMAT SAKSI – SAKSI :</h4>
+                    <strong>NAMA DAN ALAMAT SAKSI – SAKSI :</strong>
                     <ol>
                         @for ($i = 0; $i < count($saksi->nama); $i++)
                             <li>Nama : {{ $saksi->nama[$i] }}, Umur: {{ $saksi->umur[$i] }} tahun, Alamat :
@@ -130,18 +146,26 @@
         <table style="width: 100%">
             <tr>
                 <td style="width: 30%">
-                    <h4>BARANG BUKTI :</h4>
+                    <strong>BARANG BUKTI :</strong>
+                    <ol>
+                        @for ($i = 0; $i < count($bukti->namaBukti); $i++)
+                            <li>{{ $bukti->namaBukti[$i] }}</li>
+                        @endfor
+                    </ol>
                 </td>
                 <td style="width: 70%">
-                    <h4>URAIAN SINGKAT KEJADIAN :</h4>
-                    <p style="text-align: justify">{{ $laporan->isi_laporan }}</p>
+                    <strong>URAIAN SINGKAT KEJADIAN :</strong>
+                    <p style="text-align: justify; margin-top: 0px; margin-bottom: -2px">{{ $laporan->isi_laporan }}
+                    </p>
                 </td>
             </tr>
         </table>
 
         <hr>
 
-        <p style="float: none; display: block">Pengadu / Pelapor membenarkan semua keterangannya dan membubuhkan tanda
+        <p style="float: none; display: block; margin: -3px 0;">Pengadu / Pelapor membenarkan semua keterangannya dan
+            membubuhkan
+            tanda
             tangannya
             dibawah
             ini.</p>
@@ -151,7 +175,7 @@
                 <td style="width: 50%">-</td>
                 <td style="width: 50%">
                     <span style="display: block; text-align: center;">
-                        Pelapor
+                        Pelapor,
                     </span>
 
                     <center>
@@ -173,13 +197,13 @@
 
         <table>
             <tr>
-                <td style="width: 50%">
+                <td style="width: 50%; padding: 0 20px">
                     <center>
                         <span style="display: block; text-align: center;">
                             MENGETAHUI
                         </span>
                         <span style="display: block; text-align: center;">
-                            KEPALA KEPOLISIAN RESOR BADUNG
+                            KEPALA KEPOLISIAN RESOR BADUNG,
                         </span>
 
                         <center>
@@ -190,13 +214,16 @@
                         <span style="display: block; text-align: center;">
                             Leo Dedy Defretes, SIK, SH, MH
                         </span>
-                        <hr style="width: 50%">
-                        <span style="display: block; text-align: center;">
+                        <center>
+                            <hr style="margin: 2px 0; text-align: center">
+                        </center>
+                        <span style="display: block;
+                            text-align: center;">
                             AKBP NRP 123456
                         </span>
                     </center>
                 </td>
-                <td style="width: 50%">
+                <td style="width: 50%; padding: 0 20px">
                     <center>
                         <span style="display: block; text-align: center">
                             Badung, {{ dateFormat(now(), false) }}
@@ -213,14 +240,196 @@
                         <span style="display: block; text-align: center;">
                             I Komang Gede Artayasa
                         </span>
-                        <hr style="width: 50%">
-                        <span style="display: block; text-align: center;">
+                        <center>
+                            <hr style="margin: 2px 0; text-align: center">
+                        </center>
+                        <span style="display: block;
+                            text-align: center;">
                             AKBP NRP 123456?????
                         </span>
                     </center>
                 </td>
             </tr>
         </table>
+
+        {{-- NEW PAGE - SURAT TANDA BUKTI MELAPOR --}}
+        <div style="page-break-before: always;">
+            <header>
+                <span style="font-weight: bolder">KEPOLISIAN NEGARA REPUBLIK INDONESIA</span>
+                <span style="font-weight: bolder">DAERAH KABUPATEN BADUNG</span>
+                <span style="font-weight: bolder ;text-decoration: underline">SENTRA PELAYANAN KEPOLISIAN TERPADU</span>
+                <span>Jl. Kebo Iwa No.1, Mengwitani, Mengwi</span>
+            </header>
+
+            {{-- Logo POLRI --}}
+            <center>
+                <img height="150" style="margin-top: 0px" src="{{ $logoPolriPath }}">
+            </center>
+
+            <h4 style="margin-top: 0px; text-decoration: underline; text-align: center">LAPORAN POLISI</h4>
+            <h4 style="text-align: center; margin-top: -15px; margin-bottom: 0px">Nomor :
+                {{ $laporan->nomor_polisi }}
+            </h4>
+
+            <p>
+                Yang bertanda tangan dibawah ini menerangkan bahwa pada hari
+                {{ dateFormat($laporan->dilaporkan_pada) }} pukul {{ timeFormat($laporan->dilaporkan_pada) }} WITA
+                telah melakukan pelaporan, yang mengaku :
+            </p>
+
+            <table>
+                {{-- Waktu Kejadian --}}
+                <tr>
+                    <td>1. Nama</td>
+                    <td>:</td>
+                    <td>{{ $laporan->nama_lengkap }}</td>
+                </tr>
+
+                <tr>
+                    <td>2. Tempat/Tanggal Lahir</td>
+                    <td>:</td>
+                    <td>{{ $laporan->tempat_lahir }}, {{ dateFormat($laporan->tanggal_lahir) }}</td>
+                </tr>
+
+                <tr>
+                    <td>3. Umur</td>
+                    <td>:</td>
+                    <td>
+                        {{ ageFormat($laporan->tanggal_lahir) }} Tahun
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>4. Pekerjaan</td>
+                    <td>:</td>
+                    <td>{{ $laporan->pekerjaan }}</td>
+                </tr>
+
+                <tr>
+                    <td>5. Kewarganegaraan</td>
+                    <td>:</td>
+                    <td>{{ $laporan->kewarganegaraan }}</td>
+                </tr>
+
+                <tr>
+                    <td>6. Alamat</td>
+                    <td>:</td>
+                    <td>{{ $laporan->alamat }}</td>
+                </tr>
+            </table>
+
+            <p>
+                Telah melaporkan bahwa telah terjadi Tindak Pidana <strong
+                    style="text-transform: capitalize">{{ $laporan->kategori }}</strong> yang
+                diduga dilakukan oleh <strong>{{ $terlapor }}</strong> yang
+                terjadi pada hari {{ dateFormat($laporan->tanggal_kejadian) }} di {{ $laporan->lokasi_kejadian }},
+                {{ $laporan->detail_lokasi_kejadian }} yang merupakan wilayah Hukum Polres Badung.
+            </p>
+
+            <p>
+                Dengan adanya kejadian di atas, korban melaporkan ke Polres Badung guna Pengusutan lebih lanjut.
+            </p>
+
+            <table>
+                {{-- Waktu Kejadian --}}
+                <tr>
+                    <td>1. Terlapor</td>
+                    <td>:</td>
+                    <td>{{ $terlapor }}</td>
+                </tr>
+
+                <tr>
+                    <td>2. Kerugian</td>
+                    <td>:</td>
+                    <td>-</td>
+                </tr>
+            </table>
+
+            <p>
+                Sesuai dengan Pengaduan / Laporan Polisi Nomor : {{ $laporan->nomor_polisi }} tanggal
+                {{ dateFormat($laporan->dilaporkan_pada) }}.
+            </p>
+
+            <p>
+                Demikian Tanda Bukti Penerimaan Laporan ini dibuat dengan sebenar – benarnya untuk dipergunakan
+                seperlunya. Telpon Polres Badung : (0361) 829949.
+            </p>
+
+            <table>
+                <tr>
+                    <td style="width: 50%; padding: 0 20px">
+                        <br>
+                        <span style="display: block; text-align: center;">
+                            Pelapor,
+                        </span>
+
+                        <center>
+                            {{-- <img width="150" src="{{ $ttdPath }}"> --}}
+                        </center>
+                        <br><br><br><br><br>
+
+                        <strong
+                            style="display: block; text-align: center; text-transform: uppercase; text-decoration: underline">
+                            {{ $laporan->nama_lengkap }}
+                        </strong>
+                    </td>
+                    <td style="width: 50%; padding: 0 20px">
+                        <center>
+                            <span style="display: block; text-align: center">
+                                Badung, {{ dateFormat(now(), false) }}
+                            </span>
+                            <span style="display: block; text-align: center;">
+                                Yang Menerima Laporan,
+                            </span>
+
+                            <center>
+                                {{-- <img width="150" src="{{ $ttdPath }}"> --}}
+                            </center>
+                            <br><br><br><br>
+
+                            <span style="display: block; text-align: center;">
+                                I Komang Gede Artayasa
+                            </span>
+                            <center>
+                                <hr style="margin: 2px 0; text-align: center">
+                            </center>
+                            <span style="display: block;
+                            text-align: center;">
+                                AKBP NRP 123456?????
+                            </span>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100%; padding: 0 30%" colspan="2">
+                        <center>
+                            <span style="display: block; text-align: center;">
+                                MENGETAHUI
+                            </span>
+                            <span style="display: block; text-align: center;">
+                                KEPALA KEPOLISIAN RESOR BADUNG,
+                            </span>
+
+                            <center>
+                                {{-- <img width="150" src="{{ $ttdPath }}"> --}}
+                            </center>
+                            <br><br><br><br>
+
+                            <span style="display: block; text-align: center;">
+                                Leo Dedy Defretes, SIK, SH, MH
+                            </span>
+                            <center>
+                                <hr style="margin: 2px 0; text-align: center">
+                            </center>
+                            <span style="display: block;
+                            text-align: center;">
+                                AKBP NRP 123456
+                            </span>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </main>
 </body>
 

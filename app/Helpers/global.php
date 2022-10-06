@@ -234,3 +234,11 @@ function getBukti($keys, $data)
         'gambarBukti' => $gambarBukti
     ]);
 }
+
+function ageFormat($date)
+{
+    $birth = Carbon::make($date);
+    $now = now();
+
+    return $birth->diffInYears($now);
+}
