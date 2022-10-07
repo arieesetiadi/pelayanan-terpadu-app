@@ -124,4 +124,12 @@ class SIK extends Model
             'status_pernyataan' => 'draft'
         ]);
     }
+
+    public static function getSIK()
+    {
+        $start = now()->subYear(10)->toDateTimeString();
+        $end = now()->toDateTimeString();
+
+        return self::whereBetween('dilaporkan_pada', [$start, $end])->paginate(20);
+    }
 }

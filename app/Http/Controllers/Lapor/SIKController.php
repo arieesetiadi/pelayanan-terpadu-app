@@ -19,7 +19,7 @@ class SIKController extends Controller
     {
         return view('admin.sik.index', [
             'title' => 'Laporan SIK',
-            'laporanSIK' => SIK::paginate(20)
+            'laporanSIK' => SIK::getSIK()
         ]);
     }
 

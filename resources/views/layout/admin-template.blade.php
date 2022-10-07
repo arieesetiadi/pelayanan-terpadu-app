@@ -48,10 +48,11 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
                 <div class="mobile-toggle-icon fs-3">
                     <i class="bi bi-list"></i>
                 </div>
-                <form class="searchbar">
+                <form action="/search" class="searchbar w-100" method="POST">
+                    @csrf
                     <div class="position-absolute top-50 translate-middle-y search-icon ms-3"><i
                             class="bi bi-search"></i></div>
-                    <input class="form-control" type="text" placeholder="Type here to search">
+                    <input name="keyword" class="form-control" type="text" placeholder="Pencarian ..">
                     <div class="position-absolute top-50 translate-middle-y search-close-icon"><i
                             class="bi bi-x-lg"></i></div>
                 </form>

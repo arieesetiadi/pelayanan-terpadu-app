@@ -89,10 +89,16 @@
                         </a>
 
                         {{-- Tombol selesai --}}
-                        <a href="#" class="" title="Selesaikan Pelaporan" data-bs-toggle="modal"
-                            data-bs-target="#upload-modal-{{ $item->id }}">
-                            <i class="bi bi-check-circle-fill text-success"></i>
-                        </a>
+                        @if ($item->perkembangan == 'Selesai')
+                            <a title="Telah Selesai">
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                            </a>
+                        @else
+                            <a href="/admin/sp2hp/selesai/{{ $item->id }}" title="Selesaikan Laporan"
+                                onclick="return confirm('Selesaikan Pelaporan ?')">
+                                <i class="bi bi-check-circle-fill text-secondary"></i>
+                            </a>
+                        @endif
 
                         {{-- ===================================== --}}
 

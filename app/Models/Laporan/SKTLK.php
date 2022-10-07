@@ -46,7 +46,7 @@ class SKTLK extends Model
     }
 
     public static function insertDraft($data)
-    { 
+    {
         return self::find($data['id'])->update([
             'nama_organisasi' => $data['namaOrganisasi'],
             'nama_penanggung_jawab' => $data['namaPenanggungJawab'],
@@ -62,5 +62,13 @@ class SKTLK extends Model
             'jumlah_undangan' => $data['jumlahUndangan'],
             'status' => 'draft'
         ]);
+    }
+
+    public static function getSKTLK()
+    {
+        $start = now()->subYear(10)->toDateTimeString();
+        $end = now()->toDateTimeString();
+
+        return self::whereBetween('dilaporkan_pada', [$start, $end])->paginate(20);
     }
 }

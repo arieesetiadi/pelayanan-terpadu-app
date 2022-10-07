@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\LaporanPerkembanganSP2HP;
 use App\Mail\SP2HPInvalid;
+use App\Mail\SP2HPSelesai;
 use App\Mail\SP2HPValid;
 use App\Models\Laporan\SP2HP;
 use App\Models\Notifikasi;
@@ -17,7 +18,7 @@ class SP2HPController extends Controller
     public function index()
     {
         $data['title'] = 'SP2HP';
-        $data['laporanSP2HP'] = SP2HP::paginate(20);
+        $data['laporanSP2HP'] = SP2HP::getSP2HP();
         return view('admin.sp2hp.index', $data);
     }
 
@@ -229,5 +230,37 @@ class SP2HPController extends Controller
 
         // Redirect ke halaman admin SP2HP
         return redirect()->to('/admin/sp2hp')->with('success', 'Berhasil menolak pelaporan SP2HP');
+    }
+
+    public function selesai($id)
+    {
+        // Ubah perkembangan menjadi selesai
+        $laporan = SP2HP::find($id);
+        $laporan->update([
+            'perkembangan' => 'Selesai'
+        ]);
+
+        $pelapor = User::find($laporan->pelapor_id);
+
+        // Kirim notifikasi ke halaman Pelapor
+        $toPelapor = [
+            'judul' => 'Pelaporan SP2HP Telah selesai diproses',
+            'isi' => 'Pelaporan SP2HP telah selesai diproses. Silahkan melanjutkan proses ke bagian Reskrim Polres Badung.',
+            'tipe' => 'sp2hp',
+            'telah_dibaca' => false,
+            'dikirim_kepada' => 'pelapor',
+            'laporan_id' => $laporan->id,
+            'pelapor_id' => $laporan->pelapor_id,
+            'dikirim_pada' => now()
+        ];
+
+        // Insert notifikasi ke database
+        Notifikasi::insert($toPelapor);
+
+        // Kirim email ke pelapor
+        Mail::send(new SP2HPSelesai($pelapor));
+
+        // Redirect ke halaman admin SP2HP
+        return redirect()->to('/admin/sp2hp')->with('success', 'Berhasil menyelesaikan pelaporan SP2HP');
     }
 }

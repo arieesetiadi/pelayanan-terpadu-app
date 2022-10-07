@@ -6,6 +6,7 @@ use App\Http\Controllers\Lapor\SIKController;
 use App\Http\Controllers\Lapor\SKTLKController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NotifikasiController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SP2HPController;
 use Illuminate\Support\Facades\Route;
 
@@ -95,8 +96,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/sp2hp', [SP2HPController::class, 'index']);
     Route::get('/admin/sp2hp/hapus/{id}', [SP2HPController::class, 'hapus']);
     Route::get('/admin/sp2hp/valid/{id}', [SP2HPController::class, 'valid']);
+    Route::get('/admin/sp2hp/selesai/{id}', [SP2HPController::class, 'selesai']);
     Route::post('/admin/sp2hp/invalid', [SP2HPController::class, 'invalid']);
     Route::post('/admin/sp2hp/upload-keterangan', [SP2HPController::class, 'uploadKeterangan']);
+
+    Route::post('/search', [SearchController::class, 'search']);
 });
 
 // Route aktivasi akun

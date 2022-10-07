@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Laporan\SIK;
 use App\Models\Laporan\SKTLK;
+use App\Models\Laporan\SP2HP;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -17,8 +18,9 @@ class AdminController extends Controller
     {
         return view('admin.dashboard', [
             'title' => 'Dashboard',
-            'countSIK' => SIK::count(),
-            'countSKTLK' => SKTLK::count(),
+            'countSIK' => count(SIK::getSIK()),
+            'countSKTLK' => count(SKTLK::getSKTLK()),
+            'countSP2HP' => count(SP2HP::getSP2HP()),
         ]);
     }
 

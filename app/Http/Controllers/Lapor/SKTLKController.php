@@ -18,7 +18,7 @@ class SKTLKController extends Controller
         return view('admin.sktlk.index', [
             'title' => 'Laporan SKTLK',
             // 'laporanSKTLK' => SKTLK::all()
-            'laporanSKTLK' => SKTLK::paginate(20)
+            'laporanSKTLK' => SKTLK::getSKTLK()
         ]);
     }
 

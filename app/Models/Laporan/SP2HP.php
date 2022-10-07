@@ -13,4 +13,12 @@ class SP2HP extends Model
     public $timestamps = false;
 
     protected $guarded = [];
+
+    public static function getSP2HP()
+    {
+        $start = now()->subYear(10)->toDateTimeString();
+        $end = now()->toDateTimeString();
+
+        return self::whereBetween('dilaporkan_pada', [$start, $end])->paginate(20);
+    }
 }
