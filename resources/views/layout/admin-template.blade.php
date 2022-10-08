@@ -52,7 +52,8 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
                     @csrf
                     <div class="position-absolute top-50 translate-middle-y search-icon ms-3"><i
                             class="bi bi-search"></i></div>
-                    <input name="keyword" class="form-control" type="text" placeholder="Pencarian ..">
+                    <input name="keyword" class="form-control" type="text" placeholder="Pencarian .."
+                        autocomplete="off">
                     <div class="position-absolute top-50 translate-middle-y search-close-icon"><i
                             class="bi bi-x-lg"></i></div>
                 </form>

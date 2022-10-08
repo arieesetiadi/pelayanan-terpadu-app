@@ -17,9 +17,10 @@ class SIKController extends Controller
 {
     public function index()
     {
+        $laporanSIK = session('laporanSIK') ?? SIK::getSIK();
         return view('admin.sik.index', [
             'title' => 'Laporan SIK',
-            'laporanSIK' => SIK::getSIK()
+            'laporanSIK' => $laporanSIK
         ]);
     }
 

@@ -17,8 +17,10 @@ class SP2HPController extends Controller
     // Halaman admin SP2HP
     public function index()
     {
+        $laporanSP2HP = session('laporanSP2HP') ?? SP2HP::getSP2HP();
+
         $data['title'] = 'SP2HP';
-        $data['laporanSP2HP'] = SP2HP::getSP2HP();
+        $data['laporanSP2HP'] = $laporanSP2HP;
         return view('admin.sp2hp.index', $data);
     }
 

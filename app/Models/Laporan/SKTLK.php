@@ -71,4 +71,18 @@ class SKTLK extends Model
 
         return self::whereBetween('dilaporkan_pada', [$start, $end])->paginate(20);
     }
+
+    public static function searchSKTLK($keyword)
+    {
+        $keyword = "%$keyword%";
+        return self
+            ::where('nama_lengkap', 'like', $keyword)
+            ->orWhere('kewarganegaraan', 'like', $keyword)
+            ->orWhere('alamat', 'like', $keyword)
+            ->orWhere('telepon', 'like', $keyword)
+            ->orWhere('tanggal_kejadian', 'like', $keyword)
+            ->orWhere('lokasi_kejadian', 'like', $keyword)
+            ->orWhere('surat_hilang', 'like', $keyword)
+            ->paginate(20);
+    }
 }

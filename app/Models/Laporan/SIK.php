@@ -132,4 +132,21 @@ class SIK extends Model
 
         return self::whereBetween('dilaporkan_pada', [$start, $end])->paginate(20);
     }
+
+    public static function searchSIK($keyword)
+    {
+        $keyword = "%$keyword%";
+        return self
+            ::where('nama_organisasi', 'like', $keyword)
+            ->orWhere('nama_penanggung_jawab', 'like', $keyword)
+            ->orWhere('alamat', 'like', $keyword)
+            ->orWhere('telepon', 'like', $keyword)
+            ->orWhere('bentuk_kegiatan', 'like', $keyword)
+            ->orWhere('waktu_mulai', 'like', $keyword)
+            ->orWhere('waktu_selesai', 'like', $keyword)
+            ->orWhere('lokasi_kegiatan', 'like', $keyword)
+            ->orWhere('dalam_rangka', 'like', $keyword)
+            ->orWhere('jumlah_undangan', 'like', $keyword)
+            ->paginate(20);
+    }
 }

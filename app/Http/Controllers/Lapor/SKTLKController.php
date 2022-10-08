@@ -15,10 +15,10 @@ class SKTLKController extends Controller
 {
     public function index()
     {
+        $laporanSKTLK = session('laporanSKTLK') ?? SKTLK::getSKTLK();
         return view('admin.sktlk.index', [
             'title' => 'Laporan SKTLK',
-            // 'laporanSKTLK' => SKTLK::all()
-            'laporanSKTLK' => SKTLK::getSKTLK()
+            'laporanSKTLK' => $laporanSKTLK
         ]);
     }
 

@@ -37,13 +37,11 @@
                     <td>{{ $sktlk->lokasi_kejadian }}</td>
                     <td>{{ $sktlk->surat_hilang }}</td>
                     <td>
-                        <center>
-                            {{-- Tombol detail dokumen --}}
-                            <a href="#" title="Tampilkan Detail Dokumen" data-bs-toggle="modal"
-                                data-bs-target="#detail-modal-{{ $sktlk->id }}">
-                                <i class="bi bi-info-circle-fill"></i>
-                            </a>
-                        </center>
+                        {{-- Tombol detail dokumen --}}
+                        <a href="#" title="Tampilkan Detail Dokumen" data-bs-toggle="modal"
+                            data-bs-target="#detail-modal-{{ $sktlk->id }}">
+                            <i class="bi bi-info-circle-fill"></i>
+                        </a>
                     </td>
                     <td>
                         {{-- Tombol upload --}}

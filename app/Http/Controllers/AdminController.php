@@ -16,12 +16,24 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard', [
-            'title' => 'Dashboard',
-            'countSIK' => count(SIK::getSIK()),
-            'countSKTLK' => count(SKTLK::getSKTLK()),
-            'countSP2HP' => count(SP2HP::getSP2HP()),
-        ]);
+        $data = [];
+
+        if (session('laporan')) {
+            $laporan = session('laporan');
+
+            $data = [
+                'laporanSKTLK' => $laporan['SKTLK'],
+                'laporanSIK' => $laporan['SIK'],
+                'laporanSP2HP' => $laporan['SP2HP'],
+            ];
+        }
+
+        $data['title'] = 'Dashboard';
+        $data['countSIK'] = count(SIK::getSIK());
+        $data['countSKTLK'] = count(SKTLK::getSKTLK());
+        $data['countSP2HP'] = count(SP2HP::getSP2HP());
+
+        return view('admin.dashboard', $data);
     }
 
     public function profile()
