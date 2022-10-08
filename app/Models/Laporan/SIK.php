@@ -12,6 +12,8 @@ class SIK extends Model
     public $table = 'laporan_sik';
     protected $guarded = [];
 
+    public $timestamps = false;
+
     public static function insert($laporan)
     {
         // Upload file laporan SIK
@@ -98,6 +100,7 @@ class SIK extends Model
             'waktu_mulai' => $data['waktuMulai'],
             'waktu_selesai' => $data['waktuSelesai'],
             'lokasi_kegiatan' => $data['lokasiKegiatan'],
+            'detail_lokasi_kegiatan' => $data['detailLokasiKegiatan'],
             'dalam_rangka' => $data['dalamRangka'],
             'jumlah_undangan' => $data['jumlahUndangan'],
             'foto_ktp' => $fotoKtp,
@@ -119,6 +122,7 @@ class SIK extends Model
             'waktu_mulai' => $data['waktuMulai'],
             'waktu_selesai' => $data['waktuSelesai'],
             'lokasi_kegiatan' => $data['lokasiKegiatan'],
+            'detail_lokasi_kegiatan' => $data['detailLokasiKegiatan'],
             'dalam_rangka' => $data['dalamRangka'],
             'jumlah_undangan' => $data['jumlahUndangan'],
             'status_pernyataan' => 'draft'

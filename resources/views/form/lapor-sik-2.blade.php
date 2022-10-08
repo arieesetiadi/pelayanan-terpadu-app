@@ -198,12 +198,31 @@
                                     <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    <div class="">
-                                        <input name="lokasiKegiatan" type="text"
-                                            class="form-control form-control-sm" placeholder="Tempat"
-                                            style="height: 40px"
-                                            value="{{ $laporan->lokasi_kegiatan != '' ? $laporan->lokasi_kegiatan : '' }}"
-                                            required>
+                                    <select name="lokasiKegiatan" class="custom-select mt-2" style="height: 40px"
+                                        required>
+                                        <option selected value="" hidden>Pilih Lokasi Kegiatan</option>
+                                        <option
+                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Abiansemal' ? 'selected' : '' }}
+                                            value="Abiansemal">Abiansemal</option>
+                                        <option
+                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Kuta' ? 'selected' : '' }}
+                                            value="Kuta">Kuta</option>
+                                        <option
+                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Kuta Selatan' ? 'selected' : '' }}
+                                            value="Kuta Selatan">Kuta Selatan</option>
+                                        <option
+                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Kuta Utara' ? 'selected' : '' }}
+                                            value="Kuta Utara">Kuta Utara</option>
+                                        <option
+                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Mengwi' ? 'selected' : '' }}
+                                            value="Mengwi">Mengwi</option>
+                                        <option
+                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Petang' ? 'selected' : '' }}
+                                            value="Petang">Petang</option>
+                                    </select>
+                                    <div class="form-group mt-2">
+                                        <textarea name="detailLokasiKegiatan" placeholder="Detail lokasi kegiatan" class="form-control" rows="3"
+                                            required>{{ isset($laporan) ? $laporan->detail_lokasi_kegiatan : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>

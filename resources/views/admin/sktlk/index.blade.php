@@ -34,7 +34,7 @@
                     <td>{{ $sktlk->nama_lengkap }}</td>
                     <td>{{ $sktlk->alamat }}</td>
                     <td>{{ $sktlk->tanggal_kejadian }}</td>
-                    <td>{{ $sktlk->lokasi_kejadian }}</td>
+                    <td>{{ $sktlk->lokasi_kejadian }}, {{ $sktlk->detail_lokasi_kejadian }}</td>
                     <td>{{ $sktlk->surat_hilang }}</td>
                     <td>
                         {{-- Tombol detail dokumen --}}

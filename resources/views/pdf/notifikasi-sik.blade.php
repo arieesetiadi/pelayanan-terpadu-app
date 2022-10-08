@@ -24,7 +24,7 @@
         main h3 {
             text-align: center;
             text-decoration: underline;
-            margin-bottom: 50px
+            /* margin-bottom: 50px */
         }
 
         main p {
@@ -92,7 +92,7 @@
             </tr>
         </table>
 
-        <p style="margin-top: 20px">
+        <p style="margin-top: 20px; line-height: 150%">
             Untuk menyelenggarakan kegiatan {{ $laporan->bentuk_kegiatan }} yang dimulai dari
             {{ dateTimeFormat($laporan->waktu_mulai) }} s/d
             {{ dateTimeFormat($laporan->waktu_selesai) }} yang berlokasi di

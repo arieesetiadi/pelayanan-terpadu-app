@@ -23,6 +23,7 @@
                 <th>Alamat</th>
                 <th>Telepon</th>
                 <th>Judul</th>
+                <th>Kategori</th>
                 <th>Detail Kejadian</th>
                 <th>Lampiran</th>
                 <th>Pilihan</th>
@@ -50,6 +51,7 @@
                     <td>{{ $item->alamat }}</td>
                     <td>{{ $item->telepon }}</td>
                     <td>{{ $item->judul_laporan }}</td>
+                    <td>{{ $item->kategori }}</td>
                     <td>
                         {{-- Tombol detail dokumen --}}
                         <a href="#" title="Tampilkan Detail Kejadian" data-bs-toggle="modal"

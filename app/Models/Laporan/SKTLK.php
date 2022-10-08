@@ -35,6 +35,7 @@ class SKTLK extends Model
             'telepon' => $laporan['telepon'],
             'tanggal_kejadian' => $laporan['tanggalKejadian'],
             'lokasi_kejadian' => $laporan['lokasiKejadian'],
+            'detail_lokasi_kejadian' => $laporan['detailLokasiKejadian'],
             'surat_hilang' => $laporan['suratHilang'],
             'foto_ktp' => $fotoKtp,
             'foto_pelapor' => $fotoPelapor,
