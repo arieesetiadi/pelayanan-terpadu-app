@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2022 at 04:18 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Waktu pembuatan: 09 Okt 2022 pada 05.15
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laporan_sik`
+-- Struktur dari tabel `laporan_sik`
 --
 
 CREATE TABLE `laporan_sik` (
@@ -39,6 +39,7 @@ CREATE TABLE `laporan_sik` (
   `waktu_mulai` datetime DEFAULT NULL,
   `waktu_selesai` datetime DEFAULT NULL,
   `lokasi_kegiatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `detail_lokasi_kegiatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `dalam_rangka` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jumlah_undangan` int(11) DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
@@ -54,14 +55,23 @@ CREATE TABLE `laporan_sik` (
   `dokumen_persetujuan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `foto_pelapor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `dilaporkan_pada` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `laporan_sik`
+--
+
+INSERT INTO `laporan_sik` (`id`, `nama_organisasi`, `nama_penanggung_jawab`, `pekerjaan`, `alamat`, `telepon`, `bentuk_kegiatan`, `waktu_mulai`, `waktu_selesai`, `lokasi_kegiatan`, `detail_lokasi_kegiatan`, `dalam_rangka`, `jumlah_undangan`, `status`, `proposal_kegiatan`, `izin_tempat`, `izin_instansi`, `fotokopi_paspor`, `rekomendasi_polsek`, `pernyataan_keaslian`, `pelapor_id`, `keterangan`, `status_pernyataan`, `dokumen_persetujuan`, `foto_ktp`, `foto_pelapor`, `dilaporkan_pada`) VALUES
+(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 1, '1663822167_proposal kegiatan.jpg', '1663822167_izin lokasi kegiatan.jpg', '1663822167_surat rekomendasi.jpg', '1663822167_foto ktp.jpg', '1663822167_surat rekomendasi.jpg', NULL, 8, NULL, NULL, NULL, NULL, NULL, '2022-09-22 04:49:27'),
+(3, 'ass', 'ass', 'ass', 'ass', '2121', 'add', '2020-12-12 10:00:00', '2020-12-12 12:00:00', 'asa', '', 'ads', 1212, 1, '1664286064_proposal kegiatan.jpg', '1664286064_izin lokasi kegiatan.jpg', '1664286064_izin lokasi kegiatan.jpg', '1664286064_foto ktp.jpg', '1664286064_surat rekomendasi.jpg', '1664286251_pernyataan-keaslian.pdf', 8, NULL, NULL, '1664286319_laporan sktlk.pdf', '1664286251_foto ktp.jpg', '1664286251_orang dan katp2.png', '2022-09-27 13:41:04'),
+(4, 'wewe', 'hgh', 'jgk', 'jhgj', '878', 'ghj', '0122-12-12 12:00:00', '1999-12-12 12:00:00', 'mnm', '', 'jbmn', 656, 1, '1664288769_proposal kegiatan.jpg', '1664288769_izin lokasi kegiatan.jpg', '1664288769_surat rekomendasi.jpg', '1664288769_maudy.jpeg', '1664288769_surat rekomendasi.jpg', '1664289357_pernyataan-keaslian.pdf', 8, NULL, 'draft', NULL, '1664289357_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664289357_whatsapp image 2022-09-27 at 09.46.45.jpeg', '2022-09-27 04:41:49'),
+(5, 'STT Wira Bhakti', 'Astra Swarriana', 'Laboran', 'Br. Pande Mengwi', '087889889898', 'Sosialisasi Pengetahuan Hand Hygiene', '2022-12-12 09:00:00', '2022-12-12 13:00:00', 'Mengwi', 'Jl. Walmiki no 23 B', 'HUT Desa Mengwi', 250, 1, '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244387_pernyataan-keaslian (1).pdf', 8, NULL, NULL, NULL, '1665244387_foto ktp.jpg', '1665244387_orang dan katp2.png', '2022-10-08 15:46:52');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laporan_sktlk`
+-- Struktur dari tabel `laporan_sktlk`
 --
 
 CREATE TABLE `laporan_sktlk` (
@@ -74,6 +84,7 @@ CREATE TABLE `laporan_sktlk` (
   `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telepon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tanggal_kejadian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detail_lokasi_kejadian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lokasi_kejadian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `surat_hilang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -83,13 +94,22 @@ CREATE TABLE `laporan_sktlk` (
   `pernyataan_keaslian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pelapor_id` int(11) NOT NULL,
   `dokumen_persetujuan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `diunggah_pada` timestamp NOT NULL DEFAULT current_timestamp()
+  `dilaporkan_pada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `laporan_sktlk`
+--
+
+INSERT INTO `laporan_sktlk` (`id`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `kewarganegaraan`, `alamat`, `telepon`, `tanggal_kejadian`, `detail_lokasi_kejadian`, `lokasi_kejadian`, `surat_hilang`, `foto_ktp`, `foto_pelapor`, `rekomendasi_instansi`, `dokumen_tambahan`, `pernyataan_keaslian`, `pelapor_id`, `dokumen_persetujuan`, `dilaporkan_pada`) VALUES
+(1, 'qwerty', 'nb', '2020-02-12', 'aps', 'Warga Negara Indonesia', 'kg', '878', '2011-12-12', '', 'jhjh', 'fyjh', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '', '1664287627_pernyataan-keaslian.pdf', 8, NULL, '2022-09-27 03:43:29'),
+(2, 'Arie', 'Denpasar', '2000-02-12', 'Mahasiswa', 'Warga Negara Indonesia', 'Mengwi', '082146335727', '2011-12-12', '', 'Depan Indomaret', 'STNK, Surat Tanah', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '', '1664287627_pernyataan-keaslian.pdf', 8, NULL, '2022-10-08 03:43:29'),
+(3, 'Wulan Sari', 'Denpasar', '2000-08-18', 'PNS', 'Warga Negara Indonesia', 'Br. Serangan Mengwi', '08789987898', '2022-09-20', 'Gang Rama no. 16 mengwi', 'Mengwi', 'Surat akta tanah', '1665242756_foto ktp.jpg', '1665242756_orang dan katp2.png', '1665242756_surat rekomendasi.jpg', '', '1665242756_pernyataan-keaslian.pdf', 8, NULL, '2022-10-08 15:25:56');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laporan_sp2hp`
+-- Struktur dari tabel `laporan_sp2hp`
 --
 
 CREATE TABLE `laporan_sp2hp` (
@@ -107,27 +127,34 @@ CREATE TABLE `laporan_sp2hp` (
   `lokasi_kejadian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `detail_lokasi_kejadian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kategori` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `terlapor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bukti` text COLLATE utf8mb4_unicode_ci,
+  `saksi` text COLLATE utf8mb4_unicode_ci,
   `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `foto_pelapor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lampiran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `perkembangan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `keterangan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file_pemberitahuan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `keterangan_pemberitahuan` text COLLATE utf8mb4_unicode_ci,
+  `perkembangan` enum('Sedang diproses','Selesai') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `nomor_polisi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pelapor_id` int(11) NOT NULL,
-  `dilaporkan_pada` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `dilaporkan_pada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `laporan_sp2hp`
+-- Dumping data untuk tabel `laporan_sp2hp`
 --
 
-INSERT INTO `laporan_sp2hp` (`id`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `kewarganegaraan`, `alamat`, `telepon`, `judul_laporan`, `isi_laporan`, `tanggal_kejadian`, `lokasi_kejadian`, `detail_lokasi_kejadian`, `kategori`, `foto_ktp`, `foto_pelapor`, `lampiran`, `perkembangan`, `keterangan`, `pelapor_id`, `dilaporkan_pada`) VALUES
-(6, 'Galuh Candra', 'Dps', '2004-08-18', 'PNS', 'Warga Negara Indonesia', 'Br. Serangan Mengwi', '088787489998', 'Pencurian Kucing', 'Selasa, 13 Agustus 2022 kucing saya hilang diambil oleh seorang laki-laki kira-kira berumur 30-an tahun di Gang Nanas Br. serangan mengwi', '2022-08-13', 'Mengwi', 'Br. Serangan Mengwi Gang Nanas No 02', 'Pencurian', '1663475938_foto ktp.jpg', '1663475938_orang dan katp2.png', '', '1663480037_16-52-1-pb.pdf', 'sdsdsd', 8, '2022-09-18 05:47:17'),
-(8, 'Pande Brado', 'Badung', '2013-01-01', 'PNS', 'Warga Negara Indonesia', 'Badung', '0987787898', 'Pencurian Anjing', 'Sekitar pukul 15.00 anjing hilang di sekitaran rumah', '2021-08-22', 'Mengwi', 'Gang Rama no 9 Mengwi, Badung', 'Pencurian', '1663480332_foto ktp.jpg', '1663480332_orang dan katp2.png', '', '1663480376_1663141562_aa.pdf', 'ahhahggss', 8, '2022-09-18 05:52:56');
+INSERT INTO `laporan_sp2hp` (`id`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `kewarganegaraan`, `alamat`, `telepon`, `judul_laporan`, `isi_laporan`, `tanggal_kejadian`, `lokasi_kejadian`, `detail_lokasi_kejadian`, `kategori`, `terlapor`, `bukti`, `saksi`, `foto_ktp`, `foto_pelapor`, `lampiran`, `file_pemberitahuan`, `keterangan_pemberitahuan`, `perkembangan`, `status`, `nomor_polisi`, `pelapor_id`, `dilaporkan_pada`) VALUES
+(2, 'asa', 'werre', '1999-12-02', 'dfgg', 'Warga Negara Indonesia', 'jhj', '878', 'kjjjk', 'gcvbn', '1999-12-04', 'Mengwi', 'asdfsde', 'KDRT', 'Dimas Revaldi, Farhan Dimas, Alif Rajab 2', '{\"namaBukti\":[\"sfsf 222222\",\"sffafd 222\"],\"gambarBukti\":[\"1664894423_foto ktp.jpg\",\"1664894423_foto ktp.jpg\"]}', '{\"nama\":[\"afsdf 2\",\"sfafa 22\"],\"umur\":[\"122\",\"2222\"],\"pekerjaan\":[\"weqe 2\",\"ewrw 2 2\"],\"alamat\":[\"weqe 2\",\"ewrw 2 2\"]}', '1664290004_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664290004_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664290004_whatsapp image 2022-09-27 at 09.46.45.jpeg', NULL, NULL, NULL, 1, 'LP/005/K/IX/2022/Polres Badung', 8, '2022-10-08 14:48:59'),
+(3, 'asas 23', 'sdad 23', '0002-02-02', 'daa 23', 'Warga Negara Asing', 'fdafs 2', '121 2', 'ada 2', 'afdsdf 2', '0022-02-02', 'Abiansemal', 'zczvsd 2', 'Penganiayaan', 'Dimas Revaldi, Farhan Dimas, Alif Rajab 2', '{\"namaBukti\":[\"sfsf 222222\",\"sffafd 222\"],\"gambarBukti\":[\"1664894423_foto ktp.jpg\",\"1664894423_foto ktp.jpg\"]}', '{\"nama\":[\"afsdf 2\",\"sfafa 22\"],\"umur\":[\"122\",\"2222\"],\"pekerjaan\":[\"weqe 2\",\"ewrw 2 2\"],\"alamat\":[\"weqe 2\",\"ewrw 2 2\"]}', '1664894423_foto ktp.jpg', '1664894423_orang dan katp2.png', '1664894423_proposal kegiatan.jpg', NULL, NULL, NULL, 0, NULL, 8, '2022-10-04 14:43:36'),
+(4, 'Kamio Eichii', 'Kyoto', '1999-12-12', 'PNS', 'Warga Negara Indonesia', 'Kyoto, Jepang', '989889899', 'Pencurian Sepeda Ontel', 'Menurut Imran, pelaku biasa mengincar rumah kosong dan menggasak barang yang ada milik korban. “Salah satu pelaku ini residivis kasus serupa. Pada tahun 2020 yang bersangkutan sudah melakukan masa penahannya di LP, kali ini tertangkap lagi. Pada aksinya kemarin, pelaku menggasak dua sepeda senilai Rp260 juta. “Harga sepeda ini satu unitnya Rp130 juta, kalau dua berarti Rp260 juta. Selanjutnya sepeda hasil curian dijual ke pembeli dengan sistem COD. Atas perbuatannya kedua pelaku akan dijerat Pasal 363 KUHP tentang Pencurian dengan ancaman hukuman di atas lima tahun penjara.', '2020-12-12', 'Abiansemal', ' Jalan Merdeka No 21 A III', 'Pencurian', 'Mamoko Ikenega', '{\"namaBukti\":[\"Buku Kerja\",\"Kertas merah\"],\"gambarBukti\":[\"1664977167_7.jpeg\",\"1664977167_7.jpeg\"]}', '{\"nama\":[\"Kenta Takeshi\",\"Kansai Ryokuse\"],\"umur\":[\"40\",\"44\"],\"pekerjaan\":[\"PNS\",\"PNS\"],\"alamat\":[\"PNS\",\"PNS\"]}', '1664977167_11.jpeg', '', '', '1665066780_339901002-blangko-laporan-polisi-doc.pdf', 'Laporan Anda telah diterima. Silahkan menunggu jadwal pertemuan langsung ke Polres Badung', 'Selesai', 1, 'LP/002/K/X/2022/Polres Badung', 8, '2022-10-07 04:44:43');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -137,7 +164,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -149,7 +176,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifikasi`
+-- Struktur dari tabel `notifikasi`
 --
 
 CREATE TABLE `notifikasi` (
@@ -165,20 +192,45 @@ CREATE TABLE `notifikasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `notifikasi`
+-- Dumping data untuk tabel `notifikasi`
 --
 
 INSERT INTO `notifikasi` (`id`, `judul`, `isi`, `tipe`, `telah_dibaca`, `dikirim_kepada`, `laporan_id`, `pelapor_id`, `dikirim_pada`) VALUES
-(6, 'Pelaporan Tindak Kriminal Masuk', 'Pelaporan perlu diproses.', 'sp2hp', 1, 'admin', 6, 8, '2022-09-18 05:38:58'),
-(8, 'Perkembangan SP2HP', 'Progres penyidikan tindak kriminal dapat dilihat pada file pdf berikut.', 'sp2hp', 1, 'pelapor', 6, 8, '2022-09-18 06:40:18'),
-(9, 'Perkembangan SP2HP', 'Progres penyidikan tindak kriminal dapat dilihat pada file pdf berikut.', 'sp2hp', 1, 'pelapor', 6, 8, '2022-09-18 06:47:18'),
-(10, 'Pelaporan Tindak Kriminal Masuk', 'Pelaporan perlu diproses.', 'sp2hp', 1, 'admin', 8, 8, '2022-09-18 06:52:12'),
-(11, 'Perkembangan SP2HP', 'Progres penyidikan tindak kriminal dapat dilihat pada file pdf berikut.', 'sp2hp', 1, 'pelapor', 8, 8, '2022-09-18 06:52:57');
+(1, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 2, 8, '2022-09-22 04:49:27'),
+(2, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 2, 8, '2022-09-22 04:49:45'),
+(4, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 3, 8, '2022-09-27 13:41:04'),
+(5, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 3, 8, '2022-09-27 13:41:25'),
+(6, 'Data Pelaporan SIK Masuk', 'Data Izin Keramaian diterima. Lanjutkan ke proses persetujuan.', 'sik', 1, 'admin', 3, 8, '2022-09-27 13:44:11'),
+(7, 'Surat Izin Keramaian Diterima', 'Surat izin keramaian dapat diunduh disini.', 'sik', 1, 'pelapor', 3, 8, '2022-09-27 13:45:19'),
+(8, 'Pelaporan SKTLK Berhasil', 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.', 'sktlk', 1, 'pelapor', 1, 8, '2022-09-27 14:07:07'),
+(9, 'Pelaporan SKTLK Masuk', 'Pelaporan perlu diproses.', 'sktlk', 1, 'admin', 1, 8, '2022-09-27 14:07:07'),
+(10, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 4, 8, '2022-09-27 14:26:09'),
+(11, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 4, 8, '2022-09-27 14:26:35'),
+(12, 'Data Pelaporan SIK Masuk', 'Data Izin Keramaian diterima. Lanjutkan ke proses persetujuan.', 'sik', 1, 'admin', 4, 8, '2022-09-27 14:35:57'),
+(13, 'Pelaporan Tindak Kriminal Masuk', 'Pelaporan perlu diproses.', 'sp2hp', 1, 'admin', 2, 8, '2022-09-27 14:46:44'),
+(14, 'Pelaporan SP2HP Telah Divalidasi', 'Pelaporan SP2HP Telah Divalidasi. Dokumen validasi SP2HP dapat diunduh disini.', 'sp2hp', 1, 'pelapor', 2, 8, '2022-09-29 01:45:16'),
+(15, 'Pelaporan Tindak Kriminal Masuk', 'Pelaporan perlu diproses.', 'sp2hp', 1, 'admin', 3, 8, '2022-10-04 03:29:38'),
+(16, 'Pelaporan SP2HP Tidak Valid', 'Pelaporan SP2HP Tidak Valid', 'sp2hp', 1, 'pelapor', 3, 8, '2022-10-04 13:43:53'),
+(17, 'Pelaporan Tindak Kriminal Masuk', 'Pelaporan perlu diproses.', 'sp2hp', 1, 'admin', 3, 8, '2022-10-04 14:39:03'),
+(18, 'Pelaporan Tindak Kriminal Masuk', 'Pelaporan perlu diproses.', 'sp2hp', 1, 'admin', 3, 8, '2022-10-04 14:40:23'),
+(19, 'Pelaporan SP2HP Tidak Valid', 'Silahkan periksa kembali kelengkapan pelaporan tindak kriminal.', 'sp2hp', 1, 'pelapor', 3, 8, '2022-10-04 14:46:38'),
+(20, 'Pelaporan SP2HP Tidak Valid', 'Silahkan periksa kembali kelengkapan pelaporan tindak kriminal.', 'sp2hp', 1, 'pelapor', 3, 8, '2022-10-04 14:49:46'),
+(21, 'Pelaporan Tindak Kriminal Masuk', 'Pelaporan perlu diproses.', 'sp2hp', 1, 'admin', 4, 8, '2022-10-05 13:39:27'),
+(22, 'Pelaporan SP2HP Telah Divalidasi', 'Pelaporan SP2HP Telah Divalidasi. Dokumen validasi SP2HP dapat diunduh disini.', 'sp2hp', 1, 'pelapor', 4, 8, '2022-10-05 13:41:36'),
+(23, 'Pelaporan SP2HP Telah Divalidasi', 'Pelaporan SP2HP telah divalidasi dan sedang dalam proses.', 'sp2hp', 1, 'pelapor', 4, 8, '2022-10-05 13:53:49'),
+(24, 'Perkembangan SP2HP', 'Progres penyidikan tindak kriminal dapat dilihat pada file pdf berikut.', 'sp2hp', 1, 'pelapor', 4, 8, '2022-10-06 14:21:18'),
+(25, 'Perkembangan SP2HP', 'Pelaporan tindak kriminal Anda sudah diterima dan sedang dalam proses. Surat tanda terima pelaporan Anda dapat dilihat pada file pdf berikut.', 'sp2hp', 1, 'pelapor', 4, 8, '2022-10-06 14:33:00'),
+(26, 'Pelaporan SP2HP Telah selesai diproses', 'Pelaporan SP2HP telah selesai diproses. Silahkan melanjutkan proses ke bagian Reskrim Polres Badung.', 'sp2hp', 1, 'pelapor', 4, 8, '2022-10-07 03:13:33'),
+(27, 'Pelaporan SKTLK Berhasil', 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.', 'sktlk', 1, 'pelapor', 3, 8, '2022-10-08 15:25:56'),
+(28, 'Pelaporan SKTLK Masuk', 'Pelaporan perlu diproses.', 'sktlk', 1, 'admin', 3, 8, '2022-10-08 15:25:56'),
+(29, 'Dokumen Persyaratan SIK Masuk', 'Dokumen perlu pengecekkan kelengkapan.', 'sik', 1, 'admin', 5, 8, '2022-10-08 15:46:52'),
+(30, 'Dokumen SIK Disetujui', 'Dokumen persyaratan SIK telah disetujui. Silahkan lanjutkan mengisi form selanjutnya.', 'sik', 1, 'pelapor', 5, 8, '2022-10-08 15:47:21'),
+(31, 'Data Pelaporan SIK Masuk', 'Data Izin Keramaian diterima. Lanjutkan ke proses persetujuan.', 'sik', 1, 'admin', 5, 8, '2022-10-08 15:53:07');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -195,7 +247,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `nama`, `email`, `telepon`, `jenis_kelamin`, `password`, `jenis_pengguna`, `alamat`, `status`) VALUES
@@ -213,103 +265,103 @@ INSERT INTO `users` (`id`, `username`, `nama`, `email`, `telepon`, `jenis_kelami
 --
 
 --
--- Indexes for table `laporan_sik`
+-- Indeks untuk tabel `laporan_sik`
 --
 ALTER TABLE `laporan_sik`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pelapor_id` (`pelapor_id`);
 
 --
--- Indexes for table `laporan_sktlk`
+-- Indeks untuk tabel `laporan_sktlk`
 --
 ALTER TABLE `laporan_sktlk`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pelapor_id` (`pelapor_id`);
 
 --
--- Indexes for table `laporan_sp2hp`
+-- Indeks untuk tabel `laporan_sp2hp`
 --
 ALTER TABLE `laporan_sp2hp`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pelapor_id` (`pelapor_id`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `notifikasi`
+-- Indeks untuk tabel `notifikasi`
 --
 ALTER TABLE `notifikasi`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pelapor_id` (`pelapor_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `laporan_sik`
+-- AUTO_INCREMENT untuk tabel `laporan_sik`
 --
 ALTER TABLE `laporan_sik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `laporan_sktlk`
+-- AUTO_INCREMENT untuk tabel `laporan_sktlk`
 --
 ALTER TABLE `laporan_sktlk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `laporan_sp2hp`
+-- AUTO_INCREMENT untuk tabel `laporan_sp2hp`
 --
 ALTER TABLE `laporan_sp2hp`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `notifikasi`
+-- AUTO_INCREMENT untuk tabel `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `laporan_sik`
+-- Ketidakleluasaan untuk tabel `laporan_sik`
 --
 ALTER TABLE `laporan_sik`
   ADD CONSTRAINT `laporan_sik_ibfk_1` FOREIGN KEY (`pelapor_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `laporan_sktlk`
+-- Ketidakleluasaan untuk tabel `laporan_sktlk`
 --
 ALTER TABLE `laporan_sktlk`
   ADD CONSTRAINT `laporan_sktlk_ibfk_1` FOREIGN KEY (`pelapor_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `notifikasi`
+-- Ketidakleluasaan untuk tabel `notifikasi`
 --
 ALTER TABLE `notifikasi`
   ADD CONSTRAINT `notifikasi_ibfk_1` FOREIGN KEY (`pelapor_id`) REFERENCES `users` (`id`);

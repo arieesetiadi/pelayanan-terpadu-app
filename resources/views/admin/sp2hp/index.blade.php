@@ -12,7 +12,44 @@
         </div>
     @endif
 
-    <h3>Laporan SP2HP</h3>
+    <div class="container-fluid">
+        <div class="row justify-content-between">
+            <div class="col-6">
+                <h3>Laporan SP2HP</h3>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <input id="dateFilter" type="date" name="dateFilter" class="form-control d-inline-block w-100">
+                <script>
+                    $(function() {
+
+                        var start = moment().subtract(29, 'days');
+                        var end = moment();
+
+                        function cb(start, end) {
+                            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                        }
+
+                        $('#dateFilter').daterangepicker({
+                            startDate: start,
+                            endDate: end,
+                            ranges: {
+                                'Today': [moment(), moment()],
+                                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
+                                    'month').endOf('month')]
+                            }
+                        }, cb);
+
+                        cb(start, end);
+
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
 
     <table class="table table table-borderless mt-3">
         <thead style="border-bottom: 1px solid black">
