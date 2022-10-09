@@ -265,4 +265,15 @@ class SP2HPController extends Controller
         // Redirect ke halaman admin SP2HP
         return redirect()->to('/admin/sp2hp')->with('success', 'Berhasil menyelesaikan pelaporan SP2HP');
     }
+
+    public function filterDate(Request $request)
+    {
+        $dates = explode(" - ", $request->dateFilter);
+
+        $start = $dates[0];
+        $end = $dates[1];
+
+        $laporan = SP2HP::getFilteredByDate($start, $end);
+        return redirect()->to('/admin/sp2hp')->with('laporanSP2HP', $laporan);
+    }
 }

@@ -99,6 +99,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/sp2hp/selesai/{id}', [SP2HPController::class, 'selesai']);
     Route::post('/admin/sp2hp/invalid', [SP2HPController::class, 'invalid']);
     Route::post('/admin/sp2hp/upload-keterangan', [SP2HPController::class, 'uploadKeterangan']);
+    Route::post('/admin/sp2hp/filter-date', [SP2HPController::class, 'filterDate']);
 
     Route::post('/search', [SearchController::class, 'search']);
 });

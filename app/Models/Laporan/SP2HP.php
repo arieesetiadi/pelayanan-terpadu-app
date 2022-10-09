@@ -2,6 +2,7 @@
 
 namespace App\Models\Laporan;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,6 +40,17 @@ class SP2HP extends Model
             ->orWhere('kategori', 'like', $keyword)
             ->orWhere('terlapor', 'like', $keyword)
             ->orWhere('saksi', 'like', $keyword)
+            ->paginate(20);
+    }
+
+    public static function getFilteredByDate($start, $end)
+    {
+        $start = Carbon::make($start)->toDateString();
+        $end = Carbon::make($end)->toDateString();
+
+        // return self::whereBetween('dilaporkan_pada', [$start, $end])->paginate(20);
+        return self::whereDate('dilaporkan_pada', '>=', $start)
+            ->whereDate('dilaporkan_pada', '<=', $end)
             ->paginate(20);
     }
 }

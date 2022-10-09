@@ -36,9 +36,6 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
 
     <link rel="stylesheet" href="{{ asset('assets-admin/css/custom.css') }}">
 
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
     <title>{{ $title ?? 'Title' }} | Administrator</title>
 </head>
 
