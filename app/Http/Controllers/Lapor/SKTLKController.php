@@ -118,4 +118,15 @@ class SKTLKController extends Controller
 
         return redirect()->to('admin/sktlk')->with('success', 'Anda berhasil menghapus data');
     }
+
+    public function filterDate(Request $request)
+    {
+        $dates = explode(" - ", $request->dateFilter);
+
+        $start = $dates[0];
+        $end = $dates[1];
+
+        $laporan = SKTLK::getFilteredByDate($start, $end);
+        return redirect()->to('/admin/sktlk')->with('laporanSKTLK', $laporan);
+    }
 }

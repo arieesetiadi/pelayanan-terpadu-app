@@ -11,7 +11,7 @@ use App\Http\Controllers\SP2HPController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('beranda');
+	return view('beranda');
 });
 
 // Route Login
@@ -55,23 +55,23 @@ Route::view('/tindak-kriminal/sp2hp', 'tindak-kriminal.sp2hp');
 
 // Auth Pelapor
 Route::middleware('auth.pelapor')->group(function () {
-    // Route ke form SKTLK
-    Route::view('/form/lapor-sktlk', 'form.lapor-sktlk');
-    Route::post('/upload-sktlk', [SKTLKController::class, 'upload']);
-    Route::post('/download-pernyataan-sktlk', [SKTLKController::class, 'downloadPernyataan']);
+	// Route ke form SKTLK
+	Route::view('/form/lapor-sktlk', 'form.lapor-sktlk');
+	Route::post('/upload-sktlk', [SKTLKController::class, 'upload']);
+	Route::post('/download-pernyataan-sktlk', [SKTLKController::class, 'downloadPernyataan']);
 
-    // Route ke form SIK
-    Route::view('/form/lapor-sik', 'form.lapor-sik');
-    Route::post('/upload-sik', [SIKController::class, 'upload']);
-    Route::post('/upload-form-sik', [SIKController::class, 'uploadForm']);
-    Route::post('/download-pernyataan-sik', [SIKController::class, 'downloadPernyataan']);
+	// Route ke form SIK
+	Route::view('/form/lapor-sik', 'form.lapor-sik');
+	Route::post('/upload-sik', [SIKController::class, 'upload']);
+	Route::post('/upload-form-sik', [SIKController::class, 'uploadForm']);
+	Route::post('/download-pernyataan-sik', [SIKController::class, 'downloadPernyataan']);
 
-    // Route SP2HP
-    Route::view('/form/lapor-sp2hp', 'form.lapor-sp2hp');
-    Route::post('/lapor-sp2hp', [SP2HPController::class, 'lapor']);
+	// Route SP2HP
+	Route::view('/form/lapor-sp2hp', 'form.lapor-sp2hp');
+	Route::post('/lapor-sp2hp', [SP2HPController::class, 'lapor']);
 
-    // Route Profile Pelapor
-    Route::view('/profile/pelapor', 'profile-pelapor');
+	// Route Profile Pelapor
+	Route::view('/profile/pelapor', 'profile-pelapor');
 });
 
 // Route Notifikasi
@@ -80,28 +80,32 @@ Route::get('/notifikasi/cetak-pdf/{id}', [NotifikasiController::class, 'cetakPDF
 
 // Route Admin ====================================
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard']);
-    Route::get('/profile', [AdminController::class, 'profile']);
+	Route::get('/dashboard', [AdminController::class, 'dashboard']);
+	Route::get('/profile', [AdminController::class, 'profile']);
 
-    Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
-    Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);
-    Route::get('/admin/sktlk/hapus/{id}', [SKTLKController::class, 'hapus']);
+	Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
+	Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);
+	Route::get('/admin/sktlk/hapus/{id}', [SKTLKController::class, 'hapus']);
+	Route::post('/admin/sktlk/filter-date', [SKTLKController::class, 'filterDate']);
 
-    Route::get('/admin/sik', [SIKController::class, 'index']);
-    Route::get('/admin/sik/setuju/{id}', [SIKController::class, 'setuju']);
-    Route::post('/admin/sik/upload-file', [SIKController::class, 'uploadFile']);
-    Route::post('/admin/sik/tolak', [SIKController::class, 'tolak']);
-    Route::get('/admin/sik/hapus/{id}', [SIKController::class, 'hapus']);
+	Route::get('/admin/sik', [SIKController::class, 'index']);
+	Route::get('/admin/sik/setuju/{id}', [SIKController::class, 'setuju']);
+	Route::post('/admin/sik/upload-file', [SIKController::class, 'uploadFile']);
+	Route::post('/admin/sik/tolak', [SIKController::class, 'tolak']);
+	Route::get('/admin/sik/hapus/{id}', [SIKController::class, 'hapus']);
+	Route::post('/admin/sik/filter-date', [SIKController::class, 'filterDate']);
 
-    Route::get('/admin/sp2hp', [SP2HPController::class, 'index']);
-    Route::get('/admin/sp2hp/hapus/{id}', [SP2HPController::class, 'hapus']);
-    Route::get('/admin/sp2hp/valid/{id}', [SP2HPController::class, 'valid']);
-    Route::get('/admin/sp2hp/selesai/{id}', [SP2HPController::class, 'selesai']);
-    Route::post('/admin/sp2hp/invalid', [SP2HPController::class, 'invalid']);
-    Route::post('/admin/sp2hp/upload-keterangan', [SP2HPController::class, 'uploadKeterangan']);
-    Route::post('/admin/sp2hp/filter-date', [SP2HPController::class, 'filterDate']);
+	Route::get('/admin/sp2hp', [SP2HPController::class, 'index']);
+	Route::get('/admin/sp2hp/hapus/{id}', [SP2HPController::class, 'hapus']);
+	Route::get('/admin/sp2hp/valid/{id}', [SP2HPController::class, 'valid']);
+	Route::get('/admin/sp2hp/selesai/{id}', [SP2HPController::class, 'selesai']);
+	Route::post('/admin/sp2hp/invalid', [SP2HPController::class, 'invalid']);
+	Route::post('/admin/sp2hp/upload-keterangan', [SP2HPController::class, 'uploadKeterangan']);
+	Route::post('/admin/sp2hp/filter-date', [SP2HPController::class, 'filterDate']);
+	Route::get('/admin/sp2hp/pdf', [SP2HPController::class, 'pdf']);
+	Route::get('/admin/sp2hp/excell', [SP2HPController::class, 'excell']);
 
-    Route::post('/search', [SearchController::class, 'search']);
+	Route::post('/search', [SearchController::class, 'search']);
 });
 
 // Route aktivasi akun

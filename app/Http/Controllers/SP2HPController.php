@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Mail\LaporanPerkembanganSP2HP;
 use App\Mail\SP2HPInvalid;
 use App\Mail\SP2HPSelesai;
@@ -275,5 +276,18 @@ class SP2HPController extends Controller
 
         $laporan = SP2HP::getFilteredByDate($start, $end);
         return redirect()->to('/admin/sp2hp')->with('laporanSP2HP', $laporan);
+    }
+
+    public function pdf()
+    {
+        $data['laporanSP2HP'] = SP2HP::getSP2HP();
+
+        $pdf = PDF::loadview('pdf.sp2hp-all', $data);
+        return $pdf->stream('laporan-sp2hp.pdf');
+    }
+
+    public function excell()
+    {
+        dd('Export Excell');
     }
 }

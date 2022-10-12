@@ -12,197 +12,232 @@
         </div>
     @endif
 
-    <h3>Laporan SIK</h3>
+    <div class="container-fluid">
+        <div class="row justify-content-between">
+            <div class="col-6">
+                <h3>Laporan SIK</h3>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <!-- Include Required Prerequisites -->
+                <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+                <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+                {{-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" /> --}}
 
-    <div class="table-scrollable">
-        <table class="table table table-borderless mt-3">
-            <thead style="border-bottom: 1px solid black">
-                <tr>
-                    <th>No.</th>
-                    <th>Dokumen</th>
-                    <th>Status</th>
-                    <th>Nama Organisasi</th>
-                    <th>Nama Penanggungjawab</th>
-                    <th>Pekerjaan</th>
-                    <th>Alamat</th>
-                    <th>Bentuk Kegiatan</th>
-                    <th>Tanggal Kegiatan</th>
-                    <th>Waktu Mulai</th>
-                    <th>Waktu Selesai</th>
-                    <th>Lokasi Kegiatan</th>
-                    <th>Dalam Rangka</th>
-                    <th>Jumlah Undangan</th>
-                    <th>Pilihan</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($laporanSIK as $i => $sik)
+                <!-- Include Date Range Picker -->
+                <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+                <link rel="stylesheet" type="text/css"
+                    href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+                <span class="mt-4 mx-2">Filter Tanggal : </span>
+
+                <form id="filterDateForm" action="/admin/sik/filter-date" method="POST">
+                    @csrf
+                    <input name="dateFilter" type="text" class="d-inline-block form-control w-50 mt-3" id="filterDate">
+                </form>
+
+                <script type="text/javascript">
+                    $('#filterDate').daterangepicker({
+                        "alwaysShowCalendars": true,
+                        "parentEl": "body",
+                        "startDate": "10/03/2022",
+                        "endDate": "10/09/2022",
+                        "opens": "left"
+                    }, function(start, end, label) {
+                        $('#filterDate').val(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+                        $("#filterDateForm").submit();
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    @if (count($laporanSIK) > 0)
+        <div class="table-scrollable">
+            <table class="table table table-borderless mt-3">
+                <thead style="border-bottom: 1px solid black">
                     <tr>
-                        <td>{{ $laporanSIK->firstItem() + $i }}</td>
-                        {{-- Pop-up dokumen --}}
-                        <td>
-                            <center>
-                                {{-- Tombol detail dokumen --}}
-                                <a href="#" title="Tampilkan Detail Dokumen" data-bs-toggle="modal"
-                                    data-bs-target="#detail-modal-{{ $sik->id }}">
-                                    <i class="bi bi-info-circle-fill"></i>
+                        <th>No.</th>
+                        <th>Dokumen</th>
+                        <th>Status</th>
+                        <th>Nama Organisasi</th>
+                        <th>Nama Penanggungjawab</th>
+                        <th>Bentuk Kegiatan</th>
+                        <th>Waktu Mulai</th>
+                        <th>Waktu Selesai</th>
+                        <th>Lokasi Kegiatan</th>
+                        <th>Dalam Rangka</th>
+                        <th>Jumlah Undangan</th>
+                        <th>Dilaporkan Pada</th>
+                        <th>Pilihan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($laporanSIK as $i => $sik)
+                        <tr>
+                            <td>{{ $laporanSIK->firstItem() + $i }}</td>
+                            {{-- Pop-up dokumen --}}
+                            <td>
+                                <center>
+                                    {{-- Tombol detail dokumen --}}
+                                    <a href="#" title="Tampilkan Detail Dokumen" data-bs-toggle="modal"
+                                        data-bs-target="#detail-modal-{{ $sik->id }}">
+                                        <i class="bi bi-info-circle-fill"></i>
+                                    </a>
+                                </center>
+                            </td>
+
+                            {{-- Status --}}
+                            <td>
+                                @if ($sik->status === 1)
+                                    {{-- centang --}}
+                                    <i class="bi bi-check-circle-fill text-success" title="Disetujui"></i>
+                                @elseif($sik->status === 0)
+                                    {{-- x --}}
+                                    <i class="bi bi-x-circle-fill text-danger" title="Ditolak"></i>
+                                @else
+                                    -
+                                @endif
+                            </td>
+
+                            <td>{{ $sik->nama_organisasi ?? '-' }}</td>
+                            <td>{{ $sik->nama_penanggung_jawab ?? '-' }}</td>
+                            <td>{{ $sik->bentuk_kegiatan ?? '-' }}</td>
+                            <td>{{ $sik->waktu_mulai ?? '-' }}</td>
+                            <td>{{ $sik->waktu_selesai ?? '-' }}</td>
+                            <td>{{ $sik->lokasi_kegiatan ?? '-' }}</td>
+                            <td>{{ $sik->dalam_rangka ?? '-' }}</td>
+                            <td>{{ $sik->jumlah_undangan ?? '-' }}</td>
+                            <td>{{ dateTimeFormat($sik->dilaporkan_pada) }}</td>
+
+                            <td class="d-flex gap-2">
+                                {{-- Tombol upload --}}
+                                <a href="#" class="" title="Upload File" data-bs-toggle="modal"
+                                    data-bs-target="#upload-modal-{{ $sik->id }}">
+                                    <i class="bi bi-upload"></i>
                                 </a>
-                            </center>
-                        </td>
 
-                        {{-- Status --}}
-                        <td>
-                            @if ($sik->status === 1)
-                                {{-- centang --}}
-                                <i class="bi bi-check-circle-fill text-success" title="Disetujui"></i>
-                            @elseif($sik->status === 0)
-                                {{-- x --}}
-                                <i class="bi bi-x-circle-fill text-danger" title="Ditolak"></i>
-                            @else
-                                -
-                            @endif
-                        </td>
+                                {{-- Popup upload file --}}
+                                <div class="modal fade" id="upload-modal-{{ $sik->id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Upload File</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form action="/admin/sik/upload-file" method="POST"
+                                                enctype="multipart/form-data">
+                                                <div class="modal-body">
+                                                    @csrf
+                                                    {{-- Input file --}}
+                                                    <input type="hidden" name="id" value="{{ $sik->id }}">
+                                                    <div class="mb-3">
+                                                        <label for="file" class="form-label">File :</label>
+                                                        <input name="file" class="form-control" type="file"
+                                                            id="file" accept=".pdf">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-primary">Upload</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <td>{{ $sik->nama_organisasi ?? '-' }}</td>
-                        <td>{{ $sik->nama_penanggung_jawab ?? '-' }}</td>
-                        <td>{{ $sik->pekerjaan ?? '-' }}</td>
-                        <td>{{ $sik->alamat ?? '-' }}</td>
-                        <td>{{ $sik->bentuk_kegiatan ?? '-' }}</td>
-                        <td>{{ $sik->tanggal_kegiatan ?? '-' }}</td>
-                        <td>{{ $sik->waktu_mulai ?? '-' }}</td>
-                        <td>{{ $sik->waktu_selesai ?? '-' }}</td>
-                        <td>{{ $sik->lokasi_kegiatan ?? '-' }}</td>
-                        <td>{{ $sik->dalam_rangka ?? '-' }}</td>
-                        <td>{{ $sik->jumlah_undangan ?? '-' }}</td>
+                                {{-- Tombol Ubah SIK --}}
+                                {{-- <a href="#" title="Ubah">
+                                <i class="bi bi-pencil-square"></i>
+                            </a> --}}
 
-                        <td class="d-flex gap-2">
-                            {{-- Tombol upload --}}
-                            <a href="#" class="" title="Upload File" data-bs-toggle="modal"
-                                data-bs-target="#upload-modal-{{ $sik->id }}">
-                                <i class="bi bi-upload"></i>
-                            </a>
+                                {{-- Tombol Hapus SIK --}}
+                                <a href="/admin/sik/hapus/{{ $sik->id }}" title="Hapus"
+                                    onclick="return confirm('Apakah anda yakin untuk menghapus data SIK ?')">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                            </td>
 
-                            {{-- Popup upload file --}}
-                            <div class="modal fade" id="upload-modal-{{ $sik->id }}" tabindex="-1"
+                            {{-- Pop up Detail Dokumen --}}
+                            <div class="modal fade" id="detail-modal-{{ $sik->id }}" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Upload File</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Detail Dokumen Persyaratan</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
-                                        <form action="/admin/sik/upload-file" method="POST" enctype="multipart/form-data">
-                                            <div class="modal-body">
-                                                @csrf
-                                                {{-- Input file --}}
-                                                <input type="hidden" name="id" value="{{ $sik->id }}">
-                                                <div class="mb-3">
-                                                    <label for="file" class="form-label">File :</label>
-                                                    <input name="file" class="form-control" type="file" id="file"
-                                                        accept=".pdf">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Batal</button>
-                                                <button type="submit" class="btn btn-primary">Upload</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                                        <div class="modal-body">
+                                            @php
+                                                $sikDocument = getSIKDocumentById($sik->id);
+                                            @endphp
 
-                            {{-- Tombol Ubah SIK --}}
-                            {{-- <a href="#" title="Ubah">
-                                <i class="bi bi-pencil-square"></i>
-                            </a> --}}
+                                            {{-- Foto KTP --}}
+                                            @if ($sikDocument['fotoKtp'])
+                                                <a target="_blank"
+                                                    href="{{ asset('assets-user/upload/' . $sikDocument['fotoKtp']) }}"
+                                                    class="d-block btn my-1 text-start">
+                                                    <i class="bi bi-arrow-down-circle-fill"></i>
+                                                    Foto KTP
+                                                </a>
+                                            @endif
 
-                            {{-- Tombol Hapus SIK --}}
-                            <a href="/admin/sik/hapus/{{ $sik->id }}" title="Hapus"
-                                onclick="return confirm('Apakah anda yakin untuk menghapus data SIK ?')">
-                                <i class="bi bi-trash-fill"></i>
-                            </a>
-                        </td>
+                                            {{-- Dokumen Tambahan --}}
+                                            @if ($sikDocument['fotoPelapor'])
+                                                <a target="_blank"
+                                                    href="{{ asset('assets-user/upload/' . $sikDocument['fotoPelapor']) }}"
+                                                    class="d-block btn my-1 text-start">
+                                                    <i class="bi bi-arrow-down-circle-fill"></i>
+                                                    Foto Pelapor
+                                                </a>
+                                            @endif
 
-                        {{-- Pop up Detail Dokumen --}}
-                        <div class="modal fade" id="detail-modal-{{ $sik->id }}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Detail Dokumen Persyaratan</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        @php
-                                            $sikDocument = getSIKDocumentById($sik->id);
-                                        @endphp
-
-                                        {{-- Foto KTP --}}
-                                        @if ($sikDocument['fotoKtp'])
+                                            {{-- Link Download Proposal Kegiatan --}}
                                             <a target="_blank"
-                                                href="{{ asset('assets-user/upload/' . $sikDocument['fotoKtp']) }}"
+                                                href="{{ asset('assets-user/upload/' . $sikDocument['proposalKegiatan']) }}"
                                                 class="d-block btn my-1 text-start">
                                                 <i class="bi bi-arrow-down-circle-fill"></i>
-                                                Foto KTP
+                                                Download Proposal Kegiatan
                                             </a>
-                                        @endif
 
-                                        {{-- Dokumen Tambahan --}}
-                                        @if ($sikDocument['fotoPelapor'])
+                                            {{-- Link Download Izin Tempat --}}
                                             <a target="_blank"
-                                                href="{{ asset('assets-user/upload/' . $sikDocument['fotoPelapor']) }}"
+                                                href="{{ asset('assets-user/upload/' . $sikDocument['izinTempat']) }}"
                                                 class="d-block btn my-1 text-start">
                                                 <i class="bi bi-arrow-down-circle-fill"></i>
-                                                Foto Pelapor
+                                                Download Izin Tempat
                                             </a>
-                                        @endif
 
-                                        {{-- Link Download Proposal Kegiatan --}}
-                                        <a target="_blank"
-                                            href="{{ asset('assets-user/upload/' . $sikDocument['proposalKegiatan']) }}"
-                                            class="d-block btn my-1 text-start">
-                                            <i class="bi bi-arrow-down-circle-fill"></i>
-                                            Download Proposal Kegiatan
-                                        </a>
-
-                                        {{-- Link Download Izin Tempat --}}
-                                        <a target="_blank"
-                                            href="{{ asset('assets-user/upload/' . $sikDocument['izinTempat']) }}"
-                                            class="d-block btn my-1 text-start">
-                                            <i class="bi bi-arrow-down-circle-fill"></i>
-                                            Download Izin Tempat
-                                        </a>
-
-                                        {{-- Link Download Izin Instansi --}}
-                                        <a target="_blank"
-                                            href="{{ asset('assets-user/upload/' . $sikDocument['izinInstansi']) }}"
-                                            class="d-block btn my-1 text-start">
-                                            <i class="bi bi-arrow-down-circle-fill"></i>
-                                            Download Izin Instansi
-                                        </a>
-
-                                        {{-- Link Download Fotokopi Paspor --}}
-                                        @if ($sikDocument['fotokopiPaspor'])
+                                            {{-- Link Download Izin Instansi --}}
                                             <a target="_blank"
-                                                href="{{ asset('assets-user/upload/' . $sikDocument['fotokopiPaspor']) }}"
+                                                href="{{ asset('assets-user/upload/' . $sikDocument['izinInstansi']) }}"
                                                 class="d-block btn my-1 text-start">
                                                 <i class="bi bi-arrow-down-circle-fill"></i>
-                                                Download Fotokopi Paspor
+                                                Download Izin Instansi
                                             </a>
-                                        @endif
 
-                                        {{-- Link Download Rekomendasi Polsek --}}
-                                        <a target="_blank"
-                                            href="{{ asset('assets-user/upload/' . $sikDocument['rekomendasiPolsek']) }}"
-                                            class="d-block btn my-1 text-start">
-                                            <i class="bi bi-arrow-down-circle-fill"></i>
-                                            Download Rekomendasi Polsek
-                                        </a>
-                                    </div>
-                                    {{-- @if ($sik->status === null)
+                                            {{-- Link Download Fotokopi Paspor --}}
+                                            @if ($sikDocument['fotokopiPaspor'])
+                                                <a target="_blank"
+                                                    href="{{ asset('assets-user/upload/' . $sikDocument['fotokopiPaspor']) }}"
+                                                    class="d-block btn my-1 text-start">
+                                                    <i class="bi bi-arrow-down-circle-fill"></i>
+                                                    Download Fotokopi Paspor
+                                                </a>
+                                            @endif
+
+                                            {{-- Link Download Rekomendasi Polsek --}}
+                                            <a target="_blank"
+                                                href="{{ asset('assets-user/upload/' . $sikDocument['rekomendasiPolsek']) }}"
+                                                class="d-block btn my-1 text-start">
+                                                <i class="bi bi-arrow-down-circle-fill"></i>
+                                                Download Rekomendasi Polsek
+                                            </a>
+                                        </div>
+                                        {{-- @if ($sik->status === null)
                                         <div class="modal-footer">
                                             <a href="/admin/sik/setuju/{{ $sik->id }}" type="button"
                                                 class="btn btn-success">Setuju</a>
@@ -212,48 +247,50 @@
                                                 data-bs-dismiss="modal">Tolak</button>
                                         </div>
                                     @endif --}}
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Pop up Penolakan --}}
-                        <div class="modal fade" id="tolak-modal-{{ $sik->id }}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Alasan Penolakan</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
                                     </div>
-
-                                    <form action="/admin/sik/tolak" method="POST">
-                                        <div class="modal-body" style="height: 250px">
-                                            @csrf
-                                            <div class="mb-3">
-                                                <input type="hidden" name="id" value="{{ $sik->id }}">
-                                                <label for="alasanPenolakan" class="form-label">Masukkan alasan pada kolom
-                                                    di bawah ini :</label>
-                                                <textarea name="alasanPenolakan" class="form-control" id="alasanPenolakan" rows="6"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            {{-- Tombol Kirim --}}
-                                            <button type="submit" class="btn btn-primary">Kirim</button>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
-                        </div>
-                    </tr>
-                @empty
-                    <h6 class="text-center">Tidak ada laporan.</h6>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
-    <div class="w-100 d-flex justify-content-end pt-3">
-        {{ $laporanSIK->links() }}
-    </div>
+
+                            {{-- Pop up Penolakan --}}
+                            <div class="modal fade" id="tolak-modal-{{ $sik->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Alasan Penolakan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+
+                                        <form action="/admin/sik/tolak" method="POST">
+                                            <div class="modal-body" style="height: 250px">
+                                                @csrf
+                                                <div class="mb-3">
+                                                    <input type="hidden" name="id" value="{{ $sik->id }}">
+                                                    <label for="alasanPenolakan" class="form-label">Masukkan alasan pada
+                                                        kolom
+                                                        di bawah ini :</label>
+                                                    <textarea name="alasanPenolakan" class="form-control" id="alasanPenolakan" rows="6"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                {{-- Tombol Kirim --}}
+                                                <button type="submit" class="btn btn-primary">Kirim</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="w-100 d-flex justify-content-end pt-3">
+            {{ $laporanSIK->links() }}
+        </div>
+    @else
+        <center>Tidak ada laporan.</center>
+    @endif
 @endsection

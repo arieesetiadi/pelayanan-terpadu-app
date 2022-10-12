@@ -17,11 +17,11 @@
             <div class="col-6">
                 <h3>Laporan SP2HP</h3>
             </div>
-            <div class="col-6 d-flex justify-content-end">
+            <div class="col-4 d-flex justify-content-end">
                 <!-- Include Required Prerequisites -->
                 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
                 <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-                <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
+                {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets-admin/css/datepicker.css') }}" /> --}}
 
                 <!-- Include Date Range Picker -->
                 <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
@@ -32,7 +32,7 @@
 
                 <form id="filterDateForm" action="/admin/sp2hp/filter-date" method="POST">
                     @csrf
-                    <input name="dateFilter" type="text" class="d-inline-block form-control w-50 mt-3" id="filterDate">
+                    <input name="dateFilter" type="text" class="d-inline-block form-control mt-3" id="filterDate">
                 </form>
 
                 <script type="text/javascript">
@@ -47,6 +47,15 @@
                         $("#filterDateForm").submit();
                     });
                 </script>
+            </div>
+            <div class="col-2 mt-4 d-flex justify-content-end">
+                <a target="_blank" href="/admin/sp2hp/pdf">
+                    <span class="fs-6">PDF</span>
+                </a>
+                <span class="fs-6 d-inline-block mx-1"> | </span>
+                <a target="_blank" href="/admin/sp2hp/excell">
+                    <span class="fs-6">Excell</span>
+                </a>
             </div>
         </div>
     </div>

@@ -11,11 +11,13 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{ asset('assets-admin/img/favicon-32x32.png') }}" type="image/png" />
+
     <!--plugins-->
     <link href="{{ asset('assets-admin/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-admin/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-admin/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-admin/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
+
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-admin/css/bootstrap-extended.css') }}" rel="stylesheet" />
@@ -23,7 +25,6 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
     <link href="{{ asset('assets-admin/css/icons.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-
 
     <!-- loader-->
     <link href="{{ asset('assets-admin/css/pace.min.css') }}" rel="stylesheet" />
@@ -35,7 +36,6 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
     <link href="{{ asset('assets-admin/css/header-colors.css') }}" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('assets-admin/css/custom.css') }}">
-
     <title>{{ $title ?? 'Title' }} | Administrator</title>
 </head>
 
@@ -70,7 +70,6 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                                 data-bs-toggle="dropdown">
                                 <div class="user-setting d-flex align-items-center">
-
                                     @if (auth()->user()->jenis_kelamin == 'Laki-laki')
                                         <img src="{{ asset('assets-admin/img/avatars/man.png') }}" class="user-img"
                                             alt="">
@@ -259,7 +258,6 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
     </div>
     <!--end wrapper-->
 
-
     <!-- Bootstrap bundle JS -->
     <script src="{{ asset('assets-admin/js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
@@ -281,7 +279,9 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
     <script>
         new PerfectScrollbar(".best-product")
     </script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </body>
 

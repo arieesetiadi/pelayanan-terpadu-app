@@ -18,6 +18,7 @@ class SIKController extends Controller
     public function index()
     {
         $laporanSIK = session('laporanSIK') ?? SIK::getSIK();
+
         return view('admin.sik.index', [
             'title' => 'Laporan SIK',
             'laporanSIK' => $laporanSIK
@@ -224,5 +225,16 @@ class SIKController extends Controller
             ->delete();
 
         return redirect()->to('admin/sik')->with('success', 'Anda berhasil menghapus data');
+    }
+
+    public function filterDate(Request $request)
+    {
+        $dates = explode(" - ", $request->dateFilter);
+
+        $start = $dates[0];
+        $end = $dates[1];
+
+        $laporan = SIK::getFilteredByDate($start, $end);
+        return redirect()->to('/admin/sik')->with('laporanSIK', $laporan);
     }
 }
