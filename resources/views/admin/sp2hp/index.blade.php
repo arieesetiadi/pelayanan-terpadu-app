@@ -32,15 +32,17 @@
 
                 <form id="filterDateForm" action="/admin/sp2hp/filter-date" method="POST">
                     @csrf
-                    <input name="dateFilter" type="text" class="d-inline-block form-control mt-3" id="filterDate">
+                    <input id="filterKeyword" name="keyword" type="text" hidden value="{{ $old['keyword'] ?? '' }}">
+                    <input name="dateFilter" type="text" class="d-inline-block form-control mt-3" id="filterDate"
+                        {{ $old['dateFilter'] ?? '' }}>
                 </form>
 
                 <script type="text/javascript">
                     $('#filterDate').daterangepicker({
                         "alwaysShowCalendars": true,
                         "parentEl": "body",
-                        "startDate": "10/03/2022",
-                        "endDate": "10/09/2022",
+                        "startDate": "10/14/2022",
+                        "endDate": "10/14/2022",
                         "opens": "left"
                     }, function(start, end, label) {
                         $('#filterDate').val(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
@@ -48,14 +50,19 @@
                     });
                 </script>
             </div>
-            <div class="col-2 mt-4 d-flex justify-content-end">
-                <a target="_blank" href="/admin/sp2hp/pdf">
-                    <span class="fs-6">PDF</span>
-                </a>
-                <span class="fs-6 d-inline-block mx-1"> | </span>
+            <div class="col-2 mt-3 d-flex justify-content-end">
+                {{-- Tombol export PDF --}}
+                <form target="_blank" action="/admin/sp2hp/pdf" method="POST">
+                    @csrf
+                    <input hidden type="hidden" name="keyword" value="{{ $old['keyword'] ?? '' }}">
+                    <input hidden type="text" name="dateFilter" value="{{ $old['dateFilter'] ?? '' }}">
+                    <button type="submit" class="btn">PDF</button>
+                </form>
+
+                {{-- <span class="fs-6 d-inline-block mx-1"> | </span>
                 <a target="_blank" href="/admin/sp2hp/excell">
                     <span class="fs-6">Excell</span>
-                </a>
+                </a> --}}
             </div>
         </div>
     </div>
@@ -173,8 +180,8 @@
                                                 <input type="hidden" name="id" value="{{ $item->id }}">
                                                 <div class="mb-3">
                                                     <label for="file" class="form-label">File :</label>
-                                                    <input name="file" class="form-control" type="file" id="file"
-                                                        accept=".pdf">
+                                                    <input name="file" class="form-control" type="file"
+                                                        id="file" accept=".pdf">
                                                 </div>
                                                 <div class="mb-3">
                                                     <span class="d-inline-block my-2">Keterangan:</span>

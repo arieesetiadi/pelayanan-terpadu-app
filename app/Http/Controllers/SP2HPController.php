@@ -19,9 +19,12 @@ class SP2HPController extends Controller
     public function index()
     {
         $laporanSP2HP = session('laporanSP2HP') ?? SP2HP::getSP2HP();
+        $old = session('old') ?? null;
 
         $data['title'] = 'SP2HP';
         $data['laporanSP2HP'] = $laporanSP2HP;
+        $data['old'] = $old;
+
         return view('admin.sp2hp.index', $data);
     }
 
@@ -269,18 +272,35 @@ class SP2HPController extends Controller
 
     public function filterDate(Request $request)
     {
-        $dates = explode(" - ", $request->dateFilter);
+        $keyword = $request->keyword;
 
+        $dates = explode(" - ", $request->dateFilter);
         $start = $dates[0];
         $end = $dates[1];
 
-        $laporan = SP2HP::getFilteredByDate($start, $end);
-        return redirect()->to('/admin/sp2hp')->with('laporanSP2HP', $laporan);
+        $laporan = SP2HP::getFilteredByDate($start, $end, $keyword);
+        return redirect()->to('/admin/sp2hp')->with('laporanSP2HP', $laporan)->with('old', $request->all());
     }
 
-    public function pdf()
+    public function pdf(Request $request)
     {
-        $data['laporanSP2HP'] = SP2HP::getSP2HP();
+        $keyword = $request->keyword ?? '';
+
+        if ($request->dateFilter != '' && $keyword != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSP2HP'] = SP2HP::getFilteredByDate($start, $end, $keyword);
+        } else if ($request->dateFilter != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSP2HP'] = SP2HP::getFilteredByDate($start, $end, $keyword);
+        } else if ($keyword != '') {
+            $data['laporanSP2HP'] = SP2HP::searchSP2HP($keyword);
+        } else {
+            $data['laporanSP2HP'] = SP2HP::getSP2HP();
+        }
 
         $pdf = PDF::loadview('pdf.sp2hp-all', $data);
         return $pdf->stream('laporan-sp2hp.pdf');

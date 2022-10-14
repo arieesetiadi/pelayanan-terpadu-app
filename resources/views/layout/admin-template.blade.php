@@ -52,8 +52,8 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
                     @csrf
                     <div class="position-absolute top-50 translate-middle-y search-icon ms-3"><i
                             class="bi bi-search"></i></div>
-                    <input name="keyword" class="form-control" type="text" placeholder="Pencarian .."
-                        autocomplete="off">
+                    <input id="searchBox" name="keyword" class="form-control" type="text" placeholder="Pencarian .."
+                        autocomplete="off" value="{{ $old['keyword'] ?? '' }}">
                     <div class="position-absolute top-50 translate-middle-y search-close-icon"><i
                             class="bi bi-x-lg"></i></div>
                 </form>
@@ -282,6 +282,7 @@ session()->put('notifikasiAdmin', $data['notifikasi']);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="{{ asset('assets-admin/js/custom.js') }}"></script>
 
 </body>
 

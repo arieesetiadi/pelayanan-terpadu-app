@@ -24,7 +24,7 @@ class SearchController extends Controller
                 return redirect()->to('/admin/sik')->with('laporanSIK', $laporan);
             case 'sp2hp':
                 $laporan = SP2HP::searchSP2HP($keyword);
-                return redirect()->to('/admin/sp2hp')->with('laporanSP2HP', $laporan);
+                return redirect()->to('/admin/sp2hp')->with('laporanSP2HP', $laporan)->with('old', $request->all());
             default:
                 if ($keyword == "") return back();
                 $laporan = [
