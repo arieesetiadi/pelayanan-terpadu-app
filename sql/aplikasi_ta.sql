@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Okt 2022 pada 05.15
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.2
+-- Waktu pembuatan: 15 Okt 2022 pada 04.38
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,7 +55,7 @@ CREATE TABLE `laporan_sik` (
   `dokumen_persetujuan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `foto_pelapor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dilaporkan_pada` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `dilaporkan_pada` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `laporan_sktlk` (
   `pernyataan_keaslian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pelapor_id` int(11) NOT NULL,
   `dokumen_persetujuan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dilaporkan_pada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `dilaporkan_pada` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -128,18 +128,18 @@ CREATE TABLE `laporan_sp2hp` (
   `detail_lokasi_kejadian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kategori` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `terlapor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `bukti` text COLLATE utf8mb4_unicode_ci,
-  `saksi` text COLLATE utf8mb4_unicode_ci,
+  `bukti` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `saksi` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `foto_pelapor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lampiran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `file_pemberitahuan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `keterangan_pemberitahuan` text COLLATE utf8mb4_unicode_ci,
+  `keterangan_pemberitahuan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `perkembangan` enum('Sedang diproses','Selesai') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `nomor_polisi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pelapor_id` int(11) NOT NULL,
-  `dilaporkan_pada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `dilaporkan_pada` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -148,8 +148,8 @@ CREATE TABLE `laporan_sp2hp` (
 
 INSERT INTO `laporan_sp2hp` (`id`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `kewarganegaraan`, `alamat`, `telepon`, `judul_laporan`, `isi_laporan`, `tanggal_kejadian`, `lokasi_kejadian`, `detail_lokasi_kejadian`, `kategori`, `terlapor`, `bukti`, `saksi`, `foto_ktp`, `foto_pelapor`, `lampiran`, `file_pemberitahuan`, `keterangan_pemberitahuan`, `perkembangan`, `status`, `nomor_polisi`, `pelapor_id`, `dilaporkan_pada`) VALUES
 (2, 'asa', 'werre', '1999-12-02', 'dfgg', 'Warga Negara Indonesia', 'jhj', '878', 'kjjjk', 'gcvbn', '1999-12-04', 'Mengwi', 'asdfsde', 'KDRT', 'Dimas Revaldi, Farhan Dimas, Alif Rajab 2', '{\"namaBukti\":[\"sfsf 222222\",\"sffafd 222\"],\"gambarBukti\":[\"1664894423_foto ktp.jpg\",\"1664894423_foto ktp.jpg\"]}', '{\"nama\":[\"afsdf 2\",\"sfafa 22\"],\"umur\":[\"122\",\"2222\"],\"pekerjaan\":[\"weqe 2\",\"ewrw 2 2\"],\"alamat\":[\"weqe 2\",\"ewrw 2 2\"]}', '1664290004_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664290004_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664290004_whatsapp image 2022-09-27 at 09.46.45.jpeg', NULL, NULL, NULL, 1, 'LP/005/K/IX/2022/Polres Badung', 8, '2022-10-08 14:48:59'),
-(3, 'asas 23', 'sdad 23', '0002-02-02', 'daa 23', 'Warga Negara Asing', 'fdafs 2', '121 2', 'ada 2', 'afdsdf 2', '0022-02-02', 'Abiansemal', 'zczvsd 2', 'Penganiayaan', 'Dimas Revaldi, Farhan Dimas, Alif Rajab 2', '{\"namaBukti\":[\"sfsf 222222\",\"sffafd 222\"],\"gambarBukti\":[\"1664894423_foto ktp.jpg\",\"1664894423_foto ktp.jpg\"]}', '{\"nama\":[\"afsdf 2\",\"sfafa 22\"],\"umur\":[\"122\",\"2222\"],\"pekerjaan\":[\"weqe 2\",\"ewrw 2 2\"],\"alamat\":[\"weqe 2\",\"ewrw 2 2\"]}', '1664894423_foto ktp.jpg', '1664894423_orang dan katp2.png', '1664894423_proposal kegiatan.jpg', NULL, NULL, NULL, 0, NULL, 8, '2022-10-04 14:43:36'),
-(4, 'Kamio Eichii', 'Kyoto', '1999-12-12', 'PNS', 'Warga Negara Indonesia', 'Kyoto, Jepang', '989889899', 'Pencurian Sepeda Ontel', 'Menurut Imran, pelaku biasa mengincar rumah kosong dan menggasak barang yang ada milik korban. “Salah satu pelaku ini residivis kasus serupa. Pada tahun 2020 yang bersangkutan sudah melakukan masa penahannya di LP, kali ini tertangkap lagi. Pada aksinya kemarin, pelaku menggasak dua sepeda senilai Rp260 juta. “Harga sepeda ini satu unitnya Rp130 juta, kalau dua berarti Rp260 juta. Selanjutnya sepeda hasil curian dijual ke pembeli dengan sistem COD. Atas perbuatannya kedua pelaku akan dijerat Pasal 363 KUHP tentang Pencurian dengan ancaman hukuman di atas lima tahun penjara.', '2020-12-12', 'Abiansemal', ' Jalan Merdeka No 21 A III', 'Pencurian', 'Mamoko Ikenega', '{\"namaBukti\":[\"Buku Kerja\",\"Kertas merah\"],\"gambarBukti\":[\"1664977167_7.jpeg\",\"1664977167_7.jpeg\"]}', '{\"nama\":[\"Kenta Takeshi\",\"Kansai Ryokuse\"],\"umur\":[\"40\",\"44\"],\"pekerjaan\":[\"PNS\",\"PNS\"],\"alamat\":[\"PNS\",\"PNS\"]}', '1664977167_11.jpeg', '', '', '1665066780_339901002-blangko-laporan-polisi-doc.pdf', 'Laporan Anda telah diterima. Silahkan menunggu jadwal pertemuan langsung ke Polres Badung', 'Selesai', 1, 'LP/002/K/X/2022/Polres Badung', 8, '2022-10-07 04:44:43');
+(3, 'asas 23', 'sdad 23', '0002-02-02', 'daa 23', 'Warga Negara Asing', 'fdafs 2', '121 2', 'ada 2', 'afdsdf 2', '0022-02-02', 'Abiansemal', 'zczvsd 2', 'Penganiayaan', 'Dimas Revaldi, Farhan Dimas, Alif Rajab 2', '{\"namaBukti\":[\"sfsf 222222\",\"sffafd 222\"],\"gambarBukti\":[\"1664894423_foto ktp.jpg\",\"1664894423_foto ktp.jpg\"]}', '{\"nama\":[\"afsdf 2\",\"sfafa 22\"],\"umur\":[\"122\",\"2222\"],\"pekerjaan\":[\"weqe 2\",\"ewrw 2 2\"],\"alamat\":[\"weqe 2\",\"ewrw 2 2\"]}', '1664894423_foto ktp.jpg', '1664894423_orang dan katp2.png', '1664894423_proposal kegiatan.jpg', NULL, NULL, NULL, 0, NULL, 8, '2022-10-11 13:24:30'),
+(4, 'Kamio Eichii', 'Kyoto', '1999-12-12', 'PNS', 'Warga Negara Indonesia', 'Kyoto, Jepang', '989889899', 'Pencurian Sepeda Ontel', 'Menurut Imran, pelaku biasa mengincar rumah kosong dan menggasak barang yang ada milik korban. “Salah satu pelaku ini residivis kasus serupa. Pada tahun 2020 yang bersangkutan sudah melakukan masa penahannya di LP, kali ini tertangkap lagi. Pada aksinya kemarin, pelaku menggasak dua sepeda senilai Rp260 juta. “Harga sepeda ini satu unitnya Rp130 juta, kalau dua berarti Rp260 juta. Selanjutnya sepeda hasil curian dijual ke pembeli dengan sistem COD. Atas perbuatannya kedua pelaku akan dijerat Pasal 363 KUHP tentang Pencurian dengan ancaman hukuman di atas lima tahun penjara.', '2020-12-12', 'Mengwi', ' Jalan Merdeka No 21 A III', 'Pencurian', 'Mamoko Ikenega', '{\"namaBukti\":[\"Buku Kerja\",\"Kertas merah\"],\"gambarBukti\":[\"1664977167_7.jpeg\",\"1664977167_7.jpeg\"]}', '{\"nama\":[\"Kenta Takeshi\",\"Kansai Ryokuse\"],\"umur\":[\"40\",\"44\"],\"pekerjaan\":[\"PNS\",\"PNS\"],\"alamat\":[\"PNS\",\"PNS\"]}', '1664977167_11.jpeg', '', '', '1665066780_339901002-blangko-laporan-polisi-doc.pdf', 'Laporan Anda telah diterima. Silahkan menunggu jadwal pertemuan langsung ke Polres Badung', 'Selesai', 1, 'LP/002/K/X/2022/Polres Badung', 8, '2022-10-11 13:22:09');
 
 -- --------------------------------------------------------
 
