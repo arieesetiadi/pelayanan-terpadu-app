@@ -17,7 +17,7 @@
             <div class="col-6">
                 <h3>Laporan SIK</h3>
             </div>
-            <div class="col-6 d-flex justify-content-end">
+            <div class="col-4 d-flex justify-content-end">
                 <!-- Include Required Prerequisites -->
                 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
                 <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -32,7 +32,9 @@
 
                 <form id="filterDateForm" action="/admin/sik/filter-date" method="POST">
                     @csrf
-                    <input name="dateFilter" type="text" class="d-inline-block form-control w-50 mt-3" id="filterDate">
+                    <input id="filterKeyword" name="keyword" type="text" hidden value="{{ $old['keyword'] ?? '' }}">
+                    <input name="dateFilter" type="text" class="d-inline-block form-control mt-3" id="filterDate"
+                        {{ $old['dateFilter'] ?? '' }}>
                 </form>
 
                 <script type="text/javascript">
@@ -47,6 +49,23 @@
                         $("#filterDateForm").submit();
                     });
                 </script>
+            </div>
+
+            <div class="col-2 mt-3 d-flex justify-content-end">
+                {{-- Tombol export PDF --}}
+                <form target="_blank" action="/admin/sik/pdf" method="POST">
+                    @csrf
+                    <input hidden type="hidden" name="keyword" value="{{ $old['keyword'] ?? '' }}">
+                    <input hidden type="text" name="dateFilter" value="{{ $old['dateFilter'] ?? '' }}">
+                    <button type="submit" class="btn">PDF</button>
+                </form>
+
+                <form target="_blank" action="/admin/sik/excel" method="POST">
+                    @csrf
+                    <input hidden type="hidden" name="keyword" value="{{ $old['keyword'] ?? '' }}">
+                    <input hidden type="text" name="dateFilter" value="{{ $old['dateFilter'] ?? '' }}">
+                    <button type="submit" class="btn">Excel</button>
+                </form>
             </div>
         </div>
     </div>

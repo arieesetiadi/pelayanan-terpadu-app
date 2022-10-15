@@ -16,9 +16,12 @@ class SKTLKController extends Controller
     public function index()
     {
         $laporanSKTLK = session('laporanSKTLK') ?? SKTLK::getSKTLK();
+        $old = session('old') ?? null;
+
         return view('admin.sktlk.index', [
             'title' => 'Laporan SKTLK',
-            'laporanSKTLK' => $laporanSKTLK
+            'laporanSKTLK' => $laporanSKTLK,
+            'old' => $old
         ]);
     }
 
@@ -121,12 +124,61 @@ class SKTLKController extends Controller
 
     public function filterDate(Request $request)
     {
+        $keyword = $request->keyword;
+
         $dates = explode(" - ", $request->dateFilter);
 
         $start = $dates[0];
         $end = $dates[1];
 
-        $laporan = SKTLK::getFilteredByDate($start, $end);
-        return redirect()->to('/admin/sktlk')->with('laporanSKTLK', $laporan);
+        $laporan = SKTLK::getFilteredByDate($start, $end, $keyword);
+        return redirect()->to('/admin/sktlk')->with('laporanSKTLK', $laporan)->with('old', $request->all());
+    }
+
+    public function pdf(Request $request)
+    {
+        $keyword = $request->keyword ?? '';
+
+        if ($request->dateFilter != '' && $keyword != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSKTLK'] = SKTLK::getFilteredByDate($start, $end, $keyword);
+        } else if ($request->dateFilter != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSKTLK'] = SKTLK::getFilteredByDate($start, $end, $keyword);
+        } else if ($keyword != '') {
+            $data['laporanSKTLK'] = SKTLK::searchSKTLK($keyword);
+        } else {
+            $data['laporanSKTLK'] = SKTLK::getSKTLK();
+        }
+
+        $pdf = PDF::loadview('pdf.sktlk-all', $data)->setPaper('a4', 'landscape');
+        return $pdf->stream('laporan-sktlk.pdf');
+    }
+
+    public function excel(Request $request)
+    {
+        $keyword = $request->keyword ?? '';
+
+        if ($request->dateFilter != '' && $keyword != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSKTLK'] = SKTLK::getFilteredByDate($start, $end, $keyword);
+        } else if ($request->dateFilter != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSKTLK'] = SKTLK::getFilteredByDate($start, $end, $keyword);
+        } else if ($keyword != '') {
+            $data['laporanSKTLK'] = SKTLK::searchSKTLK($keyword);
+        } else {
+            $data['laporanSKTLK'] = SKTLK::getSKTLK();
+        }
+
+        return view('excel.sktlk', $data);
     }
 }

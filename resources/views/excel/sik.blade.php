@@ -1,6 +1,6 @@
 <?php
 header('Content-type: application/vnd-ms-excel');
-header('Content-Disposition: attachment; filename=sp2hp.xls');
+header('Content-Disposition: attachment; filename=sik.xls');
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ header('Content-Disposition: attachment; filename=sp2hp.xls');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SP2HP</title>
+    <title>SIK</title>
 
     <style>
         * {
@@ -60,7 +60,7 @@ header('Content-Disposition: attachment; filename=sp2hp.xls');
 </head>
 
 <body>
-    @if (count($laporanSP2HP) > 0)
+    @if (count($laporanSIK) > 0)
         <table border="1">
             <tr>
                 <td></td>
@@ -72,7 +72,7 @@ header('Content-Disposition: attachment; filename=sp2hp.xls');
                                     <span style="font-weight: bolder; display: block">KEPOLISIAN NEGARA REPUBLIK
                                         INDONESIA</span>
                                     <span style="font-weight: bolder; display: block">DAERAH KABUPATEN BADUNG</span>
-                                    <span style="font-weight: bolder; display: block; text-decoration: underline">SENTRA
+                                    <span style="font-weight: bolder; display: block ;text-decoration: underline">SENTRA
                                         PELAYANAN
                                         KEPOLISIAN
                                         TERPADU</span>
@@ -112,35 +112,43 @@ header('Content-Disposition: attachment; filename=sp2hp.xls');
             </tr>
 
             <tr>
-                <td colspan="9">
-                    <h2 style="text-align: center">Laporan Surat Pemberitahuan Perkembangan Hasil Penyidikan Polres
-                        Badung</h2>
+                <td colspan="13">
+                    <h2 style="text-align: center">Laporan Surat Izin Keramaian Polres Badung Tahun
+                        {{ now()->year }}</h2>
                 </td>
             </tr>
 
             <tr>
                 <th>No.</th>
-                <th>Nama Lengkap</th>
-                <th>Status</th>
+                <th>Nama Organisasi</th>
+                <th>Penanggung Jawab</th>
                 <th>Alamat</th>
                 <th>Telepon</th>
-                <th>Kategori</th>
-                <th>Lokasi</th>
-                <th>Detail Lokasi</th>
+                <th>Bentuk Kegiatan</th>
+                <th>Waktu Mulai</th>
+                <th>Waktu Selesai</th>
+                <th>Lokasi Kegiatan</th>
+                <th>Detail Lokasi Kegiatan</th>
+                <th>Dalam Rangka</th>
+                <th>Jumlah Undangan</th>
                 <th>Dilaporkan Pada</th>
             </tr>
 
-            @foreach ($laporanSP2HP as $i => $item)
+            @foreach ($laporanSIK as $i => $item)
                 <tr>
                     <td>{{ $i + 1 }}</td>
-                    <td>{{ $item->nama_lengkap }}</td>
-                    <td>{{ $item->status ? 'Valid' : 'Tidak Valid' }}</td>
+                    <td>{{ $item->nama_organisasi }}</td>
+                    <td>{{ $item->nama_penanggung_jawab }}</td>
                     <td>{{ $item->alamat }}</td>
                     <td>{{ $item->telepon }}</td>
-                    <td>{{ $item->kategori }}</td>
-                    <td>{{ $item->lokasi_kejadian }}</td>
-                    <td>{{ $item->detail_lokasi_kejadian }}</td>
-                    <td>{{ dateTimeFormat($item->dilaporkan_pada) }}</td>
+                    <td>{{ $item->bentuk_kegiatan }}</td>
+                    <td>{{ $item->waktu_mulai }}</td>
+                    <td>{{ $item->waktu_selesai }}</td>
+                    <td>{{ $item->lokasi_kegiatan }}</td>
+                    <td>{{ $item->detail_lokasi_kegiatan }}</td>
+                    <td>{{ $item->dalam_rangka }}</td>
+                    <td>{{ $item->jumlah_undangan }}</td>
+                    <td>{{ dateFormat($item->dilaporkan_pada) }}</td>
                 </tr>
             @endforeach
         </table>

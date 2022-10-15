@@ -18,10 +18,12 @@ class SIKController extends Controller
     public function index()
     {
         $laporanSIK = session('laporanSIK') ?? SIK::getSIK();
+        $old = session('old') ?? null;
 
         return view('admin.sik.index', [
             'title' => 'Laporan SIK',
-            'laporanSIK' => $laporanSIK
+            'laporanSIK' => $laporanSIK,
+            'old' => $old
         ]);
     }
 
@@ -229,12 +231,60 @@ class SIKController extends Controller
 
     public function filterDate(Request $request)
     {
+        $keyword = $request->keyword;
         $dates = explode(" - ", $request->dateFilter);
 
         $start = $dates[0];
         $end = $dates[1];
 
-        $laporan = SIK::getFilteredByDate($start, $end);
-        return redirect()->to('/admin/sik')->with('laporanSIK', $laporan);
+        $laporan = SIK::getFilteredByDate($start, $end, $keyword);
+        return redirect()->to('/admin/sik')->with('laporanSIK', $laporan)->with('old', $request->all());
+    }
+
+    public function pdf(Request $request)
+    {
+        $keyword = $request->keyword ?? '';
+
+        if ($request->dateFilter != '' && $keyword != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSIK'] = SIK::getFilteredByDate($start, $end, $keyword);
+        } else if ($request->dateFilter != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSIK'] = SIK::getFilteredByDate($start, $end, $keyword);
+        } else if ($keyword != '') {
+            $data['laporanSIK'] = SIK::searchSIK($keyword);
+        } else {
+            $data['laporanSIK'] = SIK::getSIK();
+        }
+
+        $pdf = PDF::loadview('pdf.sik-all', $data)->setPaper('a4', 'landscape');
+        return $pdf->stream('laporan-sik.pdf');
+    }
+
+    public function excel(Request $request)
+    {
+        $keyword = $request->keyword ?? '';
+
+        if ($request->dateFilter != '' && $keyword != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSIK'] = SIK::getFilteredByDate($start, $end, $keyword);
+        } else if ($request->dateFilter != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSIK'] = SIK::getFilteredByDate($start, $end, $keyword);
+        } else if ($keyword != '') {
+            $data['laporanSIK'] = SIK::searchSIK($keyword);
+        } else {
+            $data['laporanSIK'] = SIK::getSIK();
+        }
+
+        return view('excel.sik', $data);
     }
 }

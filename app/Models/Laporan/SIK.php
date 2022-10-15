@@ -155,14 +155,33 @@ class SIK extends Model
             ->paginate(20);
     }
 
-    public static function getFilteredByDate($start, $end)
+    public static function getFilteredByDate($start, $end, $keyword)
     {
+        $keyword = "%$keyword%";
         $start = Carbon::make($start)->toDateString();
         $end = Carbon::make($end)->toDateString();
 
-        // return self::whereBetween('dilaporkan_pada', [$start, $end])->paginate(20);
-        return self::whereDate('dilaporkan_pada', '>=', $start)
-            ->whereDate('dilaporkan_pada', '<=', $end)
-            ->paginate(20);
+        if ($keyword != "") {
+            return self
+                ::whereDate('dilaporkan_pada', '>=', $start)
+                ->whereDate('dilaporkan_pada', '<=', $end)
+                ->where(function ($query) use ($keyword) {
+                    return $query->where('nama_organisasi', 'like', $keyword)
+                        ->orWhere('nama_penanggung_jawab', 'like', $keyword)
+                        ->orWhere('alamat', 'like', $keyword)
+                        ->orWhere('telepon', 'like', $keyword)
+                        ->orWhere('bentuk_kegiatan', 'like', $keyword)
+                        ->orWhere('waktu_mulai', 'like', $keyword)
+                        ->orWhere('waktu_selesai', 'like', $keyword)
+                        ->orWhere('lokasi_kegiatan', 'like', $keyword)
+                        ->orWhere('dalam_rangka', 'like', $keyword)
+                        ->orWhere('jumlah_undangan', 'like', $keyword);
+                })
+                ->paginate(20);
+        } else {
+            return self::whereDate('dilaporkan_pada', '>=', $start)
+                ->whereDate('dilaporkan_pada', '<=', $end)
+                ->paginate(20);
+        }
     }
 }

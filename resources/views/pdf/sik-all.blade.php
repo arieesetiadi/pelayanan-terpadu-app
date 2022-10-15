@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan SP2HP</title>
+    <title>Laporan SIK</title>
 
     <style>
         * {
@@ -97,32 +97,40 @@
         </tr>
     </table>
 
-    <h2 style="text-align: center">Laporan Surat Pemberitahuan Perkembangan Hasil Penyidikan Polres Badung Tahun
+    <h2 style="text-align: center">Laporan Surat Izin Keramaian Polres Badung Tahun
         {{ now()->year }}</h2>
 
     <table style="width: 100%" border="1" cellspacing="0" cellpadding="0">
         <tr>
             <th>No.</th>
-            <th>Nama Lengkap</th>
-            <th>Status</th>
+            <th>Nama Organisasi</th>
+            <th>Penanggung Jawab</th>
             <th>Alamat</th>
             <th>Telepon</th>
-            <th>Kategori</th>
-            <th>Lokasi</th>
-            <th>Detail Lokasi</th>
+            <th>Bentuk Kegiatan</th>
+            <th>Waktu Mulai</th>
+            <th>Waktu Selesai</th>
+            <th>Lokasi Kegiatan</th>
+            <th>Detail Lokasi Kegiatan</th>
+            <th>Dalam Rangka</th>
+            <th>Jumlah Undangan</th>
             <th>Dilaporkan Pada</th>
         </tr>
 
-        @foreach ($laporanSP2HP as $i => $item)
+        @foreach ($laporanSIK as $i => $item)
             <tr>
                 <td>{{ $i + 1 }}</td>
-                <td>{{ $item->nama_lengkap }}</td>
-                <td>{{ $item->status ? 'Valid' : 'Tidak Valid' }}</td>
+                <td>{{ $item->nama_organisasi }}</td>
+                <td>{{ $item->nama_penanggung_jawab }}</td>
                 <td>{{ $item->alamat }}</td>
                 <td>{{ $item->telepon }}</td>
-                <td>{{ $item->kategori }}</td>
-                <td>{{ $item->lokasi_kejadian }}</td>
-                <td>{{ $item->detail_lokasi_kejadian }}</td>
+                <td>{{ $item->bentuk_kegiatan }}</td>
+                <td>{{ $item->waktu_mulai }}</td>
+                <td>{{ $item->waktu_selesai }}</td>
+                <td>{{ $item->lokasi_kegiatan }}</td>
+                <td>{{ $item->detail_lokasi_kegiatan }}</td>
+                <td>{{ $item->dalam_rangka }}</td>
+                <td>{{ $item->jumlah_undangan }}</td>
                 <td>{{ dateFormat($item->dilaporkan_pada) }}</td>
             </tr>
         @endforeach

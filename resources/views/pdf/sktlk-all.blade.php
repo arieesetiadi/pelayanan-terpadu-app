@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan SP2HP</title>
+    <title>Laporan SKTLK</title>
 
     <style>
         * {
@@ -97,32 +97,35 @@
         </tr>
     </table>
 
-    <h2 style="text-align: center">Laporan Surat Pemberitahuan Perkembangan Hasil Penyidikan Polres Badung Tahun
-        {{ now()->year }}</h2>
+    <h2 style="text-align: center">Laporan Surat Keterangan Tanda Lapor Kehilangan Polres Badung Tahun
+        {{ now()->year }}
+    </h2>
 
     <table style="width: 100%" border="1" cellspacing="0" cellpadding="0">
         <tr>
             <th>No.</th>
             <th>Nama Lengkap</th>
-            <th>Status</th>
+            <th>Kewarganegaraan</th>
             <th>Alamat</th>
             <th>Telepon</th>
-            <th>Kategori</th>
+            <th>Tanggal Kejadian</th>
             <th>Lokasi</th>
             <th>Detail Lokasi</th>
+            <th>Surat Hilang</th>
             <th>Dilaporkan Pada</th>
         </tr>
 
-        @foreach ($laporanSP2HP as $i => $item)
+        @foreach ($laporanSKTLK as $i => $item)
             <tr>
                 <td>{{ $i + 1 }}</td>
                 <td>{{ $item->nama_lengkap }}</td>
-                <td>{{ $item->status ? 'Valid' : 'Tidak Valid' }}</td>
+                <td>{{ $item->kewarganegaraan }}</td>
                 <td>{{ $item->alamat }}</td>
                 <td>{{ $item->telepon }}</td>
-                <td>{{ $item->kategori }}</td>
+                <td>{{ dateFormat($item->tanggal_kejadian) }}</td>
                 <td>{{ $item->lokasi_kejadian }}</td>
                 <td>{{ $item->detail_lokasi_kejadian }}</td>
+                <td>{{ $item->surat_hilang }}</td>
                 <td>{{ dateFormat($item->dilaporkan_pada) }}</td>
             </tr>
         @endforeach

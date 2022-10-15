@@ -18,10 +18,10 @@ class SearchController extends Controller
         switch ($type) {
             case 'sktlk':
                 $laporan = SKTLK::searchSKTLK($keyword);
-                return redirect()->to('/admin/sktlk')->with('laporanSKTLK', $laporan);
+                return redirect()->to('/admin/sktlk')->with('laporanSKTLK', $laporan)->with('old', $request->all());
             case 'sik':
                 $laporan = SIK::searchSIK($keyword);
-                return redirect()->to('/admin/sik')->with('laporanSIK', $laporan);
+                return redirect()->to('/admin/sik')->with('laporanSIK', $laporan)->with('old', $request->all());
             case 'sp2hp':
                 $laporan = SP2HP::searchSP2HP($keyword);
                 return redirect()->to('/admin/sp2hp')->with('laporanSP2HP', $laporan)->with('old', $request->all());

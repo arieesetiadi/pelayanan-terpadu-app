@@ -87,6 +87,8 @@ Route::middleware('auth')->group(function () {
 	Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);
 	Route::get('/admin/sktlk/hapus/{id}', [SKTLKController::class, 'hapus']);
 	Route::post('/admin/sktlk/filter-date', [SKTLKController::class, 'filterDate']);
+	Route::post('/admin/sktlk/pdf', [SKTLKController::class, 'pdf']);
+	Route::post('/admin/sktlk/excel', [SKTLKController::class, 'excel']);
 
 	Route::get('/admin/sik', [SIKController::class, 'index']);
 	Route::get('/admin/sik/setuju/{id}', [SIKController::class, 'setuju']);
@@ -94,6 +96,8 @@ Route::middleware('auth')->group(function () {
 	Route::post('/admin/sik/tolak', [SIKController::class, 'tolak']);
 	Route::get('/admin/sik/hapus/{id}', [SIKController::class, 'hapus']);
 	Route::post('/admin/sik/filter-date', [SIKController::class, 'filterDate']);
+	Route::post('/admin/sik/pdf', [SIKController::class, 'pdf']);
+	Route::post('/admin/sik/excel', [SIKController::class, 'excel']);
 
 	Route::get('/admin/sp2hp', [SP2HPController::class, 'index']);
 	Route::get('/admin/sp2hp/hapus/{id}', [SP2HPController::class, 'hapus']);
