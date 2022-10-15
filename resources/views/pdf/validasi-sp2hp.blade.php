@@ -65,7 +65,6 @@
             JUSTITIA</span>
     </header>
 
-
     <main>
         {{-- Logo POLRI --}}
         <center>
