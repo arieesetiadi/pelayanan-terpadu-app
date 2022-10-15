@@ -306,8 +306,26 @@ class SP2HPController extends Controller
         return $pdf->stream('laporan-sp2hp.pdf');
     }
 
-    public function excell()
+    public function excel(Request $request)
     {
-        dd('Export Excell');
+        $keyword = $request->keyword ?? '';
+
+        if ($request->dateFilter != '' && $keyword != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSP2HP'] = SP2HP::getFilteredByDate($start, $end, $keyword);
+        } else if ($request->dateFilter != '') {
+            $dates = explode(" - ", $request->dateFilter);
+            $start = $dates[0];
+            $end = $dates[1];
+            $data['laporanSP2HP'] = SP2HP::getFilteredByDate($start, $end, $keyword);
+        } else if ($keyword != '') {
+            $data['laporanSP2HP'] = SP2HP::searchSP2HP($keyword);
+        } else {
+            $data['laporanSP2HP'] = SP2HP::getSP2HP();
+        }
+
+        return view('excel.sp2hp', $data);
     }
 }

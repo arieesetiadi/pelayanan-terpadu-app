@@ -103,7 +103,7 @@ Route::middleware('auth')->group(function () {
 	Route::post('/admin/sp2hp/upload-keterangan', [SP2HPController::class, 'uploadKeterangan']);
 	Route::post('/admin/sp2hp/filter-date', [SP2HPController::class, 'filterDate']);
 	Route::post('/admin/sp2hp/pdf', [SP2HPController::class, 'pdf']);
-	Route::get('/admin/sp2hp/excell', [SP2HPController::class, 'excell']);
+	Route::post('/admin/sp2hp/excel', [SP2HPController::class, 'excel']);
 
 	Route::post('/search', [SearchController::class, 'search']);
 });

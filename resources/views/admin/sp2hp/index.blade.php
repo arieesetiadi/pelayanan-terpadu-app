@@ -59,10 +59,12 @@
                     <button type="submit" class="btn">PDF</button>
                 </form>
 
-                {{-- <span class="fs-6 d-inline-block mx-1"> | </span>
-                <a target="_blank" href="/admin/sp2hp/excell">
-                    <span class="fs-6">Excell</span>
-                </a> --}}
+                <form target="_blank" action="/admin/sp2hp/excel" method="POST">
+                    @csrf
+                    <input hidden type="hidden" name="keyword" value="{{ $old['keyword'] ?? '' }}">
+                    <input hidden type="text" name="dateFilter" value="{{ $old['dateFilter'] ?? '' }}">
+                    <button type="submit" class="btn">Excel</button>
+                </form>
             </div>
         </div>
     </div>
