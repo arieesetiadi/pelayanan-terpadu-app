@@ -1,6 +1,14 @@
 @extends('layout.admin-template')
 
 @section('content')
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
     {{-- Alert success --}}
     @if (session('success'))
         <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
@@ -14,20 +22,10 @@
 
     <div class="container-fluid">
         <div class="row justify-content-between">
-            <div class="col-6">
+            <div class="col-4">
                 <h3>Laporan SKTLK</h3>
             </div>
             <div class="col-4 d-flex justify-content-end">
-                <!-- Include Required Prerequisites -->
-                <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-                <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-                {{-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" /> --}}
-
-                <!-- Include Date Range Picker -->
-                <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-                <link rel="stylesheet" type="text/css"
-                    href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-
                 <span class="mt-4 mx-2">Filter Tanggal : </span>
 
                 <form id="filterDateForm" action="/admin/sktlk/filter-date" method="POST">
@@ -36,22 +34,9 @@
                     <input name="dateFilter" type="text" class="d-inline-block form-control mt-3" id="filterDate"
                         {{ $old['dateFilter'] ?? '' }}>
                 </form>
-
-                <script type="text/javascript">
-                    $('#filterDate').daterangepicker({
-                        "alwaysShowCalendars": true,
-                        "parentEl": "body",
-                        "startDate": "10/14/2022",
-                        "endDate": "10/14/2022",
-                        "opens": "left"
-                    }, function(start, end, label) {
-                        $('#filterDate').val(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
-                        $("#filterDateForm").submit();
-                    });
-                </script>
             </div>
 
-            <div class="col-2 mt-3 d-flex justify-content-end">
+            <div class="col-4 mt-3 d-flex justify-content-end">
                 {{-- Tombol export PDF --}}
                 <form target="_blank" action="/admin/sktlk/pdf" method="POST">
                     @csrf
@@ -108,11 +93,6 @@
                                 data-bs-target="#upload-modal-{{ $sktlk->id }}">
                                 <i class="bi bi-upload"></i>
                             </a>
-
-                            {{-- Tombol ubah --}}
-                            {{-- <a href="#" class="" title="Ubah">
-                            <i class="bi bi-pencil-square"></i>
-                        </a> --}}
 
                             {{-- Tombol hapus --}}
                             <a href="/admin/sktlk/hapus/{{ $sktlk->id }}" title="Hapus"
@@ -276,4 +256,17 @@
     @else
         <center>Tidak ada laporan.</center>
     @endif
+
+    <script type="text/javascript">
+        $('#filterDate').daterangepicker({
+            "alwaysShowCalendars": true,
+            "parentEl": "body",
+            "startDate": "10/14/2022",
+            "endDate": "10/14/2022",
+            "opens": "left"
+        }, function(start, end, label) {
+            $('#filterDate').val(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+            $("#filterDateForm").submit();
+        });
+    </script>
 @endsection

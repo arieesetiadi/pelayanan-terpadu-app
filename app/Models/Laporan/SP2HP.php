@@ -74,4 +74,31 @@ class SP2HP extends Model
                 ->paginate(20);
         }
     }
+
+    public static function getByPeriod($start, $end)
+    {
+        $data = [];
+
+        foreach (getLokasi() as $lokasi) {
+            $data[$lokasi] = self
+                ::whereDate('dilaporkan_pada', '>=', $start)
+                ->whereDate('dilaporkan_pada', '<=', $end)
+                ->where('lokasi_kejadian', $lokasi)
+                ->count();
+        }
+
+        return $data;
+    }
+
+    public static function countPerLokasi($lokasi, $start, $end)
+    {
+        $start = Carbon::make('01-' . $start)->firstOfMonth()->toDateString();
+        $end = Carbon::make('01-' . $end)->lastOfMonth()->toDateString();
+
+        return self
+            ::whereDate('dilaporkan_pada', '>=', $start)
+            ->whereDate('dilaporkan_pada', '<=', $end)
+            ->where('lokasi_kejadian', $lokasi)
+            ->count();
+    }
 }

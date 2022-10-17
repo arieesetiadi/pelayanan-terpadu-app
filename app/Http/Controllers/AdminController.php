@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Laporan\SIK;
 use App\Models\Laporan\SKTLK;
 use App\Models\Laporan\SP2HP;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -41,5 +44,44 @@ class AdminController extends Controller
         return view('admin.profile', [
             'title' => 'Profile'
         ]);
+    }
+
+    public function laporanWilayah(Request $request)
+    {
+        $monthsPeriod = getMonthsPeriod($request->start, $request->end);
+
+        $start = Carbon::make('01-' . $request->start);
+        $end = Carbon::make('01-' . $request->end);
+
+        if ($start->eq($end)) {
+            $data['periode']  = $start->monthName . ' ' . $start->year;
+        } else {
+            $data['periode']  = $start->monthName . ' ' . $start->year . ' - ' . $end->monthName . ' ' . $end->year;
+        }
+
+        foreach ($monthsPeriod as $month) {
+            $current = Carbon::make($month);
+
+            $label = $current->monthName . ' ' . $current->year;
+            $start = $current->firstOfMonth()->toDateString();
+            $end = $current->lastOfMonth()->toDateString();
+
+            $data['laporan'][] = [
+                'label' => $label,
+                'laporanSKTLK' => SKTLK::getByPeriod($start, $end),
+                'laporanSIK' => SIK::getByPeriod($start, $end),
+                'laporanSP2HP' => SP2HP::getByPeriod($start, $end)
+            ];
+        }
+
+        foreach (getLokasi() as $lokasi) {
+            $countSKTLK = SKTLK::countPerLokasi($lokasi, $request->start, $request->end);
+            $countSIK =  SIK::countPerLokasi($lokasi, $request->start, $request->end);
+            $countSP2HP =  SP2HP::countPerLokasi($lokasi, $request->start, $request->end);
+            $data['countPerLokasi'][$lokasi] = $countSKTLK + $countSIK + $countSP2HP;
+        }
+
+        $pdf = PDF::loadview('pdf.laporan-per-wilayah', $data)->setPaper('a4', 'landscape');
+        return $pdf->stream('laporan-per-wilayah.pdf');
     }
 }

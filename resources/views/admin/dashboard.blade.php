@@ -737,5 +737,68 @@
                 @endif
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css"
+                    rel="stylesheet">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+                <script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+
+                <button id="filterDateWilayah" class="btn" data-bs-toggle="modal"
+                    data-bs-target="#laporanWilayahModal">Laporan per Wilayah</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="laporanWilayahModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" data-bs-backdrop="static">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form target="_blank" id="filterDateWilayahForm" action="/admin/laporan-wilayah"
+                                method="POST">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Periode Laporan</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @csrf
+                                    <label for="">Pilih Periode :</label>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" name="start" id="start" />
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" name="end" id="end" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $("#start").datepicker({
+                        format: "mm-yyyy",
+                        startView: "months",
+                        minViewMode: "months",
+                        endDate: "0m"
+                    });
+
+                    $("#end").datepicker({
+                        format: "mm-yyyy",
+                        startView: "months",
+                        minViewMode: "months",
+                        endDate: "0m"
+                    });
+                </script>
+            </div>
+        </div>
     </div>
 @endsection

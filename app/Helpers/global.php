@@ -247,3 +247,27 @@ function getNotifSP2HP($laporanId)
 {
     return Notifikasi::where('laporan_id', $laporanId)->orderBy('id', 'desc')->get()[0]->id;
 }
+
+function getMonthsPeriod($start, $end)
+{
+    $start = explode('-', $start);
+    $end = explode('-', $end);
+
+    $months = [];
+
+    $current = Carbon::create($start[1], $start[0]);
+    $finish = Carbon::create($end[1], $end[0]);
+
+    while ($current->lte($finish)) {
+        $months[] = $current->toDateString();
+
+        $current->addMonth(1);
+    }
+
+    return $months;
+}
+
+function getLokasi()
+{
+    return ['Abiansemal', 'Kuta', 'Kuta Selatan', 'Kuta Utara', 'Mengwi', 'Petang'];
+}
