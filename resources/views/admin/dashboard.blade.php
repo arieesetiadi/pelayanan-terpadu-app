@@ -1,7 +1,136 @@
 @extends('layout.admin-template')
 
 @section('content')
-    <h1 class="mb-4">Dashboard</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h1 class="mb-4">Dashboard</h1>
+            </div>
+            <div class="col-6 d-flex justify-content-end mt-2">
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css"
+                    rel="stylesheet">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+                <script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+
+                {{-- Export PDF per Wilayah --}}
+                <div>
+                    <button id="filterDateWilayah" class="btn" data-bs-toggle="modal"
+                        data-bs-target="#laporanWilayahModalPDF" title="Download PDF per Wilayah">
+                        <i class="fa-solid fa-file-pdf fa-2x text-danger"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="laporanWilayahModalPDF" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true" data-bs-backdrop="static">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form target="_blank" id="filterDateWilayahForm" action="/admin/laporan-wilayah/pdf"
+                                    method="POST">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Periode Laporan</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @csrf
+                                        <label for="">Pilih Periode :</label>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input type="text" class="form-control" name="start" id="startPDF" />
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="text" class="form-control" name="end" id="endPDF" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Tutup</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        $("#startPDF").datepicker({
+                            format: "mm-yyyy",
+                            startView: "months",
+                            minViewMode: "months",
+                            endDate: "0m"
+                        });
+
+                        $("#endPDF").datepicker({
+                            format: "mm-yyyy",
+                            startView: "months",
+                            minViewMode: "months",
+                            endDate: "0m"
+                        });
+                    </script>
+                </div>
+
+                {{-- Export Excel per Wilayah --}}
+                <div>
+                    <button id="filterDateWilayah" class="btn" data-bs-toggle="modal"
+                        data-bs-target="#laporanWilayahModalExcel" title="Download Excel per Wilayah">
+                        <i class="fa-solid fa-file-excel fa-2x text-success"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="laporanWilayahModalExcel" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true" data-bs-backdrop="static">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form target="_blank" id="filterDateWilayahForm" action="/admin/laporan-wilayah/excel"
+                                    method="POST">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Periode Laporan</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @csrf
+                                        <label for="">Pilih Periode :</label>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input type="text" class="form-control" name="start" id="startExcel" />
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="text" class="form-control" name="end" id="endExcel" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Tutup</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        $("#startExcel").datepicker({
+                            format: "mm-yyyy",
+                            startView: "months",
+                            minViewMode: "months",
+                            endDate: "0m"
+                        });
+
+                        $("#endExcel").datepicker({
+                            format: "mm-yyyy",
+                            startView: "months",
+                            minViewMode: "months",
+                            endDate: "0m"
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -103,7 +232,8 @@
                                             </td>
                                             <td>
                                                 {{-- Tombol upload --}}
-                                                <a href="#" class="" title="Upload File" data-bs-toggle="modal"
+                                                <a href="#" class="" title="Upload File"
+                                                    data-bs-toggle="modal"
                                                     data-bs-target="#upload-modal-{{ $sktlk->id }}">
                                                     <i class="bi bi-upload"></i>
                                                 </a>
@@ -118,7 +248,8 @@
 
                                                 {{-- Popup Upload File --}}
                                                 <div class="modal fade" id="upload-modal-{{ $sktlk->id }}"
-                                                    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                    aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -154,7 +285,8 @@
 
                                                 {{-- Popup Detail Dokumen --}}
                                                 <div class="modal fade" id="detail-modal-sktlk-{{ $sktlk->id }}"
-                                                    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                    aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -735,69 +867,6 @@
                         </div>
                     </div>
                 @endif
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css"
-                    rel="stylesheet">
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-                <script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
-
-                <button id="filterDateWilayah" class="btn" data-bs-toggle="modal"
-                    data-bs-target="#laporanWilayahModal">Laporan per Wilayah</button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="laporanWilayahModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true" data-bs-backdrop="static">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form target="_blank" id="filterDateWilayahForm" action="/admin/laporan-wilayah"
-                                method="POST">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Periode Laporan</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    @csrf
-                                    <label for="">Pilih Periode :</label>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <input type="text" class="form-control" name="start" id="start" />
-                                        </div>
-                                        <div class="col-6">
-                                            <input type="text" class="form-control" name="end" id="end" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <script>
-                    $("#start").datepicker({
-                        format: "mm-yyyy",
-                        startView: "months",
-                        minViewMode: "months",
-                        endDate: "0m"
-                    });
-
-                    $("#end").datepicker({
-                        format: "mm-yyyy",
-                        startView: "months",
-                        minViewMode: "months",
-                        endDate: "0m"
-                    });
-                </script>
             </div>
         </div>
     </div>

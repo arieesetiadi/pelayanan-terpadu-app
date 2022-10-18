@@ -117,24 +117,56 @@
             <th>Dilaporkan Pada</th>
         </tr>
 
-        @foreach ($laporanSIK as $i => $item)
-            <tr>
-                <td>{{ $i + 1 }}</td>
-                <td>{{ $item->nama_organisasi }}</td>
-                <td>{{ $item->nama_penanggung_jawab }}</td>
-                <td>{{ $item->alamat }}</td>
-                <td>{{ $item->telepon }}</td>
-                <td>{{ $item->bentuk_kegiatan }}</td>
-                <td>{{ $item->waktu_mulai }}</td>
-                <td>{{ $item->waktu_selesai }}</td>
-                <td>{{ $item->lokasi_kegiatan }}</td>
-                <td>{{ $item->detail_lokasi_kegiatan }}</td>
-                <td>{{ $item->dalam_rangka }}</td>
-                <td>{{ $item->jumlah_undangan }}</td>
-                <td>{{ dateFormat($item->dilaporkan_pada) }}</td>
-            </tr>
+        @php
+            $i = 1;
+        @endphp
+        @foreach ($laporanSIK as $item)
+            @if ($item->lokasi_kegiatan != null)
+                <tr>
+                    <td>{{ $i++ }}</td>
+                    <td>{{ $item->nama_organisasi }}</td>
+                    <td>{{ $item->nama_penanggung_jawab }}</td>
+                    <td>{{ $item->alamat }}</td>
+                    <td>{{ $item->telepon }}</td>
+                    <td>{{ $item->bentuk_kegiatan }}</td>
+                    <td>{{ $item->waktu_mulai }}</td>
+                    <td>{{ $item->waktu_selesai }}</td>
+                    <td>{{ $item->lokasi_kegiatan }}</td>
+                    <td>{{ $item->detail_lokasi_kegiatan }}</td>
+                    <td>{{ $item->dalam_rangka }}</td>
+                    <td>{{ $item->jumlah_undangan }}</td>
+                    <td>{{ dateFormat($item->dilaporkan_pada) }}</td>
+                </tr>
+            @endif
         @endforeach
     </table>
+
+    <div style="margin-top: 40px; display: flex;">
+        <center style="width: 25%; float: right">
+            <span style="display: block; text-align: center;">
+                Mengetahui
+            </span>
+            <span style="display: block; text-align: center;">
+                Kepala Kepolisian Resor Badung,
+            </span>
+
+            <center>
+                {{-- <img width="150" src="{{ $ttdPath }}"> --}}
+            </center>
+            <br><br><br><br>
+
+            <span style="display: block; text-align: center;">
+                Leo Dedy Defretes, SIK, SH, MH
+            </span>
+            <center>
+                <hr style="margin: 2px 0; text-align: center">
+            </center>
+            <span style="display: block;
+                            text-align: center;">
+                AKBP NRP 123456
+            </span>
+        </center>
+    </div>
 </body>
 
 </html>

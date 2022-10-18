@@ -211,4 +211,16 @@ class SIK extends Model
             ->where('lokasi_kegiatan', $lokasi)
             ->count();
     }
+
+    public static function countByPeriod($start, $end)
+    {
+        $start = Carbon::make($start)->firstOfMonth()->toDateString();
+        $end = Carbon::make($end)->lastOfMonth()->toDateString();
+
+        return self
+            ::whereDate('dilaporkan_pada', '>=', $start)
+            ->whereDate('dilaporkan_pada', '<=', $end)
+            ->where('lokasi_kegiatan', '!=', null)
+            ->count();
+    }
 }

@@ -46,7 +46,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function laporanWilayah(Request $request)
+    public function laporanWilayahPDF(Request $request)
     {
         $monthsPeriod = getMonthsPeriod($request->start, $request->end);
 
@@ -59,19 +59,23 @@ class AdminController extends Controller
             $data['periode']  = $start->monthName . ' ' . $start->year . ' - ' . $end->monthName . ' ' . $end->year;
         }
 
-        foreach ($monthsPeriod as $month) {
+        foreach ($monthsPeriod as $i => $month) {
             $current = Carbon::make($month);
 
             $label = $current->monthName . ' ' . $current->year;
             $start = $current->firstOfMonth()->toDateString();
             $end = $current->lastOfMonth()->toDateString();
 
-            $data['laporan'][] = [
+            $data['laporan'][$i] = [
                 'label' => $label,
                 'laporanSKTLK' => SKTLK::getByPeriod($start, $end),
                 'laporanSIK' => SIK::getByPeriod($start, $end),
                 'laporanSP2HP' => SP2HP::getByPeriod($start, $end)
             ];
+
+            $data['countPerPeriod'][$label]['SKTLK'] = SKTLK::countByPeriod($start, $end);
+            $data['countPerPeriod'][$label]['SIK'] = SIK::countByPeriod($start, $end);
+            $data['countPerPeriod'][$label]['SP2HP'] = SP2HP::countByPeriod($start, $end);
         }
 
         foreach (getLokasi() as $lokasi) {
@@ -83,5 +87,47 @@ class AdminController extends Controller
 
         $pdf = PDF::loadview('pdf.laporan-per-wilayah', $data)->setPaper('a4', 'landscape');
         return $pdf->stream('laporan-per-wilayah.pdf');
+    }
+
+    public function laporanWilayahExcel(Request $request)
+    {
+        $monthsPeriod = getMonthsPeriod($request->start, $request->end);
+
+        $start = Carbon::make('01-' . $request->start);
+        $end = Carbon::make('01-' . $request->end);
+
+        if ($start->eq($end)) {
+            $data['periode']  = $start->monthName . ' ' . $start->year;
+        } else {
+            $data['periode']  = $start->monthName . ' ' . $start->year . ' - ' . $end->monthName . ' ' . $end->year;
+        }
+
+        foreach ($monthsPeriod as $i => $month) {
+            $current = Carbon::make($month);
+
+            $label = $current->monthName . ' ' . $current->year;
+            $start = $current->firstOfMonth()->toDateString();
+            $end = $current->lastOfMonth()->toDateString();
+
+            $data['laporan'][$i] = [
+                'label' => $label,
+                'laporanSKTLK' => SKTLK::getByPeriod($start, $end),
+                'laporanSIK' => SIK::getByPeriod($start, $end),
+                'laporanSP2HP' => SP2HP::getByPeriod($start, $end)
+            ];
+
+            $data['countPerPeriod'][$label]['SKTLK'] = SKTLK::countByPeriod($start, $end);
+            $data['countPerPeriod'][$label]['SIK'] = SIK::countByPeriod($start, $end);
+            $data['countPerPeriod'][$label]['SP2HP'] = SP2HP::countByPeriod($start, $end);
+        }
+
+        foreach (getLokasi() as $lokasi) {
+            $countSKTLK = SKTLK::countPerLokasi($lokasi, $request->start, $request->end);
+            $countSIK =  SIK::countPerLokasi($lokasi, $request->start, $request->end);
+            $countSP2HP =  SP2HP::countPerLokasi($lokasi, $request->start, $request->end);
+            $data['countPerLokasi'][$lokasi] = $countSKTLK + $countSIK + $countSP2HP;
+        }
+
+        return view('excel.laporan-per-wilayah', $data);
     }
 }

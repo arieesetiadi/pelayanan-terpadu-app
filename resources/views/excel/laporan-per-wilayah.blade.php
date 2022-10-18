@@ -1,3 +1,8 @@
+<?php
+header('Content-type: application/vnd-ms-excel');
+header('Content-Disposition: attachment; filename=laporan-per-wilayah.xls');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,51 +56,76 @@
         th {
             padding: 1px 5px
         }
+
+        p,
+        span,
+        td,
+        th,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <table style="width: 100%">
         <tr>
-            <td style="width: 60%">
-                <center>
-                    <span style="font-weight: bolder; display: block">KEPOLISIAN NEGARA REPUBLIK INDONESIA</span>
-                    <span style="font-weight: bolder; display: block">DAERAH KABUPATEN BADUNG</span>
-                    <span style="font-weight: bolder; display: block; text-decoration: underline">
-                        SENTRA PELAYANAN
-                        KEPOLISIAN
-                        TERPADU
-                    </span>
-                    <span style="display: block">Jl. Kebo Iwa No.1, Mengwitani, Mengwi</span>
-                </center>
-            </td>
-            <td style="width: 40%">
-                <table style="width: 100%">
+            <td colspan="11">
+                <table>
                     <tr>
-                        <td style="width: 70px">
-                            <small>LAMPIRAN</small>
-                        </td>
-                        <td>:</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 70px">
-                            <small>NOMOR</small>
-                        </td>
-                        <td>:</td>
-                        <td>...</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 70px">
-                            <small>TANGGAL</small>
-                        </td>
-                        <td>:</td>
                         <td>
-                            <small>{{ dateFormat(now()->toDateString()) }}</small>
+                            <center>
+                                <span style="font-weight: bolder; display: block">KEPOLISIAN NEGARA REPUBLIK
+                                    INDONESIA</span>
+                                <span style="font-weight: bolder; display: block">DAERAH KABUPATEN BADUNG</span>
+                                <span style="font-weight: bolder; display: block; text-decoration: underline">
+                                    SENTRA PELAYANAN
+                                    KEPOLISIAN
+                                    TERPADU
+                                </span>
+                                <span style="display: block">Jl. Kebo Iwa No.1, Mengwitani, Mengwi</span>
+                            </center>
+                        </td>
+                        <td>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width: 70px">
+                                        <small>LAMPIRAN</small>
+                                    </td>
+                                    <td>:</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 70px">
+                                        <small>NOMOR</small>
+                                    </td>
+                                    <td>:</td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 70px">
+                                        <small>TANGGAL</small>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <small>{{ dateFormat(now()->toDateString()) }}</small>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>
             </td>
+        </tr>
+        <tr>
+            @for ($i = 0; $i < 11; $i++)
+                <td></td>
+            @endfor
         </tr>
     </table>
 
@@ -143,7 +173,7 @@
             <td></td>
         </tr>
     </table>
-
+    <br><br>
     <div style="margin-top: 40px; display: flex;">
         <center style="width: 25%; float: right">
             <span style="display: block; text-align: center;">

@@ -82,7 +82,8 @@ Route::get('/notifikasi/cetak-pdf/{id}', [NotifikasiController::class, 'cetakPDF
 Route::middleware('auth')->group(function () {
 	Route::get('/dashboard', [AdminController::class, 'dashboard']);
 	Route::get('/profile', [AdminController::class, 'profile']);
-	Route::post('/admin/laporan-wilayah', [AdminController::class, 'laporanWilayah']);
+	Route::post('/admin/laporan-wilayah/pdf', [AdminController::class, 'laporanWilayahPDF']);
+	Route::post('/admin/laporan-wilayah/excel', [AdminController::class, 'laporanWilayahExcel']);
 
 	Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
 	Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);

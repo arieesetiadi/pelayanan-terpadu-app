@@ -141,4 +141,15 @@ class SKTLK extends Model
             ->where('lokasi_kejadian', $lokasi)
             ->count();
     }
+
+    public static function countByPeriod($start, $end)
+    {
+        $start = Carbon::make($start)->firstOfMonth()->toDateString();
+        $end = Carbon::make($end)->lastOfMonth()->toDateString();
+
+        return self
+            ::whereDate('dilaporkan_pada', '>=', $start)
+            ->whereDate('dilaporkan_pada', '<=', $end)
+            ->count();
+    }
 }

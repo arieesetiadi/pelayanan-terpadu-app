@@ -302,7 +302,7 @@ class SP2HPController extends Controller
             $data['laporanSP2HP'] = SP2HP::getSP2HP();
         }
 
-        $pdf = PDF::loadview('pdf.sp2hp-all', $data);
+        $pdf = PDF::loadview('pdf.sp2hp-all', $data)->setPaper('a4', 'landscape');
         return $pdf->stream('laporan-sp2hp.pdf');
     }
 
