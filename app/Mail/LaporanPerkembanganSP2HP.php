@@ -33,11 +33,16 @@ class LaporanPerkembanganSP2HP extends Mailable
     public function build()
     {
         $data['keterangan'] = $this->keterangan;
-        
-        return $this
-        ->to($this->pelapor)
-        ->subject('Perkembangan SP2HP')
-        ->attach(public_path('assets-user\upload\\') . $this->perkembangan)
-        ->view('email.sp2hp-upload-perkembangan', $data);
+
+        $email = $this
+            ->to($this->pelapor)
+            ->subject('Perkembangan SP2HP')
+            ->view('email.sp2hp-upload-perkembangan', $data);
+
+        if (!is_null($this->perkembangan)) {
+            $email->attach(public_path('assets-user\upload\\') . $this->perkembangan);
+        }
+
+        return $email;
     }
 }

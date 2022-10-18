@@ -63,7 +63,7 @@
 
         <h3>SURAT KETERANGAN TANDA LAPOR KEHILANGAN</h3>
 
-        <p>Pada hari ini {{ dateFormat($laporan->diunggah_pada) }} pukul {{ timeFormat($laporan->diunggah_pada) }}
+        <p>Pada hari ini {{ dateFormat($laporan->dilaporkan_pada) }} pukul {{ timeFormat($laporan->dilaporkan_pada) }}
             telah melaporkan ke Polres Badung yang mengaku :
         </p>
 

@@ -131,21 +131,27 @@ class SP2HPController extends Controller
 
     public function uploadKeterangan(Request $request)
     {
-        $path = 'assets-user/upload/';
-
         // Ambil data dari form upload
         $laporan = SP2HP::find($request->id);
         $pelapor = User::find($laporan->pelapor_id);
+        $filePerkembangan = null;
+
+        if (!is_null($request->file('file'))) {
+            $path = 'assets-user/upload/';
+            $filePerkembangan = uploadFile($request->file('file'), $path);
+
+            // Update data perkembangan ke database
+            $laporan->update([
+                'file_pemberitahuan' => $filePerkembangan,
+            ]);
+        }
 
         $keterangan = $request->keterangan;
-        $perkembangan = uploadFile($request->file('file'), $path);
-
-        // Update data perkembangan ke database
         $laporan->update([
-            'file_pemberitahuan' => $perkembangan,
             'keterangan_pemberitahuan' => $keterangan,
             'perkembangan' => 'Sedang Diproses'
         ]);
+
 
         // Kirim notifikasi ke halaman pelapor
         $toPelapor = [
@@ -161,7 +167,7 @@ class SP2HPController extends Controller
         Notifikasi::insert($toPelapor);
 
         // Kirim notifikasi ke email pelapor
-        Mail::send(new LaporanPerkembanganSP2HP($perkembangan, $keterangan, $pelapor));
+        Mail::send(new LaporanPerkembanganSP2HP($filePerkembangan, $keterangan, $pelapor));
 
         // Redirect ke halaman admin SP2HP
         return redirect()->to('admin/sp2hp')->with('success', 'Anda berhasil mengunggah pemberitahuan ke pelapor.');

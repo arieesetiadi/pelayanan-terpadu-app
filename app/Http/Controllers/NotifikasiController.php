@@ -112,7 +112,14 @@ class NotifikasiController extends Controller
             case 'sp2hp':
                 $laporan = SP2HP::find($notifikasi->laporan_id);
                 if ($laporan->status == null && $laporan->perkembangan == null) {
-                    return view('admin.sp2hp.notifikasi');
+                    $data = [
+                        'laporan' => $laporan,
+                        'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
+                        'terlapor' => explode(',', trim($laporan->terlapor, ' ')),
+                        'saksi' => json_decode($laporan->saksi),
+                        'bukti' => json_decode($laporan->bukti),
+                    ];
+                    return view('admin.sp2hp.notifikasi', $data);
                 } elseif ($laporan->status) {
                     // Export PDF
                     $data = [
