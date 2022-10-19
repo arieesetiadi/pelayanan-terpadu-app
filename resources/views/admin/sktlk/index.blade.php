@@ -87,7 +87,7 @@
                             </a>
                         </td>
                         <td>{{ dateTimeFormat($sktlk->dilaporkan_pada) }}</td>
-                        <td>
+                        <td style="width: 100px">
                             {{-- Tombol upload --}}
                             <a href="#" class="" title="Upload File" data-bs-toggle="modal"
                                 data-bs-target="#upload-modal-{{ $sktlk->id }}">
@@ -99,6 +99,13 @@
                                 onclick="return confirm('Apakah anda yakin untuk menghapus data SKTLK ?')">
                                 <i class="bi bi-trash-fill"></i>
                             </a>
+
+                            {{-- Tombol selesai --}}
+                            @if ($sktlk->dokumen_persetujuan != null)
+                                <a title="Telah Selesai">
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                </a>
+                            @endif
 
                             {{-- ===================================== --}}
 

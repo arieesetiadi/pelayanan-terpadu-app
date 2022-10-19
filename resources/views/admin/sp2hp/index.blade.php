@@ -214,7 +214,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <h6>Tanggal Kejadian</h6>
-                                            <span>{{ $item->tanggal_kejadian }}</span>
+                                            <span>{{ dateFormat($item->tanggal_kejadian) }}</span>
 
                                             <h6 class="mt-4">Isi Laporan:</h6>
                                             <span>{{ $item->isi_laporan }}</span>
@@ -222,6 +222,48 @@
                                             <h6 class="mt-4">Lokasi Kejadian:</h6>
                                             <span>{{ $item->lokasi_kejadian }} |
                                                 {{ $item->detail_lokasi_kejadian }}</span>
+
+                                            <h6 class="mt-4">Terlapor :</h6>
+                                            <span>{{ $item->terlapor ?? '-' }}</span>
+
+                                            <h6 class="mt-4">Saksi - saksi :</h6>
+                                            <div>
+                                                @php
+                                                    $saksi = json_decode($item->saksi);
+                                                @endphp
+                                                @if ($saksi->nama[0] != null)
+                                                    <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
+                                                        @for ($i = 0; $i < count($saksi->nama); $i++)
+                                                            <li>{{ $saksi->nama[$i] }}, {{ $saksi->umur[$i] }} tahun,
+                                                                {{ $saksi->pekerjaan[$i] }},
+                                                                {{ $saksi->alamat[$i] }}</li>
+                                                        @endfor
+                                                    </ol>
+                                                @else
+                                                    -
+                                                @endif
+                                            </div>
+                                            <h6 class="mt-4">Bukti - bukti :</h6>
+                                            <div>
+                                                @php
+                                                    $bukti = json_decode($item->bukti);
+                                                @endphp
+                                                @if ($bukti->namaBukti[0] != null)
+                                                    <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
+                                                        @for ($i = 0; $i < count($bukti->namaBukti); $i++)
+                                                            <li>
+                                                                <i class="bi bi-download"></i>
+                                                                <a href="{{ asset('assets-user/upload/') . '/' . $bukti->gambarBukti[$i] }}"
+                                                                    target="_blank">
+                                                                    {{ $bukti->namaBukti[$i] }}
+                                                                </a>
+                                                            </li>
+                                                        @endfor
+                                                    </ol>
+                                                @else
+                                                    -
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"

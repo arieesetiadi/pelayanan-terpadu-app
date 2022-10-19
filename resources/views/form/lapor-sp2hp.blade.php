@@ -282,8 +282,8 @@
                                             {{ isset($laporan) && $laporan->kategori == 'Pembunuhan' ? 'selected' : '' }}
                                             value="Pembunuhan">Pembunuhan</option>
                                         <option
-                                            {{ isset($laporan) && $laporan->kategori == 'Perkosaan' ? 'selected' : '' }}
-                                            value="Perkosaan">Perkosaan</option>
+                                            {{ isset($laporan) && $laporan->kategori == 'Pemerkosaan' ? 'selected' : '' }}
+                                            value="Pemerkosaan">Pemerkosaan</option>
                                         <option
                                             {{ isset($laporan) && $laporan->kategori == 'Perzinahan' ? 'selected' : '' }}
                                             value="Perzinahan">Perzinahan</option>

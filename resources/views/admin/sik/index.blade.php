@@ -177,6 +177,13 @@
                                     onclick="return confirm('Apakah anda yakin untuk menghapus data SIK ?')">
                                     <i class="bi bi-trash-fill"></i>
                                 </a>
+
+                                {{-- Tombol selesai --}}
+                                @if ($sik->dokumen_persetujuan != null)
+                                    <a title="Telah Selesai">
+                                        <i class="bi bi-check-circle-fill text-success"></i>
+                                    </a>
+                                @endif
                             </td>
 
                             {{-- Pop up Detail Dokumen --}}

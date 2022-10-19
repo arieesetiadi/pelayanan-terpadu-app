@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Okt 2022 pada 15.05
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.2
+-- Waktu pembuatan: 19 Okt 2022 pada 15.42
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,7 +55,7 @@ CREATE TABLE `laporan_sik` (
   `dokumen_persetujuan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `foto_pelapor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dilaporkan_pada` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `dilaporkan_pada` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -66,7 +66,7 @@ INSERT INTO `laporan_sik` (`id`, `nama_organisasi`, `nama_penanggung_jawab`, `pe
 (2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 1, '1663822167_proposal kegiatan.jpg', '1663822167_izin lokasi kegiatan.jpg', '1663822167_surat rekomendasi.jpg', '1663822167_foto ktp.jpg', '1663822167_surat rekomendasi.jpg', NULL, 8, NULL, NULL, NULL, NULL, NULL, '2022-09-22 04:49:27'),
 (3, 'ass', 'ass', 'ass', 'ass', '2121', 'add', '2020-12-12 10:00:00', '2020-12-12 12:00:00', 'Mengwi', '', 'ads', 1212, 1, '1664286064_proposal kegiatan.jpg', '1664286064_izin lokasi kegiatan.jpg', '1664286064_izin lokasi kegiatan.jpg', '1664286064_foto ktp.jpg', '1664286064_surat rekomendasi.jpg', '1664286251_pernyataan-keaslian.pdf', 8, NULL, NULL, '1664286319_laporan sktlk.pdf', '1664286251_foto ktp.jpg', '1664286251_orang dan katp2.png', '2022-09-27 13:41:04'),
 (4, 'wewe', 'hgh', 'jgk', 'jhgj', '878', 'ghj', '0122-12-12 12:00:00', '1999-12-12 12:00:00', 'Abiansemal', '', 'jbmn', 656, 1, '1664288769_proposal kegiatan.jpg', '1664288769_izin lokasi kegiatan.jpg', '1664288769_surat rekomendasi.jpg', '1664288769_maudy.jpeg', '1664288769_surat rekomendasi.jpg', '1664289357_pernyataan-keaslian.pdf', 8, NULL, 'draft', NULL, '1664289357_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664289357_whatsapp image 2022-09-27 at 09.46.45.jpeg', '2022-09-27 04:41:49'),
-(5, 'STT Wira Bhakti', 'Astra Swarriana', 'Laboran', 'Br. Pande Mengwi', '087889889898', 'Sosialisasi Pengetahuan Hand Hygiene', '2022-12-12 09:00:00', '2022-12-12 13:00:00', 'Mengwi', 'Jl. Walmiki no 23 B', 'HUT Desa Mengwi', 250, 1, '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244387_pernyataan-keaslian (1).pdf', 8, NULL, NULL, NULL, '1665244387_foto ktp.jpg', '1665244387_orang dan katp2.png', '2022-10-08 15:46:52'),
+(5, 'STT Wira Bhakti', 'Astra Swarriana', 'Laboran', 'Br. Pande Mengwi', '087889889898', 'Sosialisasi Pengetahuan Hand Hygiene', '2022-12-12 09:00:00', '2022-12-12 13:00:00', 'Mengwi', 'Jl. Walmiki no 23 B', 'HUT Desa Mengwi', 250, 1, '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244012_pernyataan-keaslian.pdf', '1665244387_pernyataan-keaslian (1).pdf', 8, NULL, NULL, '1666185868_cream white minimalist real estate for sale instagram story (1).pdf', '1665244387_foto ktp.jpg', '1665244387_orang dan katp2.png', '2022-10-08 15:46:52'),
 (6, 'Sentosa Abadi', 'Abel Alteesa', 'Guru', 'Gang Nuri no 22', '09889898898', 'Sosialisasi Pengaruh Hand Hygene pada Masyarakat Umum', '2022-12-12 10:00:00', '2022-12-12 14:00:00', 'Kuta', 'Balai Desa Kuta Jl Nuri no 109', 'HUT Kecamatan Kuta', 200, 1, '1666100136_proposal kegiatan.jpg', '1666100136_izin lokasi kegiatan.jpg', '1666100136_surat rekomendasi.jpg', '', '1666100136_surat rekomendasi.jpg', '1666100478_pernyataan-keaslian (1).pdf', 8, NULL, NULL, '1666102470_validasi-sp2hp.pdf', '1666100478_foto ktp.jpg', '1666100478_orang dan katp2.png', '2022-10-18 13:35:36');
 
 -- --------------------------------------------------------
@@ -95,7 +95,7 @@ CREATE TABLE `laporan_sktlk` (
   `pernyataan_keaslian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pelapor_id` int(11) NOT NULL,
   `dokumen_persetujuan` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dilaporkan_pada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `dilaporkan_pada` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -104,7 +104,7 @@ CREATE TABLE `laporan_sktlk` (
 
 INSERT INTO `laporan_sktlk` (`id`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `kewarganegaraan`, `alamat`, `telepon`, `tanggal_kejadian`, `detail_lokasi_kejadian`, `lokasi_kejadian`, `surat_hilang`, `foto_ktp`, `foto_pelapor`, `rekomendasi_instansi`, `dokumen_tambahan`, `pernyataan_keaslian`, `pelapor_id`, `dokumen_persetujuan`, `dilaporkan_pada`) VALUES
 (1, 'qwerty', 'nb', '2020-02-12', 'aps', 'Warga Negara Indonesia', 'kg', '878', '2011-12-12', '', 'Abiansemal', 'fyjh', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '', '1664287627_pernyataan-keaslian.pdf', 8, NULL, '2022-09-27 03:43:29'),
-(2, 'Arie', 'Denpasar', '2000-02-12', 'Mahasiswa', 'Warga Negara Indonesia', 'Mengwi', '082146335727', '2011-12-12', '', 'Mengwi', 'STNK, Surat Tanah', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '', '1664287627_pernyataan-keaslian.pdf', 8, NULL, '2022-10-08 03:43:29'),
+(2, 'Arie', 'Denpasar', '2000-02-12', 'Mahasiswa', 'Warga Negara Indonesia', 'Mengwi', '082146335727', '2011-12-12', '', 'Mengwi', 'STNK, Surat Tanah', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664287627_whatsapp image 2022-09-27 at 09.46.45.jpeg', '', '1664287627_pernyataan-keaslian.pdf', 8, '1666185745_pengesahan.pdf', '2022-10-08 03:43:29'),
 (3, 'Wulan Sari', 'Denpasar', '2000-08-18', 'PNS', 'Warga Negara Indonesia', 'Br. Serangan Mengwi', '08789987898', '2022-09-20', 'Gang Rama no. 16 mengwi', 'Mengwi', 'Surat akta tanah', '1665242756_foto ktp.jpg', '1665242756_orang dan katp2.png', '1665242756_surat rekomendasi.jpg', '', '1665242756_pernyataan-keaslian.pdf', 8, NULL, '2022-10-11 15:25:56'),
 (4, 'Arwan Singgih', 'Singaraja', '1988-04-13', 'PNS', 'Warga Negara Indonesia', 'Br. Pande Abiansemal', '098778766878', '2022-09-17', 'Jl. Sugi no 12', 'Abiansemal', 'SIM', '1666099172_foto ktp.jpg', '1666099172_orang dan ktp.jpg', '1666099172_surat rekomendasi.jpg', '', '1666099172_pernyataan-keaslian.pdf', 8, '1666099698_laporan sktlk1.pdf', '2022-10-18 13:19:32'),
 (5, 'Ardiman Wirawan', 'Gianyar', '1980-02-03', 'PNS', 'Warga Negara Indonesia', 'Jl Sumbawa no 33', '081223889892', '2020-10-10', 'Jl Nusa Indah B 22', 'Kuta Utara', 'Akta tanah', '1666182205_foto ktp.jpg', '1666182205_orang dan katp2.png', '1666182205_surat rekomendasi.jpg', '', '1666182205_pernyataan-keaslian (2).pdf', 8, '1666183300_laporan agam.pdf', '2022-10-19 12:23:25'),
@@ -134,18 +134,18 @@ CREATE TABLE `laporan_sp2hp` (
   `detail_lokasi_kejadian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kategori` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `terlapor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `bukti` text COLLATE utf8mb4_unicode_ci,
-  `saksi` text COLLATE utf8mb4_unicode_ci,
+  `bukti` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `saksi` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `foto_pelapor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lampiran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `file_pemberitahuan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `keterangan_pemberitahuan` text COLLATE utf8mb4_unicode_ci,
+  `keterangan_pemberitahuan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `perkembangan` enum('Sedang diproses','Selesai') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `nomor_polisi` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pelapor_id` int(11) NOT NULL,
-  `dilaporkan_pada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `dilaporkan_pada` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -155,9 +155,9 @@ CREATE TABLE `laporan_sp2hp` (
 INSERT INTO `laporan_sp2hp` (`id`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `pekerjaan`, `kewarganegaraan`, `alamat`, `telepon`, `judul_laporan`, `isi_laporan`, `tanggal_kejadian`, `lokasi_kejadian`, `detail_lokasi_kejadian`, `kategori`, `terlapor`, `bukti`, `saksi`, `foto_ktp`, `foto_pelapor`, `lampiran`, `file_pemberitahuan`, `keterangan_pemberitahuan`, `perkembangan`, `status`, `nomor_polisi`, `pelapor_id`, `dilaporkan_pada`) VALUES
 (2, 'asa', 'werre', '1999-12-02', 'dfgg', 'Warga Negara Indonesia', 'jhj', '878', 'kjjjk', 'gcvbn', '1999-12-04', 'Mengwi', 'asdfsde', 'KDRT', 'Dimas Revaldi, Farhan Dimas, Alif Rajab 2', '{\"namaBukti\":[\"sfsf 222222\",\"sffafd 222\"],\"gambarBukti\":[\"1664894423_foto ktp.jpg\",\"1664894423_foto ktp.jpg\"]}', '{\"nama\":[\"afsdf 2\",\"sfafa 22\"],\"umur\":[\"122\",\"2222\"],\"pekerjaan\":[\"weqe 2\",\"ewrw 2 2\"],\"alamat\":[\"weqe 2\",\"ewrw 2 2\"]}', '1664290004_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664290004_whatsapp image 2022-09-27 at 09.46.45.jpeg', '1664290004_whatsapp image 2022-09-27 at 09.46.45.jpeg', NULL, NULL, NULL, 1, 'LP/005/K/IX/2022/Polres Badung', 8, '2022-10-08 14:48:59'),
 (3, 'asas 23', 'sdad 23', '0002-02-02', 'daa 23', 'Warga Negara Asing', 'fdafs 2', '121 2', 'ada 2', 'afdsdf 2', '0022-02-02', 'Abiansemal', 'zczvsd 2', 'Penganiayaan', 'Dimas Revaldi, Farhan Dimas, Alif Rajab 2', '{\"namaBukti\":[\"sfsf 222222\",\"sffafd 222\"],\"gambarBukti\":[\"1664894423_foto ktp.jpg\",\"1664894423_foto ktp.jpg\"]}', '{\"nama\":[\"afsdf 2\",\"sfafa 22\"],\"umur\":[\"122\",\"2222\"],\"pekerjaan\":[\"weqe 2\",\"ewrw 2 2\"],\"alamat\":[\"weqe 2\",\"ewrw 2 2\"]}', '1664894423_foto ktp.jpg', '1664894423_orang dan katp2.png', '1664894423_proposal kegiatan.jpg', NULL, NULL, NULL, 0, NULL, 8, '2022-10-11 13:24:30'),
-(4, 'Kamio Eichii', 'Kyoto', '1999-12-12', 'PNS', 'Warga Negara Indonesia', 'Kyoto, Jepang', '989889899', 'Pencurian Sepeda Ontel', 'Menurut Imran, pelaku biasa mengincar rumah kosong dan menggasak barang yang ada milik korban. “Salah satu pelaku ini residivis kasus serupa. Pada tahun 2020 yang bersangkutan sudah melakukan masa penahannya di LP, kali ini tertangkap lagi. Pada aksinya kemarin, pelaku menggasak dua sepeda senilai Rp260 juta. “Harga sepeda ini satu unitnya Rp130 juta, kalau dua berarti Rp260 juta. Selanjutnya sepeda hasil curian dijual ke pembeli dengan sistem COD. Atas perbuatannya kedua pelaku akan dijerat Pasal 363 KUHP tentang Pencurian dengan ancaman hukuman di atas lima tahun penjara.', '2020-12-12', 'Mengwi', ' Jalan Merdeka No 21 A III', 'Pencurian', 'Mamoko Ikenega', '{\"namaBukti\":[\"Buku Kerja\",\"Kertas merah\"],\"gambarBukti\":[\"1664977167_7.jpeg\",\"1664977167_7.jpeg\"]}', '{\"nama\":[\"Kenta Takeshi\",\"Kansai Ryokuse\"],\"umur\":[\"40\",\"44\"],\"pekerjaan\":[\"PNS\",\"PNS\"],\"alamat\":[\"PNS\",\"PNS\"]}', '1664977167_11.jpeg', '', '', '1665066780_339901002-blangko-laporan-polisi-doc.pdf', 'Laporan Anda telah diterima. Silahkan menunggu jadwal pertemuan langsung ke Polres Badung', 'Selesai', 1, 'LP/002/K/X/2022/Polres Badung', 8, '2022-10-11 13:22:09'),
+(4, 'Kamio Eichii', 'Kyoto', '1999-12-12', 'PNS', 'Warga Negara Indonesia', 'Kyoto, Jepang', '989889899', 'Pencurian Sepeda Ontel', 'Menurut Imran, pelaku biasa mengincar rumah kosong dan menggasak barang yang ada milik korban. “Salah satu pelaku ini residivis kasus serupa. Pada tahun 2020 yang bersangkutan sudah melakukan masa penahannya di LP, kali ini tertangkap lagi. Pada aksinya kemarin, pelaku menggasak dua sepeda senilai Rp260 juta. “Harga sepeda ini satu unitnya Rp130 juta, kalau dua berarti Rp260 juta. Selanjutnya sepeda hasil curian dijual ke pembeli dengan sistem COD. Atas perbuatannya kedua pelaku akan dijerat Pasal 363 KUHP tentang Pencurian dengan ancaman hukuman di atas lima tahun penjara.', '2020-12-12', 'Mengwi', ' Jalan Merdeka No 21 A III', 'Pencurian', 'Mamoko Ikenega', '{\"namaBukti\":[\"Buku Kerja\",\"Kertas merah\"],\"gambarBukti\":[\"1664977167_7.jpeg\",\"1664977167_7.jpeg\"]}', '{\"nama\":[\"Kenta Takeshi\",\"Kansai Ryokuse\"],\"umur\":[\"40\",\"44\"],\"pekerjaan\":[\"PNS\",\"PNS\"],\"alamat\":[\"Mengwi\",\"Petang\"]}', '1664977167_11.jpeg', '', '', '1665066780_339901002-blangko-laporan-polisi-doc.pdf', 'Laporan Anda telah diterima. Silahkan menunggu jadwal pertemuan langsung ke Polres Badung', 'Selesai', 1, 'LP/002/K/X/2022/Polres Badung', 8, '2022-10-19 13:36:34'),
 (5, 'Ruri Narendra', 'Jambi', '1990-03-22', 'PNS', 'Warga Negara Indonesia', 'Jl. Indah Surya no 100', '0877898989898', 'Pencurian Motor', 'Meski begitu, fitur tersebut rupanya tidak 100 persen aman dari tindak kejahatan. Aksi mereka biasanya hanya bermodalkan sebuah instalasi elektrikal sederhana yang berfungsi untuk membuka akses kunci motor, dengan melakukan bypass ECU motor.Menanggapi ramainya kasus PCX 150 yang jadi incaran maling, General Manager Corporate Communication PT Astra Honda Motor (AHM) Ahmad Muhibbuddin, mengatakan, pihaknya mengaku belum pernah menerima laporan tersebut.', '2022-07-02', 'Kuta Selatan', 'Jl Nangka Gading no 220', 'Pencurian', NULL, '{\"namaBukti\":[\"Kipas\"],\"gambarBukti\":[\"1666101080_contoh laporan per daerah.jpg\"]}', '{\"nama\":[\"Ardana Putra\",\"Desi Ratnasari\"],\"umur\":[\"22\",\"21\"],\"pekerjaan\":[\"PNS\",\"PNS\"],\"alamat\":[\"PNS\",\"PNS\"]}', '1666101080_foto ktp.jpg', '1666101080_orang dan katp2.png', '', '', 'tes', 'Selesai', 1, 'LP/001/K/X/2022/Polres Badung', 8, '2022-10-18 14:31:55'),
-(6, 'wewewe', 'wewew', '1212-01-02', 'qwqw', 'Warga Negara Indonesia', 'qwqqw', '1212', 'dfsdsd', 'sdsd', '0011-11-11', 'Petang', 'wdwd', 'Perkosaan', NULL, '{\"namaBukti\":[null],\"gambarBukti\":[]}', '{\"nama\":[null],\"umur\":[null],\"pekerjaan\":[null],\"alamat\":[null]}', '1666148535_user.png', '1666148535_user.png', '1666148535_user.png', NULL, NULL, 'Selesai', NULL, NULL, 8, '2022-10-19 13:02:19');
+(6, 'wewewe', 'wewew', '1212-01-02', 'qwqw', 'Warga Negara Indonesia', 'qwqqw', '1212', 'dfsdsd', 'sdsd', '0011-11-11', 'Petang', 'wdwd', 'Pemerkosaan', NULL, '{\"namaBukti\":[null],\"gambarBukti\":[]}', '{\"nama\":[null],\"umur\":[null],\"pekerjaan\":[null],\"alamat\":[null]}', '1666148535_user.png', '1666148535_user.png', '1666148535_user.png', NULL, NULL, 'Selesai', NULL, NULL, 8, '2022-10-19 13:40:46');
 
 -- --------------------------------------------------------
 
@@ -276,7 +276,9 @@ INSERT INTO `notifikasi` (`id`, `judul`, `isi`, `tipe`, `telah_dibaca`, `dikirim
 (71, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 0, 'pelapor', 8, 8, '2022-10-19 12:58:53'),
 (72, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 0, 'pelapor', 7, 8, '2022-10-19 12:59:25'),
 (73, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 0, 'pelapor', 6, 8, '2022-10-19 12:59:55'),
-(74, 'Pelaporan SP2HP Telah selesai diproses', 'Pelaporan SP2HP telah selesai diproses. Silahkan melanjutkan proses ke bagian Reskrim Polres Badung.', 'sp2hp', 0, 'pelapor', 6, 8, '2022-10-19 13:02:19');
+(74, 'Pelaporan SP2HP Telah selesai diproses', 'Pelaporan SP2HP telah selesai diproses. Silahkan melanjutkan proses ke bagian Reskrim Polres Badung.', 'sp2hp', 0, 'pelapor', 6, 8, '2022-10-19 13:02:19'),
+(75, 'Pelaporan SKTLK Telah Disetujui', 'Dokumen persetujuan SKTLK dapat diunduh disini.', 'sktlk', 0, 'pelapor', 2, 8, '2022-10-19 13:22:25'),
+(76, 'Surat Izin Keramaian Diterima', 'Surat izin keramaian dapat diunduh disini.', 'sik', 0, 'pelapor', 5, 8, '2022-10-19 13:24:28');
 
 -- --------------------------------------------------------
 
@@ -387,7 +389,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
