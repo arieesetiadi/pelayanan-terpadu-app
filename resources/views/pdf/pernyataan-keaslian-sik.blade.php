@@ -67,13 +67,13 @@
                 <td>{{ $namaPenanggungJawab }}</td>
             </tr>
             <tr>
-                <td style="width: 45%">Alamat</td>
-                <td style="width: 5%">:</td>
+                <td style="width: 45%; vertical-align: top">Alamat</td>
+                <td style="width: 5%; vertical-align: top">:</td>
                 <td>{{ $alamat }}</td>
             </tr>
             <tr>
-                <td style="width: 45%">Nomor HP</td>
-                <td style="width: 5%">:</td>
+                <td style="width: 45%;">Nomor HP</td>
+                <td style="width: 5%;">:</td>
                 <td>{{ $telepon }}</td>
             </tr>
         </table>

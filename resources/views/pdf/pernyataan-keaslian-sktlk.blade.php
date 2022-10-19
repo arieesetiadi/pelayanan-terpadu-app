@@ -67,8 +67,8 @@
                 <td>{{ $tempatLahir }}, {{ dateFormat($tanggalLahir, false) }}</td>
             </tr>
             <tr>
-                <td>Alamat</td>
-                <td>:</td>
+                <td style="vertical-align: top">Alamat</td>
+                <td style="vertical-align: top">:</td>
                 <td>{{ $alamat }}</td>
             </tr>
             <tr>
