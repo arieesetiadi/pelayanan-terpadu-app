@@ -73,23 +73,31 @@
             <td style="vertical-align: top">Terlapor/Pelaku</td>
             <td style="vertical-align: top">:</td>
             <td>
-                <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
-                    @foreach ($terlapor as $item)
-                        <li>{{ $item }}</li>
-                    @endforeach
-                </ol>
+                @if ($terlapor[0] != '')
+                    <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
+                        @foreach ($terlapor as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ol>
+                @else
+                    -
+                @endif
             </td>
         </tr>
         <tr>
             <td style="vertical-align: top">Saksi</td>
             <td style="vertical-align: top">:</td>
             <td>
-                <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
-                    @for ($i = 0; $i < count($saksi->nama); $i++)
-                        <li>{{ $saksi->nama[$i] }}, {{ $saksi->umur[$i] }} tahun, {{ $saksi->pekerjaan[$i] }},
-                            {{ $saksi->alamat[$i] }}</li>
-                    @endfor
-                </ol>
+                @if ($saksi->nama[0] != null)
+                    <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
+                        @for ($i = 0; $i < count($saksi->nama); $i++)
+                            <li>{{ $saksi->nama[$i] }}, {{ $saksi->umur[$i] }} tahun, {{ $saksi->pekerjaan[$i] }},
+                                {{ $saksi->alamat[$i] }}</li>
+                        @endfor
+                    </ol>
+                @else
+                    -
+                @endif
             </td>
         </tr>
 
@@ -97,18 +105,24 @@
             <td style="vertical-align: top">Bukti</td>
             <td style="vertical-align: top">:</td>
             <td>
-                <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
-                    @for ($i = 0; $i < count($bukti->namaBukti); $i++)
-                        <li>
-                            <i class="bi bi-download"></i>
-                            <a href="{{ asset('assets-user/upload/') . '/' . $bukti->gambarBukti[$i] }}" target="_blank">
-                                {{ $bukti->namaBukti[$i] }}
-                            </a>
-                        </li>
-                    @endfor
-                </ol>
+                @if ($bukti->namaBukti[0] != null)
+                    <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
+                        @for ($i = 0; $i < count($bukti->namaBukti); $i++)
+                            <li>
+                                <i class="bi bi-download"></i>
+                                <a href="{{ asset('assets-user/upload/') . '/' . $bukti->gambarBukti[$i] }}"
+                                    target="_blank">
+                                    {{ $bukti->namaBukti[$i] }}
+                                </a>
+                            </li>
+                        @endfor
+                    </ol>
+                @else
+                    -
+                @endif
             </td>
         </tr>
+
         <tr>
             <td>Foto KTP</td>
             <td>:</td>

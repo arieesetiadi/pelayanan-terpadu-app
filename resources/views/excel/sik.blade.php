@@ -152,6 +152,34 @@ header('Content-Disposition: attachment; filename=sik.xls');
                 </tr>
             @endforeach
         </table>
+
+        <br><br>
+        <div style="margin-top: 40px; display: flex;">
+            <center style="width: 25%; float: right">
+                <span style="display: block; text-align: center;">
+                    Mengetahui
+                </span>
+                <span style="display: block; text-align: center;">
+                    Kepala Kepolisian Resor Badung,
+                </span>
+
+                <center>
+                    {{-- <img width="150" src="{{ $ttdPath }}"> --}}
+                </center>
+                <br><br><br><br>
+
+                <span style="display: block; text-align: center;">
+                    Leo Dedy Defretes, SIK, SH, MH
+                </span>
+                <center>
+                    <hr style="margin: 2px 0; text-align: center">
+                </center>
+                <span style="display: block;
+                            text-align: center;">
+                    AKBP NRP 123456
+                </span>
+            </center>
+        </div>
     @else
         <center>Laporan tidak tersedia.</center>
     @endif

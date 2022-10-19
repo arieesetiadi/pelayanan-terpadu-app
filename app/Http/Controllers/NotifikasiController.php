@@ -29,7 +29,6 @@ class NotifikasiController extends Controller
         switch ($notifikasi->tipe) {
             case 'sktlk':
                 if ($laporan->dokumen_persetujuan != '') {
-                    // dd($laporan);
                     return redirect()->to(asset('assets-user/upload/' . $laporan->dokumen_persetujuan));
                 }
                 return back();
@@ -83,6 +82,7 @@ class NotifikasiController extends Controller
                     'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
                     'ttdPath' => public_path('\assets-user\img\documents\ttd galuh.png'),
                 ];
+
                 $pdf = PDF::loadview('pdf.notifikasi-sktlk', $data);
                 return $pdf->stream('laporan.pdf');
 
@@ -113,6 +113,7 @@ class NotifikasiController extends Controller
                 $laporan = SP2HP::find($notifikasi->laporan_id);
                 if ($laporan->status == null && $laporan->perkembangan == null) {
                     $data = [
+                        'title' => 'Validasi Pelaporan',
                         'laporan' => $laporan,
                         'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
                         'terlapor' => explode(',', trim($laporan->terlapor, ' ')),
@@ -123,6 +124,7 @@ class NotifikasiController extends Controller
                 } elseif ($laporan->status) {
                     // Export PDF
                     $data = [
+                        'title' => 'Validasi Pelaporan',
                         'laporan' => $laporan,
                         'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
                         'terlapor' => $laporan->terlapor,
