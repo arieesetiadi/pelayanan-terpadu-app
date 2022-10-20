@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Laporan\SIK;
-use App\Models\Laporan\SKTLK;
-use App\Models\Laporan\SP2HP;
+use PDF;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use App\Models\Laporan\SIK;
 use Illuminate\Http\Request;
-use PDF;
+use App\Mail\RequestTTDKanit;
+use App\Models\Laporan\SKTLK;
+use App\Models\Laporan\SP2HP;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -44,6 +46,26 @@ class AdminController extends Controller
         return view('admin.profile', [
             'title' => 'Profile'
         ]);
+    }
+
+    public function requestTtdKanit(Request $request)
+    {
+        // Ambil data dari form
+        $path = 'assets-user/upload/';
+        $files = $request->allFiles()['files'];
+        $keterangan = $request->keterangan;
+        $fileNames = [];
+
+        // Upload gambar
+        foreach ($files as $file) {
+            $fileNames[] = uploadFile($file, $path);
+        }
+
+        // Kirim files dan keteranga ke email kanit
+        Mail::send(new RequestTTDKanit($fileNames, $keterangan));
+
+        // Redirect ke dashboard
+        return redirect()->to('/dashboard')->with('success', 'Berhasil melakukan permohonan tanda tangan Kanit');
     }
 
     public function laporanWilayahPDF(Request $request)

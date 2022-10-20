@@ -84,6 +84,7 @@ Route::middleware('auth')->group(function () {
 	Route::get('/profile', [AdminController::class, 'profile']);
 	Route::post('/admin/laporan-wilayah/pdf', [AdminController::class, 'laporanWilayahPDF']);
 	Route::post('/admin/laporan-wilayah/excel', [AdminController::class, 'laporanWilayahExcel']);
+	Route::post('/admin/request-ttd-kanit', [AdminController::class, 'requestTtdKanit']);
 
 	Route::get('/admin/sktlk', [SKTLKController::class, 'index']);
 	Route::post('/admin/sktlk/upload-file', [SKTLKController::class, 'uploadFile']);

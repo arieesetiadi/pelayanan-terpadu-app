@@ -24,7 +24,7 @@ class LoginController extends Controller
             }
 
             switch (auth()->user()->jenis_pengguna) {
-                case 'Admin':
+                case 'AdminSPKT' || 'AdminReskrim' || 'AdminKanit':
                     // Redirect ke dashboard
                     return redirect()->to('/dashboard');
                 case 'Pelapor':

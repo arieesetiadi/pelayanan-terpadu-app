@@ -15,6 +15,64 @@
 
                 {{-- Export PDF per Wilayah --}}
                 <div>
+                    <button id="filterDateWilayah" class="btn btn-primary btn-sm mt-1" data-bs-toggle="modal"
+                        data-bs-target="#requestTtdKanit" title="Download PDF per Wilayah">
+                        <i class="bi bi-pen"></i> Request TTD Kanit
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="requestTtdKanit" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true" data-bs-backdrop="static">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form id="filterDateWilayahForm" action="/admin/request-ttd-kanit" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Upload File</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="file" class="form-label">Upload File :</label>
+                                            <input name="files[]" class="form-control" type="file" id="file"
+                                                multiple>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="keterangan" class="form-label">Keterangan :</label>
+                                            <textarea name="keterangan" class="form-control" id="keterangan" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Tutup</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        $("#startPDF").datepicker({
+                            format: "mm-yyyy",
+                            startView: "months",
+                            minViewMode: "months",
+                            endDate: "0m"
+                        });
+
+                        $("#endPDF").datepicker({
+                            format: "mm-yyyy",
+                            startView: "months",
+                            minViewMode: "months",
+                            endDate: "0m"
+                        });
+                    </script>
+                </div>
+
+                {{-- Export PDF per Wilayah --}}
+                <div>
                     <button id="filterDateWilayah" class="btn" data-bs-toggle="modal"
                         data-bs-target="#laporanWilayahModalPDF" title="Download PDF per Wilayah">
                         <i class="fa-solid fa-file-pdf fa-2x text-danger"></i>
@@ -79,8 +137,8 @@
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="laporanWilayahModalExcel" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true" data-bs-backdrop="static">
+                    <div class="modal fade" id="laporanWilayahModalExcel" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form target="_blank" id="filterDateWilayahForm" action="/admin/laporan-wilayah/excel"
@@ -95,10 +153,12 @@
                                         <label for="">Pilih Periode :</label>
                                         <div class="row">
                                             <div class="col-6">
-                                                <input type="text" class="form-control" name="start" id="startExcel" />
+                                                <input type="text" class="form-control" name="start"
+                                                    id="startExcel" />
                                             </div>
                                             <div class="col-6">
-                                                <input type="text" class="form-control" name="end" id="endExcel" />
+                                                <input type="text" class="form-control" name="end"
+                                                    id="endExcel" />
                                             </div>
                                         </div>
                                     </div>
