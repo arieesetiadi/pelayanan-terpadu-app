@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,12 +17,13 @@ class RequestTTDKanit extends Mailable
      *
      * @return void
      */
-    private $fileNames, $keterangan;
+    private $fileNames, $keterangan, $admin, $kanit;
 
     public function __construct($fileNames, $keterangan)
     {
         $this->fileNames = $fileNames;
         $this->keterangan = $keterangan;
+        $this->kanit = User::where('jenis_pengguna', 'AdminKanit')->get()[0];
     }
 
     /**
@@ -34,7 +36,7 @@ class RequestTTDKanit extends Mailable
         $data['keterangan'] = $this->keterangan;
 
         $mail = $this
-            ->to('apolresbadung@gmail.com', 'Admin Polres Badung')
+            ->to($this->kanit)
             ->subject('Permohonan Tanda Tangan Surat-Surat Pelaporan')
             ->view('email.request-ttd-kanit', $data);
 

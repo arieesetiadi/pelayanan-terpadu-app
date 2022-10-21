@@ -1,9 +1,9 @@
 @php
-if (auth()->user()) {
-    $notifikasi = App\Models\Notifikasi::getNotifikasiPelapor()['notifikasi'];
-    $count = App\Models\Notifikasi::getNotifikasiPelapor()['count'];
-    session()->put('notifikasi', $notifikasi);
-}
+    if (auth()->user()) {
+        $notifikasi = App\Models\Notifikasi::getNotifikasiPelapor()['notifikasi'];
+        $count = App\Models\Notifikasi::getNotifikasiPelapor()['count'];
+        session()->put('notifikasi', $notifikasi);
+    }
 @endphp
 
 <link rel="stylesheet" href="{{ asset('assets-user/css/custom.css') }}">
@@ -143,3 +143,5 @@ if (auth()->user()) {
         </div>
     </header>
 </div>
+
+<script src="{{ asset('assets-user/js/custom.js') }}"></script>

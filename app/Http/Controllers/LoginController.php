@@ -24,13 +24,14 @@ class LoginController extends Controller
             }
 
             switch (auth()->user()->jenis_pengguna) {
-                case 'AdminSPKT' || 'AdminReskrim' || 'AdminKanit':
-                    // Redirect ke dashboard
-                    return redirect()->to('/dashboard');
                 case 'Pelapor':
                     // Redirect ke homepage
                     $to = session('to') ?? '/';
                     return redirect()->to($to);
+
+                case 'AdminSPKT' || 'AdminReskrim' || 'AdminKanit':
+                    // Redirect ke dashboard
+                    return redirect()->to('/dashboard');
             }
         } else {
             return back()->with('failed', 'Username / password tidak valid.');

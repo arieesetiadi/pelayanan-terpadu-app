@@ -1,6 +1,16 @@
 @extends('layout.admin-template')
 
 @section('content')
+    {{-- Alert success --}}
+    @if (session('success'))
+        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill"></i>
+            <div class="mx-2">
+                {{ session('success') }}
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="container-fluid">
         <div class="row">
             <div class="col-6">

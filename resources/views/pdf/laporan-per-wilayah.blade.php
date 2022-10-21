@@ -150,7 +150,7 @@
                 Mengetahui
             </span>
             <span style="display: block; text-align: center;">
-                Kepala Kepolisian Resor Badung,
+                Kepala Unit SPKT Polres Badung,
             </span>
 
             <center>
@@ -159,7 +159,7 @@
             <br><br><br><br>
 
             <span style="display: block; text-align: center;">
-                Leo Dedy Defretes, SIK, SH, MH
+                ...
             </span>
             <center>
                 <hr style="margin: 2px 0; text-align: center">
