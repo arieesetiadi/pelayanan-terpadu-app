@@ -29,7 +29,7 @@ class LoginController extends Controller
                     $to = session('to') ?? '/';
                     return redirect()->to($to);
 
-                case 'AdminSPKT' || 'AdminReskrim' || 'AdminKanit':
+                case 'AdminSPKT' || 'AdminReskrim' || 'KanitSPKT':
                     // Redirect ke dashboard
                     return redirect()->to('/dashboard');
             }
