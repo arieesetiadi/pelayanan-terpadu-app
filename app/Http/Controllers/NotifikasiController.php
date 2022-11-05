@@ -75,16 +75,9 @@ class NotifikasiController extends Controller
         switch ($notifikasi->tipe) {
             case 'sktlk':
                 // Ambil data laporan dari database
-                $laporan = SKTLK::find($notifikasi->laporan_id);
-                $data = [
-                    'laporan' => $laporan,
-                    'suratHilang' => explode(',', trim($laporan->surat_hilang, ' ')),
-                    'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
-                    'ttdPath' => public_path('\assets-user\img\documents\ttd galuh.png'),
-                ];
-
-                $pdf = PDF::loadview('pdf.notifikasi-sktlk', $data);
-                return $pdf->stream('laporan.pdf');
+                $data['laporan'] = SKTLK::find($notifikasi->laporan_id);
+                $data['title'] = 'Verifikasi SKTLK';
+                return view('admin.sktlk.notifikasi', $data);
 
             case 'sik':
                 $sik = SIK::find($notifikasi->laporan_id);

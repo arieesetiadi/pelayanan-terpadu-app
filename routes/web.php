@@ -92,6 +92,7 @@ Route::middleware('auth')->group(function () {
 	Route::post('/admin/sktlk/filter-date', [SKTLKController::class, 'filterDate']);
 	Route::post('/admin/sktlk/pdf', [SKTLKController::class, 'pdf']);
 	Route::post('/admin/sktlk/excel', [SKTLKController::class, 'excel']);
+	Route::get('/admin/sktlk/surat-keterangan/{id}', [SKTLKController::class, 'suratKeterangan']);
 
 	Route::get('/admin/sik', [SIKController::class, 'index']);
 	Route::get('/admin/sik/setuju/{id}', [SIKController::class, 'setuju']);

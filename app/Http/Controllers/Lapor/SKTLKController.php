@@ -181,4 +181,20 @@ class SKTLKController extends Controller
 
         return view('excel.sktlk', $data);
     }
+
+    public function suratKeterangan($id)
+    {
+        // Ambil data laporan dari database
+        $laporan = SKTLK::find($id);
+        $data = [
+            'title' => 'Surat Keterangan SKTLK',
+            'laporan' => $laporan,
+            'suratHilang' => explode(',', trim($laporan->surat_hilang, ' ')),
+            'logoPolriPath' => public_path('\assets-user\img\documents\logo-polri-black.png'),
+            'ttdPath' => public_path('\assets-user\img\documents\ttd galuh.png'),
+        ];
+
+        $pdf = PDF::loadview('pdf.notifikasi-sktlk', $data);
+        return $pdf->stream('laporan.pdf');
+    }
 }
