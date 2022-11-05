@@ -138,7 +138,9 @@ class SP2HPController extends Controller
 
         if (!is_null($request->file('file'))) {
             $path = 'assets-user/upload/';
-            $filePerkembangan = uploadFile($request->file('file'), $path);
+            $filePerkembangan = $laporan->file_pemberitahuan;
+            $filePerkembanganBaru = uploadFile($request->file('file'), $path);
+            $filePerkembangan .= "," . $filePerkembanganBaru;
 
             // Update data perkembangan ke database
             $laporan->update([
@@ -146,12 +148,13 @@ class SP2HPController extends Controller
             ]);
         }
 
-        $keterangan = $request->keterangan;
+        $keterangan = $laporan->keterangan_pemberitahuan;
+        $keteranganBaru = $request->keterangan;
+        $keterangan .= "," . $keteranganBaru;
         $laporan->update([
             'keterangan_pemberitahuan' => $keterangan,
             'perkembangan' => 'Sedang Diproses'
         ]);
-
 
         // Kirim notifikasi ke halaman pelapor
         $toPelapor = [
@@ -167,7 +170,7 @@ class SP2HPController extends Controller
         Notifikasi::insert($toPelapor);
 
         // Kirim notifikasi ke email pelapor
-        Mail::send(new LaporanPerkembanganSP2HP($filePerkembangan, $keterangan, $pelapor));
+        Mail::send(new LaporanPerkembanganSP2HP($filePerkembanganBaru, $keteranganBaru, $pelapor));
 
         // Redirect ke halaman admin SP2HP
         return redirect()->to('admin/sp2hp')->with('success', 'Anda berhasil mengunggah pemberitahuan ke pelapor.');
