@@ -65,7 +65,6 @@ class NotifikasiController extends Controller
     public function cetakPDF($id)
     {
         $notifikasi = Notifikasi::find($id);
-
         // Ubah status menjadi telah dibaca
         $notifikasi->update([
             'telah_dibaca' => true

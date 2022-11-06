@@ -245,7 +245,7 @@ function ageFormat($date)
 
 function getNotifSP2HP($laporanId)
 {
-    return Notifikasi::where('laporan_id', $laporanId)->orderBy('id', 'desc')->get()[0]->id;
+    return Notifikasi::where('laporan_id', $laporanId)->where('tipe', 'sp2hp')->orderBy('id', 'desc')->get()[0]->id;
 }
 
 function getMonthsPeriod($start, $end)
@@ -270,4 +270,20 @@ function getMonthsPeriod($start, $end)
 function getLokasi()
 {
     return ['Abiansemal', 'Kuta', 'Kuta Selatan', 'Kuta Utara', 'Mengwi', 'Petang'];
+}
+
+function getFilePerkembangan($file)
+{
+    return array_reverse($file != '' ? explode('|', $file) : []);
+}
+
+function getKeteranganPerkembangan($keterangan)
+{
+    if ($keterangan == '') return [];
+
+    $keterangan = array_map(function ($item) {
+        return json_decode($item);
+    }, explode('|', $keterangan));
+
+    return array_reverse($keterangan);
 }

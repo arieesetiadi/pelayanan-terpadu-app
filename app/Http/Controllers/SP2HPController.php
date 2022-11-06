@@ -140,7 +140,8 @@ class SP2HPController extends Controller
             $path = 'assets-user/upload/';
             $filePerkembangan = $laporan->file_pemberitahuan;
             $filePerkembanganBaru = uploadFile($request->file('file'), $path);
-            $filePerkembangan .= "," . $filePerkembanganBaru;
+            $filePerkembangan .= ($filePerkembangan != '') ? '|' : '';
+            $filePerkembangan .= $filePerkembanganBaru;
 
             // Update data perkembangan ke database
             $laporan->update([
@@ -149,8 +150,22 @@ class SP2HPController extends Controller
         }
 
         $keterangan = $laporan->keterangan_pemberitahuan;
-        $keteranganBaru = $request->keterangan;
-        $keterangan .= "," . $keteranganBaru;
+
+        if ($keterangan == '') {
+            $keteranganBaru = [
+                'keterangan' => $request->keterangan,
+                'uploaded_at' => now()->toDateTimeString()
+            ];
+            $keterangan = json_encode($keteranganBaru);
+        } else {
+            $keteranganBaru = [
+                'keterangan' => $request->keterangan,
+                'uploaded_at' => now()->toDateTimeString()
+            ];
+
+            $keterangan .= '|' . json_encode($keteranganBaru);
+        }
+
         $laporan->update([
             'keterangan_pemberitahuan' => $keterangan,
             'perkembangan' => 'Sedang Diproses'
@@ -170,7 +185,7 @@ class SP2HPController extends Controller
         Notifikasi::insert($toPelapor);
 
         // Kirim notifikasi ke email pelapor
-        Mail::send(new LaporanPerkembanganSP2HP($filePerkembanganBaru, $keteranganBaru, $pelapor));
+        Mail::send(new LaporanPerkembanganSP2HP($filePerkembanganBaru, $request->keterangan, $pelapor));
 
         // Redirect ke halaman admin SP2HP
         return redirect()->to('admin/sp2hp')->with('success', 'Anda berhasil mengunggah pemberitahuan ke pelapor.');
