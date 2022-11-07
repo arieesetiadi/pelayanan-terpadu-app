@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\KirimValidasiToReskrim;
 use PDF;
 use App\Mail\LaporanPerkembanganSP2HP;
 use App\Mail\SP2HPInvalid;
@@ -142,6 +143,11 @@ class SP2HPController extends Controller
             $filePerkembanganBaru = uploadFile($request->file('file'), $path);
             $filePerkembangan .= ($filePerkembangan != '') ? '|' : '';
             $filePerkembangan .= $filePerkembanganBaru;
+
+            // Kirim ke reskrim untuk pertama kali
+            if ($laporan->file_pemberitahuan == '' || $laporan->file_pemberitahuan == null) {
+                Mail::send(new KirimValidasiToReskrim($filePerkembanganBaru));
+            }
 
             // Update data perkembangan ke database
             $laporan->update([

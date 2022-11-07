@@ -203,7 +203,7 @@ function getSaksi($keys, $data)
         'nama' => $nama,
         'umur' => $umur,
         'pekerjaan' => $pekerjaan,
-        'alamat' => $pekerjaan
+        'alamat' => $alamat
     ]);
 }
 
