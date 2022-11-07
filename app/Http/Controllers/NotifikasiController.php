@@ -46,10 +46,16 @@ class NotifikasiController extends Controller
                 }
                 break;
             case 'sp2hp':
-                if ($laporan->perkembangan == 'Selesai') {
-                    return back();
-                } elseif ($laporan->status && $laporan->file_pemberitahuan) {
-                    return redirect()->to(asset('assets-user/upload/' . $laporan->file_pemberitahuan));
+                if ($laporan->status && $laporan->file_pemberitahuan) {
+                    $data = [
+                        'laporan' => $laporan,
+                        'filePerkembangan' => getFilePerkembangan($laporan->file_pemberitahuan),
+                        'keteranganPerkembangan' => getKeteranganPerkembangan($laporan->keterangan_pemberitahuan),
+                    ];
+                    $data['count'] = count($data['keteranganPerkembangan']);
+
+                    return view('tindak-kriminal.history', $data);
+                    // return redirect()->to(asset('assets-user/upload/' . $laporan->file_pemberitahuan));
                 } elseif (!$laporan->status) {
                     return view('form.lapor-sp2hp', [
                         'laporan' => $laporan,

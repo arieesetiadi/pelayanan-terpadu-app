@@ -38,6 +38,22 @@
 }
 
 .styled-bg {
-    background-image: url('../img/shapes/map-50.png');
-    background-color: rgba(255, 255, 255, 0.1)
+    background-image: url("../img/shapes/map-50.png");
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.rounded-pill {
+    border-radius: 50rem !important;
+}
+.border-end {
+    border-right: 1px solid #dee2e6 !important;
+}
+.flex-column {
+    flex-direction: column !important;
+}
+.d-sm-flex {
+    display: flex !important;
+}
+.text-muted {
+    --bs-text-opacity: 1;
+    color: #6c757d !important;
 }
