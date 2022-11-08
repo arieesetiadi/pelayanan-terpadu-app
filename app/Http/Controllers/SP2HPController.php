@@ -136,6 +136,7 @@ class SP2HPController extends Controller
         $laporan = SP2HP::find($request->id);
         $pelapor = User::find($laporan->pelapor_id);
         $filePerkembangan = null;
+        $alertMessage = "";
 
         if (!is_null($request->file('file'))) {
             $path = 'assets-user/upload/';
@@ -147,6 +148,7 @@ class SP2HPController extends Controller
             // Kirim ke reskrim untuk pertama kali
             if ($laporan->file_pemberitahuan == '' || $laporan->file_pemberitahuan == null) {
                 Mail::send(new KirimValidasiToReskrim($filePerkembanganBaru));
+                $alertMessage = " dan Admin Reskrim";
             }
 
             // Update data perkembangan ke database
@@ -180,7 +182,7 @@ class SP2HPController extends Controller
         // Kirim notifikasi ke halaman pelapor
         $toPelapor = [
             'judul' => 'Perkembangan SP2HP',
-            'isi' => 'Pelaporan tindak kriminal Anda sudah diterima dan sedang dalam proses. Surat tanda terima pelaporan Anda dapat dilihat pada file pdf berikut.',
+            'isi' => 'Silahkan melihat hasil perkembangan penyidikan pada halaman berikut.',
             'tipe' => 'sp2hp',
             'telah_dibaca' => false,
             'dikirim_kepada' => 'pelapor',
@@ -194,7 +196,7 @@ class SP2HPController extends Controller
         Mail::send(new LaporanPerkembanganSP2HP($filePerkembanganBaru, $request->keterangan, $pelapor));
 
         // Redirect ke halaman admin SP2HP
-        return redirect()->to('admin/sp2hp')->with('success', 'Anda berhasil mengunggah pemberitahuan ke pelapor.');
+        return redirect()->to('admin/sp2hp')->with('success', 'Anda berhasil mengunggah pemberitahuan ke pelapor' . $alertMessage);
     }
 
     public function valid($id)

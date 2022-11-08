@@ -134,4 +134,13 @@ class NotifikasiController extends Controller
                 }
         }
     }
+
+    public function readAll()
+    {
+        Notifikasi::where('telah_dibaca', false)->update([
+            'telah_dibaca' => true
+        ]);
+
+        return back();
+    }
 }

@@ -101,9 +101,21 @@
                                         <div class="card">
                                             <div class="card-body"
                                                  style="width: 450px; padding:0;">
+                                                @php
+                                                    $isReadedAll = true;
+                                                    foreach (session('notifikasi') as $notifikasi) {
+                                                        if (!$notifikasi->telah_dibaca) {
+                                                            $isReadedAll = false;
+                                                        }
+                                                    }
+                                                @endphp
                                                 @if (session('notifikasi'))
                                                     <center>
-                                                        <span class="d-inline-block my-2">Notifikasi</a>
+                                                        <span class="d-block my-2">Notifikasi</span>
+                                                        <a href="/notifikasi/read-all"
+                                                           class="text-center text-primary {{ $isReadedAll ? 'd-none' : '' }}">Tandai
+                                                            semua telah
+                                                            dibaca</a>
                                                     </center>
                                                     @foreach (session('notifikasi') as $notifikasi)
                                                         <a href="/notifikasi/detail/{{ $notifikasi->id }}"
