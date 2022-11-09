@@ -118,7 +118,7 @@
                     <th>Detail Kejadian</th>
                     <th>Lampiran</th>
                     <th>Dilaporan Pada</th>
-                    <th class="{{ auth()->user()->jenis_pengguna == 'AdminReskrim' ? 'd-none' : '' }}">Pilihan</th>
+                    <th class="{{ auth()->user()->jenis_pengguna != 'AdminSPKT' ? 'd-none' : '' }}">Pilihan</th>
                 </tr>
             </thead>
             <tbody>
@@ -170,7 +170,7 @@
                         <td>{{ dateTimeFormat($item->dilaporkan_pada) }}</td>
 
                         <td
-                            class="justify-content-end gap-1 {{ auth()->user()->jenis_pengguna == 'AdminReskrim' ? 'd-none' : 'd-flex' }}">
+                            class="justify-content-end gap-1 {{ auth()->user()->jenis_pengguna != 'AdminSPKT' ? 'd-none' : 'd-flex' }}">
                             {{-- Tombol download --}}
                             @if ($item->status || $item->file_pemberitahuan != '')
                                 {{-- <a target="_blank" href="/notifikasi/cetak-pdf/{{ getNotifSP2HP($item->id) }}" --}}
@@ -246,7 +246,6 @@
                                             {{-- Time-line --}}
                                             <div class="container p-3"
                                                  style="height: 50vh; overflow-y: scroll">
-
                                                 @if ($item->keterangan_pemberitahuan != '' && $item->file_pemberitahuan != '')
                                                     @php
                                                         $filePerkembangan = getFilePerkembangan($item->file_pemberitahuan);

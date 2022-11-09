@@ -30,7 +30,7 @@
                 {{-- Export PDF per Wilayah --}}
                 <div>
                     <button id="filterDateWilayah"
-                            class="btn btn-primary btn-sm mt-1 {{ auth()->user()->jenis_pengguna == 'AdminReskrim' ? 'disabled' : '' }}"
+                            class="btn btn-primary btn-sm mt-1 {{ auth()->user()->jenis_pengguna == 'AdminReskrim' ? 'disabled' : '' }} {{ auth()->user()->jenis_pengguna == 'KanitSPKT' ? 'd-none' : '' }}"
                             data-bs-toggle="modal"
                             data-bs-target="#requestTtdKanit"
                             title="Download PDF per Wilayah">

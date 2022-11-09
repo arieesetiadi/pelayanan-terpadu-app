@@ -101,15 +101,15 @@
                                         <div class="card">
                                             <div class="card-body"
                                                  style="width: 450px; padding:0;">
-                                                @php
-                                                    $isReadedAll = true;
-                                                    foreach (session('notifikasi') as $notifikasi) {
-                                                        if (!$notifikasi->telah_dibaca) {
-                                                            $isReadedAll = false;
-                                                        }
-                                                    }
-                                                @endphp
                                                 @if (session('notifikasi'))
+                                                    @php
+                                                        $isReadedAll = true;
+                                                        foreach (session('notifikasi') as $notifikasi) {
+                                                            if (!$notifikasi->telah_dibaca) {
+                                                                $isReadedAll = false;
+                                                            }
+                                                        }
+                                                    @endphp
                                                     <center>
                                                         <span class="d-block my-2">Notifikasi</span>
                                                         <a href="/notifikasi/read-all"
