@@ -24,11 +24,11 @@
 
 </head>
 
-<body class="auth-body-bg">
+<body class="auth-body-bg" style="background-color: rgb(16,36,60)">
     <div>
         <div class="container-fluid p-0">
             <div class="row g-0 d-flex justify-content-center">
-                <div class="col-lg-5 shadow">
+                <div class="col-lg-5 shadow bg-white">
                     <div class="authentication-page-content d-flex align-items-center min-vh-100">
                         <div class="w-100 my-5">
                             <div class="row justify-content-center">

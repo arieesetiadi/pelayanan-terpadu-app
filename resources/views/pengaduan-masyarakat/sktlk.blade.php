@@ -80,14 +80,7 @@
                             Laporan Kehilangan Barang
                             (LKB) adalah salah satu jenis pelayanan di Polri. Program ini dengan harapan memberikan
                             kemudahan kepada masyarakat
-                            dengan melihat efektifitas waktu, tenaga dan biaya.
-                        </p>
-                        <br>
-                        <p>
-                            SKTLK Online dibuka setiap hari senin sampai dengan sabtu pukul 08.00-14.00 WIB untuk data
-                            yang
-                            diinput setelah pukul
-                            14.00 WIB akan dikirim hasilnya keesekoan harinya. Syarat – syarat kepengurusan Surat
+                            dengan melihat efektifitas waktu, tenaga dan biaya. Syarat – syarat kepengurusan Surat
                             Keterangan
                             Tanda Lapor Kehilangan (SKTLK) antara lain :
                         </p>
