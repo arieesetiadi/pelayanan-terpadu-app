@@ -23,7 +23,7 @@ class RequestTTDKanit extends Mailable
     {
         $this->fileNames = $fileNames;
         $this->keterangan = $keterangan;
-        $this->kanit = User::where('jenis_pengguna', 'AdminKanit')->get()[0];
+        $this->kanit = User::where('jenis_pengguna', 'KanitSPKT')->get()[0];
     }
 
     /**
