@@ -6,13 +6,12 @@ use App\Http\Controllers\Lapor\SIKController;
 use App\Http\Controllers\Lapor\SKTLKController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NotifikasiController;
+use App\Http\Controllers\PelaporController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SP2HPController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-	return view('beranda');
-});
+Route::get('/', [PelaporController::class, 'index']);
 
 // Route Login
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
