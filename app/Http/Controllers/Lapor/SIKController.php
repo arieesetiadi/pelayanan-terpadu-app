@@ -261,7 +261,7 @@ class SIKController extends Controller
             $data['laporanSIK'] = SIK::getSIK();
         }
 
-        $pdf = PDF::loadview('pdf.sik-all', $data)->setPaper('a4', 'landscape');
+        $pdf = PDF::loadview('pdf.sik-all', $data)->setPaper('legal', 'landscape');
         return $pdf->stream('laporan-sik.pdf');
     }
 

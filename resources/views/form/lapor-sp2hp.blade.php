@@ -66,7 +66,6 @@
 
                     <form action="/lapor-sp2hp" method="POST" enctype="multipart/form-data">
                         @csrf
-
                         @if (isset($laporan))
                             <input type="hidden" name="id" value="{{ $laporan->id }}">
                             <input type="hidden" name="reupload" value="true">
@@ -145,7 +144,7 @@
                                             @endif
                                         @else
                                             <option selected hidden>Pilih kewarganegaraan</option>
-                                            <option selected value="Warga Negara Indonesia">Warga Negara Indonesia
+                                            <option value="Warga Negara Indonesia">Warga Negara Indonesia
                                             </option>
                                             <option value="Warga Negara Asing">Warga Negara Asing</option>
                                         @endif

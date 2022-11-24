@@ -74,10 +74,7 @@
                     Surat Keterangan Tanda Lapor Kehilangan (SKTLK)
                 </li>
                 <li>
-                    Surat Ijin Keramaian
-                </li>
-                <li>
-                    Tindak Kriminal
+                    Surat Ijin Keramaian (SIK)
                 </li>
                 <li>
                     Surat Pemberitahuan Perkembangan Hasil Penyidikan (SP2HP)

@@ -93,7 +93,7 @@
                                                     @endphp
                                                     <center>
                                                         <span class="d-block my-2">Notifikasi</span>
-                                                        <a href="/notifikasi/read-all"
+                                                        <a href="/notifikasi/read-all-pelapor"
                                                             class="text-center text-primary {{ $isReadedAll ? 'd-none' : '' }}">Tandai
                                                             semua telah
                                                             dibaca</a>

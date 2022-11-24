@@ -180,7 +180,7 @@ header('Content-Disposition: attachment; filename=laporan-per-wilayah.xls');
                 Mengetahui
             </span>
             <span style="display: block; text-align: center;">
-                Kepala Kepolisian Resor Badung,
+                Kepala Unit SPKT Polres Badung,
             </span>
 
             <center>
@@ -189,14 +189,14 @@ header('Content-Disposition: attachment; filename=laporan-per-wilayah.xls');
             <br><br><br><br>
 
             <span style="display: block; text-align: center;">
-                Leo Dedy Defretes, SIK, SH, MH
+                Desak Nyoman Ratmini, S.H.
             </span>
             <center>
                 <hr style="margin: 2px 0; text-align: center">
             </center>
             <span style="display: block;
                             text-align: center;">
-                AKBP NRP 123456
+                IPTU NRP 70060049
             </span>
         </center>
     </div>

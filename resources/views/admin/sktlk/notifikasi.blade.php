@@ -63,8 +63,7 @@
             <td>Foto KTP</td>
             <td>:</td>
             <td>
-                <a target="_blank"
-                   href="{{ asset('assets-user/upload/') . '/' . $laporan->foto_ktp }}">
+                <a target="_blank" href="{{ asset('assets-user/upload/') . '/' . $laporan->foto_ktp }}">
                     <i class="bi bi-download"></i>
                     Foto KTP
                 </a>
@@ -74,8 +73,7 @@
             <td>Foto Pelapor</td>
             <td>:</td>
             <td>
-                <a target="_blank"
-                   href="{{ asset('assets-user/upload/') . '/' . $laporan->foto_pelapor }}">
+                <a target="_blank" href="{{ asset('assets-user/upload/') . '/' . $laporan->foto_pelapor }}">
                     <i class="bi bi-download"></i>
                     Foto Pelapor
                 </a>
@@ -85,8 +83,7 @@
             <td>Rekomendasi Instansi</td>
             <td>:</td>
             <td>
-                <a target="_blank"
-                   href="{{ asset('assets-user/upload/') . '/' . $laporan->rekomendasi_instansi }}">
+                <a target="_blank" href="{{ asset('assets-user/upload/') . '/' . $laporan->rekomendasi_instansi }}">
                     <i class="bi bi-download"></i>
                     Rekomendasi Instansi
                 </a>
@@ -96,8 +93,7 @@
             <td>Pernyataan Keaslian</td>
             <td>:</td>
             <td>
-                <a target="_blank"
-                   href="{{ asset('assets-user/upload/') . '/' . $laporan->pernyataan_keaslian }}">
+                <a target="_blank" href="{{ asset('assets-user/upload/') . '/' . $laporan->pernyataan_keaslian }}">
                     <i class="bi bi-download"></i>
                     Pernyataan Keaslian
                 </a>
@@ -108,8 +104,7 @@
                 <td>Dokumen Tambahan</td>
                 <td>:</td>
                 <td>
-                    <a target="_blank"
-                       href="{{ asset('assets-user/upload/') . '/' . $laporan->dokumen_tambahan }}">
+                    <a target="_blank" href="{{ asset('assets-user/upload/') . '/' . $laporan->dokumen_tambahan }}">
                         <i class="bi bi-download"></i>
                         Dokumen Tambahan
                     </a>
@@ -118,9 +113,8 @@
         @endif
     </table>
 
-    <a href="/admin/sktlk/surat-keterangan/{{ $laporan->id }}"
-       class="btn btn-primary mt-4">
+    <a href="/admin/sktlk/surat-keterangan/{{ $laporan->id }}" class="btn btn-primary mt-4">
         <i class="bi bi-download"></i>
-        Surat Keterangan
+        Surat Persetujuan
     </a>
 @endsection

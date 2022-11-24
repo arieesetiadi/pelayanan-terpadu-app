@@ -105,17 +105,17 @@
     <table style="width: 100%" border="1" cellspacing="0" cellpadding="0">
         {{-- Header Table --}}
         <tr>
-            <td rowspan="2">Lokasi</td>
+            <th rowspan="2">Lokasi</th>
             @foreach ($laporan as $item)
-                <td colspan="3">{{ $item['label'] }}</td>
+                <th colspan="3">{{ $item['label'] }}</th>
             @endforeach
-            <td rowspan="2">Total</td>
+            <th rowspan="2">Total</th>
         </tr>
         <tr>
             @foreach ($laporan as $item)
-                <td>SKTLK</td>
-                <td>SIK</td>
-                <td>SP2HP</td>
+                <th>SKTLK</th>
+                <th>SIK</th>
+                <th>SP2HP</th>
             @endforeach
         </tr>
 
@@ -133,7 +133,7 @@
         @endforeach
 
         <tr>
-            <td>Total</td>
+            <th>Total</th>
 
             @foreach ($laporan as $item)
                 <td>{{ $countPerPeriod[$item['label']]['SKTLK'] }}</td>
@@ -159,14 +159,14 @@
             <br><br><br><br>
 
             <span style="display: block; text-align: center;">
-                ...
+                Desak Nyoman Ratmini, S.H.
             </span>
             <center>
                 <hr style="margin: 2px 0; text-align: center">
             </center>
             <span style="display: block;
                             text-align: center;">
-                AKBP NRP 123456
+                IPTU NRP 70060049
             </span>
         </center>
     </div>

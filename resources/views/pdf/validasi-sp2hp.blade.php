@@ -205,7 +205,7 @@
                             Mengetahui
                         </span>
                         <span style="display: block; text-align: center;">
-                            Kepala Kepolisian Resor Badung,
+                            Kepala Unit SPKT Polres Badung,
                         </span>
 
                         <center>
@@ -214,14 +214,14 @@
                         <br><br><br><br>
 
                         <span style="display: block; text-align: center;">
-                            Leo Dedy Defretes, SIK, SH, MH
+                            Desak Nyoman Ratmini, S.H.
                         </span>
                         <center>
                             <hr style="margin: 2px 0; text-align: center">
                         </center>
                         <span style="display: block;
                             text-align: center;">
-                            AKBP NRP 123456
+                            IPTU NRP 70060049
                         </span>
                     </center>
                 </td>
@@ -240,14 +240,14 @@
                         <br><br><br><br>
 
                         <span style="display: block; text-align: center;">
-                            I Komang Gede Artayasa
+                            Komang Gede Artayasa
                         </span>
                         <center>
                             <hr style="margin: 2px 0; text-align: center">
                         </center>
                         <span style="display: block;
                             text-align: center;">
-                            AKBP NRP 123456?????
+                            AIPDA NRP 80120666
                         </span>
                     </center>
                 </td>
@@ -396,14 +396,14 @@
                             <br><br><br><br>
 
                             <span style="display: block; text-align: center;">
-                                I Komang Gede Artayasa
+                                Komang Gede Artayasa
                             </span>
                             <center>
                                 <hr style="margin: 2px 0; text-align: center">
                             </center>
                             <span style="display: block;
                         text-align: center;">
-                                AKBP NRP 123456?????
+                                AIPDA NRP 80120666
                             </span>
                         </center>
                     </td>
@@ -415,7 +415,7 @@
                                 Mengetahui
                             </span>
                             <span style="display: block; text-align: center;">
-                                Kepala Kepolisian Resor Badung,
+                                Kepala Unit SPKT Polres Badung,
                             </span>
 
                             <center>
@@ -424,14 +424,14 @@
                             <br><br><br><br>
 
                             <span style="display: block; text-align: center;">
-                                Leo Dedy Defretes, SIK, SH, MH
+                                Desak Nyoman Ratmini, S.H.
                             </span>
                             <center>
                                 <hr style="margin: 2px 0; text-align: center">
                             </center>
                             <span style="display: block;
-                        text-align: center;">
-                                AKBP NRP 123456
+                            text-align: center;">
+                                IPTU NRP 70060049
                             </span>
                         </center>
                     </td>

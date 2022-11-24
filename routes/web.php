@@ -76,7 +76,8 @@ Route::middleware('auth.pelapor')->group(function () {
 // Route Notifikasi
 Route::get('/notifikasi/detail/{id}', [NotifikasiController::class, 'detail']);
 Route::get('/notifikasi/cetak-pdf/{id}', [NotifikasiController::class, 'cetakPDF']);
-Route::get('/notifikasi/read-all', [NotifikasiController::class, 'readAll']);
+Route::get('/notifikasi/read-all-pelapor', [NotifikasiController::class, 'readAllPelapor']);
+Route::get('/notifikasi/read-all-admin', [NotifikasiController::class, 'readAllAdmin']);
 
 // Route Admin ====================================
 Route::middleware('auth')->group(function () {

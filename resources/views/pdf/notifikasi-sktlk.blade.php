@@ -135,26 +135,30 @@
                     style="display: block; text-align: center; margin-top: 84px">({{ $laporan->nama_lengkap }})</span>
             </div>
             <div class="half" style="width: 65%">
-                <span style="display: block; text-align: center">
-                    Badung, {{ dateFormat(now(), false) }}
-                </span>
-                <span style="display: block; text-align: center;">
-                    KEPALA KEPOLISIAN RESOR BADUNG
-                </span>
+                <center style="width: 50%; float: right; padding-right: 90px";>
+                    <span style="display: block; text-align: center;">
+                        Mengetahui
+                    </span>
+                    <span style="display: block; text-align: center;">
+                        Kepala Unit SPKT Polres Badung,
+                    </span>
 
-                <center>
-                    {{-- <img width="150" src="{{ $ttdPath }}"> --}}
+                    <center>
+                        {{-- <img width="150" src="{{ $ttdPath }}"> --}}
+                    </center>
+                    <br><br><br><br>
+
+                    <span style="display: block; text-align: center;">
+                        Desak Nyoman Ratmini, S.H.
+                    </span>
+                    <center>
+                        <hr style="margin: 2px 0; text-align: center">
+                    </center>
+                    <span style="display: block;
+                            text-align: center;">
+                        IPTU NRP 70060049
+                    </span>
                 </center>
-                <br><br><br><br>
-
-                <span style="display: block; text-align: center;">
-                    Leo Dedy Defretes, SIK, SH, MH
-                </span>
-                <hr style="width: 50%">
-                <span style="display: block; text-align: center;
-                ">
-                    AKBP NRP 123456
-                </span>
             </div>
         </div>
     </main>

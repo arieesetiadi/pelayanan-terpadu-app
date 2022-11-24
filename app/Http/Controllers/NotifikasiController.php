@@ -135,11 +135,27 @@ class NotifikasiController extends Controller
         }
     }
 
-    public function readAll()
+    public function readAllPelapor()
     {
-        Notifikasi::where('telah_dibaca', false)->update([
-            'telah_dibaca' => true
-        ]);
+        Notifikasi
+            ::where('telah_dibaca', false)
+            ->where('dikirim_kepada', 'pelapor')
+            ->where('pelapor_id', auth()->user()->id)
+            ->update([
+                'telah_dibaca' => true
+            ]);
+
+        return back();
+    }
+
+    public function readAllAdmin()
+    {
+        Notifikasi
+            ::where('telah_dibaca', false)
+            ->where('dikirim_kepada', 'admin')
+            ->update([
+                'telah_dibaca' => true
+            ]);
 
         return back();
     }
