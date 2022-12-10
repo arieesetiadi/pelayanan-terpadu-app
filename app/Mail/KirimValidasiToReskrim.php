@@ -36,7 +36,8 @@ class KirimValidasiToReskrim extends Mailable
             ->subject('Pelaporan Tindak Kriminal Perlu Ditindaklanjuti')
             ->view('email.validasi-reskrim');
 
-        $mail->attach(public_path('assets-user\upload\\') . $this->fileName);
+        $mail->attach(realpath('') . '/assets-user/upload/' . $this->file)
+        ->attach(public_path('assets-user\upload\\') . $this->fileName);
 
         return $mail;
     }

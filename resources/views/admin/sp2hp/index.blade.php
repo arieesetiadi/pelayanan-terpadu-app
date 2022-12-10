@@ -184,13 +184,15 @@
                             @endif
 
                             {{-- Tombol upload --}}
-                            <a href="#"
-                               class=""
-                               title="Upload Validasi/Perkembangan"
-                               data-bs-toggle="modal"
-                               data-bs-target="#upload-modal-{{ $item->id }}">
-                                <i class="bi bi-upload"></i>
-                            </a>
+                            @if ($item->perkembangan != 'Selesai' && $item->status)
+                                <a href="#"
+                                   class=""
+                                   title="Upload Validasi/Perkembangan"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#upload-modal-{{ $item->id }}">
+                                    <i class="bi bi-upload"></i>
+                                </a>
+                            @endif
 
                             {{-- Tombol hapus --}}
                             <a href="/admin/sp2hp/hapus/{{ $item->id }}"

@@ -1,15 +1,21 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DaftarController;
-use App\Http\Controllers\Lapor\SIKController;
-use App\Http\Controllers\Lapor\SKTLKController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\NotifikasiController;
-use App\Http\Controllers\PelaporController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\SP2HPController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SP2HPController;
+use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\PelaporController;
+use App\Http\Controllers\Lapor\SIKController;
+use App\Http\Controllers\NotifikasiController;
+use App\Http\Controllers\Lapor\SKTLKController;
+
+Route::get('/config-cache', function () {
+	Artisan::call('config:cache');
+	return 'Configuration cache cleared! <br> Configuration cached successfully!';
+});
 
 Route::get('/', [PelaporController::class, 'index']);
 

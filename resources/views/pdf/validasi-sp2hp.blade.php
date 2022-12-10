@@ -3,8 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
     <title>Dokumen Validasi SP2HP</title>
 
     <style>
@@ -61,14 +63,16 @@
         <span style="font-weight: bolder ;text-decoration: underline">SENTRA PELAYANAN KEPOLISIAN TERPADU</span>
         <span>Jl. Kebo Iwa No.1, Mengwitani, Mengwi</span>
         <span
-            style="font-weight: bolder; text-decoration: underline; margin-top: 10px; text-align: left; margin-left: 35px">PRO
+              style="font-weight: bolder; text-decoration: underline; margin-top: 10px; text-align: left; margin-left: 35px">PRO
             JUSTITIA</span>
     </header>
 
     <main>
         {{-- Logo POLRI --}}
         <center>
-            <img height="150" style="margin-top: 0px" src="{{ $logoPolriPath }}">
+            <img height="150"
+                 style="margin-top: 0px"
+                 src="{{ $logoPolriPath }}">
         </center>
 
         <h4 style="margin-top: 0px; text-decoration: underline; text-align: center">LAPORAN POLISI</h4>
@@ -262,13 +266,15 @@
                 <span style="font-weight: bolder ;text-decoration: underline">SENTRA PELAYANAN KEPOLISIAN TERPADU</span>
                 <span>Jl. Kebo Iwa No.1, Mengwitani, Mengwi</span>
                 <span
-                    style="font-weight: bolder; text-decoration: underline; margin-top: 10px; text-align: left; margin-left: 35px">PRO
+                      style="font-weight: bolder; text-decoration: underline; margin-top: 10px; text-align: left; margin-left: 35px">PRO
                     JUSTITIA</span>
             </header>
 
             {{-- Logo POLRI --}}
             <center>
-                <img height="75" style="margin-top: 0px" src="{{ $logoPolriPath }}">
+                <img height="75"
+                     style="margin-top: 0px"
+                     src="{{ $logoPolriPath }}">
             </center>
 
             <h4 style="margin-top: 0px; text-decoration: underline; text-align: center">LAPORAN POLISI</h4>
@@ -326,7 +332,7 @@
 
                 <p style="text-align: justify; margin: 5px">
                     ------ Telah melaporkan bahwa telah terjadi Tindak Pidana <strong
-                        style="text-transform: capitalize">{{ $laporan->kategori }}</strong> yang
+                            style="text-transform: capitalize">{{ $laporan->kategori }}</strong> yang
                     diduga dilakukan oleh <strong>{{ $terlapor }}</strong> yang
                     terjadi pada hari {{ dateFormat($laporan->tanggal_kejadian) }} di {{ $laporan->lokasi_kejadian }},
                     {{ $laporan->detail_lokasi_kejadian }} yang merupakan wilayah Hukum Polres Badung.
@@ -409,7 +415,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 100%; padding: 0 30%; padding-top: 20px" colspan="2">
+                    <td style="width: 100%; padding: 0 30%; padding-top: 20px"
+                        colspan="2">
                         <center>
                             <span style="display: block; text-align: center;">
                                 Mengetahui

@@ -94,13 +94,6 @@ class SIKController extends Controller
 
     public function upload(Request $data)
     {
-        $data->validate([
-            'proposalKegiatan' => 'required',
-            'izinTempat' => 'required',
-            'izinInstansi' => 'required',
-            'rekomendasiPolsek' => 'required',
-        ]);
-
         // Upload file terbaru saja
         if ($data->laporan_id) {
             SIK::updateDokumen($data->all());
@@ -119,6 +112,13 @@ class SIKController extends Controller
             Notifikasi::insert($toAdmin);
             return back()->with('success', 'Berhasil mengirim dokumen persyaratan terbaru');
         }
+
+        $data->validate([
+            'proposalKegiatan' => 'required',
+            'izinTempat' => 'required',
+            'izinInstansi' => 'required',
+            'rekomendasiPolsek' => 'required',
+        ]);
 
         // Insert nama file ke database
         $laporan = SIK::insert($data->all());
