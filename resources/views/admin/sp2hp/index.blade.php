@@ -160,7 +160,7 @@
                                 <a href="{{ asset('assets-user/upload/') . '/' . $item->lampiran }}"
                                    target="_blank"
                                    title="Download Lampiran">
-                                    <i class="bi bi-download"></i> Lampiran
+                                    <i class="bi bi-download"></i>
                                 </a>
                             @else
                                 -
@@ -171,18 +171,6 @@
 
                         <td
                             class="justify-content-end gap-1 {{ auth()->user()->jenis_pengguna != 'AdminSPKT' ? 'd-none' : 'd-flex' }}">
-                            {{-- Tombol download --}}
-                            @if ($item->status || $item->file_pemberitahuan != '')
-                                {{-- <a target="_blank" href="/notifikasi/cetak-pdf/{{ getNotifSP2HP($item->id) }}" --}}
-                                <a href="#"
-                                   class=""
-                                   title="Lihat Validasi/Perkembangan"
-                                   data-bs-toggle="modal"
-                                   data-bs-target="#lihat-modal-{{ $item->id }}">
-                                    <i class="bi bi-download"></i>
-                                </a>
-                            @endif
-
                             {{-- Tombol upload --}}
                             @if ($item->perkembangan != 'Selesai' && $item->status)
                                 <a href="#"
@@ -194,12 +182,24 @@
                                 </a>
                             @endif
 
+                            {{-- Tombol download --}}
+                            @if ($item->status && $item->file_pemberitahuan != '')
+                                {{-- <a target="_blank" href="/notifikasi/cetak-pdf/{{ getNotifSP2HP($item->id) }}" --}}
+                                <a href="#"
+                                   class=""
+                                   title="Lihat Validasi/Perkembangan"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#lihat-modal-{{ $item->id }}">
+                                    <i class="bi bi-download"></i>
+                                </a>
+                            @endif
+
                             {{-- Tombol hapus --}}
-                            <a href="/admin/sp2hp/hapus/{{ $item->id }}"
+                            {{-- <a href="/admin/sp2hp/hapus/{{ $item->id }}"
                                title="Hapus"
                                onclick="return confirm('Apakah anda yakin untuk menghapus data SP2HP ?')">
                                 <i class="bi bi-trash-fill"></i>
-                            </a>
+                            </a> --}}
 
                             {{-- Tombol selesai --}}
                             @if ($item->perkembangan == 'Selesai')
@@ -426,10 +426,10 @@
                                             @if ($saksi->nama[0] != null)
                                                 <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
                                                     @for ($i = 0; $i < count($saksi->nama); $i++)
-                                                         <li>{{ $saksi->nama[$i] }}
-                                                            {{ $saksi->umur[$i] != null ? ", " . $saksi->umur[$i] . " tahun" : "" }}
-                                                            {{ $saksi->pekerjaan[$i] != null ? ", " . $saksi->pekerjaan[$i] : "" }}
-                                                            {{ $saksi->alamat[$i] != null ? ", " . $saksi->alamat[$i] : "" }}
+                                                        <li>{{ $saksi->nama[$i] }}
+                                                            {{ $saksi->umur[$i] != null ? ', ' . $saksi->umur[$i] . ' tahun' : '' }}
+                                                            {{ $saksi->pekerjaan[$i] != null ? ', ' . $saksi->pekerjaan[$i] : '' }}
+                                                            {{ $saksi->alamat[$i] != null ? ', ' . $saksi->alamat[$i] : '' }}
                                                         </li>
                                                     @endfor
                                                 </ol>
@@ -445,13 +445,19 @@
                                             @if ($bukti->namaBukti[0] != null)
                                                 <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
                                                     @for ($i = 0; $i < count($bukti->namaBukti); $i++)
-                                                        <li>
-                                                            <i class="bi bi-download"></i>
-                                                            <a href="{{ asset('assets-user/upload/') . '/' . $bukti->gambarBukti[$i] }}"
-                                                               target="_blank">
+                                                        @if (count($bukti->gambarBukti) > 0)
+                                                            <li>
+                                                                <i class="bi bi-download"></i>
+                                                                <a href="{{ asset('assets-user/upload/') . '/' . $bukti->gambarBukti[$i] }}"
+                                                                   target="_blank">
+                                                                    {{ $bukti->namaBukti[$i] }}
+                                                                </a>
+                                                            </li>
+                                                        @else
+                                                            <li>
                                                                 {{ $bukti->namaBukti[$i] }}
-                                                            </a>
-                                                        </li>
+                                                            </li>
+                                                        @endif
                                                     @endfor
                                                 </ol>
                                             @else

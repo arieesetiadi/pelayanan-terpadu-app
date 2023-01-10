@@ -6,32 +6,46 @@
     <title>Lapor | Surat Keterangan Tanda Lapor Kehilangan</title>
 
     {{-- Animation os Scroll --}}
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet"
+          href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Mobile Specific Metas-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Bootstrap-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
 
     <!-- Template Style-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
 
     {{-- Fontawesome --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="{{ asset('assets-user/css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-user/css/jquery-fancybox.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-user/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-user/css/shortcodes.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-user/css/responsive.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets-user/css/icomoon.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets-user/css/jquery-fancybox.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets-user/css/style.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets-user/css/shortcodes.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets-user/css/responsive.css') }}">
 
-    <link href="favicon.ico" rel="shortcut icon">
+    <link href="favicon.ico"
+          rel="shortcut icon">
 
     <style>
         h1,
@@ -57,13 +71,15 @@
 
     {{-- Konten --}}
     <section id="main">
-        <div class="container py-5 styled-bg" style="padding: 0 8%">
+        <div class="container py-5 styled-bg"
+             style="padding: 0 8%">
             <a href="/pengaduan-masyarakat/sktlk">
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
             {{-- Alert success --}}
             @if (session('success'))
-                <div class="alert alert-success mt-4" role="alert">
+                <div class="alert alert-success mt-4"
+                     role="alert">
                     <i class="fa-solid fa-circle-check"></i>
                     <span class="d-inline-block mx-2">
                         {{ session('success') }}
@@ -73,10 +89,14 @@
 
             <div class="card shadow p-5 my-5">
                 <div class="card-body">
-                    <h1 style="color: black" class="h1 font-weight-bolder text-center my-4" data-aos="fade-up"
+                    <h1 style="color: black"
+                        class="h1 font-weight-bolder text-center my-4"
+                        data-aos="fade-up"
                         data-aos-duration="500">Form Pelaporan SKTLK</h1>
 
-                    <form action="/upload-sktlk" method="POST" enctype="multipart/form-data">
+                    <form action="/upload-sktlk"
+                          method="POST"
+                          enctype="multipart/form-data">
                         @csrf
                         {{-- Form Data Diri --}}
                         <h1 style="font-size: 24px">Data Diri :</h1>
@@ -89,9 +109,13 @@
                                     <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    <input name="namaLengkap" type="text" class="form-control form-control-sm"
-                                        placeholder="Nama lengkap" style="height: 40px"
-                                        value="{{ old('namaLengkap') ?? '' }}" required>
+                                    <input name="namaLengkap"
+                                           type="text"
+                                           class="form-control form-control-sm"
+                                           placeholder="Nama lengkap"
+                                           style="height: 40px"
+                                           value="{{ old('namaLengkap') ?? '' }}"
+                                           required>
                                 </td>
                             </tr>
 
@@ -103,13 +127,18 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input name="tempatLahir" type="text"
-                                            class="form-control d-inline-block float-left" placeholder="Tempat lahir"
-                                            style="height: 40px; width: 48%; margin-right: 2%"
-                                            value="{{ old('tempatLahir') ?? '' }}" required>
-                                        <input name="tanggalLahir" type="date"
-                                            class="form-control w-50 d-inline-block float-left" style="height: 40px"
-                                            required>
+                                        <input name="tempatLahir"
+                                               type="text"
+                                               class="form-control d-inline-block float-left"
+                                               placeholder="Tempat lahir"
+                                               style="height: 40px; width: 48%; margin-right: 2%"
+                                               value="{{ old('tempatLahir') ?? '' }}"
+                                               required>
+                                        <input name="tanggalLahir"
+                                               type="date"
+                                               class="form-control w-50 d-inline-block float-left"
+                                               style="height: 40px"
+                                               required>
                                     </div>
                                 </td>
                             </tr>
@@ -121,9 +150,13 @@
                                     <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    <input name="pekerjaan" type="text" class="form-control form-control-sm"
-                                        placeholder="Pekerjaan" style="height: 40px"
-                                        value="{{ old('pekerjaan') ?? '' }}" required>
+                                    <input name="pekerjaan"
+                                           type="text"
+                                           class="form-control form-control-sm"
+                                           placeholder="Pekerjaan"
+                                           style="height: 40px"
+                                           value="{{ old('pekerjaan') ?? '' }}"
+                                           required>
                                 </td>
                             </tr>
 
@@ -134,19 +167,26 @@
                                     <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    <select name="kewarganegaraan" class="custom-select" style="height: 40px" required>
-                                        <option selected hidden>Pilih kewarganegaraan</option>
+                                    <select name="kewarganegaraan"
+                                            class="custom-select"
+                                            style="height: 40px"
+                                            required>
+                                        <option selected
+                                                hidden>Pilih kewarganegaraan</option>
                                         @if (old('kewarganegaraan'))
                                             @if (old('kewarganegaraan') == 'Warga Negara Indonesia')
-                                                <option selected value="Warga Negara Indonesia">Warga Negara Indonesia
+                                                <option selected
+                                                        value="Warga Negara Indonesia">Warga Negara Indonesia
                                                 </option>
                                                 <option value="Warga Negara Asing">Warga Negara Asing</option>
                                             @elseif(old('kewarganegaraan') == 'Warga Negara Asing')
                                                 <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
-                                                <option selected value="Warga Negara Asing">Warga Negara Asing</option>
+                                                <option selected
+                                                        value="Warga Negara Asing">Warga Negara Asing</option>
                                             @endif
                                         @else
-                                            <option selected hidden>Pilih kewarganegaraan</option>
+                                            <option selected
+                                                    hidden>Pilih kewarganegaraan</option>
                                             <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
                                             <option value="Warga Negara Asing">Warga Negara Asing</option>
                                         @endif
@@ -161,7 +201,11 @@
                                     <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    <textarea name="alamat" placeholder="Alamat" class="form-control" rows="3" required>{{ old('alamat') ?? '' }}</textarea>
+                                    <textarea name="alamat"
+                                              placeholder="Alamat"
+                                              class="form-control"
+                                              rows="3"
+                                              required>{{ old('alamat') ?? '' }}</textarea>
                                 </td>
                             </tr>
 
@@ -173,9 +217,13 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input name="telepon" type="text" class="form-control form-control-sm"
-                                            placeholder="Nomor handphone" style="height: 40px"
-                                            value="{{ old('telepon') ?? '' }}" required>
+                                        <input name="telepon"
+                                               type="text"
+                                               class="form-control form-control-sm"
+                                               placeholder="Nomor handphone"
+                                               style="height: 40px"
+                                               value="{{ old('telepon') ?? '' }}"
+                                               required>
                                     </div>
                                 </td>
                             </tr>
@@ -192,8 +240,12 @@
                                     <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    <input name="tanggalKejadian" type="date" class="form-control"
-                                        style="height: 40px" value="{{ old('tanggalKejadian') ?? '' }}" required>
+                                    <input name="tanggalKejadian"
+                                           type="date"
+                                           class="form-control"
+                                           style="height: 40px"
+                                           value="{{ old('tanggalKejadian') ?? '' }}"
+                                           required>
                                 </td>
                             </tr>
 
@@ -204,31 +256,47 @@
                                     <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    <select name="lokasiKejadian" class="custom-select" style="height: 40px"
-                                        required>
-                                        <option selected value="" hidden>Pilih Lokasi Kejadian</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Abiansemal' ? 'selected' : '' }}
-                                            value="Abiansemal">Abiansemal</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta' ? 'selected' : '' }}
-                                            value="Kuta">Kuta</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta Selatan' ? 'selected' : '' }}
-                                            value="Kuta Selatan">Kuta Selatan</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta Utara' ? 'selected' : '' }}
-                                            value="Kuta Utara">Kuta Utara</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Mengwi' ? 'selected' : '' }}
-                                            value="Mengwi">Mengwi</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kejadian == 'Petang' ? 'selected' : '' }}
-                                            value="Petang">Petang</option>
-                                    </select>
+                                    {{-- <select name="lokasiKejadian"
+                                            class="custom-select"
+                                            style="height: 40px"
+                                            required>
+                                        <option selected
+                                                value=""
+                                                hidden>Pilih Lokasi Kejadian</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Abiansemal' ? 'selected' : '' }}
+                                                value="Abiansemal">Abiansemal</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta' ? 'selected' : '' }}
+                                                value="Kuta">Kuta</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta Selatan' ? 'selected' : '' }}
+                                                value="Kuta Selatan">Kuta Selatan</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta Utara' ? 'selected' : '' }}
+                                                value="Kuta Utara">Kuta Utara</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Mengwi' ? 'selected' : '' }}
+                                                value="Mengwi">Mengwi</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Petang' ? 'selected' : '' }}
+                                                value="Petang">Petang</option>
+                                    </select> --}}
+                                    <input list="lokasiKejadians"
+                                           name="lokasiKejadian"
+                                           id="lokasiKejadian"
+                                           class="form-control"
+                                           placeholder="Lokasi kejadian"
+                                           autocomplete="off">
+
+                                    <datalist id="lokasiKejadians">
+                                        <option value="Abiansemal">
+                                        <option value="Kuta">
+                                        <option value="Kuta Selatan">
+                                        <option value="Kuta Utara">
+                                        <option value="Mengwi">
+                                        <option value="Petang">
+                                    </datalist>
                                     <div class="form-group mt-2">
-                                        <textarea name="detailLokasiKejadian" placeholder="Detail lokasi kejadian" class="form-control" rows="3"
-                                            required>{{ isset($laporan) ? $laporan->detail_lokasi_kejadian : '' }}</textarea>
+                                        <textarea name="detailLokasiKejadian"
+                                                  placeholder="Detail lokasi kejadian"
+                                                  class="form-control"
+                                                  rows="3"
+                                                  required>{{ isset($laporan) ? $laporan->detail_lokasi_kejadian : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -241,7 +309,11 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <textarea name="suratHilang" placeholder="Surat Hilang" class="form-control" rows="3" required></textarea>
+                                        <textarea name="suratHilang"
+                                                  placeholder="Surat Hilang"
+                                                  class="form-control"
+                                                  rows="3"
+                                                  required></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -249,8 +321,11 @@
                             {{-- Download Surat pernyataan --}}
                             <tr>
                                 <td class="pb-4">
-                                    <a id="btnDownloadPernyataan" role="button" class="btn btn-primary"
-                                        data-bs-toggle="modal" data-bs-target="#modalDownloadPernyataan">
+                                    <a id="btnDownloadPernyataan"
+                                       role="button"
+                                       class="btn btn-primary"
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#modalDownloadPernyataan">
                                         Surat Pernyataan Keaslian Dokumen
                                     </a>
                                 </td>
@@ -267,8 +342,11 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input name="fotoKtp" type="file" class="form-control-file"
-                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <input name="fotoKtp"
+                                               type="file"
+                                               class="form-control-file"
+                                               accept=".pdf,.jpg,.jpeg,.png"
+                                               required>
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -280,8 +358,11 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input name="fotoPelapor" type="file" class="form-control-file"
-                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <input name="fotoPelapor"
+                                               type="file"
+                                               class="form-control-file"
+                                               accept=".pdf,.jpg,.jpeg,.png"
+                                               required>
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -294,8 +375,11 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input name="rekomendasiInstansi" type="file" class="form-control-file"
-                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <input name="rekomendasiInstansi"
+                                               type="file"
+                                               class="form-control-file"
+                                               accept=".pdf,.jpg,.jpeg,.png"
+                                               required>
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -308,8 +392,11 @@
                                 </td>
                                 <td>
                                     <div class="form-group mt-3">
-                                        <input name="pernyataanKeaslian" type="file" class="form-control-file"
-                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <input name="pernyataanKeaslian"
+                                               type="file"
+                                               class="form-control-file"
+                                               accept=".pdf,.jpg,.jpeg,.png"
+                                               required>
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -322,7 +409,10 @@
                                         <span class="text-danger">*</span>
                                         Data wajib diisi
                                     </h6>
-                                    <button name="kirim" value="kirim" type="submit" class="btn btn-primary">
+                                    <button name="kirim"
+                                            value="kirim"
+                                            type="submit"
+                                            class="btn btn-primary">
                                         Kirim
                                     </button>
                                 </td>
@@ -334,30 +424,45 @@
         </div>
 
         {{-- Modal untuk download Surat Pernyataan Keaslian Dokumen --}}
-        <div class="modal fade" id="modalDownloadPernyataan" tabindex="-1"
-            aria-labelledby="modalDownloadPernyataanLabel" aria-hidden="true" role="modal">
+        <div class="modal fade"
+             id="modalDownloadPernyataan"
+             tabindex="-1"
+             aria-labelledby="modalDownloadPernyataanLabel"
+             aria-hidden="true"
+             role="modal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="/download-pernyataan-sktlk" method="POST">
+                    <form action="/download-pernyataan-sktlk"
+                          method="POST">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modalDownloadPernyataanLabel">Download Surat Pernyataan
+                            <h5 class="modal-title"
+                                id="modalDownloadPernyataanLabel">Download Surat Pernyataan
                                 Keaslian</h5>
                         </div>
                         <div class="modal-body">
                             {{-- Hidden Data --}}
-                            <input name="pernyataanNamaLengkap" type="hidden">
-                            <input name="pernyataanTempatLahir" type="hidden">
-                            <input name="pernyataanTanggalLahir" type="hidden">
-                            <textarea name="pernyataanAlamat" class="d-none"></textarea>
-                            <input name="pernyataanTelepon" type="hidden">
+                            <input name="pernyataanNamaLengkap"
+                                   type="hidden">
+                            <input name="pernyataanTempatLahir"
+                                   type="hidden">
+                            <input name="pernyataanTanggalLahir"
+                                   type="hidden">
+                            <textarea name="pernyataanAlamat"
+                                      class="d-none"></textarea>
+                            <input name="pernyataanTelepon"
+                                   type="hidden">
 
                             <p>Tekan "Download" untuk mengunduh berkas/surat pernyataan keaslian SKTLK</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                            <button formtarget="_blank" type="submit" type="button"
-                                class="btn btn-primary">Download</button>
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Tutup</button>
+                            <button formtarget="_blank"
+                                    type="submit"
+                                    type="button"
+                                    class="btn btn-primary">Download</button>
                         </div>
                     </form>
                 </div>
@@ -383,8 +488,8 @@
     </script> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
-    </script>
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+            crossorigin="anonymous"></script>
 
     <script src="{{ asset('assets-user/js/wow.min.js') }}"></script>
     <script src="{{ asset('assets-user/js/main.js') }}"></script>
@@ -414,6 +519,11 @@
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
 
     <script src="{{ asset('assets-user/js/download-pernyataan.js') }}"></script>
+
+    <script src="http://api.iksgroup.co.id/apijs/lokasiapi.js"></script>
+    <script>
+        var render = createwidgetlokasi("provinsi", "kabupaten", "kecamatan", "kelurahan");
+    </script>
 </body>
 
 </html>

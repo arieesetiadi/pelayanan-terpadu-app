@@ -77,7 +77,7 @@
             <h1 style="color: black"
                 class="h1 font-weight-bolder text-center my-4"
                 data-aos="fade-up"
-                data-aos-duration="500">Sentra Pelayanan Kepolisian Terpadu ( SPKT )</h1>
+                data-aos-duration="500">Sentra Pelayanan Kepolisian Terpadu <br> ( SPKT )</h1>
             <p data-aos="fade-up"
                data-aos-duration="500">
                 SPKT bertugas memberikan pelayanan kepolisian secara terpadu terhadap laporan/pengaduan masyarakat,

@@ -91,10 +91,10 @@
                 @if ($saksi->nama[0] != null)
                     <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
                         @for ($i = 0; $i < count($saksi->nama); $i++)
-                             <li>{{ $saksi->nama[$i] }}
-                                {{ $saksi->umur[$i] != null ? ", " . $saksi->umur[$i] . " tahun" : "" }}
-                                {{ $saksi->pekerjaan[$i] != null ? ", " . $saksi->pekerjaan[$i] : "" }}
-                                {{ $saksi->alamat[$i] != null ? ", " . $saksi->alamat[$i] : "" }}
+                            <li>{{ $saksi->nama[$i] }}
+                                {{ $saksi->umur[$i] != null ? ', ' . $saksi->umur[$i] . ' tahun' : '' }}
+                                {{ $saksi->pekerjaan[$i] != null ? ', ' . $saksi->pekerjaan[$i] : '' }}
+                                {{ $saksi->alamat[$i] != null ? ', ' . $saksi->alamat[$i] : '' }}
                             </li>
                         @endfor
                     </ol>
@@ -111,13 +111,19 @@
                 @if ($bukti->namaBukti[0] != null)
                     <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
                         @for ($i = 0; $i < count($bukti->namaBukti); $i++)
-                            <li>
-                                <i class="bi bi-download"></i>
-                                <a href="{{ asset('assets-user/upload/') . '/' . $bukti->gambarBukti[$i] }}"
-                                    target="_blank">
+                            @if (count($bukti->gambarBukti) > 0)
+                                <li>
+                                    <i class="bi bi-download"></i>
+                                    <a href="{{ asset('assets-user/upload/') . '/' . $bukti->gambarBukti[$i] }}"
+                                       target="_blank">
+                                        {{ $bukti->namaBukti[$i] }}
+                                    </a>
+                                </li>
+                            @else
+                                <li>
                                     {{ $bukti->namaBukti[$i] }}
-                                </a>
-                            </li>
+                                </li>
+                            @endif
                         @endfor
                     </ol>
                 @else
@@ -130,7 +136,8 @@
             <td>Foto KTP</td>
             <td>:</td>
             <td>
-                <a target="_blank" href="{{ asset('assets-user/upload/') . '/' . $laporan->foto_ktp }}">
+                <a target="_blank"
+                   href="{{ asset('assets-user/upload/') . '/' . $laporan->foto_ktp }}">
                     <i class="bi bi-download"></i>
                     Foto KTP
                 </a>
@@ -140,7 +147,8 @@
             <td>Foto Pelapor</td>
             <td>:</td>
             <td>
-                <a target="_blank" href="{{ asset('assets-user/upload/') . '/' . $laporan->foto_pelapor }}">
+                <a target="_blank"
+                   href="{{ asset('assets-user/upload/') . '/' . $laporan->foto_pelapor }}">
                     <i class="bi bi-download"></i>
                     Foto Pelapor
                 </a>
@@ -150,7 +158,8 @@
             <td>Lampiran</td>
             <td>:</td>
             <td>
-                <a target="_blank" href="{{ asset('assets-user/upload/') . '/' . $laporan->lampiran }}">
+                <a target="_blank"
+                   href="{{ asset('assets-user/upload/') . '/' . $laporan->lampiran }}">
                     <i class="bi bi-download"></i>
                     Lampiran
                 </a>
@@ -160,35 +169,56 @@
     @if ($laporan->status === null)
         <hr>
         {{-- Tombol Setuju --}}
-        <a href="/admin/sp2hp/valid/{{ $laporan->id }}" type="button" class="btn btn-success">Valid</a>
+        <a href="/admin/sp2hp/valid/{{ $laporan->id }}"
+           type="button"
+           class="btn btn-success">Valid</a>
 
         {{-- Tombol Tolak --}}
-        <button type="button" class="btn btn-danger mx-3" data-bs-target="#tolak-modal-{{ $laporan->id }}"
-            data-bs-toggle="modal" data-bs-dismiss="modal">Tidak Valid</button>
+        <button type="button"
+                class="btn btn-danger mx-3"
+                data-bs-target="#tolak-modal-{{ $laporan->id }}"
+                data-bs-toggle="modal"
+                data-bs-dismiss="modal">Tidak Valid</button>
 
         {{-- Pop up Penolakan --}}
-        <div class="modal fade" id="tolak-modal-{{ $laporan->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade"
+             id="tolak-modal-{{ $laporan->id }}"
+             tabindex="-1"
+             aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Pelaporan Tidak Valid</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title"
+                            id="exampleModalLabel">Pelaporan Tidak Valid</h5>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                     </div>
 
-                    <form action="/admin/sp2hp/invalid" method="POST">
-                        <div class="modal-body" style="height: 250px">
+                    <form action="/admin/sp2hp/invalid"
+                          method="POST">
+                        <div class="modal-body"
+                             style="height: 250px">
                             @csrf
                             <div class="mb-3">
-                                <input type="hidden" name="id" value="{{ $laporan->id }}">
-                                <label for="keteranganInvalid" class="form-label">Masukkan keterangan :</label>
-                                <textarea name="keteranganInvalid" class="form-control" id="keteranganInvalid" rows="6"></textarea>
+                                <input type="hidden"
+                                       name="id"
+                                       value="{{ $laporan->id }}">
+                                <label for="keteranganInvalid"
+                                       class="form-label">Masukkan keterangan :</label>
+                                <textarea name="keteranganInvalid"
+                                          class="form-control"
+                                          id="keteranganInvalid"
+                                          rows="6"></textarea>
                             </div>
                         </div>
 
                         <div class="modal-footer">
                             {{-- Tombol Kirim --}}
-                            <button type="submit" class="btn btn-primary">Kirim</button>
+                            <button type="submit"
+                                    class="btn btn-primary">Kirim</button>
                         </div>
                     </form>
                 </div>

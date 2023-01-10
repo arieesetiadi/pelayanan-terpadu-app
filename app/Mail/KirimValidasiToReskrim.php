@@ -16,7 +16,7 @@ class KirimValidasiToReskrim extends Mailable
      *
      * @return void
      */
-    private $fileNames, $reskrim;
+    private $fileName, $reskrim;
 
     public function __construct($fileName)
     {
@@ -36,8 +36,7 @@ class KirimValidasiToReskrim extends Mailable
             ->subject('Pelaporan Tindak Kriminal Perlu Ditindaklanjuti')
             ->view('email.validasi-reskrim');
 
-        $mail->attach(realpath('') . '/assets-user/upload/' . $this->file)
-        ->attach(public_path('assets-user\upload\\') . $this->fileName);
+        $mail->attach(public_path('assets-user\upload\\') . $this->fileName);
 
         return $mail;
     }

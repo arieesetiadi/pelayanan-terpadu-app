@@ -16,13 +16,13 @@
                 <!-- /End Slide 1 -->
 
                 <!-- Slide 2 -->
-                <li data-transition="random">
-                    <!-- Main Image -->
+                <!-- Main Image -->
+                {{-- <li data-transition="random">
                     <img src="{{ asset('assets-user/img/rev-slider/slider-2.png') }}"
                          alt=""
                          data-bgposition="center center"
                          data-no-retina>
-                </li>
+                </li> --}}
                 <!-- /End Slide 2 -->
 
                 <!-- Slide 3 -->
