@@ -12,9 +12,9 @@ use App\Http\Controllers\Lapor\SIKController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\Lapor\SKTLKController;
 
-Route::get('/config-cache', function () {
-	Artisan::call('config:cache');
-	return 'Configuration cache cleared! <br> Configuration cached successfully!';
+Route::get('/config-cache', function() {
+    Artisan::call('config:cache');
+    return 'Configuration cache cleared! <br> Configuration cached successfully!';
 });
 
 Route::get('/', [PelaporController::class, 'index']);
@@ -74,9 +74,10 @@ Route::middleware('auth.pelapor')->group(function () {
 	// Route SP2HP
 	Route::view('/form/lapor-sp2hp', 'form.lapor-sp2hp');
 	Route::post('/lapor-sp2hp', [SP2HPController::class, 'lapor']);
-
+	
 	// Route Profile Pelapor
 	Route::view('/profile/pelapor', 'profile-pelapor');
+	Route::post('/profile/pelapor/update', [PelaporController::class, 'update']);
 });
 
 // Route Notifikasi
@@ -89,6 +90,7 @@ Route::get('/notifikasi/read-all-admin', [NotifikasiController::class, 'readAllA
 Route::middleware('auth')->group(function () {
 	Route::get('/dashboard', [AdminController::class, 'dashboard']);
 	Route::get('/profile', [AdminController::class, 'profile']);
+	Route::post('/profile/update', [AdminController::class, 'update']);
 	Route::post('/admin/laporan-wilayah/pdf', [AdminController::class, 'laporanWilayahPDF']);
 	Route::post('/admin/laporan-wilayah/excel', [AdminController::class, 'laporanWilayahExcel']);
 	Route::post('/admin/request-ttd-kanit', [AdminController::class, 'requestTtdKanit']);

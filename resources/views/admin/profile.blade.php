@@ -38,6 +38,8 @@
                     </div>
                     <div class="card-body" style="height: 400px">
                         <form action="/profile/update" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{  auth()->user()->id }}">
                             <div class="mb-2">
                                 <label for="nama" class="form-label">Nama :</label>
                                 <input name="nama" type="text" class="form-control" id="nama"

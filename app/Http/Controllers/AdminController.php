@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use PDF;
 use Carbon\Carbon;
+use App\Models\User;
 use Carbon\CarbonPeriod;
 use App\Models\Laporan\SIK;
 use Illuminate\Http\Request;
@@ -66,6 +67,18 @@ class AdminController extends Controller
 
         // Redirect ke dashboard
         return redirect()->to('/dashboard')->with('success', 'Berhasil melakukan permohonan tanda tangan Kanit');
+    }
+
+    public function update(Request $request) 
+    {
+        User::find($request->id)->update([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'telepon' => $request->telepon,
+            'alamat' => $request->alamat,
+        ]);
+
+        return back()->with('success', 'Berhasil mengubah data profile');
     }
 
     public function laporanWilayahPDF(Request $request)
