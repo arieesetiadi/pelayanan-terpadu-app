@@ -34,7 +34,7 @@
             <div class="col-4">
                 <h3>Laporan SKTLK</h3>
             </div>
-            <div class="col-4 d-flex justify-content-end">
+            <div class="col-6 d-flex justify-content-end">
                 <span class="mt-4 mx-2">Filter Tanggal : </span>
 
                 <form id="filterDateForm"
@@ -54,7 +54,7 @@
                 </form>
             </div>
 
-            <div class="col-4 mt-3 d-flex justify-content-end">
+            <div class="col-2 mt-3 d-flex justify-content-end">
                 {{-- Tombol export PDF --}}
                 <form target="_blank"
                       action="/admin/sktlk/pdf"

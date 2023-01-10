@@ -18,10 +18,10 @@
 
     <div class="container-fluid">
         <div class="row justify-content-between">
-            <div class="col-6">
+            <div class="col-4">
                 <h3>Laporan SIK</h3>
             </div>
-            <div class="col-4 d-flex justify-content-end">
+            <div class="col-6 d-flex justify-content-end">
                 <!-- Include Required Prerequisites -->
                 <script type="text/javascript"
                         src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>

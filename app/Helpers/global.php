@@ -20,6 +20,7 @@ function uploadFile($file, $path)
     if (!is_null($file)) {
         // Buat nama gambar
         $fileName = time() . '_' . str($file->getClientOriginalName())->lower();
+        $fileName = stringClean($fileName);
 
         // Move gambar ke public
         $file->move($path, $fileName);
@@ -286,4 +287,11 @@ function getKeteranganPerkembangan($keterangan)
     }, explode('|', $keterangan));
 
     return array_reverse($keterangan);
+}
+
+function stringClean($string)
+{
+    $string = str_replace(' ', '', $string); // Replaces all spaces with hyphens.
+
+    return preg_replace('/[^A-Za-z0-9\-.]/', '', $string); // Removes special chars.
 }

@@ -34,9 +34,9 @@ class AdminController extends Controller
         }
 
         $data['title'] = 'Dashboard';
-        $data['countSIK'] = count(SIK::getSIK());
-        $data['countSKTLK'] = count(SKTLK::getSKTLK());
-        $data['countSP2HP'] = count(SP2HP::getSP2HP());
+        $data['countSIK'] = count(SIK::all());
+        $data['countSKTLK'] = count(SKTLK::all());
+        $data['countSP2HP'] = count(SP2HP::all());
 
         return view('admin.dashboard', $data);
     }

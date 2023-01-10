@@ -91,8 +91,11 @@
                 @if ($saksi->nama[0] != null)
                     <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
                         @for ($i = 0; $i < count($saksi->nama); $i++)
-                            <li>{{ $saksi->nama[$i] }}, {{ $saksi->umur[$i] }} tahun, {{ $saksi->pekerjaan[$i] }},
-                                {{ $saksi->alamat[$i] }}</li>
+                             <li>{{ $saksi->nama[$i] }}
+                                {{ $saksi->umur[$i] != null ? ", " . $saksi->umur[$i] . " tahun" : "" }}
+                                {{ $saksi->pekerjaan[$i] != null ? ", " . $saksi->pekerjaan[$i] : "" }}
+                                {{ $saksi->alamat[$i] != null ? ", " . $saksi->alamat[$i] : "" }}
+                            </li>
                         @endfor
                     </ol>
                 @else

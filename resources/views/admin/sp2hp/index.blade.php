@@ -18,10 +18,10 @@
 
     <div class="container-fluid">
         <div class="row justify-content-between">
-            <div class="col-6">
+            <div class="col-4">
                 <h3>Laporan SP2HP</h3>
             </div>
-            <div class="col-4 d-flex justify-content-end">
+            <div class="col-6 d-flex justify-content-end">
                 <!-- Include Required Prerequisites -->
                 <script type="text/javascript"
                         src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
@@ -129,11 +129,11 @@
 
                         {{-- Status --}}
                         <td>
-                            @if ($item->status === 1)
+                            @if ($item->status == 1)
                                 {{-- centang --}}
                                 <i class="bi bi-check-circle-fill text-success"
                                    title="Valid"></i>
-                            @elseif($item->status === 0)
+                            @elseif($item->status == 0)
                                 {{-- x --}}
                                 <i class="bi bi-x-circle-fill text-danger"
                                    title="Tidak Valid"></i>
@@ -426,9 +426,11 @@
                                             @if ($saksi->nama[0] != null)
                                                 <ol style="list-style-type: decimal; margin: 0; padding-left: 15px;">
                                                     @for ($i = 0; $i < count($saksi->nama); $i++)
-                                                        <li>{{ $saksi->nama[$i] }}, {{ $saksi->umur[$i] }} tahun,
-                                                            {{ $saksi->pekerjaan[$i] }},
-                                                            {{ $saksi->alamat[$i] }}</li>
+                                                         <li>{{ $saksi->nama[$i] }}
+                                                            {{ $saksi->umur[$i] != null ? ", " . $saksi->umur[$i] . " tahun" : "" }}
+                                                            {{ $saksi->pekerjaan[$i] != null ? ", " . $saksi->pekerjaan[$i] : "" }}
+                                                            {{ $saksi->alamat[$i] != null ? ", " . $saksi->alamat[$i] : "" }}
+                                                        </li>
                                                     @endfor
                                                 </ol>
                                             @else
