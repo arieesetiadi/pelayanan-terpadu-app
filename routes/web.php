@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DaftarController as AdminDaftarController;
+use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AdminController;
@@ -19,13 +21,21 @@ Route::get('/config-cache', function() {
 
 Route::get('/', [PelaporController::class, 'index']);
 
-// Route Login
+// Route Login Pelapor
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
 // Route Daftar
 Route::view('/daftar', 'daftar');
 Route::post('/daftar', [DaftarController::class, 'daftar']);
+
+// Route Login Admin
+Route::get('/admin/login', [AdminLoginController::class, 'loginView'])->name('login');
+Route::post('/admin/login', [AdminLoginController::class, 'login']);
+
+// Route Daftar Admin
+Route::view('/admin/daftar', 'daftar');
+Route::post('/admin/daftar', [AdminDaftarController::class, 'daftar']);
 
 // Route Logout
 Route::get('/logout', [LoginController::class, 'logout']);

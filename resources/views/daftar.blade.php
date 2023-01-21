@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Daftar | SPKT Polres Badung</title>
+    <title>Daftar Pelapor | SPKT Polres Badung</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template"
@@ -57,83 +57,93 @@
                                                          class="rounded"></a>
                                             </div>
 
-                                            <h4 class="font-size-18 mt-4">Daftar akun</h4>
+                                            <h4 class="font-size-18 mt-4">Daftar Pelapor</h4>
                                         </div>
 
                                         <div class=" mt-5">
                                             {{-- Form Daftar --}}
-                                            <form action="/daftar"
+                                            <form action="/admin/daftar"
                                                   method="POST">
                                                 @csrf
                                                 {{-- Nama --}}
                                                 <div class="mb-3 auth-form-group-custom mb-4">
                                                     <i class="fa-solid fa-address-card auti-custom-input-icon"></i>
-                                                    <label for="nama">Nama</label>
+                                                    <label for="nama">Nama Lengkap</label>
                                                     <input name="nama"
                                                            type="text"
                                                            class="form-control"
                                                            id="nama"
-                                                           placeholder="Nama pengguna"
+                                                           placeholder="Nama lengkap pengguna"
                                                            required>
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {{-- Username --}}
-                                                        <div class="mb-3 auth-form-group-custom mb-4">
-                                                            <i
-                                                               class="fa-solid fa-address-card auti-custom-input-icon"></i>
-                                                            <label for="username">Username</label>
-                                                            <input name="username"
-                                                                   type="text"
-                                                                   class="form-control"
-                                                                   id="username"
-                                                                   placeholder="Username"
-                                                                   required>
-                                                        </div>
+                                                {{-- Username --}}
+                                                <div class="mb-3 auth-form-group-custom mb-4">
+                                                    <i class="fa-solid fa-address-card auti-custom-input-icon"></i>
+                                                    <label for="username">Username</label>
+                                                    <input name="username"
+                                                           type="text"
+                                                           class="form-control"
+                                                           id="username"
+                                                           placeholder="Username"
+                                                           required>
+                                                </div>
+
+                                                {{-- Tempat, & Tanggal lahir --}}
+                                                <div class="d-flex gap-2 mb-4">
+                                                    <div class="form-group">
+                                                        <label for="tempatLahir">Tempat</label>
+                                                        <input name="tempatLahir"
+                                                               type="text"
+                                                               class="form-control"
+                                                               placeholder="Tempat lahir"
+                                                               style="height: 40px"
+                                                               required>
                                                     </div>
-                                                    <div class="col-6">
-                                                        {{-- Password --}}
-                                                        <div class="mb-3 auth-form-group-custom mb-4">
-                                                            <i class="fa-solid fa-key auti-custom-input-icon"></i>
-                                                            <label for="password">Password</label>
-                                                            <input name="password"
-                                                                   type="password"
-                                                                   class="form-control"
-                                                                   id="password"
-                                                                   placeholder="Password"
-                                                                   required>
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label for="tanggalLahir">Tanggal Lahir</label>
+                                                        <input name="tanggalLahir"
+                                                               type="date"
+                                                               class="form-control"
+                                                               style="height: 40px"
+                                                               required>
                                                     </div>
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        {{-- Email --}}
-                                                        <div class="auth-form-group-custom mb-4">
-                                                            <i class="fa-solid fa-envelope auti-custom-input-icon"></i>
-                                                            <label for="email">Email</label>
-                                                            <input name="email"
-                                                                   type="email"
-                                                                   class="form-control"
-                                                                   id="email"
-                                                                   placeholder="Email"
-                                                                   required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        {{-- Telepon --}}
-                                                        <div class="auth-form-group-custom mb-4">
-                                                            <i class="fa-solid fa-phone auti-custom-input-icon"></i>
-                                                            <label for="telepon">Telepon</label>
-                                                            <input name="telepon"
-                                                                   type="text"
-                                                                   class="form-control"
-                                                                   id="telepon"
-                                                                   placeholder="Nomor telepon"
-                                                                   required>
-                                                        </div>
-                                                    </div>
+                                                {{-- Telepon --}}
+                                                <div class="auth-form-group-custom mb-4">
+                                                    <i class="fa-solid fa-phone auti-custom-input-icon"></i>
+                                                    <label for="telepon">Telepon</label>
+                                                    <input name="telepon"
+                                                           type="text"
+                                                           class="form-control"
+                                                           id="telepon"
+                                                           placeholder="Nomor telepon"
+                                                           required>
+                                                </div>
+
+                                                {{-- Password --}}
+                                                <div class="mb-3 auth-form-group-custom mb-4">
+                                                    <i class="fa-solid fa-key auti-custom-input-icon"></i>
+                                                    <label for="password">Password</label>
+                                                    <input name="password"
+                                                           type="password"
+                                                           class="form-control"
+                                                           id="password"
+                                                           placeholder="Password"
+                                                           required>
+                                                </div>
+
+                                                {{-- Email --}}
+                                                <div class="auth-form-group-custom mb-4">
+                                                    <i class="fa-solid fa-envelope auti-custom-input-icon"></i>
+                                                    <label for="email">Email</label>
+                                                    <input name="email"
+                                                           type="email"
+                                                           class="form-control"
+                                                           id="email"
+                                                           placeholder="Email"
+                                                           required>
                                                 </div>
 
                                                 {{-- Alamat --}}
