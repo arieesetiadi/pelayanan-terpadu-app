@@ -208,11 +208,11 @@
                                         <label id="labelFotokopiPaspor"
                                                for="fotokopiPaspor"
                                                class="btn btn-primary d-block w-100">
-                                               @if (isset($laporan) && $laporan->fotokopi_paspor != '')
-                                                   $laporan->fotokopi_paspor
-                                               @else
-                                                   Upload File
-                                               @endif
+                                            @if (isset($laporan) && $laporan->fotokopi_paspor != '')
+                                                $laporan->fotokopi_paspor
+                                            @else
+                                                Upload File
+                                            @endif
                                         </label>
                                         <input id="fotokopiPaspor"
                                                accept=".pdf,.jpg,.jpeg,.png"

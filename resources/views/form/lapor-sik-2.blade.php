@@ -6,32 +6,46 @@
     <title>Lapor | Surat Ijin Keramaian</title>
 
     {{-- Animation os Scroll --}}
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet"
+          href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- Mobile Specific Metas-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Bootstrap-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
 
     <!-- Template Style-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
 
     {{-- Fontawesome --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="{{ asset('assets-user/css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-user/css/jquery-fancybox.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-user/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-user/css/shortcodes.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets-user/css/responsive.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets-user/css/icomoon.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets-user/css/jquery-fancybox.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets-user/css/style.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets-user/css/shortcodes.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets-user/css/responsive.css') }}">
 
-    <link href="favicon.ico" rel="shortcut icon">
+    <link href="favicon.ico"
+          rel="shortcut icon">
 </head>
 
 <body class="counter-scroll">
@@ -44,14 +58,16 @@
 
     {{-- Konten --}}
     <section id="main">
-        <div class="container py-5 styled-bg" style="padding: 0 8%">
+        <div class="container py-5 styled-bg"
+             style="padding: 0 8%">
             <a href="/pengaduan-masyarakat/sik">
                 <i class="fa-solid fa-angle-left fa-3x"></i>
             </a>
 
             {{-- Alert success --}}
             @if (session('success'))
-                <div class="alert alert-success mt-4" role="alert">
+                <div class="alert alert-success mt-4"
+                     role="alert">
                     <i class="fa-solid fa-circle-check"></i>
                     <span class="d-inline-block mx-2">
                         {{ session('success') }}
@@ -61,15 +77,22 @@
 
             <div class="card shadow p-5 my-5">
                 <div class="card-body">
-                    <h1 style="color: black" class="h1 font-weight-bolder text-center mb-4" data-aos="fade-up"
+                    <h1 style="color: black"
+                        class="h1 font-weight-bolder text-center mb-4"
+                        data-aos="fade-up"
                         data-aos-duration="500">Form Izin Keramaian </h1>
                     {{-- Form Data Diri --}}
-                    <h1 class="text-dark" style="font-size: 24px">Data Laporan :</h1>
+                    <h1 class="text-dark"
+                        style="font-size: 24px">Data Laporan :</h1>
                     <hr>
 
-                    <form action="/upload-form-sik" method="post" enctype="multipart/form-data">
+                    <form action="/upload-form-sik"
+                          method="post"
+                          enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="id" value="{{ $laporan->id }}">
+                        <input type="hidden"
+                               name="id"
+                               value="{{ $laporan->id }}">
                         <table class="table table-sm table-borderless">
                             {{-- Nama Organisasi --}}
                             <tr>
@@ -79,10 +102,13 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <input name="namaOrganisasi" type="text" class="form-control form-control-sm"
-                                            placeholder="Nama Organisasi" style="height: 40px"
-                                            value="{{ $laporan->nama_organisasi != '' ? $laporan->nama_organisasi : '' }}"
-                                            required>
+                                        <input name="namaOrganisasi"
+                                               type="text"
+                                               class="form-control form-control-sm"
+                                               placeholder="Nama Organisasi"
+                                               style="height: 40px"
+                                               value="{{ $laporan->nama_organisasi != '' ? $laporan->nama_organisasi : '' }}"
+                                               required>
                                     </div>
                                 </td>
                             </tr>
@@ -95,11 +121,13 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <input name="namaPenanggungJawab" type="text"
-                                            class="form-control form-control-sm" placeholder="Nama Penanggung Jawab"
-                                            style="height: 40px"
-                                            value="{{ $laporan->nama_penanggung_jawab != '' ? $laporan->nama_penanggung_jawab : '' }}"
-                                            required>
+                                        <input name="namaPenanggungJawab"
+                                               type="text"
+                                               class="form-control form-control-sm"
+                                               placeholder="Nama Penanggung Jawab"
+                                               style="height: 40px"
+                                               value="{{ $laporan->nama_penanggung_jawab != '' ? $laporan->nama_penanggung_jawab : '' }}"
+                                               required>
                                     </div>
                                 </td>
                             </tr>
@@ -112,9 +140,13 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <input name="pekerjaan" type="text" class="form-control form-control-sm"
-                                            placeholder="Pekerjaan Penanggung Jawab" style="height: 40px"
-                                            value="{{ $laporan->pekerjaan != '' ? $laporan->pekerjaan : '' }}" required>
+                                        <input name="pekerjaan"
+                                               type="text"
+                                               class="form-control form-control-sm"
+                                               placeholder="Pekerjaan Penanggung Jawab"
+                                               style="height: 40px"
+                                               value="{{ $laporan->pekerjaan != '' ? $laporan->pekerjaan : '' }}"
+                                               required>
                                     </div>
                                 </td>
                             </tr>
@@ -127,7 +159,11 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <textarea name="alamat" placeholder="Alamat Penanggung Jawab" class="form-control" rows="3" required>{{ $laporan->alamat != '' ? $laporan->alamat : '' }}</textarea>
+                                        <textarea name="alamat"
+                                                  placeholder="Alamat Penanggung Jawab"
+                                                  class="form-control"
+                                                  rows="3"
+                                                  required>{{ $laporan->alamat != '' ? $laporan->alamat : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -140,9 +176,13 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <input name="telepon" type="text" class="form-control form-control-sm"
-                                            placeholder="Nomor telepon" style="height: 40px"
-                                            value="{{ $laporan->telepon != '' ? $laporan->telepon : '' }}" required>
+                                        <input name="telepon"
+                                               type="text"
+                                               class="form-control form-control-sm"
+                                               placeholder="Nomor telepon"
+                                               style="height: 40px"
+                                               value="{{ $laporan->telepon != '' ? $laporan->telepon : '' }}"
+                                               required>
                                     </div>
                                 </td>
                             </tr>
@@ -155,7 +195,11 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <textarea name="bentukKegiatan" placeholder="Bentuk / Macam Kegiatan" class="form-control" rows="3" required>{{ $laporan->bentuk_kegiatan != '' ? $laporan->bentuk_kegiatan : '' }}</textarea>
+                                        <textarea name="bentukKegiatan"
+                                                  placeholder="Bentuk / Macam Kegiatan"
+                                                  class="form-control"
+                                                  rows="3"
+                                                  required>{{ $laporan->bentuk_kegiatan != '' ? $laporan->bentuk_kegiatan : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -170,10 +214,12 @@
                                     <div class="row">
                                         <div class="col-5">
                                             <div class="">
-                                                <input name="waktuMulai" type="datetime-local" class="form-control"
-                                                    style="height: 40px"
-                                                    value="{{ $laporan->waktu_mulai != '' ? $laporan->waktu_mulai : '' }}"
-                                                    required>
+                                                <input name="waktuMulai"
+                                                       type="datetime-local"
+                                                       class="form-control"
+                                                       style="height: 40px"
+                                                       value="{{ $laporan->waktu_mulai != '' ? $laporan->waktu_mulai : '' }}"
+                                                       required>
                                             </div>
                                         </div>
                                         <div class="col-2">
@@ -181,10 +227,12 @@
                                         </div>
                                         <div class="col-5">
                                             <div class="">
-                                                <input name="waktuSelesai" type="datetime-local" class="form-control"
-                                                    style="height: 40px"
-                                                    value="{{ $laporan->waktu_selesai != '' ? $laporan->waktu_selesai : '' }}"
-                                                    required>
+                                                <input name="waktuSelesai"
+                                                       type="datetime-local"
+                                                       class="form-control"
+                                                       style="height: 40px"
+                                                       value="{{ $laporan->waktu_selesai != '' ? $laporan->waktu_selesai : '' }}"
+                                                       required>
                                             </div>
                                         </div>
                                     </div>
@@ -198,31 +246,32 @@
                                     <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    <select name="lokasiKegiatan" class="custom-select mt-2" style="height: 40px"
-                                        required>
-                                        <option selected value="" hidden>Pilih Lokasi Kegiatan</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Abiansemal' ? 'selected' : '' }}
-                                            value="Abiansemal">Abiansemal</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Kuta' ? 'selected' : '' }}
-                                            value="Kuta">Kuta</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Kuta Selatan' ? 'selected' : '' }}
-                                            value="Kuta Selatan">Kuta Selatan</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Kuta Utara' ? 'selected' : '' }}
-                                            value="Kuta Utara">Kuta Utara</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Mengwi' ? 'selected' : '' }}
-                                            value="Mengwi">Mengwi</option>
-                                        <option
-                                            {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Petang' ? 'selected' : '' }}
-                                            value="Petang">Petang</option>
+                                    <select name="lokasiKegiatan"
+                                            class="custom-select mt-2"
+                                            style="height: 40px"
+                                            required>
+                                        <option selected
+                                                value=""
+                                                hidden>Pilih Lokasi Kegiatan</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Abiansemal' ? 'selected' : '' }}
+                                                value="Abiansemal">Abiansemal</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Kuta' ? 'selected' : '' }}
+                                                value="Kuta">Kuta</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Kuta Selatan' ? 'selected' : '' }}
+                                                value="Kuta Selatan">Kuta Selatan</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Kuta Utara' ? 'selected' : '' }}
+                                                value="Kuta Utara">Kuta Utara</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Mengwi' ? 'selected' : '' }}
+                                                value="Mengwi">Mengwi</option>
+                                        <option {{ isset($laporan) && $laporan->lokasi_kegiatan == 'Petang' ? 'selected' : '' }}
+                                                value="Petang">Petang</option>
                                     </select>
                                     <div class="form-group mt-2">
-                                        <textarea name="detailLokasiKegiatan" placeholder="Detail lokasi kegiatan" class="form-control" rows="3"
-                                            required>{{ isset($laporan) ? $laporan->detail_lokasi_kegiatan : '' }}</textarea>
+                                        <textarea name="detailLokasiKegiatan"
+                                                  placeholder="Detail lokasi kegiatan"
+                                                  class="form-control"
+                                                  rows="3"
+                                                  required>{{ isset($laporan) ? $laporan->detail_lokasi_kegiatan : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -235,10 +284,13 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <input name="dalamRangka" type="text" class="form-control form-control-sm"
-                                            placeholder="Dalam Rangka" style="height: 40px"
-                                            value="{{ $laporan->dalam_rangka != '' ? $laporan->dalam_rangka : '' }}"
-                                            required>
+                                        <input name="dalamRangka"
+                                               type="text"
+                                               class="form-control form-control-sm"
+                                               placeholder="Dalam Rangka"
+                                               style="height: 40px"
+                                               value="{{ $laporan->dalam_rangka != '' ? $laporan->dalam_rangka : '' }}"
+                                               required>
                                     </div>
                                 </td>
                             </tr>
@@ -251,11 +303,13 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <input name="jumlahUndangan" type="number"
-                                            class="form-control form-control-sm" placeholder="Undangan / Peserta"
-                                            style="height: 40px"
-                                            value="{{ $laporan->jumlah_undangan != '' ? $laporan->jumlah_undangan : '' }}"
-                                            required>
+                                        <input name="jumlahUndangan"
+                                               type="number"
+                                               class="form-control form-control-sm"
+                                               placeholder="Undangan / Peserta"
+                                               style="height: 40px"
+                                               value="{{ $laporan->jumlah_undangan != '' ? $laporan->jumlah_undangan : '' }}"
+                                               required>
                                     </div>
                                 </td>
                             </tr>
@@ -268,8 +322,11 @@
                                 </td>
                                 <td>
                                     <div class="mt-3">
-                                        <input name="fotoKtp" type="file" class="form-control-file"
-                                            accept=".jpg,.jpeg,.png" required>
+                                        <input name="fotoKtp"
+                                               type="file"
+                                               class="form-control-file"
+                                               accept=".jpg,.jpeg,.png"
+                                               required>
                                         <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -283,8 +340,11 @@
                                 </td>
                                 <td>
                                     <div class="mt-1">
-                                        <input name="fotoPelapor" type="file" class="form-control-file"
-                                            accept=".jpg,.jpeg,.png" required>
+                                        <input name="fotoPelapor"
+                                               type="file"
+                                               class="form-control-file"
+                                               accept=".jpg,.jpeg,.png"
+                                               required>
                                         <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -293,8 +353,11 @@
                             {{-- Download persyaratan keaslian SIK --}}
                             <tr>
                                 <td class="pb-4">
-                                    <a id="btnDownloadPernyataanSIK" role="button" class="btn btn-primary"
-                                        data-bs-toggle="modal" data-bs-target="#modalDownloadPernyataan">
+                                    <a id="btnDownloadPernyataanSIK"
+                                       role="button"
+                                       class="btn btn-primary"
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#modalDownloadPernyataan">
                                         Surat Pernyataan Keaslian Dokumen
                                     </a>
                                 </td>
@@ -308,8 +371,11 @@
                                 </td>
                                 <td>
                                     <div class=" mt-3">
-                                        <input name="pernyataanKeaslian" type="file" class="form-control-file"
-                                            accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <input name="pernyataanKeaslian"
+                                               type="file"
+                                               class="form-control-file"
+                                               accept=".pdf,.jpg,.jpeg,.png"
+                                               required>
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -322,11 +388,16 @@
                                         <span class="text-danger">*</span>
                                         Dokumen wajib diisi
                                     </h6>
-                                    <button name="simpanSementara" value="simpan" type="submit"
-                                        class="btn btn-primary">
+                                    <button name="simpanSementara"
+                                            value="simpan"
+                                            type="submit"
+                                            class="btn btn-primary">
                                         Simpan Sementara
                                     </button>
-                                    <button name="kirim" value="kirim" type="submit" class="btn btn-primary">
+                                    <button name="kirim"
+                                            value="kirim"
+                                            type="submit"
+                                            class="btn btn-primary">
                                         Kirim Data
                                     </button>
                                 </td>
@@ -338,29 +409,43 @@
         </div>
 
         {{-- Modal untuk download Surat Pernyataan Keaslian Dokumen --}}
-        <div class="modal fade" id="modalDownloadPernyataan" tabindex="-1"
-            aria-labelledby="modalDownloadPernyataanLabel" aria-hidden="true" role="modal">
+        <div class="modal fade"
+             id="modalDownloadPernyataan"
+             tabindex="-1"
+             aria-labelledby="modalDownloadPernyataanLabel"
+             aria-hidden="true"
+             role="modal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="/download-pernyataan-sik" method="POST">
+                    <form action="/download-pernyataan-sik"
+                          method="POST">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modalDownloadPernyataanLabel">Download Surat Pernyataan
+                            <h5 class="modal-title"
+                                id="modalDownloadPernyataanLabel">Download Surat Pernyataan
                                 Keaslian</h5>
                         </div>
                         <div class="modal-body">
                             {{-- Hidden Data --}}
-                            <input name="SIKNamaOrganisasi" type="hidden">
-                            <input name="SIKNamaPenanggungJawab" type="hidden">
-                            <textarea name="SIKAlamat" class="d-none"></textarea>
-                            <input name="SIKTelepon" type="hidden">
+                            <input name="SIKNamaOrganisasi"
+                                   type="hidden">
+                            <input name="SIKNamaPenanggungJawab"
+                                   type="hidden">
+                            <textarea name="SIKAlamat"
+                                      class="d-none"></textarea>
+                            <input name="SIKTelepon"
+                                   type="hidden">
 
                             <p>Tekan "Download" untuk mengunduh berkas/surat pernyataan keaslian SIK</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                            <button formtarget="_blank" type="submit" type="button"
-                                class="btn btn-primary">Download</button>
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Tutup</button>
+                            <button formtarget="_blank"
+                                    type="submit"
+                                    type="button"
+                                    class="btn btn-primary">Download</button>
                         </div>
                     </form>
                 </div>
@@ -386,8 +471,8 @@
     </script> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
-    </script>
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+            crossorigin="anonymous"></script>
 
     <script src="{{ asset('assets-user/js/wow.min.js') }}"></script>
     <script src="{{ asset('assets-user/js/main.js') }}"></script>

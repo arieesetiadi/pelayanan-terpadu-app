@@ -12,7 +12,7 @@ class PelaporController extends Controller
         return view('beranda');
     }
 
-    public function update(Request $request) 
+    public function update(Request $request)
     {
         User::find($request->id)->update([
             'nama' => $request->nama,

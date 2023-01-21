@@ -22,6 +22,7 @@ class AdminController extends Controller
 
     public function dashboard()
     {
+        /** @var array */
         $data = [];
 
         if (session('laporan')) {
@@ -69,7 +70,7 @@ class AdminController extends Controller
         return redirect()->to('/dashboard')->with('success', 'Berhasil melakukan permohonan tanda tangan Kanit');
     }
 
-    public function update(Request $request) 
+    public function update(Request $request)
     {
         User::find($request->id)->update([
             'nama' => $request->nama,
@@ -89,9 +90,9 @@ class AdminController extends Controller
         $end = Carbon::make('01-' . $request->end);
 
         if ($start->eq($end)) {
-            $data['periode']  = $start->monthName . ' ' . $start->year;
+            $data['periode'] = $start->monthName . ' ' . $start->year;
         } else {
-            $data['periode']  = $start->monthName . ' ' . $start->year . ' - ' . $end->monthName . ' ' . $end->year;
+            $data['periode'] = $start->monthName . ' ' . $start->year . ' - ' . $end->monthName . ' ' . $end->year;
         }
 
         foreach ($monthsPeriod as $i => $month) {
@@ -115,8 +116,8 @@ class AdminController extends Controller
 
         foreach (getLokasi() as $lokasi) {
             $countSKTLK = SKTLK::countPerLokasi($lokasi, $request->start, $request->end);
-            $countSIK =  SIK::countPerLokasi($lokasi, $request->start, $request->end);
-            $countSP2HP =  SP2HP::countPerLokasi($lokasi, $request->start, $request->end);
+            $countSIK = SIK::countPerLokasi($lokasi, $request->start, $request->end);
+            $countSP2HP = SP2HP::countPerLokasi($lokasi, $request->start, $request->end);
             $data['countPerLokasi'][$lokasi] = $countSKTLK + $countSIK + $countSP2HP;
         }
 
@@ -132,9 +133,9 @@ class AdminController extends Controller
         $end = Carbon::make('01-' . $request->end);
 
         if ($start->eq($end)) {
-            $data['periode']  = $start->monthName . ' ' . $start->year;
+            $data['periode'] = $start->monthName . ' ' . $start->year;
         } else {
-            $data['periode']  = $start->monthName . ' ' . $start->year . ' - ' . $end->monthName . ' ' . $end->year;
+            $data['periode'] = $start->monthName . ' ' . $start->year . ' - ' . $end->monthName . ' ' . $end->year;
         }
 
         foreach ($monthsPeriod as $i => $month) {
@@ -158,8 +159,8 @@ class AdminController extends Controller
 
         foreach (getLokasi() as $lokasi) {
             $countSKTLK = SKTLK::countPerLokasi($lokasi, $request->start, $request->end);
-            $countSIK =  SIK::countPerLokasi($lokasi, $request->start, $request->end);
-            $countSP2HP =  SP2HP::countPerLokasi($lokasi, $request->start, $request->end);
+            $countSIK = SIK::countPerLokasi($lokasi, $request->start, $request->end);
+            $countSP2HP = SP2HP::countPerLokasi($lokasi, $request->start, $request->end);
             $data['countPerLokasi'][$lokasi] = $countSKTLK + $countSIK + $countSP2HP;
         }
 
