@@ -3,11 +3,10 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class UserVerification extends Mailable
+class PelaporActivation extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,13 +15,11 @@ class UserVerification extends Mailable
      *
      * @return void
      */
-    private $id;
-    private $user;
+    private $pelapor;
 
-    public function __construct($id, $user)
+    public function __construct($pelapor)
     {
-        $this->id = $id;
-        $this->user = $user;
+        $this->pelapor = $pelapor;
     }
 
     /**
@@ -32,9 +29,10 @@ class UserVerification extends Mailable
      */
     public function build()
     {
+
         return $this
-            ->to($this->user['email'], $this->user['nama'])
+            ->to($this->pelapor['EMAIL_PELAPOR'], $this->pelapor['NAMA_LENGKAP'])
             ->subject('Aktivasi Akun')
-            ->view('email.user-verification', ['id' => $this->id]);
+            ->view('email.pelapor-activation', ['id' => $this->pelapor['ID_PELAPOR']]);
     }
 }

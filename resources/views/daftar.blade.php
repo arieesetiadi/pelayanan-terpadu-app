@@ -62,7 +62,7 @@
 
                                         <div class=" mt-5">
                                             {{-- Form Daftar --}}
-                                            <form action="/admin/daftar"
+                                            <form action="/daftar"
                                                   method="POST">
                                                 @csrf
                                                 {{-- Nama --}}

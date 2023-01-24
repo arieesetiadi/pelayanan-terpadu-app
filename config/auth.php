@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\New\Pelapor;
+
 return [
 
     /*
@@ -40,6 +42,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'pelapor' => [
+            'driver' => 'session',
+            'provider' => 'pelapor',
+        ],
     ],
 
     /*
@@ -64,11 +70,15 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
+        // 'pelapor' => [
+        //     'driver' => 'eloquent',
+        //     'model' => Pelapor::class,
         // ],
+
+        'pelapor' => [
+            'driver' => 'database',
+            'table' => 'pelapor',
+        ],
     ],
 
     /*
@@ -93,6 +103,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        // 'pelapor' => [
+        //     'provider' => 'pelapor',
+        //     'table' => 'password_resets',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
     ],
 
     /*

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Notifikasi;
+use App\Models\New\Pelapor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -15,48 +15,44 @@ class LoginController extends Controller
 
     public function login(Request $data)
     {
-        $result = auth()->attempt($data->only('username', 'password'));
+        // Ambil data dari form login
+        $username = $data->username;
+        $pasword = $data->password;
 
-        if ($result == true) {
-            // Redirect back jika status user nonaktif
-            if (!auth()->user()->status) {
-                return back()->with('failed', 'Pengguna berstatus tidak aktif, silahkan cek alamat email untuk malakukan aktivasi.');
-            }
-
-            switch (auth()->user()->jenis_pengguna) {
-                case 'Pelapor':
-                    // Redirect ke homepage
-                    $to = session('to') ?? '/';
-                    return redirect()->to($to);
-
-                case 'AdminSPKT' || 'AdminReskrim' || 'KanitSPKT':
-                    // Redirect ke dashboard
-                    return redirect()->to('/dashboard');
-            }
-        } else {
+        // Check keberadaan pelapor
+        $pelapor = Pelapor::where('USERNAME_PELAPOR', $username)->first();
+        if (!$pelapor) {
             return back()->with('failed', 'Username / password tidak valid.');
         }
+
+        // Verify password
+        $verified = Hash::check($pasword, $pelapor->PASSWORD_PELAPOR);
+        if (!$verified) {
+            return back()->with('failed', 'Username / password tidak valid.');
+        }
+
+        // Check status pelapor
+        $status = $pelapor->STATUS_PELAPOR;
+        if (!$status) {
+            return back()->with('failed', 'Pengguna berstatus tidak aktif, silahkan cek alamat email untuk malakukan aktivasi.');
+        }
+
+        // Set login session untuk Pelapor
+        session()->put('pelapor', $pelapor);
+
+        // Redirect ke homepage
+        $to = session('to') ?? '/';
+        return redirect()->to($to);
     }
 
-    // Fungsi logout untuk admin
+    // Fungsi logout untuk pelapoe
     public function logout()
     {
         // Proses logout
-        auth()->logout();
-        $path = '/login';
+        session()->remove('pelapor');
         session()->remove('to');
 
         // Redirect ke halaman login
-        return redirect()->to($path);
-    }
-
-    // Fungsi logout untuk pelapor
-    public function logoutPelapor()
-    {
-        session()->forget('pelapor');
-
-        $path = '/';
-
-        return redirect()->to($path);
+        return redirect()->to('/login');
     }
 }

@@ -14,32 +14,25 @@ use App\Http\Controllers\Lapor\SIKController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\Lapor\SKTLKController;
 
-Route::get('/config-cache', function() {
-    Artisan::call('config:cache');
-    return 'Configuration cache cleared! <br> Configuration cached successfully!';
+Route::get('/config-cache', function () {
+	Artisan::call('config:cache');
+	return 'Configuration cache cleared! <br> Configuration cached successfully!';
 });
 
 Route::get('/', [PelaporController::class, 'index']);
 
-// Route Login Pelapor
+// Route Auth Pelapor
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-
-// Route Daftar
 Route::view('/daftar', 'daftar');
 Route::post('/daftar', [DaftarController::class, 'daftar']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
-// Route Login Admin
+// Route Auth Admin
 Route::get('/admin/login', [AdminLoginController::class, 'loginView'])->name('login');
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
-
-// Route Daftar Admin
 Route::view('/admin/daftar', 'daftar');
 Route::post('/admin/daftar', [AdminDaftarController::class, 'daftar']);
-
-// Route Logout
-Route::get('/logout', [LoginController::class, 'logout']);
-Route::get('/logout/pelapor', [LoginController::class, 'logoutPelapor']);
 
 // Route ke Visi & Misi
 Route::view('/visimisi', 'visimisi');
@@ -84,7 +77,7 @@ Route::middleware('auth.pelapor')->group(function () {
 	// Route SP2HP
 	Route::view('/form/lapor-sp2hp', 'form.lapor-sp2hp');
 	Route::post('/lapor-sp2hp', [SP2HPController::class, 'lapor']);
-	
+
 	// Route Profile Pelapor
 	Route::view('/profile/pelapor', 'profile-pelapor');
 	Route::post('/profile/pelapor/update', [PelaporController::class, 'update']);
@@ -136,4 +129,4 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route aktivasi akun
-Route::get('/users/activation/{id}', [DaftarController::class, 'activation']);
+Route::get('/pelapor/activation/{id}', [DaftarController::class, 'activation']);

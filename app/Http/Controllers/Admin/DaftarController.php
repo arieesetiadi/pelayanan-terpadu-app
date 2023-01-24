@@ -14,7 +14,7 @@ class DaftarController extends Controller
 {
     public function daftar(Request $data)
     {
-        $id = self::generateID();
+        $id = Pelapor::generateID();
         $password = Hash::make($data->password);
 
         Pelapor::create([
@@ -46,11 +46,5 @@ class DaftarController extends Controller
 
         // Redirect ke halaman login
         return redirect()->to('/login')->with('success', 'Akun anda telah berhasil diaktifkan.');
-    }
-
-    public static function generateID(){
-        $count = Pelapor::count();
-        $id = "P0" . $count + 1;
-        return $id;
     }
 }
