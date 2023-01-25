@@ -122,7 +122,7 @@
                                 @csrf
                                 <input type="hidden"
                                        name="id"
-                                       value="{{ session('pelapor')->id }}">
+                                       value="{{ session('pelapor')->ID_PELAPOR }}">
                                 <div class="mb-2">
                                     <label for="nama"
                                            class="form-label">Nama :</label>
@@ -130,7 +130,7 @@
                                            type="text"
                                            class="form-control"
                                            id="nama"
-                                           value="{{ session('pelapor')->nama }}">
+                                           value="{{ session('pelapor')->NAMA_LENGKAP }}">
                                 </div>
                                 <div class="mb-2">
                                     <label for="email"
@@ -139,7 +139,7 @@
                                            type="email"
                                            class="form-control"
                                            id="email"
-                                           value="{{ session('pelapor')->email }}">
+                                           value="{{ session('pelapor')->EMAIL_PELAPOR }}">
                                 </div>
                                 <div class="mb-2">
                                     <label for="telepon"
@@ -148,7 +148,7 @@
                                            type="text"
                                            class="form-control"
                                            id="telepon"
-                                           value="{{ session('pelapor')->telepon }}">
+                                           value="{{ session('pelapor')->TELEPON_PELAPOR }}">
                                 </div>
                                 <div class="mb-2">
                                     <label for="alamat"
@@ -157,7 +157,7 @@
                                            type="text"
                                            class="form-control"
                                            id="alamat"
-                                           value="{{ session('pelapor')->alamat }}">
+                                           value="{{ session('pelapor')->ALAMAT_PELAPOR }}">
                                 </div>
                                 <div class="my-3">
                                     <button type="submit"
