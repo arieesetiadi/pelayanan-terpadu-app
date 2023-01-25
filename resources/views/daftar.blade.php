@@ -90,8 +90,8 @@
                                                 </div>
 
                                                 {{-- Tempat, & Tanggal lahir --}}
-                                                <div class="d-flex gap-2 mb-4">
-                                                    <div class="form-group">
+                                                <div class="d-flex gap-2 justify-content-between mb-4">
+                                                    <div class="form-group w-100">
                                                         <label for="tempatLahir">Tempat</label>
                                                         <input name="tempatLahir"
                                                                type="text"
@@ -100,7 +100,7 @@
                                                                style="height: 40px"
                                                                required>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group w-100">
                                                         <label for="tanggalLahir">Tanggal Lahir</label>
                                                         <input name="tanggalLahir"
                                                                type="date"
