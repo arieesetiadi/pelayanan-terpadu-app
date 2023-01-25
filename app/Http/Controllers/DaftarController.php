@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\PelaporActivation;
-use App\Models\New\Pelapor;
+use App\Models\Pelapor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;

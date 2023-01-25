@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\New\Pelapor;
+// use App\Models\New\Pelapor;
 
 return [
 

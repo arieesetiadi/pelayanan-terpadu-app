@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\New\Pelapor;
+use App\Models\Pelapor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
