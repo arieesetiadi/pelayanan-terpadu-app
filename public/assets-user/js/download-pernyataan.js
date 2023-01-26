@@ -55,7 +55,7 @@ $(function () {
 
     // Download dokumen keaslian SIK
     $("#btnDownloadPernyataanSIK").addClass("disabled");
-    $("button[name=kirim]").addClass("disabled");
+    // $("button[name=kirim]").addClass("disabled");
 
     if ($("input[name=fotoPelapor]").val() != "") {
         $("#btnDownloadPernyataanSIK").removeClass("disabled");

@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\DaftarController as AdminDaftarController;
-use App\Http\Controllers\Admin\LoginController as AdminLoginController;
+use App\Models\Kecamatan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\AdminController;
@@ -13,6 +12,8 @@ use App\Http\Controllers\PelaporController;
 use App\Http\Controllers\Lapor\SIKController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\Lapor\SKTLKController;
+use App\Http\Controllers\Admin\LoginController as AdminLoginController;
+use App\Http\Controllers\Admin\DaftarController as AdminDaftarController;
 
 Route::get('/config-cache', function () {
 	Artisan::call('config:cache');
@@ -64,7 +65,9 @@ Route::view('/tindak-kriminal/sp2hp', 'tindak-kriminal.sp2hp');
 // Auth Pelapor
 Route::middleware('auth.pelapor')->group(function () {
 	// Route ke form SKTLK
-	Route::view('/form/lapor-sktlk', 'form.lapor-sktlk');
+	Route::view('/form/lapor-sktlk', 'form.lapor-sktlk', [
+		'kecamatan' => Kecamatan::all(),
+	]);
 	Route::post('/upload-sktlk', [SKTLKController::class, 'upload']);
 	Route::post('/download-pernyataan-sktlk', [SKTLKController::class, 'downloadPernyataan']);
 

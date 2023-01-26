@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Lapor;
 use PDF;
 use App\Http\Controllers\Controller;
 use App\Mail\SKTLKUploadFile;
+use App\Models\DetailLokasiKejadian;
+use App\Models\Kecamatan;
 use App\Models\Laporan\SKTLK;
 use App\Models\Notifikasi;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -27,6 +30,31 @@ class SKTLKController extends Controller
 
     public function upload(Request $request)
     {
+        dd($request->all());
+
+        // Prepare data detail lokasi kejadian
+        $detailLokasiKejadian = [
+            'ID_LOKASI_KEJADIAN' => DetailLokasiKejadian::generateID(),
+            'ID_KECAMATAN' => '',
+            'NAMA_LOKASI_KEJADIAN' => ''
+        ];
+
+        // Prepare data sktlk
+        $sktlk = [
+            'ID_SKTLK' => SKTLK::generateID(),
+            'ID_PELAPOR' => session('pelapor')->ID_PELAPOR,
+            'ID_LOKASI_KEJADIAN' => $detailLokasiKejadian['ID_LOKASI_KEJADIAN'],
+            'SURAT_HILANG' => $request->suratHilang,
+            'FOTO_KTP_PELAPOR_SKTLK' => uploadFile($request['fotoKtp'], 'assets-user/upload/'),
+            'TGL_LAPOR_SKTLK' => now(),
+            'TGL_KEJADIAN_SKTLK' => Carbon::make($request->tanggalKejadian),
+            'STATUS_LAPOR_SKTLK' => ''
+        ];
+
+
+
+
+
         // Proses upload data ke database
         $laporan = SKTLK::insert($request->all());
 
