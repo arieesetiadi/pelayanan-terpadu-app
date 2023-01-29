@@ -10,7 +10,7 @@ class Kecamatan extends Model
     use HasFactory;
 
     protected $primaryKey = 'ID_KECAMATAN';
-    protected $table = 'Kecamatan';
+    protected $table = 'kecamatan';
     protected $fillable = [
         'ID_KECAMATAN', 'NAMA_KECAMATAN'
     ];

@@ -135,8 +135,7 @@
 
                                     <datalist id="lokasiKejadians">
                                         @foreach ($kecamatan as $item)
-                                            <option value="{{ $item['ID_KECAMATAN'] }}">{{ $item['NAMA_KECAMATAN'] }}
-                                            </option>
+                                            <option value="{{ $item['NAMA_KECAMATAN'] }}">
                                         @endforeach
                                     </datalist>
                                     <div class="form-group mt-2">

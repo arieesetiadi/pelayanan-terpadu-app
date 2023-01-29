@@ -10,7 +10,7 @@ class SKTLK extends Model
 {
     use HasFactory;
 
-    public $table = 'laporan_sktlk';
+    public $table = 'lapor_sktlk';
     public $timestamps = false;
 
     protected $guarded = [];
@@ -29,10 +29,6 @@ class SKTLK extends Model
         // Proses upload file
         $path = 'assets-user/upload/';
         $fotoKtp = uploadFile($laporan['fotoKtp'], $path);
-        $fotoPelapor = uploadFile($laporan['fotoPelapor'], $path);
-        $rekomendasiInstansi = uploadFile($laporan['rekomendasiInstansi'], $path);
-        $pernyataanKeaslian = uploadFile($laporan['pernyataanKeaslian'], $path);
-        $dokumenTambahan = uploadFile($laporan['dokumenTambahan'] ?? null, $path);
 
         // Insert data laporan ke database
         return self::create([

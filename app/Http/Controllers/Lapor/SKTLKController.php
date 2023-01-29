@@ -30,13 +30,20 @@ class SKTLKController extends Controller
 
     public function upload(Request $request)
     {
-        dd($request->all());
+        // Cek kecamatan lokasi kejadian
+        $kecamatan = Kecamatan::where('NAMA_KECAMATAN', $request->lokasiKejadian)->first();
+        if (!$kecamatan) {
+            $kecamatan = Kecamatan::create([
+                'ID_KECAMATAN' => 'K0' . (Kecamatan::count() + 1),
+                'NAMA_KECAMATAN' => $request->lokasiKejadian
+            ]);
+        }
 
         // Prepare data detail lokasi kejadian
         $detailLokasiKejadian = [
             'ID_LOKASI_KEJADIAN' => DetailLokasiKejadian::generateID(),
-            'ID_KECAMATAN' => '',
-            'NAMA_LOKASI_KEJADIAN' => ''
+            'ID_KECAMATAN' => $kecamatan->ID_KECAMATAN,
+            'NAMA_LOKASI_KEJADIAN' => $request->detailLokasiKejadian
         ];
 
         // Prepare data sktlk
@@ -48,41 +55,46 @@ class SKTLKController extends Controller
             'FOTO_KTP_PELAPOR_SKTLK' => uploadFile($request['fotoKtp'], 'assets-user/upload/'),
             'TGL_LAPOR_SKTLK' => now(),
             'TGL_KEJADIAN_SKTLK' => Carbon::make($request->tanggalKejadian),
-            'STATUS_LAPOR_SKTLK' => ''
+            'STATUS_LAPOR_SKTLK' => 'PENDING'
         ];
 
+        // Insert data
+        $detailLokasiKejadian = DetailLokasiKejadian::create($detailLokasiKejadian);
+        $sktlk = SKTLK::create($sktlk);
+
+        dd($detailLokasiKejadian, $sktlk);
 
 
 
 
         // Proses upload data ke database
-        $laporan = SKTLK::insert($request->all());
+        // // $laporan = SKTLK::insert($request->all());
 
-        // $toPelapor = [
-        //     'judul' => 'Pelaporan SKTLK Berhasil',
-        //     'isi' => 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.',
+        // // $toPelapor = [
+        // //     'judul' => 'Pelaporan SKTLK Berhasil',
+        // //     'isi' => 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.',
+        // //     'tipe' => 'sktlk',
+        // //     'telah_dibaca' => false,
+        // //     'dikirim_kepada' => 'pelapor',
+        // //     'laporan_id' => $laporan->id,
+        // //     'pelapor_id' => $laporan->pelapor_id,
+        // //     'dikirim_pada' => now()
+        // // ];
+
+        // $toAdmin = [
+        //     'judul' => 'Pelaporan SKTLK Masuk',
+        //     'isi' => 'Pelaporan perlu diproses.',
         //     'tipe' => 'sktlk',
         //     'telah_dibaca' => false,
-        //     'dikirim_kepada' => 'pelapor',
+        //     'dikirim_kepada' => 'admin',
         //     'laporan_id' => $laporan->id,
-        //     'pelapor_id' => $laporan->pelapor_id,
         //     'dikirim_pada' => now()
         // ];
 
-        $toAdmin = [
-            'judul' => 'Pelaporan SKTLK Masuk',
-            'isi' => 'Pelaporan perlu diproses.',
-            'tipe' => 'sktlk',
-            'telah_dibaca' => false,
-            'dikirim_kepada' => 'admin',
-            'laporan_id' => $laporan->id,
-            'dikirim_pada' => now()
-        ];
-
         // Notifikasi::insert($toPelapor);
-        Notifikasi::insert($toAdmin);
+        // Notifikasi::insert($toAdmin);
 
-        return back()->with('success', 'Pelaporan anda sedang diproses');
+        // return back()->with('success', 'Pelaporan anda sedang diproses');
     }
 
     public function uploadFile(Request $request)
