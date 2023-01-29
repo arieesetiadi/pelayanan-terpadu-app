@@ -93,7 +93,7 @@ Route::get('/notifikasi/read-all-pelapor', [NotifikasiController::class, 'readAl
 Route::get('/notifikasi/read-all-admin', [NotifikasiController::class, 'readAllAdmin']);
 
 // Route Admin ====================================
-Route::middleware('auth')->group(function () {
+Route::middleware('auth.pegawai')->group(function () {
 	Route::get('/dashboard', [AdminController::class, 'dashboard']);
 	Route::get('/profile', [AdminController::class, 'profile']);
 	Route::post('/profile/update', [AdminController::class, 'update']);

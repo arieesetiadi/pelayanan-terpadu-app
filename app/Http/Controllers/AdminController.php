@@ -15,30 +15,22 @@ use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function dashboard()
     {
-        /** @var array */
-        $data = [];
+        // if (session('laporan')) {
+        //     $laporan = session('laporan');
 
-        if (session('laporan')) {
-            $laporan = session('laporan');
-
-            $data = [
-                'laporanSKTLK' => $laporan['SKTLK'],
-                'laporanSIK' => $laporan['SIK'],
-                'laporanSP2HP' => $laporan['SP2HP'],
-            ];
-        }
+        //     $data = [
+        //         'laporanSKTLK' => $laporan['SKTLK'],
+        //         'laporanSIK' => $laporan['SIK'],
+        //         'laporanSP2HP' => $laporan['SP2HP'],
+        //     ];
+        // }
 
         $data['title'] = 'Dashboard';
-        $data['countSIK'] = count(SIK::all());
-        $data['countSKTLK'] = count(SKTLK::all());
-        $data['countSP2HP'] = count(SP2HP::all());
+        $data['countSIK'] = 0;
+        $data['countSKTLK'] = SKTLK::count();
+        $data['countSP2HP'] = 0;
 
         return view('admin.dashboard', $data);
     }

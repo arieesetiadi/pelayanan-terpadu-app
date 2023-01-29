@@ -1,6 +1,9 @@
 @php
-    $data = App\Models\Notifikasi::getNotifikasiAdmin();
-    session()->put('notifikasiAdmin', $data['notifikasi']);
+    $isAdminReskrim = session('pegawai')->jabatan->NAMA_JABATAN == 'Admin' && session('pegawai')->divisi->NAMA_DIVISI == 'Reskrim';
+    
+    // $data = App\Models\Notifikasi::getNotifikasiAdmin();
+    // session()->put('notifikasiAdmin', $data['notifikasi']);
+    
 @endphp
 
 <!doctype html>
@@ -106,38 +109,16 @@
 
                                     <div class="d-flex justify-content-end ">
                                         {{-- Nama admin --}}
-                                        <span class="mt-2 mx-3 ">
-                                            @switch(auth()->user()->jenis_pengguna)
-                                                @case('AdminSPKT')
-                                                    Admin SPKT
-                                                @break
-
-                                                @case('AdminReskrim')
-                                                    Admin Reskrim
-                                                @break
-
-                                                @case('KanitSPKT')
-                                                    Kanit SPKT
-                                                @break
-
-                                                @default
-                                            @endswitch
-                                        </span>
+                                        <span class="mt-2 mx-3 ">{{ session('pegawai')->NAMA_PEGAWAI }}</span>
 
                                         {{-- Profile --}}
                                         <div class=" user-setting d-flex align-items-center">
-                                            @if (auth()->user()->jenis_kelamin == 'Laki-laki')
-                                                <img src="{{ asset('assets-admin/img/avatars/man.png') }}"
-                                                     class="user-img"
-                                                     alt="">
-                                            @else
-                                                <img src="{{ asset('assets-admin/img/avatars/woman.png') }}"
-                                                     class="user-img"
-                                                     alt="">
-                                            @endif
+                                            <img src="{{ asset('assets-admin/img/avatars/man.png') }}"
+                                                 class="user-img"
+                                                 alt="">
                                         </div>
-
                                     </div>
+
                                     {{-- Dropdown --}}
                                     <ul class="dropdown-menu dropdown-menu-end"
                                         style="width: 300px">
@@ -145,25 +126,17 @@
                                             <a class="dropdown-item"
                                                href="#">
                                                 <div class="d-flex align-items-center">
-                                                    @if (auth()->user()->jenis_kelamin == 'Laki-laki')
-                                                        <img src="{{ asset('assets-admin/img/avatars/man.png') }}"
-                                                             alt="Profile Picture"
-                                                             class="rounded-circle"
-                                                             width="54"
-                                                             height="54">
-                                                    @else
-                                                        <img src="{{ asset('assets-admin/img/avatars/woman.png') }}"
-                                                             alt="Profile Picture"
-                                                             class="rounded-circle"
-                                                             width="54"
-                                                             height="54">
-                                                    @endif
+                                                    <img src="{{ asset('assets-admin/img/avatars/man.png') }}"
+                                                         alt="Profile Picture"
+                                                         class="rounded-circle"
+                                                         width="54"
+                                                         height="54">
 
                                                     <div class="ms-3">
                                                         <h6 class="mb-0 dropdown-user-name">
-                                                            {{ auth()->user()->nama }}</h6>
+                                                            {{ session('pegawai')->NAMA_PEGAWAI }}</h6>
                                                         <small class="mb-0 dropdown-user-designation text-secondary">
-                                                            {{ auth()->user()->email }}
+                                                            {{ session('pegawai')->EMAIL_PEGAWAI }}
                                                         </small>
                                                     </div>
                                                 </div>
@@ -198,67 +171,9 @@
                                     </ul>
                                 </a>
                             </li>
-                            <li class="nav-item dropdown dropdown-large">
-                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret"
-                                   href="#"
-                                   data-bs-toggle="dropdown">
-                                    <div class="notifications">
-                                        @if ($data['count'] > 0)
-                                            <span class="notify-badge">{{ $data['count'] }}</span>
-                                        @endif
-                                        <i class="bi bi-bell-fill"></i>
-                                    </div>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end p-0">
-                                    <div class="p-2 -bottom m-2">
-                                        <h5 class="h5 mb-0">Notifications</h5>
-                                    </div>
-                                    <div class="header-notifications-list">
-                                        @forelse (session('notifikasiAdmin') as $notifikasi)
-                                            @php
-                                                $namaPelapor = getNamaPelaporByNotification($notifikasi);
-                                            @endphp
-                                            @if ($namaPelapor != null)
-                                                <a target="_blank"
-                                                   data-bs-toggle="tooltip"
-                                                   data-bs-placement="left"
-                                                   title="Pelapor : {{ $namaPelapor }}"
-                                                   class="dropdown-item {{ $notifikasi->telah_dibaca == false ? 'bg-grey' : '' }}"
-                                                   href="/notifikasi/cetak-pdf/{{ $notifikasi->id }}">
-                                                @else
-                                                    <a target="_blank"
-                                                       class="dropdown-item {{ $notifikasi->telah_dibaca == false ? 'bg-grey' : '' }}"
-                                                       href="/notifikasi/cetak-pdf/{{ $notifikasi->id }}">
-                                            @endif
-
-                                            <div class="d-flex align-items-center">
-                                                <div class="ms-3 flex-grow-1">
-                                                    <h6 class="mb-0 dropdown-msg-user">{{ $notifikasi->judul }}</h6>
-                                                    <small
-                                                           class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">
-                                                        {{ $notifikasi->isi }}
-                                                    </small>
-                                                    <small>{{ humanTimeFormat($notifikasi->dikirim_pada) }}</small>
-                                                </div>
-                                            </div>
-                                            </a>
-                                        @empty
-                                            <span class="d-inline-block text-center">Tidak ada notifikasi.</span>
-                                        @endforelse
-                                    </div>
-                                    <div class="p-2">
-                                        <div>
-                                            <hr class="dropdown-divider">
-                                        </div>
-                                        <a class="dropdown-item"
-                                           href="/notifikasi/read-all-admin">
-                                            <div class="text-center">Tandai
-                                                semua telah
-                                                dibaca</div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
+                            {{-- Notif --}}
+                            {{--  --}}
+                            {{-- End Notif --}}
                         </ul>
                     </div>
                 </div>
@@ -293,7 +208,7 @@
                     </a>
                 </li>
 
-                <li class="{{ auth()->user()->jenis_pengguna == 'AdminReskrim' ? 'd-none' : '' }}">
+                <li class="{{ $isAdminReskrim ? 'd-none' : '' }}">
                     <a href="javascript:;"
                        class="has-arrow">
                         <div class="parent-icon">

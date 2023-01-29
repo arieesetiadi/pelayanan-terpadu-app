@@ -44,10 +44,6 @@ class SKTLK extends Model
             'detail_lokasi_kejadian' => $laporan['detailLokasiKejadian'],
             'surat_hilang' => $laporan['suratHilang'],
             'foto_ktp' => $fotoKtp,
-            'foto_pelapor' => $fotoPelapor,
-            'rekomendasi_instansi' => $rekomendasiInstansi,
-            'dokumen_tambahan' => $dokumenTambahan,
-            'pernyataan_keaslian' => $pernyataanKeaslian,
             'pelapor_id' => auth()->user()->id
         ]);
     }

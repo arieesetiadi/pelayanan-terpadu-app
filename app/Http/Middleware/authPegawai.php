@@ -16,11 +16,11 @@ class authPegawai
      */
     public function handle(Request $request, Closure $next)
     {
-        // Boleh masuk jika pengguna adalah seorang Pelapor
+        // Boleh masuk jika pegawai telah login
         if (session('pegawai')) {
             return $next($request);
-        } else {
-            return redirect()->to('/login');
         }
+
+        return redirect()->to('/login');
     }
 }

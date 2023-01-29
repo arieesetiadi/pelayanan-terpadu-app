@@ -1,3 +1,8 @@
+@php
+    $isAdminReskrim = session('pegawai')->jabatan->NAMA_JABATAN == 'Admin' && session('pegawai')->divisi->NAMA_DIVISI == 'Reskrim';
+    $isKabagSPKT = session('pegawai')->jabatan->NAMA_JABATAN == 'Kabag' && session('pegawai')->divisi->NAMA_DIVISI == 'SPKT';
+@endphp
+
 @extends('layout.admin-template')
 
 @section('content')
@@ -30,7 +35,7 @@
                 {{-- Export PDF per Wilayah --}}
                 <div>
                     <button id="filterDateWilayah"
-                            class="btn btn-primary btn-sm mt-1 {{ auth()->user()->jenis_pengguna == 'AdminReskrim' ? 'disabled' : '' }} {{ auth()->user()->jenis_pengguna == 'KanitSPKT' ? 'd-none' : '' }}"
+                            class="btn btn-primary btn-sm mt-1 {{ $isAdminReskrim ? 'disabled' : '' }} {{ $isKabagSPKT ? 'd-none' : '' }}"
                             data-bs-toggle="modal"
                             data-bs-target="#requestTtdKanit"
                             title="Download PDF per Wilayah">
@@ -271,7 +276,7 @@
             {{-- Jumlah Laporan SKTLK --}}
             <div class="col-4">
                 <a href="/admin/sktlk"
-                   style="pointer-events: {{ auth()->user()->jenis_pengguna == 'AdminReskrim' ? 'none' : '' }}">
+                   style="pointer-events: {{ $isAdminReskrim ? 'none' : '' }}">
                     <div class="card radius-10 border-0 border-start border-tiffany border-3">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
@@ -291,7 +296,7 @@
             {{-- Jumlah Laporan SIK --}}
             <div class="col-4">
                 <a href="/admin/sik"
-                   style="pointer-events: {{ auth()->user()->jenis_pengguna == 'AdminReskrim' ? 'none' : '' }}">
+                   style="pointer-events: {{ $isAdminReskrim ? 'none' : '' }}">
                     <div class="card radius-10 border-0 border-start border-success border-3">
                         <div class="card-body">
                             <div class="d-flex align-items-center">

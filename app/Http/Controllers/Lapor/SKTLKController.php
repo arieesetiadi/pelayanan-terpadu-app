@@ -9,6 +9,7 @@ use App\Models\DetailLokasiKejadian;
 use App\Models\Kecamatan;
 use App\Models\Laporan\SKTLK;
 use App\Models\Notifikasi;
+use App\Models\NotifPelSKTLK;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -55,46 +56,31 @@ class SKTLKController extends Controller
             'FOTO_KTP_PELAPOR_SKTLK' => uploadFile($request['fotoKtp'], 'assets-user/upload/'),
             'TGL_LAPOR_SKTLK' => now(),
             'TGL_KEJADIAN_SKTLK' => Carbon::make($request->tanggalKejadian),
-            'STATUS_LAPOR_SKTLK' => 'PENDING'
+            'STATUS_LAPOR_SKTLK' => 'PROCESSING'
+        ];
+
+        // Prepare notif data
+        $notifikasi = [
+            'ID_NOTIFIKASI' => Notifikasi::generateID(),
+            'NAMA_NOTIFIKASI' => 'Pelaporan SKTLK Masuk',
+            'ISI_NOTIFIKASI' => 'Pelaporan perlu diproses.',
+            'STATUS_NOTIFIKASI' => 'Belum Dibaca'
+        ];
+
+        $notifPelSKTLK = [
+            'ID_NOTIFIKASI' => $notifikasi['ID_NOTIFIKASI'],
+            'ID_SKTLK' => $sktlk['ID_SKTLK'],
+            'ID_PELAPOR' => session('pelapor')->ID_PELAPOR,
+            'TGL_NOTIF_SKTLK' => now()
         ];
 
         // Insert data
         $detailLokasiKejadian = DetailLokasiKejadian::create($detailLokasiKejadian);
         $sktlk = SKTLK::create($sktlk);
+        $notifikasi = Notifikasi::create($notifikasi);
+        $notifPelSKTLK = NotifPelSKTLK::create($notifPelSKTLK);
 
-        dd($detailLokasiKejadian, $sktlk);
-
-
-
-
-        // Proses upload data ke database
-        // // $laporan = SKTLK::insert($request->all());
-
-        // // $toPelapor = [
-        // //     'judul' => 'Pelaporan SKTLK Berhasil',
-        // //     'isi' => 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.',
-        // //     'tipe' => 'sktlk',
-        // //     'telah_dibaca' => false,
-        // //     'dikirim_kepada' => 'pelapor',
-        // //     'laporan_id' => $laporan->id,
-        // //     'pelapor_id' => $laporan->pelapor_id,
-        // //     'dikirim_pada' => now()
-        // // ];
-
-        // $toAdmin = [
-        //     'judul' => 'Pelaporan SKTLK Masuk',
-        //     'isi' => 'Pelaporan perlu diproses.',
-        //     'tipe' => 'sktlk',
-        //     'telah_dibaca' => false,
-        //     'dikirim_kepada' => 'admin',
-        //     'laporan_id' => $laporan->id,
-        //     'dikirim_pada' => now()
-        // ];
-
-        // Notifikasi::insert($toPelapor);
-        // Notifikasi::insert($toAdmin);
-
-        // return back()->with('success', 'Pelaporan anda sedang diproses');
+        return back()->with('success', 'Pelaporan anda sedang diproses');
     }
 
     public function uploadFile(Request $request)

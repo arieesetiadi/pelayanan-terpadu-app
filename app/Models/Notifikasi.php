@@ -7,12 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notifikasi extends Model
 {
+    public $primaryKey = 'ID_NOTIFIKASI';
     public $table = 'notifikasi';
     public $timestamps = false;
 
     protected $guarded = [];
 
     use HasFactory;
+
+    public static function generateID()
+    {
+        $count = self::count();
+        $id = "N" . str_pad(($count + 1), 2, "0", STR_PAD_LEFT);
+
+        return $id;
+    }
 
     public static function insert($notifikasi)
     {
