@@ -222,7 +222,7 @@
                         id="confirmSubmitFormSKTLKLabel">Konfirmasi Pelaporan SKTLK</h5>
                 </div>
                 <div class="modal-body">
-                    Dengan ini menyatakan dengan sesungguhnya bahwa Saya menyetujui seluruh ketentuan dan
+                    Dengan ini Saya menyatakan bahwa Saya menyetujui seluruh ketentuan dan
                     perundang-undangan yang berlaku. Saya bersedia menerima konsekuensi hukum apabila saya melakukan
                     pelanggaran dalam pembuatan surat ini.
                 </div>
