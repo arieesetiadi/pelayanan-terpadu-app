@@ -63,7 +63,7 @@ class Notifikasi extends Model
 
     public static function getNotifikasiAdmin()
     {
-        $notifikasiSKTLK = NotifPelSKTLK::all();
+        $notifikasiSKTLK = NotifPelSKTLK::orderByDesc('TGL_NOTIF_SKTLK')->get();
         // $notifikasiSIK = [];
         // $notifikasiSP2HP = [];
 
