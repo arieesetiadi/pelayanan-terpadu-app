@@ -63,21 +63,15 @@ class Notifikasi extends Model
 
     public static function getNotifikasiAdmin()
     {
-        $data['notifikasi'] =
-            self
-            ::where([
-                ['dikirim_kepada', 'admin'],
-            ])
-            ->orderBy('id', 'desc')
-            ->get();
+        $notifikasiSKTLK = NotifPelSKTLK::all();
+        // $notifikasiSIK = [];
+        // $notifikasiSP2HP = [];
 
-        $data['count'] =
-            self
-            ::where([
-                ['dikirim_kepada', 'admin'],
-                ['telah_dibaca', false]
-            ])
-            ->count();
+        // $notifikasi = array_merge($notifikasiSKTLK, $notifikasiSIK, $notifikasiSP2HP);
+        // $data['notifikasi'] = array_merge($notifikasiSKTLK, $notifikasiSIK, $notifikasiSP2HP);
+
+        $data['notifikasi'] = $notifikasiSKTLK;
+        $data['count'] = count($notifikasiSKTLK);
 
         return $data;
     }

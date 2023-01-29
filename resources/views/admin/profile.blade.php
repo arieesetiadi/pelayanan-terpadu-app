@@ -9,34 +9,28 @@
                         <h5 class="mt-2">Profile</h5>
                     </div>
                     <div class="card-body"
-                         style="height: 400px">
+                         style="min-height: 400px">
                         <center>
                             {{-- Foto Profile --}}
-                            @if (auth()->user()->jenis_kelamin == 'Laki-laki')
-                                <img src="{{ asset('assets-admin/img/avatars/man.png') }}"
-                                     width="40%"
-                                     alt="Profile Man"
-                                     class="my-3">
-                            @else
-                                <img src="{{ asset('assets-admin/img/avatars/woman.png') }}"
-                                     width="40%"
-                                     alt="Profile Woman"
-                                     class="my-3">
-                            @endif
+                            <img src="{{ asset('assets-admin/img/avatars/man.png') }}"
+                                 width="40%"
+                                 alt="Profile Man"
+                                 class="my-3">
 
-                            <h6>{{ auth()->user()->nama }}</h6>
-                            <span class="d-block">{{ auth()->user()->email }}</span>
-                            <span class="d-block">{{ auth()->user()->telepon }}</span>
+                            <h6>{{ session('pegawai')->NAMA_PEGAWAI }}</h6>
+                            <span class="d-block">{{ session('pegawai')->EMAIL_PEGAWAI }}</span>
+                            <span class="d-block">{{ session('pegawai')->TELEPON_PEGAWAI }}</span>
 
                             <hr>
 
-                            <span>{{ auth()->user()->alamat }}</span>
+                            <span>{{ session('pegawai')->ALAMAT_PEGAWAI }}</span>
                         </center>
                     </div>
                 </div>
             </div>
 
-            <div class="col-6">
+            {{-- Update Profile Pegawai --}}
+            {{-- <div class="col-6">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="mt-2">Ubah</h5>
@@ -48,7 +42,7 @@
                             @csrf
                             <input type="hidden"
                                    name="id"
-                                   value="{{ auth()->user()->id }}">
+                                   value="{{ session('pegawai')->id }}">
                             <div class="mb-2">
                                 <label for="nama"
                                        class="form-label">Nama :</label>
@@ -56,7 +50,7 @@
                                        type="text"
                                        class="form-control"
                                        id="nama"
-                                       value="{{ auth()->user()->nama }}">
+                                       value="{{ session('pegawai')->nama }}">
                             </div>
                             <div class="mb-2">
                                 <label for="email"
@@ -65,7 +59,7 @@
                                        type="email"
                                        class="form-control"
                                        id="email"
-                                       value="{{ auth()->user()->email }}">
+                                       value="{{ session('pegawai')->email }}">
                             </div>
                             <div class="mb-2">
                                 <label for="telepon"
@@ -74,7 +68,7 @@
                                        type="text"
                                        class="form-control"
                                        id="telepon"
-                                       value="{{ auth()->user()->telepon }}">
+                                       value="{{ session('pegawai')->telepon }}">
                             </div>
                             <div class="mb-2">
                                 <label for="alamat"
@@ -83,7 +77,7 @@
                                        type="text"
                                        class="form-control"
                                        id="alamat"
-                                       value="{{ auth()->user()->alamat }}">
+                                       value="{{ session('pegawai')->alamat }}">
                             </div>
                             <div class="my-3">
                                 <button type="submit"
@@ -92,7 +86,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

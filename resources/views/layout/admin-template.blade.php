@@ -1,8 +1,8 @@
 @php
     $isAdminReskrim = session('pegawai')->jabatan->NAMA_JABATAN == 'Admin' && session('pegawai')->divisi->NAMA_DIVISI == 'Reskrim';
     
-    // $data = App\Models\Notifikasi::getNotifikasiAdmin();
-    // session()->put('notifikasiAdmin', $data['notifikasi']);
+    $data = App\Models\Notifikasi::getNotifikasiAdmin();
+    session()->put('notifikasiAdmin', $data['notifikasi']);
     
 @endphp
 
@@ -171,8 +171,67 @@
                                     </ul>
                                 </a>
                             </li>
+
                             {{-- Notif --}}
-                            {{--  --}}
+                            <li class="nav-item dropdown dropdown-large">
+                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret"
+                                   href="#"
+                                   data-bs-toggle="dropdown">
+                                    <div class="notifications">
+                                        @if ($data['count'] > 0)
+                                            <span class="notify-badge">{{ $data['count'] }}</span>
+                                        @endif
+                                        <i class="bi bi-bell-fill"></i>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end p-0">
+                                    <div class="p-2 -bottom m-2">
+                                        <h5 class="h5 mb-0">Notifications</h5>
+                                    </div>
+                                    <div class="header-notifications-list">
+                                        @forelse (session('notifikasiAdmin') as $notifikasi)
+                                            @php
+                                                $namaPelapor = $notifikasi->pelapor->NAMA_LENGKAP;
+                                            @endphp
+
+                                            <a target="_blank"
+                                               data-bs-toggle="tooltip"
+                                               data-bs-placement="left"
+                                               title="Pelapor : {{ $namaPelapor }}"
+                                               class="dropdown-item {{ $notifikasi->notifikasi->STATUS_NOTIFIKASI == 'Belum Dibaca' ? 'bg-grey' : '' }}"
+                                               href="/notifikasi/cetak-pdf/{{ $notifikasi->id }}">
+
+                                                <div class="d-flex align-items-center">
+                                                    <div class="ms-3 flex-grow-1">
+                                                        <h6 class="mb-0 dropdown-msg-user">
+                                                            {{ $notifikasi->notifikasi->NAMA_NOTIFIKASI }}
+                                                        </h6>
+                                                        <small
+                                                               class="mb-0 dropdown-msg-text text-secondary d-flex align-items-center">
+                                                            {{ $notifikasi->notifikasi->ISI_NOTIFIKASI }}
+                                                        </small>
+                                                        <small>{{ humanTimeFormat($notifikasi->TGL_NOTIF_SKTLK) }}</small>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        @empty
+                                            <span class="d-inline-block text-center">Tidak ada notifikasi.</span>
+                                        @endforelse
+                                    </div>
+                                    <div class="p-2">
+                                        <div>
+                                            <hr class="dropdown-divider">
+                                        </div>
+                                        <a class="dropdown-item"
+                                           href="/notifikasi/read-all-admin">
+                                            <div class="text-center">Tandai
+                                                semua telah
+                                                dibaca</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+
                             {{-- End Notif --}}
                         </ul>
                     </div>
