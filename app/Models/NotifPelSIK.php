@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
-use App\Models\Laporan\SKTLK;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NotifPelSKTLK extends Model
+class NotifPelSIK extends Model
 {
     use HasFactory;
 
-    protected $table = 'notif_pel_sktlk';
+
+    protected $table = 'notif_pel_sik';
     protected $fillable = [
-        'ID_NOTIFIKASI', 'ID_SKTLK', 'ID_PELAPOR', 'TIPE_NOTIF', 'TGL_NOTIF'
+        'ID_NOTIFIKASI', 'ID_SIK', 'ID_PELAPOR', 'TIPE_NOTIF', 'TGL_NOTIF'
     ];
     public $timestamps = false;
     public $incrementing = false;
@@ -23,9 +23,9 @@ class NotifPelSKTLK extends Model
         return $this->belongsTo(Notifikasi::class, 'ID_NOTIFIKASI', 'ID_NOTIFIKASI');
     }
 
-    public function sktlk()
+    public function sik()
     {
-        return $this->belongsTo(SKTLK::class, 'ID_SKTLK', 'ID_SKTLK');
+        return $this->belongsTo(SIK::class, 'ID_SIK', 'ID_SIK');
     }
 
     public function pelapor()

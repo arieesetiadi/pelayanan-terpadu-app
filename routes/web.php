@@ -14,6 +14,7 @@ use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\Lapor\SKTLKController;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Admin\DaftarController as AdminDaftarController;
+use App\Http\Controllers\Admin\NotifikasiController as AdminNotifikasiController;
 
 Route::get('/config-cache', function () {
 	Artisan::call('config:cache');
@@ -94,6 +95,9 @@ Route::get('/notifikasi/read-all-admin', [NotifikasiController::class, 'readAllA
 
 // Route Admin ====================================
 Route::middleware('auth.pegawai')->group(function () {
+	// Notifikasi for Admin
+	Route::get('/admin/notifikasi/sktlk/{id}', [AdminNotifikasiController::class, 'show']);
+
 	Route::get('/dashboard', [AdminController::class, 'dashboard']);
 	Route::get('/profile', [AdminController::class, 'profile']);
 	Route::post('/profile/update', [AdminController::class, 'update']);

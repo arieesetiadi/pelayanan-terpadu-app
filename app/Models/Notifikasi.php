@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Notifikasi extends Model
 {
@@ -63,7 +64,9 @@ class Notifikasi extends Model
 
     public static function getNotifikasiAdmin()
     {
-        $notifikasiSKTLK = NotifPelSKTLK::orderByDesc('TGL_NOTIF_SKTLK')->get();
+        $notifikasiSKTLK = NotifPelSKTLK::orderByDesc('TGL_NOTIF')->get();
+        $notifikasi = DB::select("SELECT * FROM notif_pel_sktlk UNION SELECT * FROM notif_pel_sik ORDER BY TGL_NOTIF DESC");
+        dd($notifikasi);
         // $notifikasiSIK = [];
         // $notifikasiSP2HP = [];
 

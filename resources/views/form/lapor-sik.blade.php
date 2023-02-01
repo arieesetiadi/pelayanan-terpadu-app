@@ -114,6 +114,37 @@
                                     <hr>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td style="width: 55%">
+                                    <span class="d-inline-block mt-2">Foto identitas pelapor (KTP)</span>
+                                    <span class="text-danger">*</span>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label id="labelFotoKTP"
+                                               for="fotoKtp"
+                                               class="btn btn-primary d-block w-100 @error('fotoKtp') border-error @enderror">
+                                            {{ $laporan->proposal_kegiatan ?? 'Upload File' }}
+                                        </label>
+
+                                        <input id="fotoKtp"
+                                               accept=".pdf,.jpg,.jpeg,.png"
+                                               {{ isset($laporan) ? '' : '' }}
+                                               name="fotoKtp"
+                                               type="file"
+                                               class="d-none">
+                                        @error('fotoKtp')
+                                            <small class="text-danger d-inline-block mr-2"
+                                                   style="font-size: 80%">
+                                                {{ $message }}
+                                            </small>
+                                        @enderror
+                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
+                                    </div>
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td style="width: 55%">
                                     <span class="d-inline-block mt-2">Proposal Kegiatan</span>
@@ -195,30 +226,6 @@
                                                 {{ $message }}
                                             </small>
                                         @enderror
-                                        <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 55%">
-                                    <span class="d-inline-block mt-2">Fotokopi paspor (bila melibatkan WNA)</span>
-                                </td>
-                                <td>
-                                    <div class="form-group">
-                                        <label id="labelFotokopiPaspor"
-                                               for="fotokopiPaspor"
-                                               class="btn btn-primary d-block w-100">
-                                            @if (isset($laporan) && $laporan->fotokopi_paspor != '')
-                                                $laporan->fotokopi_paspor
-                                            @else
-                                                Upload File
-                                            @endif
-                                        </label>
-                                        <input id="fotokopiPaspor"
-                                               accept=".pdf,.jpg,.jpeg,.png"
-                                               name="fotokopiPaspor"
-                                               type="file"
-                                               class="d-none">
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -319,6 +326,10 @@
     <script src="{{ asset('assets-user/rev-slider/js/extensions/extensionsrevolution.extension.video.min.js') }}"></script>
 
     <script>
+        // Proposal kegiatan
+        $('#fotoKtp').on('change', function() {
+            $('#labelFotoKTP').text(this.files[0].name);
+        });
         // Proposal kegiatan
         $('#proposalKegiatan').on('change', function() {
             $('#labelProposalKegiatan').text(this.files[0].name);

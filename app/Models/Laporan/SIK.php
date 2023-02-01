@@ -10,10 +10,19 @@ class SIK extends Model
 {
     use HasFactory;
 
-    public $table = 'laporan_sik';
+    public $table = 'lapor_sik';
     protected $guarded = [];
 
     public $timestamps = false;
+
+    // Methods
+    public static function generateID()
+    {
+        $count = self::count();
+        $id = "S" . str_pad(($count + 1), 2, "0", STR_PAD_LEFT);
+
+        return $id;
+    }
 
     public static function insert($laporan)
     {

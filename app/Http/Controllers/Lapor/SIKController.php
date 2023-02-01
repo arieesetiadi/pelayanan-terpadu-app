@@ -10,6 +10,7 @@ use App\Mail\SIKDisetujui;
 use App\Mail\SIKDitolak;
 use App\Mail\SIKUploadPersetujuan;
 use App\Models\Laporan\SIK;
+use App\Models\NotifPelSIK;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
@@ -94,7 +95,49 @@ class SIKController extends Controller
 
     public function upload(Request $data)
     {
+        // Validate form
+        $data->validate([
+            'fotoKtp' => 'required',
+            'proposalKegiatan' => 'required',
+            'izinTempat' => 'required',
+            'izinInstansi' => 'required',
+            'rekomendasiPolsek' => 'required',
+        ]);
+
         // Upload file terbaru saja
+        $sik = [
+            'ID_SIK' => SIK::generateID(),
+            'ID_PELAPOR' => session('pelapor')->ID_PELAPOR,
+            'FOTO_KTP_SIK' => uploadFile($data['fotoKtp'], 'assets-user/upload/'),
+            'PROPOSAL_KEGIATAN' => uploadFile($data['proposalKegiatan'], 'assets-user/upload/'),
+            'IZIN_TEMPAT' => uploadFile($data['izinTempat'], 'assets-user/upload/'),
+            'IZIN_INSTANSI' => uploadFile($data['izinInstansi'], 'assets-user/upload/'),
+            'REKOMENDASI_POLSEK' => uploadFile($data['rekomendasiPolsek'], 'assets-user/upload/'),
+            'TGL_LAPOR_SIK' => now()
+        ];
+
+        // Prepare notif data
+        $notifikasi = [
+            'ID_NOTIFIKASI' => Notifikasi::generateID(),
+            'NAMA_NOTIFIKASI' => 'Dokumen Persyaratan SIK Masuk',
+            'ISI_NOTIFIKASI' => 'Pelaporan perlu diproses.',
+            'STATUS_NOTIFIKASI' => 'Belum Dibaca'
+        ];
+
+        $notifPelSIK = [
+            'ID_NOTIFIKASI' => $notifikasi['ID_NOTIFIKASI'],
+            'ID_SIK' => $sik['ID_SIK'],
+            'ID_PELAPOR' => session('pelapor')->ID_PELAPOR,
+            'TIPE_NOTIF' => 'sik',
+            'TGL_NOTIF_SIK' => now()
+        ];
+
+        // Insert data
+        SIK::create($sik);
+        Notifikasi::create($notifikasi);
+        NotifPelSIK::create($notifPelSIK);
+
+        // == Upload Ulang ==
         if ($data->laporan_id) {
             SIK::updateDokumen($data->all());
 
@@ -112,29 +155,8 @@ class SIKController extends Controller
             Notifikasi::insert($toAdmin);
             return back()->with('success', 'Berhasil mengirim dokumen persyaratan terbaru');
         }
+        // == End Upload Ulang ==
 
-        $data->validate([
-            'proposalKegiatan' => 'required',
-            'izinTempat' => 'required',
-            'izinInstansi' => 'required',
-            'rekomendasiPolsek' => 'required',
-        ]);
-
-        // Insert nama file ke database
-        $laporan = SIK::insert($data->all());
-
-        // Kirim notifikasi
-        $toAdmin = [
-            'judul' => 'Dokumen Persyaratan SIK Masuk',
-            'isi' => 'Dokumen perlu pengecekkan kelengkapan.',
-            'tipe' => 'sik',
-            'telah_dibaca' => false,
-            'dikirim_kepada' => 'admin',
-            'laporan_id' => $laporan->id,
-            'dikirim_pada' => now()
-        ];
-
-        Notifikasi::insert($toAdmin);
         return back()->with('success', 'Berhasil mengirim dokumen persyaratan');
     }
 

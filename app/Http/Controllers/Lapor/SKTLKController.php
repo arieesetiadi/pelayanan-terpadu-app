@@ -71,14 +71,15 @@ class SKTLKController extends Controller
             'ID_NOTIFIKASI' => $notifikasi['ID_NOTIFIKASI'],
             'ID_SKTLK' => $sktlk['ID_SKTLK'],
             'ID_PELAPOR' => session('pelapor')->ID_PELAPOR,
+            'TIPE_NOTIF' => 'sktlk',
             'TGL_NOTIF_SKTLK' => now()
         ];
 
         // Insert data
-        $detailLokasiKejadian = DetailLokasiKejadian::create($detailLokasiKejadian);
-        $sktlk = SKTLK::create($sktlk);
-        $notifikasi = Notifikasi::create($notifikasi);
-        $notifPelSKTLK = NotifPelSKTLK::create($notifPelSKTLK);
+        DetailLokasiKejadian::create($detailLokasiKejadian);
+        SKTLK::create($sktlk);
+        Notifikasi::create($notifikasi);
+        NotifPelSKTLK::create($notifPelSKTLK);
 
         return back()->with('success', 'Pelaporan anda sedang diproses');
     }

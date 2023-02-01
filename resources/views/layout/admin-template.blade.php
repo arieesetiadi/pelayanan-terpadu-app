@@ -3,7 +3,6 @@
     
     $data = App\Models\Notifikasi::getNotifikasiAdmin();
     session()->put('notifikasiAdmin', $data['notifikasi']);
-    
 @endphp
 
 <!doctype html>
@@ -199,7 +198,7 @@
                                                data-bs-placement="left"
                                                title="Pelapor : {{ $namaPelapor }}"
                                                class="dropdown-item {{ $notifikasi->notifikasi->STATUS_NOTIFIKASI == 'Belum Dibaca' ? 'bg-grey' : '' }}"
-                                               href="/notifikasi/cetak-pdf/{{ $notifikasi->id }}">
+                                               href="/admin/notifikasi/{{ $notifikasi->TIPE_NOTIF }}/{{ $notifikasi->ID_SKTLK }}">
 
                                                 <div class="d-flex align-items-center">
                                                     <div class="ms-3 flex-grow-1">
