@@ -30,17 +30,6 @@ class SKTLKController extends Controller
         // Proses upload data ke database
         $laporan = SKTLK::insert($request->all());
 
-        // $toPelapor = [
-        //     'judul' => 'Pelaporan SKTLK Berhasil',
-        //     'isi' => 'Anda berhasil melakukan pelaporan SKTLK dan sedang dalam proses.',
-        //     'tipe' => 'sktlk',
-        //     'telah_dibaca' => false,
-        //     'dikirim_kepada' => 'pelapor',
-        //     'laporan_id' => $laporan->id,
-        //     'pelapor_id' => $laporan->pelapor_id,
-        //     'dikirim_pada' => now()
-        // ];
-
         $toAdmin = [
             'judul' => 'Pelaporan SKTLK Masuk',
             'isi' => 'Pelaporan perlu diproses.',

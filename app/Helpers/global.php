@@ -102,7 +102,11 @@ function getLaporanByNotif($notifikasi)
 
 function getNamaPelaporByNotification($notifikasi)
 {
-    return User::find($notifikasi->pelapor_id)->nama;
+    $user = User::find($notifikasi->pelapor_id);
+    if (!$user) {
+        return "";
+    }
+    return $user->nama;
 }
 
 function isImage($fileName)

@@ -67,7 +67,6 @@
                                                 @csrf
                                                 {{-- Nama --}}
                                                 <div class="mb-3 auth-form-group-custom mb-4">
-                                                    <i class="fa-solid fa-address-card auti-custom-input-icon"></i>
                                                     <label for="nama">Nama</label>
                                                     <input name="nama"
                                                            type="text"
@@ -81,8 +80,6 @@
                                                     <div class="col-6">
                                                         {{-- Username --}}
                                                         <div class="mb-3 auth-form-group-custom mb-4">
-                                                            <i
-                                                               class="fa-solid fa-address-card auti-custom-input-icon"></i>
                                                             <label for="username">Username</label>
                                                             <input name="username"
                                                                    type="text"
@@ -95,7 +92,6 @@
                                                     <div class="col-6">
                                                         {{-- Password --}}
                                                         <div class="mb-3 auth-form-group-custom mb-4">
-                                                            <i class="fa-solid fa-key auti-custom-input-icon"></i>
                                                             <label for="password">Password</label>
                                                             <input name="password"
                                                                    type="password"
@@ -111,7 +107,6 @@
                                                     <div class="col-6">
                                                         {{-- Email --}}
                                                         <div class="auth-form-group-custom mb-4">
-                                                            <i class="fa-solid fa-envelope auti-custom-input-icon"></i>
                                                             <label for="email">Email</label>
                                                             <input name="email"
                                                                    type="email"
@@ -124,7 +119,6 @@
                                                     <div class="col-6">
                                                         {{-- Telepon --}}
                                                         <div class="auth-form-group-custom mb-4">
-                                                            <i class="fa-solid fa-phone auti-custom-input-icon"></i>
                                                             <label for="telepon">Telepon</label>
                                                             <input name="telepon"
                                                                    type="text"
@@ -136,9 +130,46 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        {{-- Tempat Lahir --}}
+                                                        <div class="auth-form-group-custom mb-4">
+                                                            <label for="tempatLahir">Tempat Lahir</label>
+                                                            <input name="tempatLahir"
+                                                                   type="text"
+                                                                   class="form-control"
+                                                                   id="tempatLahir"
+                                                                   placeholder="Tempat lahir"
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{-- Tanggal Lahir --}}
+                                                        <div class="auth-form-group-custom mb-4">
+                                                            <label for="tanggalLahir">Tanggal Lahir</label>
+                                                            <input name="tanggalLahir"
+                                                                   type="date"
+                                                                   class="form-control"
+                                                                   id="tanggalLahir"
+                                                                   placeholder="Tanggal lahir"
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Pekerjaan --}}
+                                                <div class="mb-3 auth-form-group-custom mb-4">
+                                                    <label for="pekerjaan">Pekerjaan</label>
+                                                    <input name="pekerjaan"
+                                                           type="text"
+                                                           class="form-control"
+                                                           id="pekerjaan"
+                                                           placeholder="Pekerjaan"
+                                                           required>
+                                                </div>
+
                                                 {{-- Alamat --}}
                                                 <div class="mb-3 auth-form-group-custom mb-4">
-                                                    <i class="fa-solid fa-house-chimney auti-custom-input-icon"></i>
                                                     <label for="alamat">Alamat</label>
                                                     <input name="alamat"
                                                            type="text"
@@ -148,9 +179,24 @@
                                                            required>
                                                 </div>
 
+                                                {{-- Kewarganegaraan --}}
+                                                <div class="mb-3 auth-form-group-custom mb-4">
+                                                    <label for="kewarganegaraan">Kewarganegaraan</label>
+                                                    <select name="kewarganegaraan"
+                                                            class="form-control"
+                                                            style="height: 40px"
+                                                            required>
+                                                        <option selected
+                                                                value="Warga Negara Indonesia">Warga Negara
+                                                            Indonesia
+                                                        </option>
+                                                        <option value="Warga Negara Asing">Warga Negara Asing
+                                                        </option>
+                                                    </select>
+                                                </div>
+
                                                 <div>
                                                     <div class="d-block mb-1">
-                                                        <i class="fa-solid fa-venus-mars auti-custom-input-icon"></i>
                                                         <label for="">Jenis Kelamin</label>
                                                     </div>
                                                     <div class="form-check d-inline-block">

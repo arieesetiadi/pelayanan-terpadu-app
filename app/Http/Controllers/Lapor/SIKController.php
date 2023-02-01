@@ -205,9 +205,9 @@ class SIKController extends Controller
         // Download pernyataan keaslian dokumen
         $data = [
             'namaOrganisasi' => $request->SIKNamaOrganisasi,
-            'namaPenanggungJawab' => $request->SIKNamaPenanggungJawab,
-            'alamat' => $request->SIKAlamat,
-            'telepon' => $request->SIKTelepon,
+            'namaPenanggungJawab' => auth()->user()->nama,
+            'alamat' => auth()->user()->alamat,
+            'telepon' => auth()->user()->telepon,
         ];
 
         $pdf = PDF::loadview('pdf.pernyataan-keaslian-sik', $data);

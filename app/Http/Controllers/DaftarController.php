@@ -20,9 +20,13 @@ class DaftarController extends Controller
             'password' => Hash::make($data->password),
             'email' => $data->email,
             'telepon' => $data->telepon,
-            'jenis_kelamin' => $data->jenis_kelamin,
-            'jenis_pengguna' => 'Pelapor',
+            'tempat_lahir' => $data->tempatLahir,
+            'tanggal_lahir' => $data->tanggalLahir,
+            'pekerjaan' => $data->pekerjaan,
             'alamat' => $data->alamat,
+            'kewarganegaraan' => $data->kewarganegaraan,
+            'jenis_pengguna' => 'Pelapor',
+            'jenis_kelamin' => $data->jenis_kelamin,
             'status' => false
         ]);
 

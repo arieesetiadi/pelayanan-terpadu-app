@@ -98,136 +98,28 @@
                           method="POST"
                           enctype="multipart/form-data">
                         @csrf
-                        {{-- Form Data Diri --}}
-                        <h1 style="font-size: 24px">Data Diri :</h1>
-                        <hr>
-                        <table class="table table-sm table-borderless">
-                            {{-- Nama Lengkap --}}
-                            <tr>
-                                <td>
-                                    <span class="d-inline-block mt-2">Nama Lengkap</span>
-                                    <span class="text-danger">*</span>
-                                </td>
-                                <td>
-                                    <input name="namaLengkap"
-                                           type="text"
-                                           class="form-control form-control-sm"
-                                           placeholder="Nama lengkap"
-                                           style="height: 40px"
-                                           value="{{ old('namaLengkap') ?? '' }}"
-                                           required>
-                                </td>
-                            </tr>
-
-                            {{-- Tempat tanggal lahir --}}
-                            <tr style="margin-bottom: 50px">
-                                <td>
-                                    <span class="d-inline-block mt-2">Tempat & Tanggal lahir</span>
-                                    <span class="text-danger">*</span>
-                                </td>
-                                <td>
-                                    <div class="form-group">
-                                        <input name="tempatLahir"
-                                               type="text"
-                                               class="form-control d-inline-block float-left"
-                                               placeholder="Tempat lahir"
-                                               style="height: 40px; width: 48%; margin-right: 2%"
-                                               value="{{ old('tempatLahir') ?? '' }}"
-                                               required>
-                                        <input name="tanggalLahir"
-                                               type="date"
-                                               class="form-control w-50 d-inline-block float-left"
-                                               style="height: 40px"
-                                               required>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            {{-- Pekerjaan --}}
-                            <tr>
-                                <td>
-                                    <span class="d-inline-block mt-2">Pekerjaan</span>
-                                    <span class="text-danger">*</span>
-                                </td>
-                                <td>
-                                    <input name="pekerjaan"
-                                           type="text"
-                                           class="form-control form-control-sm"
-                                           placeholder="Pekerjaan"
-                                           style="height: 40px"
-                                           value="{{ old('pekerjaan') ?? '' }}"
-                                           required>
-                                </td>
-                            </tr>
-
-                            {{-- Kewarganegaraan --}}
-                            <tr>
-                                <td>
-                                    <span class="d-inline-block">Kewarganegaraan</span>
-                                    <span class="text-danger">*</span>
-                                </td>
-                                <td>
-                                    <select name="kewarganegaraan"
-                                            class="custom-select"
-                                            style="height: 40px"
-                                            required>
-                                        <option selected
-                                                hidden>Pilih kewarganegaraan</option>
-                                        @if (old('kewarganegaraan'))
-                                            @if (old('kewarganegaraan') == 'Warga Negara Indonesia')
-                                                <option selected
-                                                        value="Warga Negara Indonesia">Warga Negara Indonesia
-                                                </option>
-                                                <option value="Warga Negara Asing">Warga Negara Asing</option>
-                                            @elseif(old('kewarganegaraan') == 'Warga Negara Asing')
-                                                <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
-                                                <option selected
-                                                        value="Warga Negara Asing">Warga Negara Asing</option>
-                                            @endif
-                                        @else
-                                            <option selected
-                                                    hidden>Pilih kewarganegaraan</option>
-                                            <option value="Warga Negara Indonesia">Warga Negara Indonesia</option>
-                                            <option value="Warga Negara Asing">Warga Negara Asing</option>
-                                        @endif
-                                    </select>
-                                </td>
-                            </tr>
-
-                            {{-- Alamat --}}
-                            <tr>
-                                <td>
-                                    <span class="d-inline-block mt-2">Alamat</span>
-                                    <span class="text-danger">*</span>
-                                </td>
-                                <td>
-                                    <textarea name="alamat"
-                                              placeholder="Alamat"
-                                              class="form-control"
-                                              rows="3"
-                                              required>{{ old('alamat') ?? '' }}</textarea>
-                                </td>
-                            </tr>
-
-                            {{-- No HP --}}
-                            <tr>
-                                <td>
-                                    <span class="d-inline-block mt-2">No. Handphone</span>
-                                    <span class="text-danger">*</span>
-                                </td>
-                                <td>
-                                    <div class="form-group">
-                                        <input name="telepon"
-                                               type="text"
-                                               class="form-control form-control-sm"
-                                               placeholder="Nomor handphone"
-                                               style="height: 40px"
-                                               value="{{ old('telepon') ?? '' }}"
-                                               required>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                        {{-- Hidden Inputs --}}
+                        <input type="hidden"
+                               name="namaLengkap"
+                               value="{{ auth()->user()->nama }}">
+                        <input type="hidden"
+                               name="tempatLahir"
+                               value="{{ auth()->user()->tempat_lahir }}">
+                        <input type="hidden"
+                               name="tanggalLahir"
+                               value="{{ auth()->user()->tanggal_lahir }}">
+                        <input type="hidden"
+                               name="alamat"
+                               value="{{ auth()->user()->alamat }}">
+                        <input type="hidden"
+                               name="telepon"
+                               value="{{ auth()->user()->telepon }}">
+                        <input type="hidden"
+                               name="pekerjaan"
+                               value="{{ auth()->user()->pekerjaan }}">
+                        <input type="hidden"
+                               name="kewarganegaraan"
+                               value="{{ auth()->user()->kewarganegaraan }}">
 
                         {{-- Kronologi Singkat --}}
                         <h1 style="font-size: 24px">Kronologi Singkat :</h1>
@@ -256,26 +148,6 @@
                                     <span class="text-danger">*</span>
                                 </td>
                                 <td>
-                                    {{-- <select name="lokasiKejadian"
-                                            class="custom-select"
-                                            style="height: 40px"
-                                            required>
-                                        <option selected
-                                                value=""
-                                                hidden>Pilih Lokasi Kejadian</option>
-                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Abiansemal' ? 'selected' : '' }}
-                                                value="Abiansemal">Abiansemal</option>
-                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta' ? 'selected' : '' }}
-                                                value="Kuta">Kuta</option>
-                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta Selatan' ? 'selected' : '' }}
-                                                value="Kuta Selatan">Kuta Selatan</option>
-                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Kuta Utara' ? 'selected' : '' }}
-                                                value="Kuta Utara">Kuta Utara</option>
-                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Mengwi' ? 'selected' : '' }}
-                                                value="Mengwi">Mengwi</option>
-                                        <option {{ isset($laporan) && $laporan->lokasi_kejadian == 'Petang' ? 'selected' : '' }}
-                                                value="Petang">Petang</option>
-                                    </select> --}}
                                     <input list="lokasiKejadians"
                                            name="lokasiKejadian"
                                            id="lokasiKejadian"
@@ -443,7 +315,8 @@
                         <div class="modal-body">
                             {{-- Hidden Data --}}
                             <input name="pernyataanNamaLengkap"
-                                   type="hidden">
+                                   type="hidden"
+                                   value="{{ auth()->user()->nama }}">
                             <input name="pernyataanTempatLahir"
                                    type="hidden">
                             <input name="pernyataanTanggalLahir"

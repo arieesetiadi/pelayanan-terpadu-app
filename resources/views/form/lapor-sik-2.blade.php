@@ -107,85 +107,30 @@
                                                class="form-control form-control-sm"
                                                placeholder="Nama Organisasi"
                                                style="height: 40px"
-                                               value="{{ $laporan->nama_organisasi != '' ? $laporan->nama_organisasi : '' }}"
-                                               required>
+                                               value="{{ $laporan->nama_organisasi != '' ? $laporan->nama_organisasi : '' }}">
                                     </div>
                                 </td>
                             </tr>
 
                             {{-- Nama Penanggung Jawab --}}
-                            <tr>
-                                <td>
-                                    <span class="d-inline-block mt-2">Nama Penanggung Jawab</span>
-                                    <span class="text-danger">*</span>
-                                </td>
-                                <td>
-                                    <div class="">
-                                        <input name="namaPenanggungJawab"
-                                               type="text"
-                                               class="form-control form-control-sm"
-                                               placeholder="Nama Penanggung Jawab"
-                                               style="height: 40px"
-                                               value="{{ $laporan->nama_penanggung_jawab != '' ? $laporan->nama_penanggung_jawab : '' }}"
-                                               required>
-                                    </div>
-                                </td>
-                            </tr>
+                            <input name="namaPenanggungJawab"
+                                   type="hidden"
+                                   value="{{ auth()->user()->nama }}">
 
                             {{-- Pekerjaan --}}
-                            <tr>
-                                <td>
-                                    <span class="d-inline-block mt-2">Pekerjaan</span>
-                                    <span class="text-danger">*</span>
-                                </td>
-                                <td>
-                                    <div class="">
-                                        <input name="pekerjaan"
-                                               type="text"
-                                               class="form-control form-control-sm"
-                                               placeholder="Pekerjaan Penanggung Jawab"
-                                               style="height: 40px"
-                                               value="{{ $laporan->pekerjaan != '' ? $laporan->pekerjaan : '' }}"
-                                               required>
-                                    </div>
-                                </td>
-                            </tr>
+                            <input name="pekerjaan"
+                                   type="hidden"
+                                   value="{{ auth()->user()->pekerjaan }}">
 
                             {{-- Alamat --}}
-                            <tr>
-                                <td>
-                                    <span class="d-inline-block mt-2">Alamat</span>
-                                    <span class="text-danger">*</span>
-                                </td>
-                                <td>
-                                    <div class="">
-                                        <textarea name="alamat"
-                                                  placeholder="Alamat Penanggung Jawab"
-                                                  class="form-control"
-                                                  rows="3"
-                                                  required>{{ $laporan->alamat != '' ? $laporan->alamat : '' }}</textarea>
-                                    </div>
-                                </td>
-                            </tr>
+                            <input type="hidden"
+                                   name="alamat"
+                                   value="{{ auth()->user()->alamat }}">
 
                             {{-- Nomor Telepon --}}
-                            <tr>
-                                <td>
-                                    <span class="d-inline-block mt-2">Nomor Telepon</span>
-                                    <span class="text-danger">*</span>
-                                </td>
-                                <td>
-                                    <div class="">
-                                        <input name="telepon"
-                                               type="text"
-                                               class="form-control form-control-sm"
-                                               placeholder="Nomor telepon"
-                                               style="height: 40px"
-                                               value="{{ $laporan->telepon != '' ? $laporan->telepon : '' }}"
-                                               required>
-                                    </div>
-                                </td>
-                            </tr>
+                            <input name="telepon"
+                                   type="hidden"
+                                   value="{{ auth()->user()->telepon }}">
 
                             {{-- Bentuk Macam Kegiatan --}}
                             <tr>
@@ -198,8 +143,7 @@
                                         <textarea name="bentukKegiatan"
                                                   placeholder="Bentuk / Macam Kegiatan"
                                                   class="form-control"
-                                                  rows="3"
-                                                  required>{{ $laporan->bentuk_kegiatan != '' ? $laporan->bentuk_kegiatan : '' }}</textarea>
+                                                  rows="3">{{ $laporan->bentuk_kegiatan != '' ? $laporan->bentuk_kegiatan : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -216,10 +160,9 @@
                                             <div class="">
                                                 <input name="waktuMulai"
                                                        type="datetime-local"
-                                                       class="form-control"
+                                                       class=""
                                                        style="height: 40px"
-                                                       value="{{ $laporan->waktu_mulai != '' ? $laporan->waktu_mulai : '' }}"
-                                                       required>
+                                                       value="{{ $laporan->waktu_mulai != '' ? $laporan->waktu_mulai : '' }}">
                                             </div>
                                         </div>
                                         <div class="col-2">
@@ -229,10 +172,9 @@
                                             <div class="">
                                                 <input name="waktuSelesai"
                                                        type="datetime-local"
-                                                       class="form-control"
+                                                       class=""
                                                        style="height: 40px"
-                                                       value="{{ $laporan->waktu_selesai != '' ? $laporan->waktu_selesai : '' }}"
-                                                       required>
+                                                       value="{{ $laporan->waktu_selesai != '' ? $laporan->waktu_selesai : '' }}">
                                             </div>
                                         </div>
                                     </div>
@@ -248,8 +190,7 @@
                                 <td>
                                     <select name="lokasiKegiatan"
                                             class="custom-select mt-2"
-                                            style="height: 40px"
-                                            required>
+                                            style="height: 40px">
                                         <option selected
                                                 value=""
                                                 hidden>Pilih Lokasi Kegiatan</option>
@@ -270,8 +211,7 @@
                                         <textarea name="detailLokasiKegiatan"
                                                   placeholder="Detail lokasi kegiatan"
                                                   class="form-control"
-                                                  rows="3"
-                                                  required>{{ isset($laporan) ? $laporan->detail_lokasi_kegiatan : '' }}</textarea>
+                                                  rows="3">{{ isset($laporan) ? $laporan->detail_lokasi_kegiatan : '' }}</textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -289,8 +229,7 @@
                                                class="form-control form-control-sm"
                                                placeholder="Dalam Rangka"
                                                style="height: 40px"
-                                               value="{{ $laporan->dalam_rangka != '' ? $laporan->dalam_rangka : '' }}"
-                                               required>
+                                               value="{{ $laporan->dalam_rangka != '' ? $laporan->dalam_rangka : '' }}">
                                     </div>
                                 </td>
                             </tr>
@@ -308,8 +247,7 @@
                                                class="form-control form-control-sm"
                                                placeholder="Undangan / Peserta"
                                                style="height: 40px"
-                                               value="{{ $laporan->jumlah_undangan != '' ? $laporan->jumlah_undangan : '' }}"
-                                               required>
+                                               value="{{ $laporan->jumlah_undangan != '' ? $laporan->jumlah_undangan : '' }}">
                                     </div>
                                 </td>
                             </tr>
@@ -325,8 +263,7 @@
                                         <input name="fotoKtp"
                                                type="file"
                                                class="form-control-file"
-                                               accept=".jpg,.jpeg,.png"
-                                               required>
+                                               accept=".jpg,.jpeg,.png">
                                         <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -343,8 +280,7 @@
                                         <input name="fotoPelapor"
                                                type="file"
                                                class="form-control-file"
-                                               accept=".jpg,.jpeg,.png"
-                                               required>
+                                               accept=".jpg,.jpeg,.png">
                                         <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -374,8 +310,7 @@
                                         <input name="pernyataanKeaslian"
                                                type="file"
                                                class="form-control-file"
-                                               accept=".pdf,.jpg,.jpeg,.png"
-                                               required>
+                                               accept=".pdf,.jpg,.jpeg,.png">
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
@@ -388,16 +323,16 @@
                                         <span class="text-danger">*</span>
                                         Dokumen wajib diisi
                                     </h6>
-                                    <button name="simpanSementara"
+                                    {{-- <button name="simpanSementara"
                                             value="simpan"
                                             type="submit"
-                                            class="btn btn-primary">
+                                            class="btn btn-primary w-75 mb-2">
                                         Simpan Sementara
-                                    </button>
+                                    </button> --}}
                                     <button name="kirim"
                                             value="kirim"
                                             type="submit"
-                                            class="btn btn-primary">
+                                            class="btn btn-primary w-75 mb-2">
                                         Kirim Data
                                     </button>
                                 </td>

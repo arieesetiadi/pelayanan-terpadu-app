@@ -48,7 +48,7 @@ $(function () {
             $("input[name=tanggalLahir]").val()
         );
         $("textarea[name=pernyataanAlamat]").val(
-            $("textarea[name=alamat]").val()
+            $("input[name=alamat]").val()
         );
         $("input[name=pernyataanTelepon]").val($("input[name=telepon]").val());
     }
