@@ -140,10 +140,10 @@ class SIKController extends Controller
 
     public function uploadForm(Request $data)
     {
-        if (isset($data->simpanSementara)) {
-            SIK::insertDraft($data->all());
-            return back()->with('success', 'Data Anda berhasil disimpan sementara');
-        }
+        // if (isset($data->simpanSementara)) {
+        //     SIK::insertDraft($data->all());
+        //     return back()->with('success', 'Data Anda berhasil disimpan sementara');
+        // }
 
         // Insert data form ke database
         SIK::insertForm($data->all());

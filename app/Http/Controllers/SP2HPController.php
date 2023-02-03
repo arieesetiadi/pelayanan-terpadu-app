@@ -43,8 +43,8 @@ class SP2HPController extends Controller
         $path = 'assets-user/upload/';
 
         $fotoKtp = uploadFile($request->file('fotoKtp'), $path);
-        $fotoPelapor = uploadFile($request->file('fotoPelapor'), $path);
-        $lampiran = uploadFile($request->file('lampiran'), $path);
+        // $fotoPelapor = uploadFile($request->file('fotoPelapor'), $path);
+        // $lampiran = uploadFile($request->file('lampiran'), $path);
 
         if ($request->reupload) {
             $laporan = SP2HP::find($request->id);
@@ -63,8 +63,8 @@ class SP2HPController extends Controller
                 'detail_lokasi_kejadian' => $request->detailLokasiKejadian,
                 'kategori' => $request->kategori,
                 'foto_ktp' => $fotoKtp,
-                'foto_pelapor' => $fotoPelapor,
-                'lampiran' => $lampiran,
+                'foto_pelapor' => "",
+                'lampiran' => "",
                 'terlapor' => $terlapor,
                 'saksi' => $saksi,
                 'bukti' => $bukti,
@@ -87,8 +87,8 @@ class SP2HPController extends Controller
                 'detail_lokasi_kejadian' => $request->detailLokasiKejadian,
                 'kategori' => $request->kategori,
                 'foto_ktp' => $fotoKtp,
-                'foto_pelapor' => $fotoPelapor,
-                'lampiran' => $lampiran,
+                'foto_pelapor' => "",
+                'lampiran' => "",
                 'terlapor' => $terlapor,
                 'saksi' => $saksi,
                 'bukti' => $bukti,

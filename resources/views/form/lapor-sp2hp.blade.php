@@ -465,7 +465,7 @@
                             </tr>
 
                             {{-- Upload Foto Orang + KTP --}}
-                            <tr>
+                            {{-- <tr>
                                 <td>
                                     <span class=" mt-2">Foto pelapor sambil membawa identitas</span>
                                     <span class="text-danger">*</span>
@@ -480,10 +480,10 @@
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                             {{-- Upload lampiran --}}
-                            <tr>
+                            {{-- <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Upload Lampiran :</span>
                                 </td>
@@ -496,7 +496,7 @@
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </table>
 
                         <h6 class="mb-4 text-dark">

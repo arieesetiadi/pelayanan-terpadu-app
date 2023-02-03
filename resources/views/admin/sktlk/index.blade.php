@@ -243,38 +243,38 @@
                                                 </div>
 
                                                 {{-- Gambar foto pelapor --}}
-                                                <div class="carousel-item">
+                                                {{-- <div class="carousel-item">
                                                     <img src="{{ asset('assets-user/upload/' . $sktlkDocument['fotoPelapor']) }}"
                                                          class="d-block w-100"
                                                          alt="Foto Pelapor">
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- Rekomendasi instansi --}}
-                                                @if (isImage($sktlkDocument['rekomendasiInstansi']))
+                                                {{-- @if (isImage($sktlkDocument['rekomendasiInstansi']))
                                                     <div class="carousel-item">
                                                         <img src="{{ asset('assets-user/upload/' . $sktlkDocument['rekomendasiInstansi']) }}"
                                                              class="d-block w-100"
                                                              alt="Rekomendasi Instansi">
                                                     </div>
-                                                @endif
+                                                @endif --}}
 
                                                 {{-- Pernyataan Keaslian --}}
-                                                @if (isImage($sktlkDocument['pernyataanKeaslian']))
+                                                {{-- @if (isImage($sktlkDocument['pernyataanKeaslian']))
                                                     <div class="carousel-item">
                                                         <img src="{{ asset('assets-user/upload/' . $sktlkDocument['pernyataanKeaslian']) }}"
                                                              class="d-block w-100"
                                                              alt="Rekomendasi Instansi">
                                                     </div>
-                                                @endif
+                                                @endif --}}
 
                                                 {{-- Dokumen Tambahan --}}
-                                                @if (isImage($sktlkDocument['dokumenTambahan']))
+                                                {{-- @if (isImage($sktlkDocument['dokumenTambahan']))
                                                     <div class="carousel-item">
                                                         <img src="{{ asset('assets-user/upload/' . $sktlkDocument['dokumenTambahan']) }}"
                                                              class="d-block w-100"
                                                              alt="Rekomendasi Instansi">
                                                     </div>
-                                                @endif
+                                                @endif --}}
                                             </div>
                                             <button class="carousel-control-prev"
                                                     type="button"
@@ -295,17 +295,17 @@
                                         </div>
 
                                         {{-- Rekomendasi Instansi --}}
-                                        @if (!isImage($sktlkDocument['rekomendasiInstansi']))
+                                        {{-- @if (!isImage($sktlkDocument['rekomendasiInstansi']))
                                             <a target="_blank"
                                                href="{{ asset('assets-user/upload/' . $sktlkDocument['rekomendasiInstansi']) }}"
                                                class="d-block btn mb-1 mt-4">
                                                 <i class="bi bi-arrow-down-circle-fill"></i>
                                                 Rekomendasi Instansi
                                             </a>
-                                        @endif
+                                        @endif --}}
 
                                         {{-- Pernyataan Keaslian --}}
-                                        @if ($sktlkDocument['pernyataanKeaslian'])
+                                        {{-- @if ($sktlkDocument['pernyataanKeaslian'])
                                             @if (!isImage($sktlkDocument['pernyataanKeaslian']))
                                                 <a target="_blank"
                                                    href="{{ asset('assets-user/upload/' . $sktlkDocument['pernyataanKeaslian']) }}"
@@ -314,10 +314,10 @@
                                                     Pernyataan Keaslian
                                                 </a>
                                             @endif
-                                        @endif
+                                        @endif --}}
 
                                         {{-- Dokumen Tambahan --}}
-                                        @if ($sktlkDocument['dokumenTambahan'])
+                                        {{-- @if ($sktlkDocument['dokumenTambahan'])
                                             @if (!isImage($sktlkDocument['dokumenTambahan']))
                                                 <a target="_blank"
                                                    href="{{ asset('assets-user/upload/' . $sktlkDocument['dokumenTambahan']) }}"
@@ -326,7 +326,7 @@
                                                     Dokumen Tambahan
                                                 </a>
                                             @endif
-                                        @endif
+                                        @endif --}}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button"

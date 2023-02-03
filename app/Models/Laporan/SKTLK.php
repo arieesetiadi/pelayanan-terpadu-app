@@ -20,10 +20,10 @@ class SKTLK extends Model
         // Proses upload file
         $path = 'assets-user/upload/';
         $fotoKtp = uploadFile($laporan['fotoKtp'], $path);
-        $fotoPelapor = uploadFile($laporan['fotoPelapor'], $path);
-        $rekomendasiInstansi = uploadFile($laporan['rekomendasiInstansi'], $path);
-        $pernyataanKeaslian = uploadFile($laporan['pernyataanKeaslian'], $path);
-        $dokumenTambahan = uploadFile($laporan['dokumenTambahan'] ?? null, $path);
+        // $fotoPelapor = uploadFile($laporan['fotoPelapor'], $path);
+        // $rekomendasiInstansi = uploadFile($laporan['rekomendasiInstansi'], $path);
+        // $pernyataanKeaslian = uploadFile($laporan['pernyataanKeaslian'], $path);
+        // $dokumenTambahan = uploadFile($laporan['dokumenTambahan'] ?? null, $path);
 
         // Insert data laporan ke database
         return self::create([
@@ -39,10 +39,10 @@ class SKTLK extends Model
             'detail_lokasi_kejadian' => $laporan['detailLokasiKejadian'],
             'surat_hilang' => $laporan['suratHilang'],
             'foto_ktp' => $fotoKtp,
-            'foto_pelapor' => $fotoPelapor,
-            'rekomendasi_instansi' => $rekomendasiInstansi,
-            'dokumen_tambahan' => $dokumenTambahan,
-            'pernyataan_keaslian' => $pernyataanKeaslian,
+            'foto_pelapor' => "",
+            'rekomendasi_instansi' => "",
+            'dokumen_tambahan' => "",
+            'pernyataan_keaslian' => "",
             'pelapor_id' => auth()->user()->id
         ]);
     }

@@ -63,13 +63,14 @@
             <td>Foto KTP</td>
             <td>:</td>
             <td>
-                <a target="_blank" href="{{ asset('assets-user/upload/') . '/' . $laporan->foto_ktp }}">
+                <a target="_blank"
+                   href="{{ asset('assets-user/upload/') . '/' . $laporan->foto_ktp }}">
                     <i class="bi bi-download"></i>
                     Foto KTP
                 </a>
             </td>
         </tr>
-        <tr>
+        {{-- <tr>
             <td>Foto Pelapor</td>
             <td>:</td>
             <td>
@@ -78,8 +79,8 @@
                     Foto Pelapor
                 </a>
             </td>
-        </tr>
-        <tr>
+        </tr> --}}
+        {{-- <tr>
             <td>Rekomendasi Instansi</td>
             <td>:</td>
             <td>
@@ -88,8 +89,8 @@
                     Rekomendasi Instansi
                 </a>
             </td>
-        </tr>
-        <tr>
+        </tr> --}}
+        {{-- <tr>
             <td>Pernyataan Keaslian</td>
             <td>:</td>
             <td>
@@ -98,22 +99,24 @@
                     Pernyataan Keaslian
                 </a>
             </td>
-        </tr>
+        </tr> --}}
         @if ($laporan->dokumen_tambahan != '')
-            <tr>
+            {{-- <tr>
                 <td>Dokumen Tambahan</td>
                 <td>:</td>
                 <td>
-                    <a target="_blank" href="{{ asset('assets-user/upload/') . '/' . $laporan->dokumen_tambahan }}">
+                    <a target="_blank"
+                       href="{{ asset('assets-user/upload/') . '/' . $laporan->dokumen_tambahan }}">
                         <i class="bi bi-download"></i>
                         Dokumen Tambahan
                     </a>
                 </td>
-            </tr>
+            </tr> --}}
         @endif
     </table>
 
-    <a href="/admin/sktlk/surat-keterangan/{{ $laporan->id }}" class="btn btn-primary mt-4">
+    <a href="/admin/sktlk/surat-keterangan/{{ $laporan->id }}"
+       class="btn btn-primary mt-4">
         <i class="bi bi-download"></i>
         Surat Persetujuan
     </a>

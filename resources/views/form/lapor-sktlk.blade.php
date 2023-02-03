@@ -191,7 +191,7 @@
                             </tr>
 
                             {{-- Download Surat pernyataan --}}
-                            <tr>
+                            {{-- <tr>
                                 <td class="pb-4">
                                     <a id="btnDownloadPernyataan"
                                        role="button"
@@ -201,10 +201,10 @@
                                         Surat Pernyataan Keaslian Dokumen
                                     </a>
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </table>
 
-                        <h1 style="font-size: 24px">Upload Data dan Lokasi Pengambilan :</h1>
+                        <h1 style="font-size: 24px">Upload Data :</h1>
                         <hr>
                         <table class="table table-sm table-borderless">
                             <tr>
@@ -223,7 +223,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
                                     <span class="text-danger">*</span>
@@ -238,8 +238,8 @@
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
-                            </tr>
-                            <tr>
+                            </tr> --}}
+                            {{-- <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Rekomendasi dari instansi yang
                                         mengeluarkan</span>
@@ -255,9 +255,9 @@
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> --}}
 
-                            <tr class="border-top">
+                            {{-- <tr class="border-top">
                                 <td>
                                     <span class="d-inline-block mt-4">Dokumen Pernyataan Keaslian</span>
                                     <span class="text-danger">*</span>
@@ -272,7 +272,7 @@
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                             <tr>
                                 <td>
@@ -281,7 +281,7 @@
                                         <span class="text-danger">*</span>
                                         Data wajib diisi
                                     </h6>
-                                    <button name="kirim"
+                                    <button name=""
                                             value="kirim"
                                             type="submit"
                                             class="btn btn-primary">

@@ -270,7 +270,7 @@
                             </tr>
 
                             {{-- Form upload KTP + orang --}}
-                            <tr>
+                            {{-- <tr>
                                 <td>
                                     <span class="d-inline-block mt-2">Foto pelapor sambil membawa identitas</span>
                                     <span class="text-danger">*</span>
@@ -284,10 +284,10 @@
                                         <small style="font-size: 80%">.jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                             {{-- Download persyaratan keaslian SIK --}}
-                            <tr>
+                            {{-- <tr>
                                 <td class="pb-4">
                                     <a id="btnDownloadPernyataanSIK"
                                        role="button"
@@ -297,10 +297,10 @@
                                         Surat Pernyataan Keaslian Dokumen
                                     </a>
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                             {{-- Upload pernyataan keaslian SIK --}}
-                            <tr class="border-top">
+                            {{-- <tr class="border-top">
                                 <td>
                                     <span class="d-inline-block mt-4">Dokumen Pernyataan Keaslian</span>
                                     <span class="text-danger">*</span>
@@ -314,7 +314,7 @@
                                         <small style="font-size: 80%">.pdf, .jpg, .jpeg, .png</small>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                             <tr>
                                 <td>
@@ -329,7 +329,7 @@
                                             class="btn btn-primary w-75 mb-2">
                                         Simpan Sementara
                                     </button> --}}
-                                    <button name="kirim"
+                                    <button name=""
                                             value="kirim"
                                             type="submit"
                                             class="btn btn-primary w-75 mb-2">

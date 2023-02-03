@@ -143,7 +143,7 @@
                 </a>
             </td>
         </tr>
-        <tr>
+        {{-- <tr>
             <td>Foto Pelapor</td>
             <td>:</td>
             <td>
@@ -153,8 +153,8 @@
                     Foto Pelapor
                 </a>
             </td>
-        </tr>
-        <tr>
+        </tr> --}}
+        {{-- <tr>
             <td>Lampiran</td>
             <td>:</td>
             <td>
@@ -164,7 +164,7 @@
                     Lampiran
                 </a>
             </td>
-        </tr>
+        </tr> --}}
     </table>
     @if ($laporan->status === null)
         <hr>

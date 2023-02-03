@@ -116,7 +116,7 @@
                     <th>Judul</th>
                     <th>Kategori</th>
                     <th>Detail Kejadian</th>
-                    <th>Lampiran</th>
+                    {{-- <th>Lampiran</th> --}}
                     <th>Dilaporan Pada</th>
                     <th class="{{ auth()->user()->jenis_pengguna != 'AdminSPKT' ? 'd-none' : '' }}">Pilihan</th>
                 </tr>
@@ -155,7 +155,7 @@
                                 <i class="bi bi-info-circle-fill"></i> Detail
                             </a>
                         </td>
-                        <td>
+                        {{-- <td>
                             @if ($item->lampiran != '')
                                 <a href="{{ asset('assets-user/upload/') . '/' . $item->lampiran }}"
                                    target="_blank"
@@ -165,7 +165,7 @@
                             @else
                                 -
                             @endif
-                        </td>
+                        </td> --}}
 
                         <td>{{ dateTimeFormat($item->dilaporkan_pada) }}</td>
 
