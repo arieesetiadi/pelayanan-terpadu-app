@@ -277,8 +277,9 @@
                                                 <a target="_blank"
                                                    href="{{ asset('assets-user/upload/' . $sikDocument['fotoKtp']) }}"
                                                    class="d-block btn my-1 text-start">
-                                                    <i class="bi bi-arrow-down-circle-fill"></i>
-                                                    Foto KTP
+                                                    <img src="{{ asset('assets-user/upload/' . $sikDocument['fotoKtp']) }}"
+                                                         alt="Foto KTP"
+                                                         width="100%">
                                                 </a>
                                             @endif
 
